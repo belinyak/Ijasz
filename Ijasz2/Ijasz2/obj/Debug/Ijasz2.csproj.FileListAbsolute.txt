@@ -1,1 +1,17 @@
 C:\Users\Belinyák Máté\Documents\Visual Studio 2015\Projects\Ijasz2\Ijasz2\bin\Debug\Ijasz2.exe.config
+Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\bin\Debug\Ijasz2.exe.config
+z:\GitHub\Ijasz2\Ijasz2\Ijasz2\bin\Debug\Ijasz2.exe
+z:\GitHub\Ijasz2\Ijasz2\Ijasz2\bin\Debug\Ijasz2.pdb
+z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Ijasz2.csprojResolveAssemblyReference.cache
+z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\MainWindow.g.cs
+z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\App.g.cs
+z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Ijasz2_MarkupCompile.cache
+z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Ijasz2_MarkupCompile.lref
+z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\MainWindow.baml
+z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Ijasz2.g.resources
+z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Ijasz2.Properties.Resources.resources
+z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Ijasz2.csproj.GenerateResource.Cache
+z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Ijasz2.exe
+z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Ijasz2.pdb
+z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Versenysorozat\Versenysorozat_Hozzaadas.g.cs
+z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Versenysorozat\Versenysorozat_Hozzaadas.baml

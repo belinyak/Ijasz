@@ -5,8 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ijasz2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Íjász program" Height="768" Width="1024" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="710"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="label" Content="Turul Koppány Íjászai Kft." HorizontalAlignment="Stretch" Grid.Row="1" BorderThickness="0"/>
+        <TabControl x:Name="tabControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <TabItem Header="Versenysorozat">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="512"></ColumnDefinition>
+                        <ColumnDefinition Width="512"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="Versenysorozat" HorizontalAlignment="Stretch">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="170" Header="Azonosító"/>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="170" Header="Megnevezés"/>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="170" Header="Versenyek száma"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="btnHozzaadas" Content="Hozzáadás" Grid.Column="1" HorizontalAlignment="Left" Margin="378,641,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="btnHozzaadas_Click" />
+                    <Button x:Name="btnTorles" Content="Törlés" Grid.Column="1" HorizontalAlignment="Left" Margin="265,641,0,0" VerticalAlignment="Top" Width="96" Height="32" />
+
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
