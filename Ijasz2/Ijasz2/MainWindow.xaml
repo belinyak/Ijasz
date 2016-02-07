@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
         <Label x:Name="label" Content="Turul Koppány Íjászai Kft." HorizontalAlignment="Stretch" Grid.Row="1" BorderThickness="0"/>
         <TabControl x:Name="tabControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <TabItem Header="Versenysorozat">
+            <TabItem Header="Versenysorozatok">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="512"></ColumnDefinition>
@@ -26,9 +26,31 @@
                             <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="170" Header="Versenyek száma"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button x:Name="btnHozzaadas" Content="Hozzáadás" Grid.Column="1" HorizontalAlignment="Left" Margin="378,641,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="btnHozzaadas_Click" />
-                    <Button x:Name="btnTorles" Content="Törlés" Grid.Column="1" HorizontalAlignment="Left" Margin="265,641,0,0" VerticalAlignment="Top" Width="96" Height="32" />
-
+                    <Button x:Name="btnVersenysorozatHozzaadas" Content="Hozzáadás" Grid.Column="1" HorizontalAlignment="Left" Margin="378,641,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="btnVersenysorozatHozzaadas_Click"/>
+                    <Button x:Name="btnVersenysorozatTorles" Content="Törlés" Grid.Column="1" HorizontalAlignment="Left" Margin="265,641,0,0" VerticalAlignment="Top" Width="96" Height="32"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Versenyek">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="700"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="Verseny" HorizontalAlignment="Stretch">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Azonosító"/>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="105" Header="Megnevezés"/>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="70" Header="Dátum"/>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Versenysorozat"/>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="60" Header="Lövések"/>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="70" Header="Állomások"/>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="50" Header="Indulók"/>
+                            <DataGridCheckBoxColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" ClipboardContentBinding="{x:Null}" Header="Lezárva"/>
+                            <DataGridCheckBoxColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" ClipboardContentBinding="{x:Null}" Header="Dupbla Beírólap"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="btnVersenyHozzaadas" Content="Hozzáadás" Grid.Column="1" HorizontalAlignment="Left" Margin="195,641,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="btnVersenyHozzaadas_Click"/>
+                    <Button x:Name="btnVersenyTorles" Content="Törlés" Grid.Column="1" HorizontalAlignment="Left" Margin="80,641,0,0" VerticalAlignment="Top" Width="96" Height="32"/>
                 </Grid>
             </TabItem>
         </TabControl>

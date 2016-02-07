@@ -55,9 +55,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Megjelenites\Versenysorozat\Versenysorozat_Hozzaadas.xaml.cs">
-      <DependentUpon>Versenysorozat_Hozzaadas.xaml</DependentUpon>
-    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -74,8 +71,25 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Megjelenites\Versenysorozat\Versenysorozat_Modositas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Megjelenites\Verseny\Verseny_Hozzaadas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Megjelenites\Versenysorozat\Versenysorozat_Hozzaadas.xaml.cs">
+      <DependentUpon>Versenysorozat_Hozzaadas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Megjelenites\Versenysorozat\Versenysorozat_Modositas.xaml.cs">
+      <DependentUpon>Versenysorozat_Modositas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Megjelenites\Verseny\Verseny_Hozzaadas.xaml.cs">
+      <DependentUpon>Verseny_Hozzaadas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

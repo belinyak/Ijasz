@@ -12,12 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Ijasz2.Megjelenites.Versenysorozat {
+namespace Ijasz2.Megjelenites.Verseny {
     /// <summary>
-    /// Interaction logic for Versenysorozat_Hozzaadas.xaml
+    /// Interaction logic for Verseny_Hozzaadas.xaml
     /// </summary>
-    public partial class Versenysorozat_Hozzaadas : Window {
-        public Versenysorozat_Hozzaadas( ) {
+    public partial class Verseny_Hozzaadas : Window {
+        public Verseny_Hozzaadas( ) {
             InitializeComponent( );
         }
     }

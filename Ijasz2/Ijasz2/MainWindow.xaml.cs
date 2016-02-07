@@ -21,9 +21,13 @@ namespace Ijasz2 {
         public MainWindow( ) {
             InitializeComponent( );
         }
+        
+        private void btnVersenysorozatHozzaadas_Click( object sender, RoutedEventArgs e ) {
+            ( new Megjelenites.Versenysorozat.Versenysorozat_Hozzaadas( ) ).ShowDialog( );
+        }
 
-        private void btnHozzaadas_Click( object sender, RoutedEventArgs e ) {
-            ( new Versenysorozat_Hozzaadas( ) ).ShowDialog( );
+        private void btnVersenyHozzaadas_Click( object sender, RoutedEventArgs e ) {
+            ( new Megjelenites.Verseny.Verseny_Hozzaadas( ) ).ShowDialog( );
         }
     }
 }

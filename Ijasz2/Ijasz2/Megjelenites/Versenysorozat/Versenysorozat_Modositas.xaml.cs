@@ -14,10 +14,10 @@ using System.Windows.Shapes;
 
 namespace Ijasz2.Megjelenites.Versenysorozat {
     /// <summary>
-    /// Interaction logic for Versenysorozat_Hozzaadas.xaml
+    /// Interaction logic for Versenysorozat_Modositas.xaml
     /// </summary>
-    public partial class Versenysorozat_Hozzaadas : Window {
-        public Versenysorozat_Hozzaadas( ) {
+    public partial class Versenysorozat_Modositas : Window {
+        public Versenysorozat_Modositas( ) {
             InitializeComponent( );
         }
     }

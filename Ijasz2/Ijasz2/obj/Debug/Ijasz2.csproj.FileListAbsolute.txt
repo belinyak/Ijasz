@@ -15,3 +15,7 @@ z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Ijasz2.exe
 z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Ijasz2.pdb
 z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Versenysorozat\Versenysorozat_Hozzaadas.g.cs
 z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Versenysorozat\Versenysorozat_Hozzaadas.baml
+z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Versenysorozat\Versenysorozat_Modositas.g.cs
+z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Verseny\Verseny_Hozzaadas.g.cs
+z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Versenysorozat\Versenysorozat_Modositas.baml
+z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Verseny\Verseny_Hozzaadas.baml
