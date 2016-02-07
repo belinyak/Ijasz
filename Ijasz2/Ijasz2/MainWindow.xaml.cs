@@ -29,5 +29,9 @@ namespace Ijasz2 {
         private void btnVersenyHozzaadas_Click( object sender, RoutedEventArgs e ) {
             ( new Megjelenites.Verseny.Verseny_Hozzaadas( ) ).ShowDialog( );
         }
+
+        private void btnKorosztalyHozzaadas_Click( object sender, RoutedEventArgs e ) {
+            ( new Megjelenites.Korosztaly.Korosztaly_Hozzaadas( ) ).ShowDialog( );
+        }
     }
 }

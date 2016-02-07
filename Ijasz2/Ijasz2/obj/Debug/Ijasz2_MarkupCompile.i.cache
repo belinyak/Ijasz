@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\
+C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\
 Ijasz2
 none
 false
 DEBUG;TRACE
-Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\App.xaml
-41319548020
+C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\App.xaml
+51878917165
 
-12-1538803997
+131592857515
 13738642453
-MainWindow.xaml;Megjelenites\Versenysorozat\Versenysorozat_Hozzaadas.xaml;Megjelenites\Versenysorozat\Versenysorozat_Modositas.xaml;Megjelenites\Verseny\Verseny_Hozzaadas.xaml;
+MainWindow.xaml;Megjelenites\Korosztaly\Korosztaly_Hozzaadas.xaml;Megjelenites\Versenysorozat\Versenysorozat_Hozzaadas.xaml;Megjelenites\Versenysorozat\Versenysorozat_Modositas.xaml;Megjelenites\Verseny\Verseny_Hozzaadas.xaml;
 
-False
+True
 

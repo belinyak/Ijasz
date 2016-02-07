@@ -17,7 +17,9 @@
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="512"></ColumnDefinition>
-                        <ColumnDefinition Width="512"></ColumnDefinition>
+                        <ColumnDefinition Width="250"></ColumnDefinition>
+                        <ColumnDefinition Width="131"></ColumnDefinition>
+                        <ColumnDefinition Width="131"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <DataGrid x:Name="Versenysorozat" HorizontalAlignment="Stretch">
                         <DataGrid.Columns>
@@ -26,17 +28,21 @@
                             <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="170" Header="Versenyek száma"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button x:Name="btnVersenysorozatHozzaadas" Content="Hozzáadás" Grid.Column="1" HorizontalAlignment="Left" Margin="378,641,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="btnVersenysorozatHozzaadas_Click"/>
-                    <Button x:Name="btnVersenysorozatTorles" Content="Törlés" Grid.Column="1" HorizontalAlignment="Left" Margin="265,641,0,0" VerticalAlignment="Top" Width="96" Height="32"/>
+                    <Button x:Name="btnVersenysorozatHozzaadas" Content="Hozzáadás" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="96" Height="32" Margin="0,0,0,16" Click="btnVersenysorozatHozzaadas_Click"/>
+                    <Button x:Name="btnVersenysorozatTorles" Content="Törlés" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="96" Height="32" Margin="0,0,0,16"/>
+
                 </Grid>
             </TabItem>
             <TabItem Header="Versenyek">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="700"></ColumnDefinition>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="30"></ColumnDefinition>
+                        <ColumnDefinition Width="482"/>
+                        <ColumnDefinition Width="250"></ColumnDefinition>
+                        <ColumnDefinition Width="131"></ColumnDefinition>
+                        <ColumnDefinition Width="131"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <DataGrid x:Name="Verseny" HorizontalAlignment="Stretch">
+                    <DataGrid x:Name="Verseny" HorizontalAlignment="Stretch" Grid.ColumnSpan="3">
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Azonosító"/>
                             <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="105" Header="Megnevezés"/>
@@ -49,8 +55,44 @@
                             <DataGridCheckBoxColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" ClipboardContentBinding="{x:Null}" Header="Dupbla Beírólap"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button x:Name="btnVersenyHozzaadas" Content="Hozzáadás" Grid.Column="1" HorizontalAlignment="Left" Margin="195,641,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="btnVersenyHozzaadas_Click"/>
-                    <Button x:Name="btnVersenyTorles" Content="Törlés" Grid.Column="1" HorizontalAlignment="Left" Margin="80,641,0,0" VerticalAlignment="Top" Width="96" Height="32"/>
+                    <Button x:Name="btnVersenyTorles" Content="Törlés" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="96" Height="32" Margin="18,0,17,16"/>
+                    <Button x:Name="btnVersenyHozzaadas" Content="Hozzáadás" Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="96" Height="32" Margin="0,0,0,16" Click="btnVersenyHozzaadas_Click"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Korosztályok">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="58.5"></ColumnDefinition>
+                        <ColumnDefinition Width="506.5"/>
+                        <ColumnDefinition Width="197"></ColumnDefinition>
+                        <ColumnDefinition Width="131"></ColumnDefinition>
+                        <ColumnDefinition Width="131"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="620" ></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <DataGrid x:Name="Korosztaly" HorizontalAlignment="Stretch" Grid.RowSpan="2" Grid.ColumnSpan="2" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="70" Header="Azonosító"/>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Megnevezés"/>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="70" Header="Alsó határ"/>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="70" Header="Felső határ"/>
+                            <DataGridCheckBoxColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" ClipboardContentBinding="{x:Null}" Width="55" Header="Nőkre"/>
+                            <DataGridCheckBoxColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" ClipboardContentBinding="{x:Null}" Width="55" Header="Férfiakra"/>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="45" Header="Nők"/>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="45" Header="Férfiak"/>
+                            <DataGridCheckBoxColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" ClipboardContentBinding="{x:Null}" Width="55" Header="Egyben"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="btnKorosztalyTorles" Content="Törlés" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="96" Height="32" Margin="18,0,17,16"/>
+                    <Button x:Name="btnKorosztalyHozzaadas" Content="Hozzáadás" Grid.Column="4" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="96" Height="32" Margin="0,0,0,16" Click="btnKorosztalyHozzaadas_Click"/>
+                    <Button x:Name="btnKorosztalySzamolas" Content="Számolás" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="96" Height="32" Margin="18,0,17,0" />
+                    <Button x:Name="btnKorosztalyTagok" Content="Tagok" Grid.Column="4" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="96" Height="32" />
+                    <Label x:Name="lblVerseny" Content="Verseny azonosító:" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="12,5,11,0"/>
+                    <ComboBox x:Name="cboVerseny" Grid.Column="4" HorizontalAlignment="Left" Width="100" VerticalAlignment="Top"  Margin="0,10,0,0"/>
+
                 </Grid>
             </TabItem>
         </TabControl>
