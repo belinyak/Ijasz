@@ -1,0 +1,18 @@
+﻿<Window x:Class="Ijasz2.Megjelenites.Korosztaly.Korosztaly_Indulok"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ijasz2.Megjelenites.Korosztaly"
+        Title="Indulók" Height="300" Width="365" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <DataGrid x:Name="Indulok">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="150" Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" ClipboardContentBinding="{x:Null}" Header="Név"/>
+                <DataGridTextColumn Width="50" Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" ClipboardContentBinding="{x:Null}" Header="Nem"/>
+                <DataGridTextColumn Width="100" Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" ClipboardContentBinding="{x:Null}" Header="Korosztály"/>
+                <DataGridTextColumn Width="48" Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" ClipboardContentBinding="{x:Null}" Header="Életkor"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
