@@ -95,6 +95,26 @@
 
                 </Grid>
             </TabItem>
+            <TabItem Header="Íjtípusok">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="305"></ColumnDefinition>
+                        <ColumnDefinition Width="207"/>
+                        <ColumnDefinition Width="250"></ColumnDefinition>
+                        <ColumnDefinition Width="131"></ColumnDefinition>
+                        <ColumnDefinition Width="131"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="Ijtipus" HorizontalAlignment="Stretch" Grid.ColumnSpan="1">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Azonosító"/>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Megnevezés"/>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Listázási sorszám"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="btnijtipusTorles" Content="Törlés" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="96" Height="32" Margin="18,0,17,16"/>
+                    <Button x:Name="btnIjtipusHozzaadas" Content="Hozzáadás" Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="96" Height="32" Margin="0,0,0,16" Click="btnIjtipusHozzaadas_Click"/>
+                </Grid>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

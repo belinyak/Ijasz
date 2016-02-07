@@ -37,5 +37,9 @@ namespace Ijasz2 {
         private void btnKorosztalyIndulok_Click( object sender, RoutedEventArgs e ) {
             ( new Megjelenites.Korosztaly.Korosztaly_Indulok( ) ).ShowDialog( );
         }
+
+        private void btnIjtipusHozzaadas_Click( object sender, RoutedEventArgs e ) {
+            ( new Megjelenites.Ijtipusok.Ijtipus_Hozzaadas( ) ).ShowDialog( );
+        }
     }
 }

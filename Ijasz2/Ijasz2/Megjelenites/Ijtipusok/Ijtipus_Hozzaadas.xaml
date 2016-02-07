@@ -1,0 +1,27 @@
+﻿<Window x:Class="Ijasz2.Megjelenites.Ijtipusok.Ijtipus_Hozzaadas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ijasz2.Megjelenites.Ijtipusok"
+        Title="Íjtípus hozzáadás" Height="170" Width="276" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="Azonosito" Grid.Row="0" Grid.Column="0"  Content="Azonosító:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+        <Label x:Name="Megnevezes" Grid.Row="1" Grid.Column="0" Content="Megnevezés:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+        <Label x:Name="Listazas" Grid.Row="2" Grid.Column="0" Content="Listázási sorszám:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtAzonosito" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
+        <TextBox x:Name="txtMegnevezes" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
+        <TextBox x:Name="txtListazas" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
+        <Button x:Name="btnRendben" Content="Rendben" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="86" Height="28" />
+    </Grid>
+</Window>

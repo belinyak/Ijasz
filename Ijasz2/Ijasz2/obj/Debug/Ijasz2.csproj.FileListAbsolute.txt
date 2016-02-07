@@ -43,3 +43,5 @@ C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megje
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Korosztaly\Korosztaly_Hozzaadas.baml
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Korosztaly\Korosztaly_Indulok.g.cs
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Korosztaly\Korosztaly_Indulok.baml
+C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Ijtipusok\Ijtipus_Hozzaadas.g.cs
+C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Ijtipusok\Ijtipus_Hozzaadas.baml
