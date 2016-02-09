@@ -46,10 +46,6 @@ namespace Ijasz2 {
 
         }
 
-        private void btnKorosztalyTorles_Click_1( object sender, RoutedEventArgs e ) {
-
-        }
-
         private void btnKorosztalySzamolas_Click( object sender, RoutedEventArgs e ) {
 
         }
