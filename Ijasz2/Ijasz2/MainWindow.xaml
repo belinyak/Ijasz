@@ -162,6 +162,41 @@
                 </Grid>
             </TabItem>
 
+            <TabItem Header="Eredmények">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="630" ></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <!--columnwidth-->
+                        <ColumnDefinition Width="570"></ColumnDefinition>
+                        <!--762-columnwidth-->
+                        <ColumnDefinition Width="192"></ColumnDefinition>
+                        <ColumnDefinition Width="131"></ColumnDefinition>
+                        <ColumnDefinition Width="131"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="Eredmeny" HorizontalAlignment="Stretch" Grid.RowSpan="2">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Név"/>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="60" Header="Sorszám"/>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Íjtípus"/>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="50" Header="Csapat"/>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="25" Header="10"/>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="25" Header="8"/>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="25" Header="5"/>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="40" Header="Mellé"/>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="50" Header="Összes"/>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="25" Header="%"/>
+                            <DataGridCheckBoxColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" ClipboardContentBinding="{x:Null}" Header="Megjelent" Width="70"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="btnEredmenyMegnyitas" Content="Megnyitás" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="96" Height="32" Margin="18,0,17,16"  Click="btnEredmenyMegnyitas_Click"/>
+                    <Button x:Name="btnEredmenyLezaras" Content="Lezárás" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="96" Height="32" Margin="0,0,0,16" Click="btnEredmenyLezaras_Click"/>
+                    <Button x:Name="btnEredmenyTorles" Content="Törlés" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="96" Height="32" Margin="18,0,17,16"  Click="btnEredmenyTorles_Click"/>
+                </Grid>
+            </TabItem>
+
         </TabControl>
     </Grid>
 </Window>

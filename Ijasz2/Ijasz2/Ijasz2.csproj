@@ -71,6 +71,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Megjelenites\Eredmeny\Eredmeny_Hozzaadas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Megjelenites\Ijtipus\Ijtipus_Hozzaadas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -111,6 +115,9 @@
   <ItemGroup>
     <Compile Include="Megjelenites\Egyesület\Egyesulet_Hozzaadas.xaml.cs">
       <DependentUpon>Egyesulet_Hozzaadas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Megjelenites\Eredmeny\Eredmeny_Hozzaadas.xaml.cs">
+      <DependentUpon>Eredmeny_Hozzaadas.xaml</DependentUpon>
     </Compile>
     <Compile Include="Megjelenites\Ijtipus\Ijtipus_Hozzaadas.xaml.cs">
       <DependentUpon>Ijtipus_Hozzaadas.xaml</DependentUpon>

@@ -73,5 +73,18 @@ namespace Ijasz2 {
         private void btnInduloBeiras_Click( object sender, RoutedEventArgs e ) {
             ( new Megjelenites.Indulo.Indulo_Beiras( ) ).ShowDialog( );
         }
+
+        private void btnEredmenyLezaras_Click( object sender, RoutedEventArgs e ) {
+
+        }
+
+        private void btnEredmenyMegnyitas_Click( object sender, RoutedEventArgs e ) {
+            //NOTE(mate): ideiglenesen
+            ( new Megjelenites.Eredmeny.Eredmeny_Hozzaadas( ) ).ShowDialog( );
+        }
+
+        private void btnEredmenyTorles_Click( object sender, RoutedEventArgs e ) {
+
+        }
     }
 }
