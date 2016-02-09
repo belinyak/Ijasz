@@ -61,5 +61,17 @@ namespace Ijasz2 {
         private void btnEgyesuletHozzaadas_Click_1( object sender, RoutedEventArgs e ) {
 
         }
+
+        private void btnInduloHozzaadas_Click( object sender, RoutedEventArgs e ) {
+            ( new Megjelenites.Indulo.Indulo_Hozzaadas( ) ).ShowDialog( );
+        }
+
+        private void btnInduloTorles_Click( object sender, RoutedEventArgs e ) {
+
+        }
+
+        private void btnInduloBeiras_Click( object sender, RoutedEventArgs e ) {
+            ( new Megjelenites.Indulo.Indulo_Beiras( ) ).ShowDialog( );
+        }
     }
 }

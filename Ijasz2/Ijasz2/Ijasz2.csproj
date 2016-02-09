@@ -75,6 +75,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Megjelenites\Indulo\Indulo_Beiras.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Megjelenites\Indulo\Indulo_Csapatok.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Megjelenites\Indulo\Indulo_Hozzaadas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Megjelenites\Korosztaly\Korosztaly_Hozzaadas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -102,6 +114,15 @@
     </Compile>
     <Compile Include="Megjelenites\Ijtipus\Ijtipus_Hozzaadas.xaml.cs">
       <DependentUpon>Ijtipus_Hozzaadas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Megjelenites\Indulo\Indulo_Beiras.xaml.cs">
+      <DependentUpon>Indulo_Beiras.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Megjelenites\Indulo\Indulo_Csapatok.xaml.cs">
+      <DependentUpon>Indulo_Csapatok.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Megjelenites\Indulo\Indulo_Hozzaadas.xaml.cs">
+      <DependentUpon>Indulo_Hozzaadas.xaml</DependentUpon>
     </Compile>
     <Compile Include="Megjelenites\Korosztaly\Korosztaly_Hozzaadas.xaml.cs">
       <DependentUpon>Korosztaly_Hozzaadas.xaml</DependentUpon>

@@ -1,0 +1,41 @@
+﻿<Window x:Class="Ijasz2.Megjelenites.Indulo.Indulo_Hozzaadas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ijasz2.Megjelenites.Indulo"
+        mc:Ignorable="d"
+        Title="Induló hozzaáadás" Height="280" Width="245" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <!--Width="255"-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="lblNev" Content="Név:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+        <Label x:Name="lblNem" Content="Nem:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+        <Label x:Name="lblSzuletes" Content="Születési dátum:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+        <Label x:Name="lblEngedely" Content="Engedély:" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+        <Label x:Name="lblEgyesulet" Content="Egyesület:" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+        <Label x:Name="lblEredmenyek" Content="Eredmények:" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+        <TextBox x:Name="txtNev" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
+        <TextBox x:Name="txtNem" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
+        <DatePicker x:Name="dtSzuletes" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtEngedely" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
+        <ComboBox x:Name="cbEgyesulet" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
+        <TextBox x:Name="txtEredmenyek" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
+
+        <Button x:Name="btnRendben" Content="Rendben" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="86" Height="28" />
+        <Button x:Name="btnUjEgyesulet" Content="Új Egyesület" Grid.Row="7" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="86" Height="28" Click="btnUjEgyesulet_Click" />
+    </Grid>
+</Window>
