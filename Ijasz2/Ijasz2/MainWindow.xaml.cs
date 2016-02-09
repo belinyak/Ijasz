@@ -41,5 +41,17 @@ namespace Ijasz2 {
         private void btnIjtipusHozzaadas_Click( object sender, RoutedEventArgs e ) {
             ( new Megjelenites.Ijtipusok.Ijtipus_Hozzaadas( ) ).ShowDialog( );
         }
+
+        private void btnKorosztalyTorles_Click( object sender, RoutedEventArgs e ) {
+
+        }
+
+        private void btnKorosztalyTorles_Click_1( object sender, RoutedEventArgs e ) {
+
+        }
+
+        private void btnKorosztalySzamolas_Click( object sender, RoutedEventArgs e ) {
+
+        }
     }
 }
