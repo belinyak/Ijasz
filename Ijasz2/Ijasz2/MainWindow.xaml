@@ -161,7 +161,6 @@
                     <Button x:Name="btnInduloBeiras" Content="Beírás" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="96" Height="32" Margin="0,0,0,16" Click="btnInduloBeiras_Click"/>
                 </Grid>
             </TabItem>
-
             <TabItem Header="Eredmények">
                 <Grid Background="#FFE5E5E5">
                     <Grid.RowDefinitions>
@@ -194,6 +193,44 @@
                     <Button x:Name="btnEredmenyMegnyitas" Content="Megnyitás" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="96" Height="32" Margin="18,0,17,16"  Click="btnEredmenyMegnyitas_Click"/>
                     <Button x:Name="btnEredmenyLezaras" Content="Lezárás" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="96" Height="32" Margin="0,0,0,16" Click="btnEredmenyLezaras_Click"/>
                     <Button x:Name="btnEredmenyTorles" Content="Törlés" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="96" Height="32" Margin="18,0,17,16"  Click="btnEredmenyTorles_Click"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Startlisták">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <!--columnwidth-->
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+                        <ColumnDefinition Width="150"></ColumnDefinition>
+                        <ColumnDefinition Width="693"></ColumnDefinition>
+                        <ColumnDefinition Width="131"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label x:Name="Azonosito" Grid.Row="1" Grid.Column="1"  Content="Verseny azonosító:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                    <Label x:Name="Megnevezes" Grid.Row="2" Grid.Column="1"  Content="Verseny megnevezés:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                    <Label x:Name="Típus" Grid.Row="3" Grid.Column="1"  Content="Startlista típusa:" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
+
+                    
+                    <ComboBox x:Name="cbAzonosito" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
+                    <TextBox x:Name="txtMegnevezes" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
+
+                    <CheckBox x:Name="chNevezesi" Grid.Row="3" Grid.Column="2" Content="Nevezési" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                    <CheckBox x:Name="chCsapatlista" Grid.Row="4" Grid.Column="2" Content="Csapatlista" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <CheckBox x:Name="chNemMegjelent" Grid.Row="5" Grid.Column="2" Content="Megjelent" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+
+
+
+                    <Button x:Name="btnNyomtat" Content="Nyomtatás" Grid.Row="6" Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="96" Height="32" Margin="0,0,0,16" Click="btnNyomtat_Click"/>
                 </Grid>
             </TabItem>
 

@@ -86,5 +86,9 @@ namespace Ijasz2 {
         private void btnEredmenyTorles_Click( object sender, RoutedEventArgs e ) {
 
         }
+
+        private void btnNyomtat_Click( object sender, RoutedEventArgs e ) {
+
+        }
     }
 }
