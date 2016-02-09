@@ -195,44 +195,89 @@
                     <Button x:Name="btnEredmenyTorles" Content="Törlés" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="96" Height="32" Margin="18,0,17,16"  Click="btnEredmenyTorles_Click"/>
                 </Grid>
             </TabItem>
-
             <TabItem Header="Startlisták">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="#FFE5E5E5" x:Name="St">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="20"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <!--columnwidth-->
                         <ColumnDefinition Width="50"></ColumnDefinition>
                         <ColumnDefinition Width="150"></ColumnDefinition>
                         <ColumnDefinition Width="693"></ColumnDefinition>
                         <ColumnDefinition Width="131"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-
-                    <Label x:Name="Azonosito" Grid.Row="1" Grid.Column="1"  Content="Verseny azonosító:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-                    <Label x:Name="Megnevezes" Grid.Row="2" Grid.Column="1"  Content="Verseny megnevezés:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-                    <Label x:Name="Típus" Grid.Row="3" Grid.Column="1"  Content="Startlista típusa:" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
-
-                    
-                    <ComboBox x:Name="cbAzonosito" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
-                    <TextBox x:Name="txtMegnevezes" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
-
-                    <CheckBox x:Name="chNevezesi" Grid.Row="3" Grid.Column="2" Content="Nevezési" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-                    <CheckBox x:Name="chCsapatlista" Grid.Row="4" Grid.Column="2" Content="Csapatlista" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <CheckBox x:Name="chNemMegjelent" Grid.Row="5" Grid.Column="2" Content="Megjelent" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-
-
-
-
-                    <Button x:Name="btnNyomtat" Content="Nyomtatás" Grid.Row="6" Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="96" Height="32" Margin="0,0,0,16" Click="btnNyomtat_Click"/>
+                    <Label x:Name="startListaVersenyAzonosito" Grid.Row="1" Grid.Column="1"  Content="Verseny azonosító:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                    <Label x:Name="startListaVersenyMegnevezes" Grid.Row="2" Grid.Column="1"  Content="Verseny megnevezés:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                    <Label x:Name="startListaTípus" Grid.Row="3" Grid.Column="1"  Content="Startlista típusa:" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
+                    <ComboBox x:Name="cbstartListaVersenyAzonosito" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
+                    <TextBox x:Name="txtstartListaVersenyMegnevezes" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
+                    <CheckBox x:Name="chstartListaNevezesi" Grid.Row="3" Grid.Column="2" Content="Nevezési" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <CheckBox x:Name="chstartListaCsapatlista" Grid.Row="4" Grid.Column="2" Content="Csapatlista" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <CheckBox x:Name="chstartListaNemMegjelent" Grid.Row="5" Grid.Column="2" Content="Megjelent" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Button x:Name="btnstartListaNyomtat" Content="Nyomtatás" Grid.Row="6" Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="96" Height="32" Margin="0,0,0,16" Click="btnstartListaNyomtat_Click"/>
                 </Grid>
             </TabItem>
+
+            <TabItem Header="Eredménylapok">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+                        <ColumnDefinition Width="165"></ColumnDefinition>
+                        <ColumnDefinition Width="678"></ColumnDefinition>
+                        <ColumnDefinition Width="131"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="eredmenylapTipus" Grid.Row="1" Grid.Column="1"  Content="Eredménylap típus:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                    <Label x:Name="eredmenylapVersenysorozatAzonosito" Grid.Row="3" Grid.Column="1"  Content="Versenysorozat azonosító:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                    <Label x:Name="eredmenylapVersenysorozatMegnevezes" Grid.Row="4" Grid.Column="1"  Content="Versenysorozat megnevezés:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                    <Label x:Name="eredmenylapVersenyAzonosito" Grid.Row="5" Grid.Column="1"  Content="Verseny azonosító:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                    <Label x:Name="eredmenylapVersenyMegnevezes" Grid.Row="6" Grid.Column="1"  Content="Verseny megnevezés:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                    <Label x:Name="eredmenylapTípus" Grid.Row="7" Grid.Column="1" Content="Startlista típusa:" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
+
+                    <CheckBox x:Name="cheredmenylapVerseny" Grid.Row="1" Grid.Column="2" Content="Verseny" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <CheckBox x:Name="cheredmenylapVersenysorozat" Grid.Row="2" Grid.Column="2" Content="Versenysorozat" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                    <ComboBox x:Name="cberedmenylapVersenyAzonosito" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
+                    <ComboBox x:Name="cberedmenylapVersenyMegnevezes" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
+
+                    <ComboBox x:Name="cberedmenylapVersenysorozatAzonosito" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
+                    <ComboBox x:Name="cberedmenylapVersenysorozatMegnevezes" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
+
+                    <CheckBox x:Name="cheredmenylapTeljes" Grid.Row="7" Grid.Column="2" Content="Teljes" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <CheckBox x:Name="cheredmenylapMisz" Grid.Row="8" Grid.Column="2" Content="MISZ" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <CheckBox x:Name="cheredmenylapEgyesulet" Grid.Row="9" Grid.Column="2" Content="Egyesület" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <CheckBox x:Name="cheredmenylapReszletes" Grid.Row="10" Grid.Column="2" Content="Részletes" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    
+                    <Button x:Name="btneredmenylapNyomtat" Content="Nyomtatás" Grid.Row="12" Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="96" Height="32" Margin="0,0,0,16" Click="btneredmenylapNyomtat_Click"/>
+                    <!--<TextBox x:Name="txteredmenylapMegnevezes" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
+                    <CheckBox x:Name="cheredmenylapNevezesi" Grid.Row="3" Grid.Column="2" Content="Nevezési" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                    <CheckBox x:Name="cheredmenylapCsapatlista" Grid.Row="4" Grid.Column="2" Content="Csapatlista" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <CheckBox x:Name="cheredmenylapNemMegjelent" Grid.Row="5" Grid.Column="2" Content="Megjelent" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    -->
+                </Grid>
+            </TabItem>
+
+
 
         </TabControl>
     </Grid>

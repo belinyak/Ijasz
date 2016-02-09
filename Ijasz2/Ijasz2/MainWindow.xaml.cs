@@ -87,7 +87,11 @@ namespace Ijasz2 {
 
         }
 
-        private void btnNyomtat_Click( object sender, RoutedEventArgs e ) {
+        private void btnstartListaNyomtat_Click( object sender, RoutedEventArgs e ) {
+
+        }
+
+        private void btneredmenylapNyomtat_Click( object sender, RoutedEventArgs e ) {
 
         }
     }
