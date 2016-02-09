@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ijasz2.Megjelenites.Verseny"
-        Title="Verseny hozzáadás" Height="300" Width="230" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Verseny hozzáadás" Height="300" Width="235" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
     <!--Width="255"-->
     <Grid>

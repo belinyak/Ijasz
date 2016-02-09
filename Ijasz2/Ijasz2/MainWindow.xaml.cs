@@ -49,5 +49,17 @@ namespace Ijasz2 {
         private void btnKorosztalySzamolas_Click( object sender, RoutedEventArgs e ) {
 
         }
+
+        private void btnEgyesuletTorles_Click( object sender, RoutedEventArgs e ) {
+
+        }
+
+        private void btnEgyesuletHozzaadas_Click( object sender, RoutedEventArgs e ) {
+            ( new Megjelenites.Egyesület.Egyesulet_Hozzaadas( ) ).ShowDialog( );
+        }
+
+        private void btnEgyesuletHozzaadas_Click_1( object sender, RoutedEventArgs e ) {
+
+        }
     }
 }

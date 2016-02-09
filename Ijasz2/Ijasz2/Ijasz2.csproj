@@ -67,7 +67,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Megjelenites\Ijtipusok\Ijtipus_Hozzaadas.xaml">
+    <Page Include="Megjelenites\Egyesület\Egyesulet_Hozzaadas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Megjelenites\Ijtipus\Ijtipus_Hozzaadas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -93,7 +97,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Megjelenites\Ijtipusok\Ijtipus_Hozzaadas.xaml.cs">
+    <Compile Include="Megjelenites\Egyesület\Egyesulet_Hozzaadas.xaml.cs">
+      <DependentUpon>Egyesulet_Hozzaadas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Megjelenites\Ijtipus\Ijtipus_Hozzaadas.xaml.cs">
       <DependentUpon>Ijtipus_Hozzaadas.xaml</DependentUpon>
     </Compile>
     <Compile Include="Megjelenites\Korosztaly\Korosztaly_Hozzaadas.xaml.cs">

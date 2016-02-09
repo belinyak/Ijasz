@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ijasz2.Megjelenites.Versenysorozat"
         mc:Ignorable="d"
-    Title="Versenysorozat hozzáadás" Height="138" Width="276" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    Title="Versenysorozat hozzáadás" Height="143" Width="230" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <!--Width="255"-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="32"></RowDefinition>
@@ -13,13 +14,14 @@
             <RowDefinition Height="32"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="120"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Label x:Name="vsAzonosito" Grid.Row="0" Grid.Column="0"  Content="Azonosító:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-        <Label x:Name="vsMegnevezes" Grid.Row="1" Grid.Column="0" Content="Megnevezés:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-        <TextBox x:Name="txtAzonosito" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
-        <TextBox x:Name="txtMegnevezes" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
+        <Label x:Name="lblAzonosito" Content="Azonosító:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+        <Label x:Name="lblMegnevezes" Content="Megnevezes:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+        <TextBox x:Name="txtAzonosito" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
+        <TextBox x:Name="txtMegnevezes" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
         <Button x:Name="btnRendben" Content="Rendben" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="86" Height="28" />
     </Grid>
 </Window>
