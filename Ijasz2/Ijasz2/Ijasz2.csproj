@@ -99,6 +99,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Megjelenites\Oklevel\Sablon_Hozzaadas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Megjelenites\Versenysorozat\Versenysorozat_Hozzaadas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -136,6 +140,9 @@
     </Compile>
     <Compile Include="Megjelenites\Korosztaly\Korosztaly_Indulok.xaml.cs">
       <DependentUpon>Korosztaly_Indulok.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Megjelenites\Oklevel\Sablon_Hozzaadas.xaml.cs">
+      <DependentUpon>Sablon_Hozzaadas.xaml</DependentUpon>
     </Compile>
     <Compile Include="Megjelenites\Versenysorozat\Versenysorozat_Hozzaadas.xaml.cs">
       <DependentUpon>Versenysorozat_Hozzaadas.xaml</DependentUpon>

@@ -94,5 +94,29 @@ namespace Ijasz2 {
         private void btneredmenylapNyomtat_Click( object sender, RoutedEventArgs e ) {
 
         }
+
+        private void btnOklevelNyomtat_Click( object sender, RoutedEventArgs e ) {
+
+        }
+
+        private void btnSablonTorles_Click( object sender, RoutedEventArgs e ) {
+
+        }
+
+        private void btnSablonHozzaadas_Click( object sender, RoutedEventArgs e ) {
+
+        }
+
+        private void btnSablonTorles_Click_1( object sender, RoutedEventArgs e ) {
+
+        }
+
+        private void btnOSablonHozzaadas_Click( object sender, RoutedEventArgs e ) {
+            ( new Megjelenites.Oklevel.Sablon_Hozzaadas( ) ).ShowDialog( );
+        }
+
+        private void btnOklevelNyomtatas_Click( object sender, RoutedEventArgs e ) {
+
+        }
     }
 }

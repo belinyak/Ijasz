@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ijasz2.Megjelenites.Eredmeny"
         mc:Ignorable="d"
-        Title="Eredmeny_Hozzaadas" Height="400" Width="230" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Eredmény Hozzáadás" Height="400" Width="230" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="32"></RowDefinition>
