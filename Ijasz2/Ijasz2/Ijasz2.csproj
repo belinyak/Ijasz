@@ -153,6 +153,8 @@
     <Compile Include="Megjelenites\Verseny\Verseny_Hozzaadas.xaml.cs">
       <DependentUpon>Verseny_Hozzaadas.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\Versenysorozat.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

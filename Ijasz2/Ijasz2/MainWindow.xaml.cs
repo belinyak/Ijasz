@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,18 +13,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Ijasz2.Model;
 
 namespace Ijasz2 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
+        private List<Model.Versenysorozat> _versenysorozatok; 
+
         public MainWindow( ) {
             InitializeComponent( );
         }
-        
+
+        #region Button EventHandlers
         private void btnVersenysorozatHozzaadas_Click( object sender, RoutedEventArgs e ) {
-            ( new Megjelenites.Versenysorozat.Versenysorozat_Hozzaadas( ) ).ShowDialog( );
+            _versenysorozatok.Add(new Versenysorozat("asdqw","asdqw" ,1) );
         }
 
         private void btnVersenyHozzaadas_Click( object sender, RoutedEventArgs e ) {
@@ -117,6 +122,32 @@ namespace Ijasz2 {
 
         private void btnOklevelNyomtatas_Click( object sender, RoutedEventArgs e ) {
 
+        }
+        #endregion
+
+        private void MainWindow_OnLoaded(object sender, RoutedEventArgs e) {
+            BackgroundWorker worker = new BackgroundWorker();
+            worker.RunWorkerCompleted += WorkerOnRunWorkerCompleted;
+            worker.DoWork += WorkerOnDoWork;
+            worker.RunWorkerAsync();
+        }
+
+        /// <summary>
+        /// itt töltődik be minden adat
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="doWorkEventArgs"></param>
+        private void WorkerOnDoWork(object sender, DoWorkEventArgs doWorkEventArgs) {
+            _versenysorozatok = new List<Versenysorozat> {
+                new Versenysorozat("vs1", "versenysorozat1", 0),
+                new Versenysorozat("vs2", "versenysorozat2", 0),
+                new Versenysorozat("vs3", "versenysorozat3", 0),
+                new Versenysorozat("vs4", "versenysorozat4", 0)
+            };
+        }
+
+        private void WorkerOnRunWorkerCompleted(object sender, RunWorkerCompletedEventArgs runWorkerCompletedEventArgs) {
+            VersenysorozatGrid.ItemsSource = _versenysorozatok;
         }
     }
 }
