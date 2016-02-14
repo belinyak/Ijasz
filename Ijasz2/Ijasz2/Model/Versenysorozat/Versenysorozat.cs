@@ -29,9 +29,9 @@ namespace Ijasz2.Model.Versenysorozat {
             }
         }
 
-
         public Versenysorozat() {
         }
+
         public Versenysorozat(string azonosito, string megnevezes, int versenyekszama) {
             Azonosito = azonosito;
             Megnevezes = megnevezes;
@@ -43,13 +43,6 @@ namespace Ijasz2.Model.Versenysorozat {
             if (PropertyChanged != null){
                 PropertyChanged(this,new PropertyChangedEventArgs(propertyName));
             }
-            
-        }
-
-        public override string ToString() {
-            //return base.ToString();
-            return "azonosito: " + Azonosito + Environment.NewLine + "megnevezes: " + Megnevezes +
-                           Environment.NewLine + "versenyek szama: " + VersenyekSzama;
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
+using System.Windows.Input;
 using Ijasz2.Model;
 using Ijasz2.Model.Data;
 using Ijasz2.Model.Versenysorozat;
@@ -26,7 +27,22 @@ namespace Ijasz2 {
         }
 
         private void BtnVersenysorozatTorles_OnClick( object sender, RoutedEventArgs e ) {
-            throw new NotImplementedException("versenysorozat törlés");
+            if (VersenysorozatGrid.SelectedItem == null){
+                return;
+            }
+            var vs = VersenysorozatGrid.SelectedItem as Versenysorozat;
+
+            (new Megjelenites.Versenysorozat.Versenysorozat_Torles(vs.Azonosito)).ShowDialog();
+        }
+
+        private void Versenysorozat_Modositas( object sender, MouseButtonEventArgs e ) {
+            if (VersenysorozatGrid.SelectedItem == null){
+                return;
+            }
+            var vs = VersenysorozatGrid.SelectedItem as Versenysorozat;
+
+            (new Megjelenites.Versenysorozat.Versenysorozat_Modositas(vs)).ShowDialog();
+
         }
         #endregion
 
@@ -148,6 +164,7 @@ namespace Ijasz2 {
         private void WorkerOnRunWorkerCompleted(object sender, RunWorkerCompletedEventArgs runWorkerCompletedEventArgs) {
             VersenysorozatGrid.ItemsSource = Data.Versenysorozatok._versenysorozatok;
         }
+
 
     }
 }
