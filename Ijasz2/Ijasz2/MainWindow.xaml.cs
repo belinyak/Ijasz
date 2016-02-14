@@ -1,39 +1,35 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using Ijasz2.Model;
+using Ijasz2.Model.Data;
+using Ijasz2.Model.Versenysorozat;
 
 namespace Ijasz2 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
-        public static ObservableCollection<Versenysorozat> _versenysorozatok; 
+        public static Model.Data.Data Data;
 
         public MainWindow( ) {
             InitializeComponent( );
         }
 
-        public static void Add(Versenysorozat versenysorozat) {
-            _versenysorozatok.Add(versenysorozat);
-        }
-
         #region Button EventHandlers
-        private void BtnVersenysorozatHozzaadas_OnClick( object sender, RoutedEventArgs e ) {
-            //_versenysorozatok.Add( new Versenysorozat { Azonosito = "vs10", Megnevezes = "versenysorozat10", VersenyekSzama = 10 } );
 
-            (new Megjelenites.Versenysorozat.Versenysorozat_Hozzaadas()).ShowDialog();
+        #region Versenysorozat
+        private void BtnVersenysorozatHozzaadas_OnClick( object sender, RoutedEventArgs e ) {
+            ( new Megjelenites.Versenysorozat.Versenysorozat_Hozzaadas( ) ).ShowDialog( );
         }
 
         private void BtnVersenysorozatTorles_OnClick( object sender, RoutedEventArgs e ) {
-            if( VersenysorozatGrid.SelectedItem != null )
-            {
-                _versenysorozatok.Remove(
-                    _versenysorozatok.Single(
-                        s => s.Azonosito.Equals((VersenysorozatGrid.SelectedItem as Versenysorozat).Azonosito)));
-            }
+            throw new NotImplementedException("versenysorozat törlés");
         }
+        #endregion
+
 
         private void btnVersenyHozzaadas_Click( object sender, RoutedEventArgs e ) {
             ( new Megjelenites.Verseny.Verseny_Hozzaadas( ) ).ShowDialog( );
@@ -136,20 +132,21 @@ namespace Ijasz2 {
         }
 
         /// <summary>
-        /// itt töltődik be minden adat
+        /// load all the data
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="doWorkEventArgs"></param>
         private void WorkerOnDoWork(object sender, DoWorkEventArgs doWorkEventArgs) {
-            _versenysorozatok = new ObservableCollection<Versenysorozat> {
-                new Versenysorozat("vs1", "versenysorozat1", 0),
-                new Versenysorozat("vs2", "versenysorozat1", 0),
-                new Versenysorozat("vs3", "versenysorozat1", 0)
-            };
+            Data = new Data();
         }
 
+        /// <summary>
+        /// set itemsource for binding
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="runWorkerCompletedEventArgs"></param>
         private void WorkerOnRunWorkerCompleted(object sender, RunWorkerCompletedEventArgs runWorkerCompletedEventArgs) {
-            VersenysorozatGrid.ItemsSource = _versenysorozatok;
+            VersenysorozatGrid.ItemsSource = Data.Versenysorozatok._versenysorozatok;
         }
 
     }

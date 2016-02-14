@@ -28,7 +28,7 @@
                               SelectionUnit="FullRow"
                               CanUserResizeRows="False"
                               RowHeaderWidth="0"
-                              x:Name="VersenysorozatGrid" ItemsSource="{Binding Source=_versenysorozatok}"  AutoGenerateColumns="False" HorizontalAlignment="Stretch"
+                              x:Name="VersenysorozatGrid" ItemsSource="{Binding Source=Data.Versenysorozatok}"  AutoGenerateColumns="False" HorizontalAlignment="Stretch"
                               HorizontalScrollBarVisibility="Disabled">
                         <!--azért, hogy ne legyen selected cell-->
                         <DataGrid.Resources>

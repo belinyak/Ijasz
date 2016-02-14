@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Data;
-using Ijasz2.Annotations;
 
-namespace Ijasz2.Model {
+namespace Ijasz2.Model.Versenysorozat {
     public class Versenysorozat : INotifyPropertyChanged{
         private string _azonosito;
         private string _megnevezes;
@@ -40,9 +33,9 @@ namespace Ijasz2.Model {
         public Versenysorozat() {
         }
         public Versenysorozat(string azonosito, string megnevezes, int versenyekszama) {
-            _azonosito = azonosito;
-            _megnevezes = megnevezes;
-            _versenyekszama = versenyekszama;
+            Azonosito = azonosito;
+            Megnevezes = megnevezes;
+            VersenyekSzama = versenyekszama;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

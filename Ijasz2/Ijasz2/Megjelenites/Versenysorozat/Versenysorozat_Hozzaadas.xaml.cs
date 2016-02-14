@@ -22,9 +22,12 @@ namespace Ijasz2.Megjelenites.Versenysorozat {
         }
 
         private void BtnRendben_OnClick(object sender, RoutedEventArgs e) {
-            
-
-            Ijasz2.MainWindow.Add(new Model.Versenysorozat( txtAzonosito.Text, txtMegnevezes.Text, 0) );
+            var versenysorozat = new Model.Versenysorozat.Versenysorozat {
+                Azonosito = txtAzonosito.Text,
+                Megnevezes = txtMegnevezes.Text,
+                VersenyekSzama = 0
+            };
+            Model.Data.Data.Versenysorozatok.Add(versenysorozat);
             Close();
         }
     }
