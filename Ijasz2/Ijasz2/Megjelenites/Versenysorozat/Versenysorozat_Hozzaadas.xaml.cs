@@ -20,5 +20,12 @@ namespace Ijasz2.Megjelenites.Versenysorozat {
         public Versenysorozat_Hozzaadas( ) {
             InitializeComponent( );
         }
+
+        private void BtnRendben_OnClick(object sender, RoutedEventArgs e) {
+            
+
+            Ijasz2.MainWindow.Add(new Model.Versenysorozat( txtAzonosito.Text, txtMegnevezes.Text, 0) );
+            Close();
+        }
     }
 }
