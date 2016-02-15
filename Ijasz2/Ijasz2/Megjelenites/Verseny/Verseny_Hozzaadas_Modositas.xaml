@@ -1,11 +1,12 @@
-﻿<Window x:Class="Ijasz2.Megjelenites.Verseny.Verseny_Modositas"
+﻿<Window x:Class="Ijasz2.Megjelenites.Verseny.Verseny_Hozzaadas_Modositas"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ijasz2.Megjelenites.Verseny"
         mc:Ignorable="d"
-        Title="Verseny módosítás" Height="300" Width="245" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Verseny" Height="300" Width="245" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+
     <!--Width="255"-->
     <Grid>
         <Grid.RowDefinitions>
@@ -27,13 +28,14 @@
         <Label x:Name="lblDatum" Content="Dátum:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
         <Label x:Name="lblVersenysorozat" Content="Versenysorozat:" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
         <Label x:Name="lblLovesek" Content="Lövések:" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
         <Label x:Name="lblAllomasok" Content="Állomások:" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
         <Label x:Name="lblDupla" Content="Dupla beírólap:" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
 
-        <TextBox x:Name="txtAzonosito" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap" IsReadOnly="True" Background="#FFE5E5E5"/>
+        <TextBox x:Name="txtAzonosito" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
         <TextBox x:Name="txtMegnevezes" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
         <DatePicker x:Name="dtDatum" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <ComboBox x:Name="cbVersenysorozat" DisplayMemberPath="Azonosito"  Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
+        <ComboBox x:Name="cbVersenysorozat" DisplayMemberPath="Azonosito" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
         <TextBox x:Name="txtLovesek" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
         <TextBox x:Name="txtAllomasok" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
         <CheckBox x:Name="chDupla" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>

@@ -26,6 +26,7 @@ namespace Ijasz2.Megjelenites.Versenysorozat {
         }
 
         private void InitializeContent( ) {
+            Title += " hozzáadás";
         }
         #endregion
 
@@ -37,6 +38,7 @@ namespace Ijasz2.Megjelenites.Versenysorozat {
         }
 
         private void InitializeContent( Model.Versenysorozat.Versenysorozat versenysorozat ) {
+            Title += " módosítás";
             _versenysorozat = versenysorozat;
             txtAzonosito.Text = _versenysorozat.Azonosito;
             txtMegnevezes.Text = _versenysorozat.Megnevezes;
@@ -46,6 +48,7 @@ namespace Ijasz2.Megjelenites.Versenysorozat {
 
         private bool IsValid( ) {
             bool valid = true;
+            txtAzonosito.ClearValue(Border.BorderBrushProperty);
             if( txtAzonosito.Text.Length == 0 ) {
                 txtAzonosito.BorderBrush = new SolidColorBrush( Colors.Red );
                 valid = false;
@@ -58,22 +61,19 @@ namespace Ijasz2.Megjelenites.Versenysorozat {
                 return;
             }
 
+            var versenysorozat = new Model.Versenysorozat.Versenysorozat {
+                Azonosito = txtAzonosito.Text,
+                Megnevezes = txtMegnevezes.Text,
+                VersenyekSzama = 0
+            };
+
             // hozzaadas
             if( _versenysorozat == null ) {
-                var versenysorozat = new Model.Versenysorozat.Versenysorozat {
-                    Azonosito = txtAzonosito.Text,
-                    Megnevezes = txtMegnevezes.Text,
-                    VersenyekSzama = 0
-                };
                 Model.Data.Data.Versenysorozatok.Add( versenysorozat );
             }
             // modositas
             else {
-                Model.Data.Data.Versenysorozatok.Modify( new Model.Versenysorozat.Versenysorozat {
-                    Azonosito = txtAzonosito.Text,
-                    Megnevezes = txtMegnevezes.Text,
-                    VersenyekSzama = _versenysorozat.VersenyekSzama
-                } );
+                Model.Data.Data.Versenysorozatok.Modify( versenysorozat);
             }
             Close( );
         }

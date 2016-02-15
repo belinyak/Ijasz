@@ -50,12 +50,12 @@ namespace Ijasz2 {
 
         #region Verseny
         private void btnVersenyHozzaadas_Click( object sender, RoutedEventArgs e ) {
-            ( new Megjelenites.Verseny.Verseny_Hozzaadas( ) ).ShowDialog( );
+            ( new Megjelenites.Verseny.Verseny_Hozzaadas_Modositas( ) ).ShowDialog( );
         }
 
         private void Verseny_Modositas( object sender, MouseButtonEventArgs e ) {
             Verseny verseny = VersenyGrid.SelectedItem as Verseny;
-            (new Megjelenites.Verseny.Verseny_Modositas(verseny)).ShowDialog();
+            (new Megjelenites.Verseny.Verseny_Hozzaadas_Modositas(verseny)).ShowDialog();
 
         }
 
