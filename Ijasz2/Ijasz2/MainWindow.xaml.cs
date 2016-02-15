@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Windows;
 using System.Windows.Input;
 using Ijasz2.Model;
@@ -46,10 +47,18 @@ namespace Ijasz2 {
         }
         #endregion
 
-
+        #region Verseny
         private void btnVersenyHozzaadas_Click( object sender, RoutedEventArgs e ) {
             ( new Megjelenites.Verseny.Verseny_Hozzaadas( ) ).ShowDialog( );
         }
+
+        private void Verseny_Modositas( object sender, MouseButtonEventArgs e ) {
+        }
+
+        private void BtnVersenyTorles_OnClick( object sender, RoutedEventArgs e ) {
+        }
+        #endregion
+
 
         private void btnKorosztalyHozzaadas_Click( object sender, RoutedEventArgs e ) {
             ( new Megjelenites.Korosztaly.Korosztaly_Hozzaadas( ) ).ShowDialog( );
@@ -162,7 +171,10 @@ namespace Ijasz2 {
         /// <param name="sender"></param>
         /// <param name="runWorkerCompletedEventArgs"></param>
         private void WorkerOnRunWorkerCompleted(object sender, RunWorkerCompletedEventArgs runWorkerCompletedEventArgs) {
-            VersenysorozatGrid.ItemsSource = Data.Versenysorozatok._versenysorozatok;
+
+            VersenysorozatGrid.ItemsSource = Model.Data.Data.Versenysorozatok._versenysorozatok;
+            VersenyGrid.ItemsSource = Model.Data.Data.Versenyek._versenyek;
+            cboVerseny.ItemsSource = Model.Data.Data.Versenyek._versenyek;
         }
 
 

@@ -14,7 +14,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Label x:Name="label" Content="Turul Koppány Íjászai Kft." HorizontalAlignment="Stretch" Grid.Row="1"/>
-        <TabControl Grid.Row="0" x:Name="TabControl">
+        <TabControl Grid.Row="0" x:Name="MainControl" >
             <TabItem Header="Versenysorozatok">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
@@ -28,8 +28,8 @@
                               SelectionUnit="FullRow"
                               CanUserResizeRows="False"
                               RowHeaderWidth="0"
-                              x:Name="VersenysorozatGrid" ItemsSource="{Binding Source=Data.Versenysorozatok}"  AutoGenerateColumns="False" HorizontalAlignment="Stretch"
-                              HorizontalScrollBarVisibility="Disabled">
+                              HorizontalScrollBarVisibility="Disabled"
+                        x:Name="VersenysorozatGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch">
                         <!--azért, hogy ne legyen selected cell-->
                         <DataGrid.Resources>
                             <Style TargetType="DataGridCell">
@@ -41,9 +41,9 @@
                             </Style>
                         </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <DataGridTextColumn x:Name="AzonositoColumn" Binding="{Binding Azonosito, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Azonosító"/>
-                            <DataGridTextColumn x:Name="MegnevezesColumn" Binding="{Binding Megnevezes}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Megnevezés"/>
-                            <DataGridTextColumn x:Name="VersenyekSzamaColumn" Binding="{Binding VersenyekSzama}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Versenyek száma"/>
+                            <DataGridTextColumn x:Name="VeAzonositoColumn" Binding="{Binding Azonosito}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Azonosító"/>
+                            <DataGridTextColumn x:Name="VeMegnevezesColumn" Binding="{Binding Megnevezes}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Megnevezés"/>
+                            <DataGridTextColumn x:Name="VeVersenyekSzamaColumn" Binding="{Binding VersenyekSzama}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Versenyek száma"/>
                         </DataGrid.Columns>
                     </DataGrid>
                     <Button x:Name="BtnVersenysorozatTorles" Content="Törlés" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="96" Height="32" Margin="18,0,17,16"  Click="BtnVersenysorozatTorles_OnClick"/>
@@ -58,24 +58,41 @@
                         <ColumnDefinition Width="131"></ColumnDefinition>
                         <ColumnDefinition Width="131"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <DataGrid x:Name="Verseny" HorizontalAlignment="Stretch">
+                    <DataGrid
+                        IsReadOnly="True" 
+                        SelectionMode="Single"
+                        SelectionUnit="FullRow"
+                        CanUserResizeRows="False"
+                        RowHeaderWidth="0"
+                        HorizontalScrollBarVisibility="Disabled"
+                        x:Name="VersenyGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch">
+
+                        <DataGrid.Resources>
+                            <Style TargetType="DataGridCell">
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                            </Style>
+                            <Style TargetType="DataGridRow">
+                                <EventSetter Event="MouseDoubleClick" Handler="Verseny_Modositas"></EventSetter>
+                            </Style>
+                        </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Azonosító"/>
-                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="105" Header="Megnevezés"/>
-                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="70" Header="Dátum"/>
-                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Versenysorozat"/>
-                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="60" Header="Lövések"/>
-                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="70" Header="Állomások"/>
-                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="50" Header="Indulók"/>
-                            <DataGridCheckBoxColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" ClipboardContentBinding="{x:Null}" Header="Lezárva" Width="50"/>
-                            <DataGridCheckBoxColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" ClipboardContentBinding="{x:Null}" Header="Dupbla Beírólap" Width="100"/>
+                            <DataGridTextColumn x:Name="AzonositoColumn" Binding="{Binding Azonosito, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Azonosító"/>
+                            <DataGridTextColumn x:Name="MegnevezesColumn" Binding="{Binding Megnevezes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="105" Header="Megnevezés"/>
+                            <DataGridTextColumn x:Name="DatumColumn" Binding="{Binding Datum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="70" Header="Dátum"/>
+                            <DataGridTextColumn x:Name="VersenysorozatColumn" Binding="{Binding Versenysorozat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Versenysorozat"/>
+                            <DataGridTextColumn x:Name="LoveselColumn" Binding="{Binding Összes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="60" Header="Lövések"/>
+                            <DataGridTextColumn x:Name="AllomasokColumn" Binding="{Binding Allomasok, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="70" Header="Állomások"/>
+                            <DataGridTextColumn x:Name="IndulokColumn" Binding="{Binding Indulok, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="50" Header="Indulók"/>
+                            <DataGridCheckBoxColumn x:Name="LezarvaColumn" Binding="{Binding Lezarva, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  CanUserSort="False" CanUserReorder="False" CanUserResize="False" ClipboardContentBinding="{x:Null}" Header="Lezárva" Width="50"/>
+                            <DataGridCheckBoxColumn x:Name="DuplaBirolapColumn" Binding="{Binding DuplaBeirolap, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  CanUserSort="False" CanUserReorder="False" CanUserResize="False" ClipboardContentBinding="{x:Null}" Header="Dupbla Beírólap" Width="100"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button x:Name="btnVersenyTorles" Content="Törlés" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="96" Height="32" Margin="18,0,17,16"  Click="btnVersenyHozzaadas_Click"/>
+                    <Button x:Name="btnVersenyTorles" Content="Törlés" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="96" Height="32" Margin="18,0,17,16"  Click="BtnVersenyTorles_OnClick"/>
                     <Button x:Name="btnVersenyHozzaadas" Content="Hozzáadás" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="96" Height="32" Margin="0,0,0,16" Click="btnVersenyHozzaadas_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Korosztályok">
+            <TabItem x:Name="KorosztalyokItem" Header="Korosztályok">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="565"></ColumnDefinition>
@@ -101,7 +118,7 @@
                         </DataGrid.Columns>
                     </DataGrid>
                     <Label x:Name="lblVerseny" Content="Verseny azonosító:" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="12,5,11,0"/>
-                    <ComboBox x:Name="cboVerseny" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Left" Width="100" VerticalAlignment="Top"  Margin="0,10,0,0"/>
+                    <ComboBox x:Name="cboVerseny" DisplayMemberPath="Azonosito" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Left" Width="100" VerticalAlignment="Top"  Margin="0,10,0,0" />
                     <Button x:Name="btnKorosztalySzamolas" Content="Számolás" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="96" Height="32" Margin="18,0,17,16"  Click="btnKorosztalySzamolas_Click"/>
                     <Button x:Name="btnKorosztalyIndulok" Content="Indulók" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="96" Height="32" Margin="0,0,0,16" Click="btnKorosztalyIndulok_Click"/>
                     <Button x:Name="btnKorosztalyTorles" Content="Törlés" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="96" Height="32" Margin="18,0,17,16"  Click="btnKorosztalyTorles_Click"/>
@@ -233,7 +250,7 @@
                     <Label x:Name="startListaVersenyAzonosito" Grid.Row="1" Grid.Column="1"  Content="Verseny azonosító:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
                     <Label x:Name="startListaVersenyMegnevezes" Grid.Row="2" Grid.Column="1"  Content="Verseny megnevezés:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
                     <Label x:Name="startListaTípus" Grid.Row="3" Grid.Column="1"  Content="Startlista típusa:" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
-                    <ComboBox x:Name="cbstartListaVersenyAzonosito" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
+                    <ComboBox x:Name="cbstartListaVersenyAzonosito"  Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
                     <TextBox x:Name="txtstartListaVersenyMegnevezes" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
                     <CheckBox x:Name="chstartListaNevezesi" Grid.Row="3" Grid.Column="2" Content="Nevezési" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     <CheckBox x:Name="chstartListaCsapatlista" Grid.Row="4" Grid.Column="2" Content="Csapatlista" HorizontalAlignment="Left" VerticalAlignment="Center"/>
@@ -331,7 +348,7 @@
                     <Button x:Name="btnOSablonHozzaadas" Content="Hozzáadás" Grid.Row="9" Grid.Column="6" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="96" Height="32" Margin="0,0,0,16" Click="btnOSablonHozzaadas_Click"/>
                 </Grid>
             </TabItem>
-            
+
         </TabControl>
     </Grid>
 </Window>

@@ -35,6 +35,7 @@ namespace Ijasz2.Model.Versenysorozat {
             foreach( var versenysorozat in _versenysorozatok ) {
                 if( versenysorozat.Azonosito.Equals( ujVersenysorozat.Azonosito ) ) {
                     versenysorozat.Megnevezes = ujVersenysorozat.Megnevezes;
+                    return;
                 }
             }
         }

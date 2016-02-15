@@ -29,6 +29,7 @@ namespace Ijasz2.Megjelenites.Versenysorozat {
             txtAzonosito.Text = _versenysorozat.Azonosito;
             txtMegnevezes.Text = _versenysorozat.Megnevezes;
         }
+
         /// <summary>
         /// nincs modositas akkor return, különben modify
         /// </summary>
