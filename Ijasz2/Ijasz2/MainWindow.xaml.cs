@@ -25,7 +25,7 @@ namespace Ijasz2 {
 
         #region Versenysorozat
         private void BtnVersenysorozatHozzaadas_OnClick( object sender, RoutedEventArgs e ) {
-            ( new Megjelenites.Versenysorozat.Versenysorozat_Hozzaadas( ) ).ShowDialog( );
+            ( new Megjelenites.Versenysorozat.Versenysorozat_Hozzaadas_Modositas() ).ShowDialog( );
         }
 
         private void BtnVersenysorozatTorles_OnClick( object sender, RoutedEventArgs e ) {
@@ -43,7 +43,7 @@ namespace Ijasz2 {
             }
             var vs = VersenysorozatGrid.SelectedItem as Versenysorozat;
 
-            (new Megjelenites.Versenysorozat.Versenysorozat_Modositas(vs)).ShowDialog();
+            (new Megjelenites.Versenysorozat.Versenysorozat_Hozzaadas_Modositas(vs)).ShowDialog();
 
         }
         #endregion

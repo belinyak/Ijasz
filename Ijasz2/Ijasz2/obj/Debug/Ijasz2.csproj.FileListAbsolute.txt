@@ -26,15 +26,11 @@ C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\bin\Debug\Ijasz
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\bin\Debug\Ijasz2.pdb
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Ijasz2.csprojResolveAssemblyReference.cache
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\MainWindow.g.cs
-C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Versenysorozat\Versenysorozat_Hozzaadas.g.cs
-C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Versenysorozat\Versenysorozat_Modositas.g.cs
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Verseny\Verseny_Hozzaadas.g.cs
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\App.g.cs
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Ijasz2_MarkupCompile.cache
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Ijasz2_MarkupCompile.lref
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\MainWindow.baml
-C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Versenysorozat\Versenysorozat_Hozzaadas.baml
-C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Versenysorozat\Versenysorozat_Modositas.baml
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Verseny\Verseny_Hozzaadas.baml
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Ijasz2.g.resources
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Ijasz2.Properties.Resources.resources
@@ -61,4 +57,5 @@ C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megje
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Versenysorozat\Versenysorozat_Torles.baml
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Verseny\Verseny_Modositas.g.cs
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Verseny\Verseny_Modositas.baml
-C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Versenysorozat\Versenysorozat_Hozzaadas_Modositas.g.cs
+C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Versenysorozat\Versenysorozat_Hozzaadas_Modositas.baml
