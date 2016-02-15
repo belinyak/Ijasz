@@ -61,3 +61,4 @@ C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megje
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Versenysorozat\Versenysorozat_Torles.baml
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Verseny\Verseny_Modositas.g.cs
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Verseny\Verseny_Modositas.baml
+C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\GeneratedInternalTypeHelper.g.cs

@@ -27,6 +27,7 @@
         <Label x:Name="lblDatum" Content="Dátum:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
         <Label x:Name="lblVersenysorozat" Content="Versenysorozat:" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
         <Label x:Name="lblLovesek" Content="Lövések:" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                
         <Label x:Name="lblAllomasok" Content="Állomások:" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
         <Label x:Name="lblDupla" Content="Dupla beírólap:" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
 

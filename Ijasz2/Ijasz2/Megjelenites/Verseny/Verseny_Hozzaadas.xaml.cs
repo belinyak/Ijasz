@@ -20,6 +20,7 @@ namespace Ijasz2.Megjelenites.Verseny {
         public Verseny_Hozzaadas( ) {
             InitializeComponent( );
             InitializeContent( );
+
         }
 
         private void InitializeContent( ) {
@@ -28,22 +29,31 @@ namespace Ijasz2.Megjelenites.Verseny {
         }
 
         private bool IsValid( ) {
+            bool valid = true;
+
+            if( txtAzonosito.Text.Length == 0 ) {
+                txtAzonosito.BorderBrush = new SolidColorBrush( Colors.Red );
+                valid = false;
+            }
             try {
                 dtDatum.SelectedDate.ToString( );
-            } catch(Exception) {
-                return false;
+            } catch( Exception ) {
+                dtDatum.BorderBrush = new SolidColorBrush( Colors.Red );
+                valid = false;
             }
             try {
                 Convert.ToInt32( txtLovesek.Text );
-            } catch(Exception) {
-                return false;
+            } catch( Exception ) {
+                txtLovesek.BorderBrush = new SolidColorBrush( Colors.Red );
+                valid = false;
             }
             try {
                 Convert.ToInt32( txtAllomasok.Text );
-            } catch(Exception) {
-                return false;
+            } catch( Exception ) {
+                txtAllomasok.BorderBrush = new SolidColorBrush( Colors.Red );
+                valid = false;
             }
-            return true;
+            return valid;
         }
 
         private void BtnRendben_OnClick( object sender, RoutedEventArgs e ) {
