@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Input;
 using Ijasz2.Model;
 using Ijasz2.Model.Data;
+using Ijasz2.Model.Verseny;
 using Ijasz2.Model.Versenysorozat;
 
 namespace Ijasz2 {
@@ -53,6 +54,9 @@ namespace Ijasz2 {
         }
 
         private void Verseny_Modositas( object sender, MouseButtonEventArgs e ) {
+            Verseny verseny = VersenyGrid.SelectedItem as Verseny;
+            (new Megjelenites.Verseny.Verseny_Modositas(verseny)).ShowDialog();
+
         }
 
         private void BtnVersenyTorles_OnClick( object sender, RoutedEventArgs e ) {

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ijasz2.Megjelenites.Verseny"
         mc:Ignorable="d"
-        Title="Verseny módosítás" Height="300" Width="235" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Verseny módosítás" Height="300" Width="245" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <!--Width="255"-->
     <Grid>
         <Grid.RowDefinitions>
@@ -30,10 +30,10 @@
         <Label x:Name="lblAllomasok" Content="Állomások:" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
         <Label x:Name="lblDupla" Content="Dupla beírólap:" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
 
-        <TextBox x:Name="txtAzonosito" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
+        <TextBox x:Name="txtAzonosito" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap" IsReadOnly="True" Background="#FFE5E5E5"/>
         <TextBox x:Name="txtMegnevezes" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
         <DatePicker x:Name="dtDatum" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <ComboBox x:Name="cbVersenysorozat" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
+        <ComboBox x:Name="cbVersenysorozat" DisplayMemberPath="Azonosito"  Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
         <TextBox x:Name="txtLovesek" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
         <TextBox x:Name="txtAllomasok" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
         <CheckBox x:Name="chDupla" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>

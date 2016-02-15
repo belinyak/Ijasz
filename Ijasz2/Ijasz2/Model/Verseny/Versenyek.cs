@@ -19,10 +19,19 @@ namespace Ijasz2.Model.Verseny {
             s => s.Azonosito.Equals( azonosito ) ) );
         }
 
+        /// <summary>
+        /// Egyesével kell módosítani a mezőket, hogy a nem szettelt mezők, pl:indulokszama ne 0-zódjon ki
+        /// </summary>
+        /// <param name="ujVerseny"></param>
         public void Modify( Verseny ujVerseny ) {
-            for( int i = 0; i < _versenyek.Count; i++ ) {
+            for( var i = 0; i < _versenyek.Count; i++ ) {
                 if( _versenyek[i].Azonosito.Equals( ujVerseny.Azonosito ) ) {
-                    _versenyek[i] = ujVerseny;
+                    _versenyek[i].Megnevezes = ujVerseny.Megnevezes;
+                    _versenyek[i].Datum = ujVerseny.Datum;
+                    _versenyek[i].Versenysorozat = ujVerseny.Versenysorozat;
+                    _versenyek[i].Osszes = ujVerseny.Osszes;
+                    _versenyek[i].Allomasok = ujVerseny.Allomasok;
+                    _versenyek[i].DuplaBeirolap = ujVerseny.DuplaBeirolap;
                     return;
                 }
             }

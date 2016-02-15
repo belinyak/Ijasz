@@ -28,7 +28,7 @@ namespace Ijasz2.Model.Versenysorozat {
         }
 
         /// <summary>
-        /// modositas
+        /// egyesével kell settelni!
         /// </summary>
         /// <param name="ujVersenysorozat"></param>
         public void Modify( Versenysorozat ujVersenysorozat ) {

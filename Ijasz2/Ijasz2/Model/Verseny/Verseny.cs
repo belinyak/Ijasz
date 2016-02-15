@@ -84,7 +84,7 @@ namespace Ijasz2.Model.Verseny {
         public Verseny() {
         }
 
-        public Verseny(string megnevezes, string azonosito) {
+        public Verseny(string azonosito, string megnevezes) {
             _megnevezes = megnevezes;
             _azonosito = azonosito;
         }
