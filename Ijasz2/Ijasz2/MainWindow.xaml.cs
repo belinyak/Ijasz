@@ -8,6 +8,7 @@ using System.Windows.Input;
 using Ijasz2.Model;
 using Ijasz2.Model.Data;
 using Ijasz2.Model.Ijtipus;
+using Ijasz2.Model.Indulo;
 using Ijasz2.Model.Korosztaly;
 using Ijasz2.Model.Verseny;
 using Ijasz2.Model.Versenysorozat;
@@ -153,13 +154,13 @@ namespace Ijasz2 {
 
         #region Egyesulet
         private void btnEgyesuletTorles_Click( object sender, RoutedEventArgs e ) {
-            if (EgyesuletGrid.SelectedItem == null) {
+            if( EgyesuletGrid.SelectedItem == null ) {
                 return;
             }
 
             var egyesulet = EgyesuletGrid.SelectedItem as Model.Egyesulet.Egyesulet;
 
-            (new Megjelenites.Egyesület.Egyesulet_Torles(egyesulet)).ShowDialog();
+            ( new Megjelenites.Egyesület.Egyesulet_Torles( egyesulet ) ).ShowDialog( );
         }
 
         private void btnEgyesuletHozzaadas_Click( object sender, RoutedEventArgs e ) {
@@ -173,17 +174,32 @@ namespace Ijasz2 {
         }
         #endregion
 
+        #region Indulo
+        private void Indulo_Modositas( object sender, MouseButtonEventArgs e ) {
+            var Indulo = InduloGrid.SelectedItem as Indulo;
+
+            ( new Megjelenites.Indulo.Indulo_Hozzaadas_Modositas( Indulo ) ).ShowDialog( );
+        }
+
         private void btnInduloHozzaadas_Click( object sender, RoutedEventArgs e ) {
-            ( new Megjelenites.Indulo.Indulo_Hozzaadas( ) ).ShowDialog( );
+            ( new Megjelenites.Indulo.Indulo_Hozzaadas_Modositas( ) ).ShowDialog( );
         }
 
         private void btnInduloTorles_Click( object sender, RoutedEventArgs e ) {
+            if( InduloGrid.SelectedItem == null ) {
+                return;
+            }
 
+            var Indulo = InduloGrid.SelectedItem as Indulo;
+
+            ( new Megjelenites.Indulo.Indulo_Torles( Indulo )).ShowDialog( );
         }
 
         private void btnInduloBeiras_Click( object sender, RoutedEventArgs e ) {
             ( new Megjelenites.Indulo.Indulo_Beiras( ) ).ShowDialog( );
+            throw new NotImplementedException();
         }
+        #endregion
 
         private void btnEredmenyLezaras_Click( object sender, RoutedEventArgs e ) {
 
@@ -256,9 +272,12 @@ namespace Ijasz2 {
             VersenyGrid.ItemsSource = Model.Data.Data.Versenyek._versenyek;
             IjtipusGrid.ItemsSource = Model.Data.Data.Ijtipusok._ijtipusok;
             EgyesuletGrid.ItemsSource = Model.Data.Data.Egyesuletek._egyesuletek;
+            InduloGrid.ItemsSource = Model.Data.Data.Indulok._indulok;
 
             cboVerseny.ItemsSource = Model.Data.Data.Versenyek._versenyek;
+
         }
+
 
     }
 }

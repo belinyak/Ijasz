@@ -22,11 +22,9 @@ namespace Ijasz2.Model.Verseny {
         /// </summary>
         /// <param name="azonosito"></param>
         public void Remove( string azonosito ) {
-            _versenyek.Remove(
-        _versenyek.Single(
-            s =>  s.Azonosito.Equals( azonosito )  ) );
+            _versenyek.Remove( _versenyek.Single( s => s.Azonosito.Equals( azonosito ) ) );
 
-            Data.Data.Korosztalyok.Remove(azonosito);
+            Data.Data.Korosztalyok.Remove( azonosito );
         }
 
         /// <summary>

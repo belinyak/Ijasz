@@ -95,7 +95,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Megjelenites\Indulo\Indulo_Hozzaadas.xaml">
+    <Page Include="Megjelenites\Indulo\Indulo_Hozzaadas_Modositas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Megjelenites\Indulo\Indulo_Torles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -154,8 +158,11 @@
     <Compile Include="Megjelenites\Indulo\Indulo_Csapatok.xaml.cs">
       <DependentUpon>Indulo_Csapatok.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Megjelenites\Indulo\Indulo_Hozzaadas.xaml.cs">
-      <DependentUpon>Indulo_Hozzaadas.xaml</DependentUpon>
+    <Compile Include="Megjelenites\Indulo\Indulo_Hozzaadas_Modositas.xaml.cs">
+      <DependentUpon>Indulo_Hozzaadas_Modositas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Megjelenites\Indulo\Indulo_Torles.xaml.cs">
+      <DependentUpon>Indulo_Torles.xaml</DependentUpon>
     </Compile>
     <Compile Include="Megjelenites\Korosztaly\Korosztaly_Hozzaadas_Modositas.xaml.cs">
       <DependentUpon>Korosztaly_Hozzaadas_Modositas.xaml</DependentUpon>
@@ -186,6 +193,8 @@
     <Compile Include="Model\Egyesulet\Egyesuletek.cs" />
     <Compile Include="Model\Ijtipus\Ijtipus.cs" />
     <Compile Include="Model\Ijtipus\Ijtipusok.cs" />
+    <Compile Include="Model\Indulo\Indulo.cs" />
+    <Compile Include="Model\Indulo\Indulok.cs" />
     <Compile Include="Model\Korosztaly\Korosztaly.cs" />
     <Compile Include="Model\Korosztaly\Korosztalyok.cs" />
     <Compile Include="Model\Versenysorozat\Versenysorozat.cs" />
