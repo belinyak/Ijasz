@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Input;
 using Ijasz2.Model;
 using Ijasz2.Model.Data;
+using Ijasz2.Model.Korosztaly;
 using Ijasz2.Model.Verseny;
 using Ijasz2.Model.Versenysorozat;
 
@@ -25,25 +26,25 @@ namespace Ijasz2 {
 
         #region Versenysorozat
         private void BtnVersenysorozatHozzaadas_OnClick( object sender, RoutedEventArgs e ) {
-            ( new Megjelenites.Versenysorozat.Versenysorozat_Hozzaadas_Modositas() ).ShowDialog( );
+            ( new Megjelenites.Versenysorozat.Versenysorozat_Hozzaadas_Modositas( ) ).ShowDialog( );
         }
 
         private void BtnVersenysorozatTorles_OnClick( object sender, RoutedEventArgs e ) {
-            if (VersenysorozatGrid.SelectedItem == null){
+            if( VersenysorozatGrid.SelectedItem == null ) {
                 return;
             }
             var vs = VersenysorozatGrid.SelectedItem as Versenysorozat;
 
-            (new Megjelenites.Versenysorozat.Versenysorozat_Torles(vs.Azonosito)).ShowDialog();
+            ( new Megjelenites.Versenysorozat.Versenysorozat_Torles( vs.Azonosito ) ).ShowDialog( );
         }
 
         private void Versenysorozat_Modositas( object sender, MouseButtonEventArgs e ) {
-            if (VersenysorozatGrid.SelectedItem == null){
+            if( VersenysorozatGrid.SelectedItem == null ) {
                 return;
             }
             var vs = VersenysorozatGrid.SelectedItem as Versenysorozat;
 
-            (new Megjelenites.Versenysorozat.Versenysorozat_Hozzaadas_Modositas(vs)).ShowDialog();
+            ( new Megjelenites.Versenysorozat.Versenysorozat_Hozzaadas_Modositas( vs ) ).ShowDialog( );
 
         }
         #endregion
@@ -55,7 +56,7 @@ namespace Ijasz2 {
 
         private void Verseny_Modositas( object sender, MouseButtonEventArgs e ) {
             Verseny verseny = VersenyGrid.SelectedItem as Verseny;
-            (new Megjelenites.Verseny.Verseny_Hozzaadas_Modositas(verseny)).ShowDialog();
+            ( new Megjelenites.Verseny.Verseny_Hozzaadas_Modositas( verseny ) ).ShowDialog( );
 
         }
 
@@ -69,21 +70,63 @@ namespace Ijasz2 {
         }
         #endregion
 
+        #region Korosztaly
+        /// <summary>
+        /// versenyhez tartozo korosztalyok bindolasa
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cboVerseny_SelectionChanged( object sender, System.Windows.Controls.SelectionChangedEventArgs e ) {
+            KorosztalyGrid.ItemsSource = null; ;
+            var verseny = cboVerseny.SelectedItem as Verseny;
+
+            if( verseny != null ) {
+                foreach( var versenykorosztalyok in Model.Data.Data.Korosztalyok._korosztalyok ) {
+                    if( versenykorosztalyok[0].Verseny.Equals( verseny.Azonosito ) ) {
+                        KorosztalyGrid.ItemsSource = versenykorosztalyok;
+                        return;
+                    }
+                }
+            }
+        }
+
+        private void Korosztaly_Modositas( object sender, MouseButtonEventArgs e ) {
+            if (KorosztalyGrid.SelectedItem == null || cboVerseny.Text == "") {
+                return;
+            }
+            var korosztaly = KorosztalyGrid.SelectedItem as Korosztaly;
+            (new Megjelenites.Korosztaly.Korosztaly_Hozzaadas_Modositas(korosztaly)).ShowDialog();
+        }
 
         private void btnKorosztalyHozzaadas_Click( object sender, RoutedEventArgs e ) {
-            ( new Megjelenites.Korosztaly.Korosztaly_Hozzaadas( ) ).ShowDialog( );
+            if (cboVerseny.Text == "") {
+                return;
+            }
+
+            var korosztaly = new Korosztaly();
+            korosztaly.Verseny = cboVerseny.Text;
+
+            ( new Megjelenites.Korosztaly.Korosztaly_Hozzaadas_Modositas( korosztaly ) ).ShowDialog( );
         }
 
         private void btnKorosztalyIndulok_Click( object sender, RoutedEventArgs e ) {
+            if( cboVerseny.Text == "" ) {
+                return;
+            }
             ( new Megjelenites.Korosztaly.Korosztaly_Indulok( ) ).ShowDialog( );
         }
 
+        private void btnKorosztalyTorles_Click( object sender, RoutedEventArgs e ) {
+            if( KorosztalyGrid.SelectedItem == null || cboVerseny.Text == "" ) {
+                return;
+            }
+            var korosztaly = KorosztalyGrid.SelectedItem as Korosztaly;
+            (new Megjelenites.Korosztaly.Korosztaly_Torles(cboVerseny.Text, korosztaly.Azonosito)).ShowDialog();
+        }
+        #endregion
+
         private void btnIjtipusHozzaadas_Click( object sender, RoutedEventArgs e ) {
             ( new Megjelenites.Ijtipusok.Ijtipus_Hozzaadas( ) ).ShowDialog( );
-        }
-
-        private void btnKorosztalyTorles_Click( object sender, RoutedEventArgs e ) {
-
         }
 
         private void btnKorosztalySzamolas_Click( object sender, RoutedEventArgs e ) {
@@ -159,11 +202,11 @@ namespace Ijasz2 {
         }
         #endregion
 
-        private void MainWindow_OnLoaded(object sender, RoutedEventArgs e) {
+        private void MainWindow_OnLoaded( object sender, RoutedEventArgs e ) {
             var worker = new BackgroundWorker();
             worker.RunWorkerCompleted += WorkerOnRunWorkerCompleted;
             worker.DoWork += WorkerOnDoWork;
-            worker.RunWorkerAsync();
+            worker.RunWorkerAsync( );
         }
 
         /// <summary>
@@ -171,8 +214,8 @@ namespace Ijasz2 {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="doWorkEventArgs"></param>
-        private void WorkerOnDoWork(object sender, DoWorkEventArgs doWorkEventArgs) {
-            Data = new Data();
+        private void WorkerOnDoWork( object sender, DoWorkEventArgs doWorkEventArgs ) {
+            Data = new Data( );
         }
 
         /// <summary>
@@ -180,13 +223,13 @@ namespace Ijasz2 {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="runWorkerCompletedEventArgs"></param>
-        private void WorkerOnRunWorkerCompleted(object sender, RunWorkerCompletedEventArgs runWorkerCompletedEventArgs) {
+        private void WorkerOnRunWorkerCompleted( object sender, RunWorkerCompletedEventArgs runWorkerCompletedEventArgs ) {
 
             VersenysorozatGrid.ItemsSource = Model.Data.Data.Versenysorozatok._versenysorozatok;
             VersenyGrid.ItemsSource = Model.Data.Data.Versenyek._versenyek;
             cboVerseny.ItemsSource = Model.Data.Data.Versenyek._versenyek;
         }
 
-
+       
     }
 }

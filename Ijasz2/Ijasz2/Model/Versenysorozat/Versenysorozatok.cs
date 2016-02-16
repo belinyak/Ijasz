@@ -45,9 +45,9 @@ namespace Ijasz2.Model.Versenysorozat {
         /// </summary>
         public void Load( ) {
             _versenysorozatok = new ObservableCollection<Versenysorozat> {
-                new Versenysorozat("vs1", "versenysorozat1", 0),
-                new Versenysorozat("vs2", "versenysorozat1", 0),
-                new Versenysorozat("vs3", "versenysorozat1", 0)
+                new Versenysorozat { Azonosito = "vs1", Megnevezes = "versenysorozat1", VersenyekSzama = 0},
+                new Versenysorozat { Azonosito = "vs2", Megnevezes = "versenysorozat2", VersenyekSzama = 0},
+                new Versenysorozat { Azonosito = "vs3", Megnevezes = "versenysorozat3", VersenyekSzama = 0}
             };
         }
     }

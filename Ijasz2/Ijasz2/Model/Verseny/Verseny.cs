@@ -81,26 +81,6 @@ namespace Ijasz2.Model.Verseny {
             }
         }
 
-        public Verseny() {
-        }
-
-        public Verseny(string azonosito, string megnevezes) {
-            _megnevezes = megnevezes;
-            _azonosito = azonosito;
-        }
-
-        public Verseny(string azonosito, string megnevezes, string datum, string versenysorozat, int osszes, int allomasok, int indulok, bool lezarva, bool duplabeirolap) {
-            _azonosito = azonosito;
-            _megnevezes = megnevezes;
-            _datum = datum;
-            _versenysorozat = versenysorozat;
-            _osszes = osszes;
-            _allomasok = allomasok;
-            _indulok = indulok;
-            _lezarva = lezarva;
-            _duplabeirolap = duplabeirolap;
-        }
-
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged( string propertyName ) {
             if( PropertyChanged != null ) {

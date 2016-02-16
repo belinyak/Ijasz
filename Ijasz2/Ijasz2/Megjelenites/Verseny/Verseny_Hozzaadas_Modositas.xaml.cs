@@ -39,6 +39,9 @@ namespace Ijasz2.Megjelenites.Verseny {
         }
 
         private void InitializeContent( Model.Verseny.Verseny verseny ) {
+            Title += " módosítás";
+
+
             txtAzonosito.Text = _verseny.Azonosito;
             txtAzonosito.IsEnabled = false;
             txtMegnevezes.Text = _verseny.Megnevezes;
@@ -62,7 +65,6 @@ namespace Ijasz2.Megjelenites.Verseny {
             dtDatum.ClearValue(Border.BorderBrushProperty);
             txtLovesek.ClearValue(Border.BorderBrushProperty);
             txtAllomasok.ClearValue( Border.BorderBrushProperty);
-
 
             if( txtAzonosito.Text.Length == 0 ) {
                 txtAzonosito.BorderBrush = new SolidColorBrush( Colors.Red );

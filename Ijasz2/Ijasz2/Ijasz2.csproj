@@ -91,11 +91,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Megjelenites\Korosztaly\Korosztaly_Hozzaadas.xaml">
+    <Page Include="Megjelenites\Korosztaly\Korosztaly_Hozzaadas_Modositas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Megjelenites\Korosztaly\Korosztaly_Indulok.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Megjelenites\Korosztaly\Korosztaly_Torles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -139,11 +143,14 @@
     <Compile Include="Megjelenites\Indulo\Indulo_Hozzaadas.xaml.cs">
       <DependentUpon>Indulo_Hozzaadas.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Megjelenites\Korosztaly\Korosztaly_Hozzaadas.xaml.cs">
-      <DependentUpon>Korosztaly_Hozzaadas.xaml</DependentUpon>
+    <Compile Include="Megjelenites\Korosztaly\Korosztaly_Hozzaadas_Modositas.xaml.cs">
+      <DependentUpon>Korosztaly_Hozzaadas_Modositas.xaml</DependentUpon>
     </Compile>
     <Compile Include="Megjelenites\Korosztaly\Korosztaly_Indulok.xaml.cs">
       <DependentUpon>Korosztaly_Indulok.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Megjelenites\Korosztaly\Korosztaly_Torles.xaml.cs">
+      <DependentUpon>Korosztaly_Torles.xaml</DependentUpon>
     </Compile>
     <Compile Include="Megjelenites\Oklevel\Sablon_Hozzaadas.xaml.cs">
       <DependentUpon>Sablon_Hozzaadas.xaml</DependentUpon>
@@ -161,6 +168,8 @@
       <DependentUpon>Verseny_Torles.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Data\Data.cs" />
+    <Compile Include="Model\Korosztaly\Korosztaly.cs" />
+    <Compile Include="Model\Korosztaly\Korosztalyok.cs" />
     <Compile Include="Model\Versenysorozat\Versenysorozat.cs" />
     <Compile Include="Model\Versenysorozat\Versenysorozatok.cs" />
     <Compile Include="Model\Verseny\Verseny.cs" />

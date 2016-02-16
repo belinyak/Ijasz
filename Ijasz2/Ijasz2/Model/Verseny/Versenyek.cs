@@ -9,14 +9,24 @@ namespace Ijasz2.Model.Verseny {
     public class Versenyek {
         public ObservableCollection<Verseny> _versenyek;
 
+        /// <summary>
+        /// itt kellene default korosztalyokat felvenni
+        /// </summary>
+        /// <param name="verseny"></param>
         public void Add( Verseny verseny ) {
             _versenyek.Add( verseny );
         }
 
+        /// <summary>
+        /// torleskor a versenyhez tartozo korosztalyokat is torolni kell
+        /// </summary>
+        /// <param name="azonosito"></param>
         public void Remove( string azonosito ) {
             _versenyek.Remove(
         _versenyek.Single(
-            s => s.Azonosito.Equals( azonosito ) ) );
+            s =>  s.Azonosito.Equals( azonosito )  ) );
+
+            Data.Data.Korosztalyok.Remove(azonosito);
         }
 
         /// <summary>
@@ -42,10 +52,10 @@ namespace Ijasz2.Model.Verseny {
         /// </summary>
         public void Load( ) {
             _versenyek = new ObservableCollection<Verseny> {
-                new Verseny("ve1", "verseny1"),
-                new Verseny("ve2", "verseny2"),
-                new Verseny("ve3", "verseny3"),
-                new Verseny("ve4", "verseny4")
+                new Verseny { Azonosito = "ve1", Megnevezes = "verseny1" },
+                new Verseny { Azonosito = "ve2", Megnevezes = "verseny2" },
+                new Verseny { Azonosito = "ve3", Megnevezes = "verseny3" },
+                new Verseny { Azonosito = "ve4", Megnevezes = "verseny4" },
             };
         }
     }

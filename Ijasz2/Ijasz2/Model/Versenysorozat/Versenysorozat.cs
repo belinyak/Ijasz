@@ -29,15 +29,6 @@ namespace Ijasz2.Model.Versenysorozat {
             }
         }
 
-        public Versenysorozat() {
-        }
-
-        public Versenysorozat(string azonosito, string megnevezes, int versenyekszama) {
-            Azonosito = azonosito;
-            Megnevezes = megnevezes;
-            VersenyekSzama = versenyekszama;
-        }
-
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propertyName) {
             if (PropertyChanged != null){

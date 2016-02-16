@@ -15,7 +15,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Label x:Name="lblKerdes" Content="Biztosan törli a versenyt?" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label x:Name="lblKerdes" Content="Biztosan törli a korosztályt?" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Button x:Name="btnIgen" Content="Igen" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="86" Height="28" Click="BtnIgen_OnClick" />
         <Button x:Name="btnNem" Content="Nem" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="86" Height="28" Click="btnNem_Click"/>
     </Grid>

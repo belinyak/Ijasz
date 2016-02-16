@@ -27,8 +27,6 @@ C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\MainW
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Ijasz2.g.resources
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Ijasz2.Properties.Resources.resources
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Ijasz2.csproj.GenerateResource.Cache
-C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Korosztaly\Korosztaly_Hozzaadas.g.cs
-C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Korosztaly\Korosztaly_Hozzaadas.baml
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Korosztaly\Korosztaly_Indulok.g.cs
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Korosztaly\Korosztaly_Indulok.baml
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Ijtipus\Ijtipus_Hozzaadas.g.cs
@@ -77,3 +75,9 @@ Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Versenysorozat\Versenysoro
 Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Verseny\Verseny_Hozzaadas_Modositas.baml
 Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Verseny\Verseny_Torles.g.cs
 Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Verseny\Verseny_Torles.baml
+C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Verseny\Verseny_Torles.g.cs
+C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Verseny\Verseny_Torles.baml
+C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Korosztaly\Korosztaly_Hozzaadas_Modositas.g.cs
+C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Korosztaly\Korosztaly_Hozzaadas_Modositas.baml
+C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Korosztaly\Korosztaly_Torles.g.cs
+C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Korosztaly\Korosztaly_Torles.baml

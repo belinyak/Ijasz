@@ -48,7 +48,7 @@ namespace Ijasz2.Megjelenites.Versenysorozat {
 
         private bool IsValid( ) {
             bool valid = true;
-            txtAzonosito.ClearValue(Border.BorderBrushProperty);
+            txtAzonosito.ClearValue( Border.BorderBrushProperty );
             if( txtAzonosito.Text.Length == 0 ) {
                 txtAzonosito.BorderBrush = new SolidColorBrush( Colors.Red );
                 valid = false;
@@ -73,7 +73,7 @@ namespace Ijasz2.Megjelenites.Versenysorozat {
             }
             // modositas
             else {
-                Model.Data.Data.Versenysorozatok.Modify( versenysorozat);
+                Model.Data.Data.Versenysorozatok.Modify( versenysorozat );
             }
             Close( );
         }
