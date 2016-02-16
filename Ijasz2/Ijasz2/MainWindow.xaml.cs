@@ -60,6 +60,12 @@ namespace Ijasz2 {
         }
 
         private void BtnVersenyTorles_OnClick( object sender, RoutedEventArgs e ) {
+            if( VersenyGrid.SelectedItem == null ) {
+                return;
+            }
+            var ve = VersenyGrid.SelectedItem as Verseny;
+
+            ( new Megjelenites.Verseny.Verseny_Torles( ve.Azonosito ) ).ShowDialog( );
         }
         #endregion
 

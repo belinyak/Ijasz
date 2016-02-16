@@ -115,6 +115,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Megjelenites\Verseny\Verseny_Torles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Megjelenites\Egyesület\Egyesulet_Hozzaadas.xaml.cs">
@@ -152,6 +156,9 @@
     </Compile>
     <Compile Include="Megjelenites\Verseny\Verseny_Hozzaadas_Modositas.xaml.cs">
       <DependentUpon>Verseny_Hozzaadas_Modositas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Megjelenites\Verseny\Verseny_Torles.xaml.cs">
+      <DependentUpon>Verseny_Torles.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Data\Data.cs" />
     <Compile Include="Model\Versenysorozat\Versenysorozat.cs" />
