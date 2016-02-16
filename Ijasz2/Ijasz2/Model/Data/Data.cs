@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Ijasz2.Model.Egyesulet;
+using Ijasz2.Model.Eredmeny;
 using Ijasz2.Model.Ijtipus;
 using Ijasz2.Model.Indulo;
 using Ijasz2.Model.Korosztaly;
@@ -18,6 +19,7 @@ namespace Ijasz2.Model.Data {
         public static Model.Ijtipus.Ijtipusok Ijtipusok;
         public static Model.Egyesulet.Egyesuletek Egyesuletek;
         public static Model.Indulo.Indulok Indulok;
+        public static Model.Eredmeny.Eredmenyek Eredmenyek;
 
         public Data( ) {
             Versenysorozatok = new Versenysorozatok( );
@@ -26,6 +28,7 @@ namespace Ijasz2.Model.Data {
             Ijtipusok = new Ijtipusok( );
             Egyesuletek = new Egyesuletek( );
             Indulok = new Indulok();
+            Eredmenyek = new Eredmenyek();
 
             Versenyek.Load( );
             Versenysorozatok.Load( );
@@ -33,6 +36,7 @@ namespace Ijasz2.Model.Data {
             Ijtipusok.Load( );
             Egyesuletek.Load( );
             Indulok.Load();
+            Eredmenyek.Load();
         }
     }
 }

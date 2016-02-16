@@ -191,6 +191,8 @@
     <Compile Include="Model\Data\Data.cs" />
     <Compile Include="Model\Egyesulet\Egyesulet.cs" />
     <Compile Include="Model\Egyesulet\Egyesuletek.cs" />
+    <Compile Include="Model\Eredmeny\Eredmeny.cs" />
+    <Compile Include="Model\Eredmeny\Eredmenyek.cs" />
     <Compile Include="Model\Ijtipus\Ijtipus.cs" />
     <Compile Include="Model\Ijtipus\Ijtipusok.cs" />
     <Compile Include="Model\Indulo\Indulo.cs" />

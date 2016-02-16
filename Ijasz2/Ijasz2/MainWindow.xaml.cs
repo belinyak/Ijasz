@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using Ijasz2.Model;
 using Ijasz2.Model.Data;
@@ -192,17 +193,21 @@ namespace Ijasz2 {
 
             var Indulo = InduloGrid.SelectedItem as Indulo;
 
-            ( new Megjelenites.Indulo.Indulo_Torles( Indulo )).ShowDialog( );
+            ( new Megjelenites.Indulo.Indulo_Torles( Indulo ) ).ShowDialog( );
         }
 
         private void btnInduloBeiras_Click( object sender, RoutedEventArgs e ) {
+            throw new NotImplementedException( );
             ( new Megjelenites.Indulo.Indulo_Beiras( ) ).ShowDialog( );
-            throw new NotImplementedException();
         }
         #endregion
 
         private void btnEredmenyLezaras_Click( object sender, RoutedEventArgs e ) {
 
+        }
+
+        private void Eredmeny_Modositas( object sender, MouseButtonEventArgs e ) {
+            throw new NotImplementedException( );
         }
 
         private void btnEredmenyMegnyitas_Click( object sender, RoutedEventArgs e ) {
@@ -273,11 +278,27 @@ namespace Ijasz2 {
             IjtipusGrid.ItemsSource = Model.Data.Data.Ijtipusok._ijtipusok;
             EgyesuletGrid.ItemsSource = Model.Data.Data.Egyesuletek._egyesuletek;
             InduloGrid.ItemsSource = Model.Data.Data.Indulok._indulok;
+            EredmenyGrid.ItemsSource = Model.Data.Data.Eredmenyek._eredmenyek;
 
             cboVerseny.ItemsSource = Model.Data.Data.Versenyek._versenyek;
-
+            cboEredmenyVerseny.ItemsSource = Model.Data.Data.Versenyek._versenyek;
         }
 
+        // TODO bugos !!!!
+        private void cboEredmenyVerseny_SelectionChanged( object sender, SelectionChangedEventArgs e ) {
+
+            EredmenyGrid.ItemsSource = null;
+            var verseny = cboEredmenyVerseny.SelectedItem as Verseny;
+
+            if( verseny != null ) {
+                foreach( var eredmeny in Model.Data.Data.Eredmenyek._eredmenyek ) {
+                    if( eredmeny[0].Verseny.Equals( verseny.Azonosito ) ) {
+                        EredmenyGrid.ItemsSource = eredmeny;
+                        return;
+                    }
+                }
+            }
+        }
 
     }
 }

@@ -237,6 +237,7 @@
                         <ColumnDefinition Width="131"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <DataGrid x:Name="InduloGrid" 
+                        Grid.RowSpan="2"
                         HorizontalAlignment="Stretch"
                         IsReadOnly="True" 
                         SelectionMode="Single"
@@ -271,7 +272,9 @@
             <TabItem Header="Eredmények">
                 <Grid Background="#FFE5E5E5">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="630" ></RowDefinition>
+                        <RowDefinition Height="40" ></RowDefinition>
+                        <RowDefinition Height="40" ></RowDefinition>
+                        <RowDefinition Height="550" ></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -282,24 +285,52 @@
                         <ColumnDefinition Width="131"></ColumnDefinition>
                         <ColumnDefinition Width="131"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <DataGrid x:Name="Eredmeny" HorizontalAlignment="Stretch" Grid.RowSpan="2">
+                    <DataGrid x:Name="EredmenyGrid"
+                              Grid.RowSpan="4"
+                        HorizontalAlignment="Stretch"
+                        IsReadOnly="True" 
+                        SelectionMode="Single"
+                        SelectionUnit="FullRow"
+                        AutoGenerateColumns="False" 
+                        CanUserResizeRows="False"
+                        RowHeaderWidth="0"
+                        HorizontalScrollBarVisibility="Disabled">
+                        <DataGrid.Resources>
+                            <Style TargetType="DataGridCell">
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                            </Style>
+                            <Style TargetType="DataGridRow">
+                                <EventSetter Event="MouseDoubleClick" Handler="Eredmeny_Modositas"></EventSetter>
+                            </Style>
+                        </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Név"/>
-                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="60" Header="Sorszám"/>
-                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Íjtípus"/>
-                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="50" Header="Csapat"/>
-                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="25" Header="10"/>
-                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="25" Header="8"/>
-                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="25" Header="5"/>
-                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="40" Header="Mellé"/>
-                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="50" Header="Összes"/>
-                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="25" Header="%"/>
-                            <DataGridCheckBoxColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" ClipboardContentBinding="{x:Null}" Header="Megjelent" Width="70"/>
+                            <DataGridTextColumn Binding="{Binding Verseny, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Verseny" Visibility="Hidden"/>
+                            <DataGridTextColumn Binding="{Binding Indulo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Induló"/>
+                            <DataGridTextColumn Binding="{Binding Sorszam, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="60" Header="Sorszám"/>
+                            <DataGridTextColumn Binding="{Binding Ijtipus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Íjtípus"/>
+                            <DataGridTextColumn Binding="{Binding Csapat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="50" Header="Csapat"/>
+                            <DataGridTextColumn Binding="{Binding Talalat10, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="25" Header="10"/>
+                            <DataGridTextColumn Binding="{Binding Talalat8, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="25" Header="8"/>
+                            <DataGridTextColumn Binding="{Binding Talalat5, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="25" Header="5"/>
+                            <DataGridTextColumn Binding="{Binding Melle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="40" Header="Mellé"/>
+                            <DataGridTextColumn Binding="{Binding OsszPont, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="50" Header="Összes"/>
+                            <DataGridTextColumn Binding="{Binding Szazalek, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="25" Header="%"/>
+                            <DataGridCheckBoxColumn Binding="{Binding Megjelent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" ClipboardContentBinding="{x:Null}" Header="Megjelent" Width="70"/>
+                            <DataGridCheckBoxColumn Binding="{Binding KorosztalyModositott, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" ClipboardContentBinding="{x:Null}" Header="Korosztaly módosított" Width="70" Visibility="Hidden"/>
+                            <DataGridTextColumn Binding="{Binding KorosztalyAzonosito, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="25" Header="Korosztály azonosító" Visibility="Hidden"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button x:Name="btnEredmenyMegnyitas" Content="Megnyitás" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="96" Height="32" Margin="18,0,17,16"  Click="btnEredmenyMegnyitas_Click"/>
-                    <Button x:Name="btnEredmenyLezaras" Content="Lezárás" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="96" Height="32" Margin="0,0,0,16" Click="btnEredmenyLezaras_Click"/>
-                    <Button x:Name="btnEredmenyTorles" Content="Törlés" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="96" Height="32" Margin="18,0,17,16"  Click="btnEredmenyTorles_Click"/>
+                    <Label x:Name="lblEredmenyVerseny" Content="Verseny azonosító:" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="12,5,11,0"/>
+                    <ComboBox x:Name="cboEredmenyVerseny" DisplayMemberPath="Azonosito" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Left" Width="100" VerticalAlignment="Top"  Margin="0,10,0,0" SelectionChanged="cboEredmenyVerseny_SelectionChanged" />
+
+                    <Label x:Name="lblEredmenySorszam" Content="Sorszám:" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="12,5,11,0"/>
+                    <TextBox x:Name="txtEredmenySorszam" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Width="100"/>
+
+
+                    <Button x:Name="btnEredmenyMegnyitas" Content="Megnyitás" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="96" Height="32" Margin="18,0,17,16"  Click="btnEredmenyMegnyitas_Click"/>
+                    <Button x:Name="btnEredmenyLezaras" Content="Lezárás" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="96" Height="32" Margin="0,0,0,16" Click="btnEredmenyLezaras_Click"/>
+                    <Button x:Name="btnEredmenyTorles" Content="Törlés" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="96" Height="32" Margin="18,0,17,16"  Click="btnEredmenyTorles_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Startlisták">
