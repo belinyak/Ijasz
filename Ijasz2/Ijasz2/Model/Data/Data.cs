@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ijasz2.Model.Egyesulet;
 using Ijasz2.Model.Ijtipus;
 using Ijasz2.Model.Korosztaly;
 using Ijasz2.Model.Verseny;
@@ -14,17 +15,20 @@ namespace Ijasz2.Model.Data {
         public static Model.Verseny.Versenyek Versenyek;
         public static Model.Korosztaly.Korosztalyok Korosztalyok;
         public static Model.Ijtipus.Ijtipusok Ijtipusok;
+        public static Model.Egyesulet.Egyesuletek Egyesuletek;
 
-        public Data() {
-            Versenysorozatok = new Versenysorozatok();
-            Versenyek = new Versenyek();
-            Korosztalyok = new Korosztalyok();
-            Ijtipusok = new Ijtipusok();
+        public Data( ) {
+            Versenysorozatok = new Versenysorozatok( );
+            Versenyek = new Versenyek( );
+            Korosztalyok = new Korosztalyok( );
+            Ijtipusok = new Ijtipusok( );
+            Egyesuletek = new Egyesuletek( );
 
-            Versenyek.Load();
-            Versenysorozatok.Load();
-            Korosztalyok.Load();
-            Ijtipusok.Load();
+            Versenyek.Load( );
+            Versenysorozatok.Load( );
+            Korosztalyok.Load( );
+            Ijtipusok.Load( );
+            Egyesuletek.Load( );
         }
     }
 }

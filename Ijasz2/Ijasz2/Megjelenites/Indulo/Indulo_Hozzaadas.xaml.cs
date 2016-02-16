@@ -22,7 +22,7 @@ namespace Ijasz2.Megjelenites.Indulo {
         }
 
         private void btnUjEgyesulet_Click( object sender, RoutedEventArgs e ) {
-            ( new Megjelenites.Egyesület.Egyesulet_Hozzaadas( ) ).ShowDialog( );
+            ( new Megjelenites.Egyesület.Egyesulet_Hozzaadas_Modositas( ) ).ShowDialog( );
         }
     }
 }

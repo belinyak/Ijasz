@@ -92,7 +92,7 @@
                     <Button x:Name="btnVersenyHozzaadas" Content="Hozzáadás" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="96" Height="32" Margin="0,0,0,16" Click="btnVersenyHozzaadas_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="KorosztalyokItem" Header="Korosztályok">
+            <TabItem x:Name="Korosztalyok" Header="Korosztályok">
                 <Grid  Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="565"></ColumnDefinition>
@@ -151,16 +151,15 @@
                         <ColumnDefinition Width="131"></ColumnDefinition>
                         <ColumnDefinition Width="131"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <DataGrid x:Name="IjtipusGrid" HorizontalAlignment="Stretch"
-                                                    IsReadOnly="True" 
+                    <DataGrid x:Name="IjtipusGrid"
+                        HorizontalAlignment="Stretch"
+                        IsReadOnly="True" 
                         SelectionMode="Single"
                         SelectionUnit="FullRow"
                         AutoGenerateColumns="False" 
                         CanUserResizeRows="False"
                         RowHeaderWidth="0"
                         HorizontalScrollBarVisibility="Disabled">
-
-
                         <DataGrid.Resources>
                             <Style TargetType="DataGridCell">
                                 <Setter Property="BorderThickness" Value="0"/>
@@ -184,20 +183,39 @@
             <TabItem Header="Egyesületek">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="620"></ColumnDefinition>
-                        <ColumnDefinition Width="142"></ColumnDefinition>
+                        <ColumnDefinition Width="420"></ColumnDefinition>
+                        <ColumnDefinition Width="342"></ColumnDefinition>
                         <ColumnDefinition Width="131"></ColumnDefinition>
                         <ColumnDefinition Width="131"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <DataGrid x:Name="EgyesuletGrid" HorizontalAlignment="Stretch">
+                    <DataGrid x:Name="EgyesuletGrid"
+                        HorizontalAlignment="Stretch"
+                        IsReadOnly="True" 
+                        SelectionMode="Single"
+                        SelectionUnit="FullRow"
+                        AutoGenerateColumns="False" 
+                        CanUserResizeRows="False"
+                        RowHeaderWidth="0"
+                        HorizontalScrollBarVisibility="Disabled">
+                        <DataGrid.Resources>
+                            <Style TargetType="DataGridCell">
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                            </Style>
+                            <Style TargetType="DataGridRow">
+                                <EventSetter Event="MouseDoubleClick" Handler="Egyesulet_Modositas"></EventSetter>
+                            </Style>
+                        </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Név"/>
-                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Cím"/>
-                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Vezető"/>
-                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Telefon"/>
-                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="E-mail"/>
-                            <DataGridCheckBoxColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" ClipboardContentBinding="{x:Null}" Header="Listázandó" Width="70"/>
-                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="50" Header="Tagok"/>
+                            <DataGridTextColumn Binding="{Binding Azonosito, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Név"/>
+                            <DataGridTextColumn Binding="{Binding Cim, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Cím"/>
+                            <DataGridTextColumn Binding="{Binding Vezeto, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Vezető"/>
+                            <DataGridTextColumn Binding="{Binding Telefon1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Telefon" Visibility="Hidden"/>
+                            <DataGridTextColumn Binding="{Binding Telefon2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Telefon2" Visibility="Hidden"/>
+                            <DataGridTextColumn Binding="{Binding Email1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="E-mail" Visibility="Hidden"/>
+                            <DataGridTextColumn Binding="{Binding Email2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="E-mail2" Visibility="Hidden"/>
+                            <DataGridCheckBoxColumn Binding="{Binding Listazando, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Header="Listázandó" Width="70"/>
+                            <DataGridTextColumn Binding="{Binding TagokSzama, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="50" Header="Tagok"/>
                         </DataGrid.Columns>
                     </DataGrid>
                     <Button x:Name="btnEgyesuletTorles" Content="Törlés" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="96" Height="32" Margin="18,0,17,16"  Click="btnEgyesuletTorles_Click"/>

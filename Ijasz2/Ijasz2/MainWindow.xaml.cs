@@ -124,6 +124,10 @@ namespace Ijasz2 {
             var korosztaly = KorosztalyGrid.SelectedItem as Korosztaly;
             ( new Megjelenites.Korosztaly.Korosztaly_Torles( cboVerseny.Text, korosztaly.Azonosito ) ).ShowDialog( );
         }
+
+        private void btnKorosztalySzamolas_Click( object sender, RoutedEventArgs e ) {
+            throw new NotImplementedException( );
+        }
         #endregion
 
         #region Ijtipus
@@ -147,22 +151,27 @@ namespace Ijasz2 {
         }
         #endregion
 
-
-        private void btnKorosztalySzamolas_Click( object sender, RoutedEventArgs e ) {
-
-        }
-
+        #region Egyesulet
         private void btnEgyesuletTorles_Click( object sender, RoutedEventArgs e ) {
+            if (EgyesuletGrid.SelectedItem == null) {
+                return;
+            }
 
+            var egyesulet = EgyesuletGrid.SelectedItem as Model.Egyesulet.Egyesulet;
+
+            (new Megjelenites.Egyesület.Egyesulet_Torles(egyesulet)).ShowDialog();
         }
 
         private void btnEgyesuletHozzaadas_Click( object sender, RoutedEventArgs e ) {
-            ( new Megjelenites.Egyesület.Egyesulet_Hozzaadas( ) ).ShowDialog( );
+            ( new Megjelenites.Egyesület.Egyesulet_Hozzaadas_Modositas( ) ).ShowDialog( );
         }
 
-        private void btnEgyesuletHozzaadas_Click_1( object sender, RoutedEventArgs e ) {
+        private void Egyesulet_Modositas( object sender, MouseButtonEventArgs e ) {
+            var egyesulet = EgyesuletGrid.SelectedItem as Model.Egyesulet.Egyesulet;
 
+            ( new Megjelenites.Egyesület.Egyesulet_Hozzaadas_Modositas( egyesulet ) ).ShowDialog( );
         }
+        #endregion
 
         private void btnInduloHozzaadas_Click( object sender, RoutedEventArgs e ) {
             ( new Megjelenites.Indulo.Indulo_Hozzaadas( ) ).ShowDialog( );
@@ -246,8 +255,10 @@ namespace Ijasz2 {
             VersenysorozatGrid.ItemsSource = Model.Data.Data.Versenysorozatok._versenysorozatok;
             VersenyGrid.ItemsSource = Model.Data.Data.Versenyek._versenyek;
             IjtipusGrid.ItemsSource = Model.Data.Data.Ijtipusok._ijtipusok;
+            EgyesuletGrid.ItemsSource = Model.Data.Data.Egyesuletek._egyesuletek;
 
             cboVerseny.ItemsSource = Model.Data.Data.Versenyek._versenyek;
         }
+
     }
 }

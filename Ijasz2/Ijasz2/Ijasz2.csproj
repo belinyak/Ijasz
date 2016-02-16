@@ -67,7 +67,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Megjelenites\Egyesület\Egyesulet_Hozzaadas.xaml">
+    <Page Include="Megjelenites\Egyesület\Egyesulet_Hozzaadas_Modositas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Megjelenites\Egyesület\Egyesulet_Torles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -129,8 +133,11 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Megjelenites\Egyesület\Egyesulet_Hozzaadas.xaml.cs">
-      <DependentUpon>Egyesulet_Hozzaadas.xaml</DependentUpon>
+    <Compile Include="Megjelenites\Egyesület\Egyesulet_Hozzaadas_Modositas.xaml.cs">
+      <DependentUpon>Egyesulet_Hozzaadas_Modositas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Megjelenites\Egyesület\Egyesulet_Torles.xaml.cs">
+      <DependentUpon>Egyesulet_Torles.xaml</DependentUpon>
     </Compile>
     <Compile Include="Megjelenites\Eredmeny\Eredmeny_Hozzaadas.xaml.cs">
       <DependentUpon>Eredmeny_Hozzaadas.xaml</DependentUpon>
@@ -175,6 +182,8 @@
       <DependentUpon>Verseny_Torles.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Data\Data.cs" />
+    <Compile Include="Model\Egyesulet\Egyesulet.cs" />
+    <Compile Include="Model\Egyesulet\Egyesuletek.cs" />
     <Compile Include="Model\Ijtipus\Ijtipus.cs" />
     <Compile Include="Model\Ijtipus\Ijtipusok.cs" />
     <Compile Include="Model\Korosztaly\Korosztaly.cs" />
