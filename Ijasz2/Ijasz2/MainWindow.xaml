@@ -123,7 +123,6 @@
                                 <EventSetter Event="MouseDoubleClick" Handler="Korosztaly_Modositas"></EventSetter>
                             </Style>
                         </DataGrid.Resources>
-
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding Azonosito, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="70" Header="Azonosító"/>
                             <DataGridTextColumn Binding="{Binding Megnevezes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Megnevezés"/>
@@ -152,14 +151,33 @@
                         <ColumnDefinition Width="131"></ColumnDefinition>
                         <ColumnDefinition Width="131"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <DataGrid x:Name="Ijtipus" HorizontalAlignment="Stretch">
+                    <DataGrid x:Name="IjtipusGrid" HorizontalAlignment="Stretch"
+                                                    IsReadOnly="True" 
+                        SelectionMode="Single"
+                        SelectionUnit="FullRow"
+                        AutoGenerateColumns="False" 
+                        CanUserResizeRows="False"
+                        RowHeaderWidth="0"
+                        HorizontalScrollBarVisibility="Disabled">
+
+
+                        <DataGrid.Resources>
+                            <Style TargetType="DataGridCell">
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                            </Style>
+                            <Style TargetType="DataGridRow">
+                                <EventSetter Event="MouseDoubleClick" Handler="Ijtipus_Modositas"></EventSetter>
+                            </Style>
+                        </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Azonosító"/>
-                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Megnevezés"/>
-                            <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Listázási sorszám"/>
+                            <DataGridTextColumn Binding="{Binding Azonosito, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Azonosító"/>
+                            <DataGridTextColumn Binding="{Binding Megnevezes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Megnevezés"/>
+                            <DataGridTextColumn Binding="{Binding Sorszam, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Listázási sorszám"/>
+                            <DataGridTextColumn Binding="{Binding Eredmenyek, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Eredmenyek" Visibility="Hidden"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button x:Name="btnIjtipusTorles" Content="Törlés" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="96" Height="32" Margin="18,0,17,16"  Click="btnIjtipusHozzaadas_Click"/>
+                    <Button x:Name="btnIjtipusTorles" Content="Törlés" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="96" Height="32" Margin="18,0,17,16"  Click="BtnIjtipusTorles_OnClick"/>
                     <Button x:Name="btnIjtipusHozzaadas" Content="Hozzáadás" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="96" Height="32" Margin="0,0,0,16" Click="btnIjtipusHozzaadas_Click"/>
                 </Grid>
             </TabItem>
@@ -171,7 +189,7 @@
                         <ColumnDefinition Width="131"></ColumnDefinition>
                         <ColumnDefinition Width="131"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <DataGrid x:Name="Egyesulet" HorizontalAlignment="Stretch">
+                    <DataGrid x:Name="EgyesuletGrid" HorizontalAlignment="Stretch">
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Név"/>
                             <DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Cím"/>

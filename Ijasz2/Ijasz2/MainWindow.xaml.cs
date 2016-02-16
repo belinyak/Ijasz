@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Input;
 using Ijasz2.Model;
 using Ijasz2.Model.Data;
+using Ijasz2.Model.Ijtipus;
 using Ijasz2.Model.Korosztaly;
 using Ijasz2.Model.Verseny;
 using Ijasz2.Model.Versenysorozat;
@@ -91,15 +92,15 @@ namespace Ijasz2 {
         }
 
         private void Korosztaly_Modositas( object sender, MouseButtonEventArgs e ) {
-            if (KorosztalyGrid.SelectedItem == null || cboVerseny.Text == "") {
+            if( KorosztalyGrid.SelectedItem == null || cboVerseny.Text == "" ) {
                 return;
             }
             var korosztaly = KorosztalyGrid.SelectedItem as Korosztaly;
-            (new Megjelenites.Korosztaly.Korosztaly_Hozzaadas_Modositas(korosztaly)).ShowDialog();
+            ( new Megjelenites.Korosztaly.Korosztaly_Hozzaadas_Modositas( korosztaly ) ).ShowDialog( );
         }
 
         private void btnKorosztalyHozzaadas_Click( object sender, RoutedEventArgs e ) {
-            if (cboVerseny.Text == "") {
+            if( cboVerseny.Text == "" ) {
                 return;
             }
 
@@ -121,13 +122,31 @@ namespace Ijasz2 {
                 return;
             }
             var korosztaly = KorosztalyGrid.SelectedItem as Korosztaly;
-            (new Megjelenites.Korosztaly.Korosztaly_Torles(cboVerseny.Text, korosztaly.Azonosito)).ShowDialog();
+            ( new Megjelenites.Korosztaly.Korosztaly_Torles( cboVerseny.Text, korosztaly.Azonosito ) ).ShowDialog( );
         }
         #endregion
 
+        #region Ijtipus
         private void btnIjtipusHozzaadas_Click( object sender, RoutedEventArgs e ) {
-            ( new Megjelenites.Ijtipusok.Ijtipus_Hozzaadas( ) ).ShowDialog( );
+            ( new Megjelenites.Ijtipus.Ijtipus_Hozzaadas_Modositas( ) ).ShowDialog( );
         }
+
+        private void BtnIjtipusTorles_OnClick( object sender, RoutedEventArgs e ) {
+            if( IjtipusGrid.SelectedItem == null ) {
+                return;
+            }
+
+            Ijtipus ijtipus = IjtipusGrid.SelectedItem as Ijtipus;
+            ( new Megjelenites.Ijtipus.Ijtipus_Torles( ijtipus ) ).ShowDialog( );
+        }
+
+        private void Ijtipus_Modositas( object sender, MouseButtonEventArgs e ) {
+            Model.Ijtipus.Ijtipus ijtipus = IjtipusGrid.SelectedItem as Ijtipus;
+            ( new Megjelenites.Ijtipus.Ijtipus_Hozzaadas_Modositas( ijtipus ) ).ShowDialog( );
+
+        }
+        #endregion
+
 
         private void btnKorosztalySzamolas_Click( object sender, RoutedEventArgs e ) {
 
@@ -224,12 +243,11 @@ namespace Ijasz2 {
         /// <param name="sender"></param>
         /// <param name="runWorkerCompletedEventArgs"></param>
         private void WorkerOnRunWorkerCompleted( object sender, RunWorkerCompletedEventArgs runWorkerCompletedEventArgs ) {
-
             VersenysorozatGrid.ItemsSource = Model.Data.Data.Versenysorozatok._versenysorozatok;
             VersenyGrid.ItemsSource = Model.Data.Data.Versenyek._versenyek;
+            IjtipusGrid.ItemsSource = Model.Data.Data.Ijtipusok._ijtipusok;
+
             cboVerseny.ItemsSource = Model.Data.Data.Versenyek._versenyek;
         }
-
-       
     }
 }

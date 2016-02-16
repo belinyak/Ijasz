@@ -75,7 +75,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Megjelenites\Ijtipus\Ijtipus_Hozzaadas.xaml">
+    <Page Include="Megjelenites\Ijtipus\Ijtipus_Hozzaadas_Modositas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Megjelenites\Ijtipus\Ijtipus_Torles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -131,8 +135,11 @@
     <Compile Include="Megjelenites\Eredmeny\Eredmeny_Hozzaadas.xaml.cs">
       <DependentUpon>Eredmeny_Hozzaadas.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Megjelenites\Ijtipus\Ijtipus_Hozzaadas.xaml.cs">
-      <DependentUpon>Ijtipus_Hozzaadas.xaml</DependentUpon>
+    <Compile Include="Megjelenites\Ijtipus\Ijtipus_Hozzaadas_Modositas.xaml.cs">
+      <DependentUpon>Ijtipus_Hozzaadas_Modositas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Megjelenites\Ijtipus\Ijtipus_Torles.xaml.cs">
+      <DependentUpon>Ijtipus_Torles.xaml</DependentUpon>
     </Compile>
     <Compile Include="Megjelenites\Indulo\Indulo_Beiras.xaml.cs">
       <DependentUpon>Indulo_Beiras.xaml</DependentUpon>
@@ -168,6 +175,8 @@
       <DependentUpon>Verseny_Torles.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Data\Data.cs" />
+    <Compile Include="Model\Ijtipus\Ijtipus.cs" />
+    <Compile Include="Model\Ijtipus\Ijtipusok.cs" />
     <Compile Include="Model\Korosztaly\Korosztaly.cs" />
     <Compile Include="Model\Korosztaly\Korosztalyok.cs" />
     <Compile Include="Model\Versenysorozat\Versenysorozat.cs" />
