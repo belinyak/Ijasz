@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ijasz2.Model.Eredmeny;
 using Ijasz2.Model.Korosztaly;
 
 namespace Ijasz2.Model.Verseny {
@@ -12,10 +13,18 @@ namespace Ijasz2.Model.Verseny {
 
         /// <summary>
         /// TODO itt kellene default korosztalyokat felvenni
+        /// TODO itt kell az eredmenyeket letrehozni
         /// </summary>
         /// <param name="verseny"></param>
         public void Add( Verseny verseny ) {
             _versenyek.Add( verseny );
+
+            VersenyEredmeny versenyEredmeny = new VersenyEredmeny(verseny.Azonosito);
+            if (Data.Data.Eredmenyek == null) {
+                Data.Data.Eredmenyek = new VersenyEredmenyek {_versenyEredmenyek = new List<VersenyEredmeny>()};
+            }
+            Data.Data.Eredmenyek._versenyEredmenyek.Add(versenyEredmeny);
+
 
             VersenyKorosztaly versenyKorosztaly = new VersenyKorosztaly(verseny.Azonosito);
 

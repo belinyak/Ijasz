@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Input;
 using Ijasz2.Model;
 using Ijasz2.Model.Data;
+using Ijasz2.Model.Eredmeny;
 using Ijasz2.Model.Ijtipus;
 using Ijasz2.Model.Indulo;
 using Ijasz2.Model.Korosztaly;
@@ -198,10 +199,34 @@ namespace Ijasz2 {
         }
 
         private void btnInduloBeiras_Click( object sender, RoutedEventArgs e ) {
-            throw new NotImplementedException( );
-            ( new Megjelenites.Indulo.Indulo_Beiras( ) ).ShowDialog( );
+            if( InduloGrid.SelectedItem == null ) {
+                return;
+            }
+
+            var Indulo = InduloGrid.SelectedItem as Indulo;
+
+            ( new Megjelenites.Indulo.Indulo_Beiras( Indulo ) ).ShowDialog( );
         }
         #endregion
+
+        private void cboEredmenyVerseny_SelectionChanged( object sender, SelectionChangedEventArgs e ) {
+            EredmenyGrid.ItemsSource = null;
+
+            var comboBox = sender as ComboBox;
+            if (comboBox != null) {
+                var verseny = comboBox.SelectedItem as Verseny;
+
+                if( verseny != null ) {
+                    foreach( var versenyEredmeny in Model.Data.Data.Eredmenyek._versenyEredmenyek ) {
+                        if( versenyEredmeny.VersenyAzonosito.Equals( verseny.Azonosito ) ) {
+                            EredmenyGrid.ItemsSource = versenyEredmeny.Eredmenyek._eredmenyek;
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+
 
         private void btnEredmenyLezaras_Click( object sender, RoutedEventArgs e ) {
 
@@ -279,26 +304,12 @@ namespace Ijasz2 {
             IjtipusGrid.ItemsSource = Model.Data.Data.Ijtipusok._ijtipusok;
             EgyesuletGrid.ItemsSource = Model.Data.Data.Egyesuletek._egyesuletek;
             InduloGrid.ItemsSource = Model.Data.Data.Indulok._indulok;
-            EredmenyGrid.ItemsSource = Model.Data.Data.Eredmenyek._eredmenyek;
+            //EredmenyGrid.ItemsSource = Model.Data.Data.Eredmenyek._eredmenyek;
 
             cboVerseny.ItemsSource = Model.Data.Data.Versenyek._versenyek;
             cboEredmenyVerseny.ItemsSource = Model.Data.Data.Versenyek._versenyek;
         }
 
-        // TODO bugos !!!!
-        private void cboEredmenyVerseny_SelectionChanged( object sender, SelectionChangedEventArgs e ) {
 
-            EredmenyGrid.ItemsSource = null;
-            var verseny = cboEredmenyVerseny.SelectedItem as Verseny;
-
-            if( verseny != null ) {
-                foreach( var eredmeny in Model.Data.Data.Eredmenyek._eredmenyek ) {
-                    if( eredmeny[0].Verseny.Equals( verseny.Azonosito ) ) {
-                        EredmenyGrid.DataContext = eredmeny;
-                        return;
-                    }
-                }
-            }
-        }
     }
 }

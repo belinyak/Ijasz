@@ -193,6 +193,8 @@
     <Compile Include="Model\Egyesulet\Egyesuletek.cs" />
     <Compile Include="Model\Eredmeny\Eredmeny.cs" />
     <Compile Include="Model\Eredmeny\Eredmenyek.cs" />
+    <Compile Include="Model\Eredmeny\VersenyEredmeny.cs" />
+    <Compile Include="Model\Eredmeny\VersenyEredmenyek.cs" />
     <Compile Include="Model\Ijtipus\Ijtipus.cs" />
     <Compile Include="Model\Ijtipus\Ijtipusok.cs" />
     <Compile Include="Model\Indulo\Indulo.cs" />
