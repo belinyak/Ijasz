@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using Ijasz2.Model;
 using Ijasz2.Model.Data;
@@ -84,9 +85,9 @@ namespace Ijasz2 {
             var verseny = cboVerseny.SelectedItem as Verseny;
 
             if( verseny != null ) {
-                foreach( var versenykorosztalyok in Model.Data.Data.Korosztalyok._korosztalyok ) {
-                    if( versenykorosztalyok[0].Verseny.Equals( verseny.Azonosito ) ) {
-                        KorosztalyGrid.ItemsSource = versenykorosztalyok;
+                foreach( var versenykorosztalyok in Model.Data.Data.Korosztalyok._versenyKorosztalyok ) {
+                    if( versenykorosztalyok.VersenyAzonosito.Equals( verseny.Azonosito ) ) {
+                        KorosztalyGrid.ItemsSource = versenykorosztalyok.Korosztalyok;
                         return;
                     }
                 }
@@ -124,7 +125,7 @@ namespace Ijasz2 {
                 return;
             }
             var korosztaly = KorosztalyGrid.SelectedItem as Korosztaly;
-            ( new Megjelenites.Korosztaly.Korosztaly_Torles( cboVerseny.Text, korosztaly.Azonosito ) ).ShowDialog( );
+            ( new Megjelenites.Korosztaly.Korosztaly_Torles( korosztaly ) ).ShowDialog( );
         }
 
         private void btnKorosztalySzamolas_Click( object sender, RoutedEventArgs e ) {
@@ -293,12 +294,11 @@ namespace Ijasz2 {
             if( verseny != null ) {
                 foreach( var eredmeny in Model.Data.Data.Eredmenyek._eredmenyek ) {
                     if( eredmeny[0].Verseny.Equals( verseny.Azonosito ) ) {
-                        EredmenyGrid.ItemsSource = eredmeny;
+                        EredmenyGrid.DataContext = eredmeny;
                         return;
                     }
                 }
             }
         }
-
     }
 }

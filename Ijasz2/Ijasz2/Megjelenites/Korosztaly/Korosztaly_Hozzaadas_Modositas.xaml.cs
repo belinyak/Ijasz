@@ -20,6 +20,7 @@ namespace Ijasz2.Megjelenites.Korosztaly {
         private Model.Korosztaly.Korosztaly _korosztaly;
 
         #region Hozzaadas-Modositas
+
         public Korosztaly_Hozzaadas_Modositas( Model.Korosztaly.Korosztaly korosztaly ) {
             _korosztaly = korosztaly;
             InitializeComponent( );
@@ -42,6 +43,7 @@ namespace Ijasz2.Megjelenites.Korosztaly {
                 chEgyben.IsChecked = korosztaly.Egyben;
             }
         }
+
         #endregion
 
         private bool IsValid( ) {
@@ -99,10 +101,30 @@ namespace Ijasz2.Megjelenites.Korosztaly {
 
             // hozzaadas
             if( _korosztaly.Azonosito == null ) {
-                Model.Data.Data.Korosztalyok.Add( Korosztaly );
+                foreach( var versenyKorosztaly in Model.Data.Data.Korosztalyok._versenyKorosztalyok ) {
+                    if( versenyKorosztaly.VersenyAzonosito.Equals( Korosztaly.Verseny ) ) {
+                        versenyKorosztaly.Korosztalyok.Add( Korosztaly );
+                    }
+                }
             }
+            // modositas
             else {
-                Model.Data.Data.Korosztalyok.Modify( Korosztaly );
+                foreach( var versenyKorosztaly in Model.Data.Data.Korosztalyok._versenyKorosztalyok ) {
+                    if( versenyKorosztaly.VersenyAzonosito.Equals( Korosztaly.Verseny ) ) {
+                        foreach( var korosztaly in versenyKorosztaly.Korosztalyok ) {
+                            if( korosztaly.Azonosito.Equals( Korosztaly.Azonosito ) ) {
+                                korosztaly.Megnevezes = Korosztaly.Megnevezes;
+                                korosztaly.AlsoHatar = Korosztaly.AlsoHatar;
+                                korosztaly.FelsoHatar = Korosztaly.FelsoHatar;
+                                korosztaly.Nokre = Korosztaly.Nokre;
+                                korosztaly.Ferfiakra = Korosztaly.Ferfiakra;
+                                korosztaly.InduloNok = Korosztaly.InduloNok;
+                                korosztaly.InduloFerfiak = Korosztaly.InduloFerfiak;
+                                korosztaly.Egyben = Korosztaly.Egyben;
+                            }
+                        }
+                    }
+                }
             }
             Close( );
         }

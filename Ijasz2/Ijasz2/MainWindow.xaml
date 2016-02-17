@@ -124,6 +124,7 @@
                             </Style>
                         </DataGrid.Resources>
                         <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Verseny, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="70" Header="Verseny" Visibility="Hidden"/>
                             <DataGridTextColumn Binding="{Binding Azonosito, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="70" Header="Azonosító"/>
                             <DataGridTextColumn Binding="{Binding Megnevezes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100" Header="Megnevezés"/>
                             <DataGridTextColumn Binding="{Binding AlsoHatar, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="70" Header="Alsó határ"/>

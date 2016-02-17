@@ -198,7 +198,8 @@
     <Compile Include="Model\Indulo\Indulo.cs" />
     <Compile Include="Model\Indulo\Indulok.cs" />
     <Compile Include="Model\Korosztaly\Korosztaly.cs" />
-    <Compile Include="Model\Korosztaly\Korosztalyok.cs" />
+    <Compile Include="Model\Korosztaly\VersenyKorosztaly.cs" />
+    <Compile Include="Model\Korosztaly\VersenyKorosztalyok.cs" />
     <Compile Include="Model\Versenysorozat\Versenysorozat.cs" />
     <Compile Include="Model\Versenysorozat\Versenysorozatok.cs" />
     <Compile Include="Model\Verseny\Verseny.cs" />

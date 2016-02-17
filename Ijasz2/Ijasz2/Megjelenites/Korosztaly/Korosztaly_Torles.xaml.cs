@@ -17,22 +17,26 @@ namespace Ijasz2.Megjelenites.Korosztaly {
     /// Interaction logic for Korosztaly_Torles.xaml
     /// </summary>
     public partial class Korosztaly_Torles : Window {
-        private readonly string _verseny;
-        private readonly string _azonosito;
+        private readonly Model.Korosztaly.Korosztaly _korosztaly;
 
-        public Korosztaly_Torles(string verseny, string azonosito ) {
+
+        public Korosztaly_Torles( Model.Korosztaly.Korosztaly korosztaly ) {
             InitializeComponent( );
-            _verseny = verseny;
-            _azonosito = azonosito;
-            lblKerdes.Content += Environment.NewLine + "Azonosító: " + _azonosito;
+            _korosztaly = korosztaly;
+            lblKerdes.Content += Environment.NewLine + "Azonosító: " + _korosztaly.Azonosito;
         }
 
-        private void BtnIgen_OnClick(object sender, RoutedEventArgs e) {
-            Model.Data.Data.Korosztalyok.Remove(_verseny, _azonosito);
-            Close();
+        private void BtnIgen_OnClick( object sender, RoutedEventArgs e ) {
+            foreach( var versenyKorosztaly in Model.Data.Data.Korosztalyok._versenyKorosztalyok ) {
+                if( versenyKorosztaly.VersenyAzonosito.Equals( _korosztaly.Verseny ) ) {
+                    versenyKorosztaly.Korosztalyok.Remove( _korosztaly );
+                    break;
+                }
+            }
+            Close( );
         }
 
-        private void btnNem_Click(object sender, RoutedEventArgs e) {
+        private void btnNem_Click( object sender, RoutedEventArgs e ) {
             Close( );
         }
     }

@@ -15,16 +15,19 @@ namespace Ijasz2.Model.Data {
     public class Data {
         public static Model.Versenysorozat.Versenysorozatok Versenysorozatok;
         public static Model.Verseny.Versenyek Versenyek;
-        public static Model.Korosztaly.Korosztalyok Korosztalyok;
+        public static Model.Korosztaly.VersenyKorosztalyok Korosztalyok;
         public static Model.Ijtipus.Ijtipusok Ijtipusok;
         public static Model.Egyesulet.Egyesuletek Egyesuletek;
         public static Model.Indulo.Indulok Indulok;
         public static Model.Eredmeny.Eredmenyek Eredmenyek;
 
+        /// <summary>
+        /// korosztályt versennyel együtt töltjük be !!!
+        /// </summary>
         public Data( ) {
             Versenysorozatok = new Versenysorozatok( );
             Versenyek = new Versenyek( );
-            Korosztalyok = new Korosztalyok( );
+            //Korosztalyok = new VersenyKorosztalyok();
             Ijtipusok = new Ijtipusok( );
             Egyesuletek = new Egyesuletek( );
             Indulok = new Indulok();
@@ -32,7 +35,7 @@ namespace Ijasz2.Model.Data {
 
             Versenyek.Load( );
             Versenysorozatok.Load( );
-            Korosztalyok.Load( );
+            //Korosztalyok.Load( );
             Ijtipusok.Load( );
             Egyesuletek.Load( );
             Indulok.Load();

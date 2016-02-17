@@ -4,17 +4,32 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ijasz2.Model.Korosztaly;
 
 namespace Ijasz2.Model.Verseny {
     public class Versenyek {
         public ObservableCollection<Verseny> _versenyek;
 
         /// <summary>
-        /// itt kellene default korosztalyokat felvenni
+        /// TODO itt kellene default korosztalyokat felvenni
         /// </summary>
         /// <param name="verseny"></param>
         public void Add( Verseny verseny ) {
             _versenyek.Add( verseny );
+
+            VersenyKorosztaly versenyKorosztaly = new VersenyKorosztaly(verseny.Azonosito);
+
+            versenyKorosztaly.Korosztalyok.Add( new Korosztaly.Korosztaly {
+                Verseny = verseny.Azonosito,
+                Azonosito = "k10" + verseny.Azonosito,
+                AlsoHatar = 9,
+                FelsoHatar = 20
+            } );
+
+            if( Data.Data.Korosztalyok == null ) {
+                Data.Data.Korosztalyok = new VersenyKorosztalyok {_versenyKorosztalyok = new List<VersenyKorosztaly>()};
+            }
+            Data.Data.Korosztalyok._versenyKorosztalyok.Add( versenyKorosztaly );
         }
 
         /// <summary>
@@ -24,7 +39,12 @@ namespace Ijasz2.Model.Verseny {
         public void Remove( string azonosito ) {
             _versenyek.Remove( _versenyek.Single( s => s.Azonosito.Equals( azonosito ) ) );
 
-            Data.Data.Korosztalyok.Remove( azonosito );
+            foreach( var versenyKorosztaly in Data.Data.Korosztalyok._versenyKorosztalyok ) {
+                if( versenyKorosztaly.VersenyAzonosito.Equals( azonosito ) ) {
+                    Data.Data.Korosztalyok._versenyKorosztalyok.Remove( versenyKorosztaly );
+                    return;
+                }
+            }
         }
 
         /// <summary>
@@ -49,12 +69,12 @@ namespace Ijasz2.Model.Verseny {
         /// adatok db-ből
         /// </summary>
         public void Load( ) {
-            _versenyek = new ObservableCollection<Verseny> {
-                new Verseny { Azonosito = "ve1", Megnevezes = "verseny1" },
-                new Verseny { Azonosito = "ve2", Megnevezes = "verseny2" },
-                new Verseny { Azonosito = "ve3", Megnevezes = "verseny3" },
-                new Verseny { Azonosito = "ve4", Megnevezes = "verseny4" },
-            };
+            _versenyek = new ObservableCollection<Verseny>( );
+
+            Data.Data.Versenyek.Add( new Verseny { Azonosito = "ve1", Megnevezes = "verseny1" } );
+            Data.Data.Versenyek.Add( new Verseny { Azonosito = "ve2", Megnevezes = "verseny2" } );
+            Data.Data.Versenyek.Add( new Verseny { Azonosito = "ve3", Megnevezes = "verseny3" } );
+            Data.Data.Versenyek.Add( new Verseny { Azonosito = "ve4", Megnevezes = "verseny4" } );
         }
     }
 }
