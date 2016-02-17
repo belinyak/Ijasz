@@ -1,11 +1,11 @@
-﻿<Window x:Class="Ijasz2.Megjelenites.Eredmeny.Eredmeny_Hozzaadas"
+﻿<Window x:Class="Ijasz2.Megjelenites.Eredmeny.Eredmeny_Hozzaadas_Modositas"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ijasz2.Megjelenites.Eredmeny"
         mc:Ignorable="d"
-        Title="Eredmény Hozzáadás" Height="400" Width="230" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Eredmény" Height="400" Width="230" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="32"></RowDefinition>

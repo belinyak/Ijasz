@@ -75,7 +75,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Megjelenites\Eredmeny\Eredmeny_Hozzaadas.xaml">
+    <Page Include="Megjelenites\Eredmeny\Eredmeny_Hozzaadas_Modositas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -143,8 +143,8 @@
     <Compile Include="Megjelenites\Egyesület\Egyesulet_Torles.xaml.cs">
       <DependentUpon>Egyesulet_Torles.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Megjelenites\Eredmeny\Eredmeny_Hozzaadas.xaml.cs">
-      <DependentUpon>Eredmeny_Hozzaadas.xaml</DependentUpon>
+    <Compile Include="Megjelenites\Eredmeny\Eredmeny_Hozzaadas_Modositas.xaml.cs">
+      <DependentUpon>Eredmeny_Hozzaadas_Modositas.xaml</DependentUpon>
     </Compile>
     <Compile Include="Megjelenites\Ijtipus\Ijtipus_Hozzaadas_Modositas.xaml.cs">
       <DependentUpon>Ijtipus_Hozzaadas_Modositas.xaml</DependentUpon>

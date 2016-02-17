@@ -104,6 +104,7 @@ namespace Ijasz2.Megjelenites.Indulo {
         /// <summary>
         /// induló beírása
         /// TODO korosztaly szamolas
+        /// TODO eredmenyek novelese
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

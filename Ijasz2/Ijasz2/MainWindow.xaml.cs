@@ -233,11 +233,13 @@ namespace Ijasz2 {
         }
 
         private void Eredmeny_Modositas( object sender, MouseButtonEventArgs e ) {
-            throw new NotImplementedException( );
+            var Eredmeny = EredmenyGrid.SelectedItem as Eredmeny;
+
+            ( new Megjelenites.Eredmeny.Eredmeny_Hozzaadas_Modositas( Eredmeny ) ).ShowDialog( );
         }
 
         private void btnEredmenyMegnyitas_Click( object sender, RoutedEventArgs e ) {
-            ( new Megjelenites.Eredmeny.Eredmeny_Hozzaadas( ) ).ShowDialog( );
+            throw new NotImplementedException( );
         }
 
         private void btnEredmenyTorles_Click( object sender, RoutedEventArgs e ) {
