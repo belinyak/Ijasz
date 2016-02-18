@@ -247,7 +247,7 @@ namespace Ijasz2 {
         }
 
         private void btnstartListaNyomtat_Click( object sender, RoutedEventArgs e ) {
-
+            (new Megjelenites.Startlista.Startlista_Nyomtatas()).ShowDialog();
         }
 
         private void btneredmenylapNyomtat_Click( object sender, RoutedEventArgs e ) {
@@ -310,8 +310,37 @@ namespace Ijasz2 {
 
             cboVerseny.ItemsSource = Model.Data.Data.Versenyek._versenyek;
             cboEredmenyVerseny.ItemsSource = Model.Data.Data.Versenyek._versenyek;
+            cbstartListaVersenyAzonosito.ItemsSource = Model.Data.Data.Versenyek._versenyek;
+
+            cberedmenylapVersenyAzonosito.ItemsSource = Model.Data.Data.Versenyek._versenyek;
+            cberedmenylapVersenysorozatAzonosito.ItemsSource = Model.Data.Data.Versenysorozatok._versenysorozatok;
+
+            cboOklevelVeAzonosito.ItemsSource = Model.Data.Data.Versenyek._versenyek;
+            cboOklevelVsAzonosito.ItemsSource = Model.Data.Data.Versenysorozatok._versenysorozatok;
+
+            cboOklevelLegjobb.ItemsSource = new ObservableCollection<int> {1, 2, 3, 4, 5};
+
         }
 
 
+        private void CbstartListaVersenyAzonosito_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
+            txtstartListaVersenyMegnevezes.Text = (((sender as ComboBox).SelectedItem) as Verseny).Megnevezes;
+        }
+
+        private void CberedmenylapVersenyAzonosito_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
+            txteredmenylapVersenyMegnevezes.Text = ( ( ( sender as ComboBox ).SelectedItem ) as Verseny ).Megnevezes;
+        }
+
+        private void CberedmenylapVersenysorozatAzonosito_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
+            txteredmenylapVersenysorozatMegnevezes.Text = ( ( ( sender as ComboBox ).SelectedItem ) as Versenysorozat ).Megnevezes;
+        }
+
+        private void CboOklevelVeAzonosito_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
+            txtOklevelVeMegnevezes.Text = ( ( ( sender as ComboBox ).SelectedItem ) as Verseny ).Megnevezes;
+        }
+
+        private void CboOklevelVsAzonosito_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
+            txtOklevelVsMegnevezes.Text = ( ( ( sender as ComboBox ).SelectedItem ) as Versenysorozat ).Megnevezes;
+        }
     }
 }

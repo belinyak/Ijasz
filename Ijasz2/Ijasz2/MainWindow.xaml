@@ -354,8 +354,8 @@
                     <Label x:Name="startListaVersenyAzonosito" Grid.Row="1" Grid.Column="1"  Content="Verseny azonosító:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
                     <Label x:Name="startListaVersenyMegnevezes" Grid.Row="2" Grid.Column="1"  Content="Verseny megnevezés:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
                     <Label x:Name="startListaTípus" Grid.Row="3" Grid.Column="1"  Content="Startlista típusa:" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
-                    <ComboBox x:Name="cbstartListaVersenyAzonosito"  Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
-                    <TextBox x:Name="txtstartListaVersenyMegnevezes" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
+                    <ComboBox x:Name="cbstartListaVersenyAzonosito" DisplayMemberPath="Azonosito" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" SelectionChanged="CbstartListaVersenyAzonosito_OnSelectionChanged"/>
+                    <TextBox x:Name="txtstartListaVersenyMegnevezes" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" IsEnabled="False" />
                     <CheckBox x:Name="chstartListaNevezesi" Grid.Row="3" Grid.Column="2" Content="Nevezési" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     <CheckBox x:Name="chstartListaCsapatlista" Grid.Row="4" Grid.Column="2" Content="Csapatlista" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     <CheckBox x:Name="chstartListaNemMegjelent" Grid.Row="5" Grid.Column="2" Content="Megjelent" HorizontalAlignment="Left" VerticalAlignment="Center"/>
@@ -393,10 +393,10 @@
                     <Label x:Name="eredmenylapTípus" Grid.Row="7" Grid.Column="1" Content="Startlista típusa:" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
                     <CheckBox x:Name="cheredmenylapVerseny" Grid.Row="1" Grid.Column="2" Content="Verseny" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     <CheckBox x:Name="cheredmenylapVersenysorozat" Grid.Row="2" Grid.Column="2" Content="Versenysorozat" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <ComboBox x:Name="cberedmenylapVersenyAzonosito" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
-                    <ComboBox x:Name="cberedmenylapVersenyMegnevezes" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
-                    <ComboBox x:Name="cberedmenylapVersenysorozatAzonosito" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
-                    <ComboBox x:Name="cberedmenylapVersenysorozatMegnevezes" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
+                    <ComboBox x:Name="cberedmenylapVersenyAzonosito" DisplayMemberPath="Azonosito"  Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" SelectionChanged="CberedmenylapVersenyAzonosito_OnSelectionChanged"/>
+                    <TextBox x:Name="txteredmenylapVersenyMegnevezes" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" IsEnabled="False" />
+                    <ComboBox x:Name="cberedmenylapVersenysorozatAzonosito" DisplayMemberPath="Azonosito" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" SelectionChanged="CberedmenylapVersenysorozatAzonosito_OnSelectionChanged"/>
+                    <TextBox x:Name="txteredmenylapVersenysorozatMegnevezes" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" IsEnabled="False" />
                     <CheckBox x:Name="cheredmenylapTeljes" Grid.Row="7" Grid.Column="2" Content="Teljes" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     <CheckBox x:Name="cheredmenylapMisz" Grid.Row="8" Grid.Column="2" Content="MISZ" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     <CheckBox x:Name="cheredmenylapEgyesulet" Grid.Row="9" Grid.Column="2" Content="Egyesület" HorizontalAlignment="Left" VerticalAlignment="Center"/>
@@ -442,11 +442,11 @@
                     <Label x:Name="lblOklevelVsMegnevezes" Content="Versenysorozat megnevezés:" Grid.ColumnSpan="1" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
                     <CheckBox x:Name="chOklevelTipusVe" Grid.Row="0" Grid.Column="3" Content="Verseny" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     <CheckBox x:Name="chOklevelTipusVs" Grid.Row="1" Grid.Column="3" Content="Versenysorozat" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <ComboBox x:Name="cboOklevelLegjobb" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Left" Width="100" VerticalAlignment="Top"  Margin="0,10,0,0"/>
-                    <ComboBox x:Name="cboOklevelVeAzonosito" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Left" Width="100" VerticalAlignment="Top"  Margin="0,10,0,0"/>
-                    <ComboBox x:Name="cboOklevelVeMegnevezes" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Left" Width="100" VerticalAlignment="Top"  Margin="0,10,0,0"/>
-                    <ComboBox x:Name="cboOklevelVsAzonosito" Grid.Row="5" Grid.Column="3" HorizontalAlignment="Left" Width="100" VerticalAlignment="Top"  Margin="0,10,0,0"/>
-                    <ComboBox x:Name="cboOklevelVsMegnevezes" Grid.Row="6" Grid.Column="3" HorizontalAlignment="Left" Width="100" VerticalAlignment="Top"  Margin="0,10,0,0"/>
+                    <ComboBox x:Name="cboOklevelLegjobb" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Left" Width="100" VerticalAlignment="Center"  Margin="0,10,0,0"/>
+                    <ComboBox x:Name="cboOklevelVeAzonosito" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Left" Width="100" VerticalAlignment="Center"  Margin="0,10,0,0" SelectionChanged="CboOklevelVeAzonosito_OnSelectionChanged"/>
+                    <TextBox x:Name="txtOklevelVeMegnevezes" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Width="100" IsEnabled="False" />
+                    <ComboBox x:Name="cboOklevelVsAzonosito" Grid.Row="5" Grid.Column="3" HorizontalAlignment="Left" Width="100" VerticalAlignment="Center"  Margin="0,10,0,0" SelectionChanged="CboOklevelVsAzonosito_OnSelectionChanged"/>
+                    <TextBox x:Name="txtOklevelVsMegnevezes" Grid.Row="6" Grid.Column="3" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Width="100" IsEnabled="False" />
                     <Button x:Name="btnOklevelNyomtatas" Content="Nyomtatás" Grid.Row="8" Grid.Column="5" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="96" Height="32" Margin="0,0,0,16" Click="btnOklevelNyomtatas_Click"/>
                     <Button x:Name="btnSablonTorles" Content="Törlés" Grid.Row="9" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="96" Height="32" Margin="18,0,17,16" Click="btnSablonTorles_Click"/>
                     <Button x:Name="btnOSablonHozzaadas" Content="Hozzáadás" Grid.Row="9" Grid.Column="6" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="96" Height="32" Margin="0,0,0,16" Click="btnOSablonHozzaadas_Click"/>

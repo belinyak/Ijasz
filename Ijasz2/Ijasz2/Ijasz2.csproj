@@ -119,6 +119,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Megjelenites\Startlista\Startlista_Nyomtatas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Megjelenites\Versenysorozat\Versenysorozat_Hozzaadas_Modositas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -175,6 +179,9 @@
     </Compile>
     <Compile Include="Megjelenites\Oklevel\Sablon_Hozzaadas.xaml.cs">
       <DependentUpon>Sablon_Hozzaadas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Megjelenites\Startlista\Startlista_Nyomtatas.xaml.cs">
+      <DependentUpon>Startlista_Nyomtatas.xaml</DependentUpon>
     </Compile>
     <Compile Include="Megjelenites\Versenysorozat\Versenysorozat_Hozzaadas_Modositas.xaml.cs">
       <DependentUpon>Versenysorozat_Hozzaadas_Modositas.xaml</DependentUpon>
@@ -233,9 +240,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Megjelenites\Startlista\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
