@@ -9,6 +9,7 @@ using Ijasz2.Model.Eredmeny;
 using Ijasz2.Model.Ijtipus;
 using Ijasz2.Model.Indulo;
 using Ijasz2.Model.Korosztaly;
+using Ijasz2.Model.Oklevel;
 using Ijasz2.Model.Verseny;
 using Ijasz2.Model.Versenysorozat;
 
@@ -22,6 +23,7 @@ namespace Ijasz2.Model.Data {
         public static Model.Indulo.Indulok Indulok;
         //public static Model.Eredmeny.Eredmenyek Eredmenyek;
         public static Model.Eredmeny.VersenyEredmenyek Eredmenyek;
+        public static Model.Oklevel.Sablonok Sablonok;
 
         /// <summary>
         /// korosztályt versennyel együtt töltjük be !!!
@@ -35,6 +37,7 @@ namespace Ijasz2.Model.Data {
             Egyesuletek = new Egyesuletek( );
             Indulok = new Indulok();
             //Eredmenyek = new Eredmenyek();
+            Sablonok = new Sablonok();
 
             Versenyek.Load( );
             Versenysorozatok.Load( );
@@ -43,6 +46,7 @@ namespace Ijasz2.Model.Data {
             Egyesuletek.Load( );
             Indulok.Load();
             //Eredmenyek.Load();
+            Sablonok.Load();
         }
     }
 }

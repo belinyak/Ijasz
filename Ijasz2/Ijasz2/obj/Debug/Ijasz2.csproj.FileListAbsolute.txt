@@ -33,8 +33,6 @@ C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megje
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Indulo\Indulo_Beiras.baml
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Indulo\Indulo_Csapatok.g.cs
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Indulo\Indulo_Csapatok.baml
-C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Oklevel\Sablon_Hozzaadas.g.cs
-C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Oklevel\Sablon_Hozzaadas.baml
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Versenysorozat\Versenysorozat_Torles.g.cs
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Versenysorozat\Versenysorozat_Torles.baml
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Versenysorozat\Versenysorozat_Hozzaadas_Modositas.g.cs
@@ -89,3 +87,7 @@ C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megje
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Eredmeny\Eredmeny_Hozzaadas_Modositas.baml
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Startlista\Startlista_Nyomtatas.g.cs
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Startlista\Startlista_Nyomtatas.baml
+C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Oklevel\Sablon_Hozzaadas_Modositas.g.cs
+C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Oklevel\Sablon_Hozzaadas_Modositas.baml
+C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Oklevel\Sablon_Torles.g.cs
+C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Megjelenites\Oklevel\Sablon_Torles.baml

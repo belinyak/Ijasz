@@ -13,6 +13,7 @@ using Ijasz2.Model.Eredmeny;
 using Ijasz2.Model.Ijtipus;
 using Ijasz2.Model.Indulo;
 using Ijasz2.Model.Korosztaly;
+using Ijasz2.Model.Oklevel;
 using Ijasz2.Model.Verseny;
 using Ijasz2.Model.Versenysorozat;
 
@@ -209,11 +210,12 @@ namespace Ijasz2 {
         }
         #endregion
 
+        #region Eredmenyek
         private void cboEredmenyVerseny_SelectionChanged( object sender, SelectionChangedEventArgs e ) {
             EredmenyGrid.ItemsSource = null;
 
             var comboBox = sender as ComboBox;
-            if (comboBox != null) {
+            if( comboBox != null ) {
                 var verseny = comboBox.SelectedItem as Verseny;
 
                 if( verseny != null ) {
@@ -226,7 +228,6 @@ namespace Ijasz2 {
                 }
             }
         }
-
 
         private void btnEredmenyLezaras_Click( object sender, RoutedEventArgs e ) {
 
@@ -245,21 +246,29 @@ namespace Ijasz2 {
         private void btnEredmenyTorles_Click( object sender, RoutedEventArgs e ) {
 
         }
+        #endregion
 
+        #region Startlista
         private void btnstartListaNyomtat_Click( object sender, RoutedEventArgs e ) {
-            (new Megjelenites.Startlista.Startlista_Nyomtatas()).ShowDialog();
+            ( new Megjelenites.Startlista.Startlista_Nyomtatas( ) ).ShowDialog( );
         }
+        #endregion
 
+        #region EredmenyLapok
         private void btneredmenylapNyomtat_Click( object sender, RoutedEventArgs e ) {
 
         }
+        #endregion
 
+        #region Oklevel
         private void btnOklevelNyomtat_Click( object sender, RoutedEventArgs e ) {
 
         }
 
         private void btnSablonTorles_Click( object sender, RoutedEventArgs e ) {
+            var sablon = SablonGrid.SelectedItem as Sablon;
 
+            ( new Megjelenites.Oklevel.Sablon_Torles( sablon.Azonosito ) ).ShowDialog( );
         }
 
         private void btnSablonHozzaadas_Click( object sender, RoutedEventArgs e ) {
@@ -271,12 +280,25 @@ namespace Ijasz2 {
         }
 
         private void btnOSablonHozzaadas_Click( object sender, RoutedEventArgs e ) {
-            ( new Megjelenites.Oklevel.Sablon_Hozzaadas( ) ).ShowDialog( );
+            ( new Megjelenites.Oklevel.Sablon_Hozzaadas_Modositas( ) ).ShowDialog( );
         }
 
         private void btnOklevelNyomtatas_Click( object sender, RoutedEventArgs e ) {
 
         }
+
+        private void Sablon_Modositas( object sender, MouseButtonEventArgs e ) {
+            var azonosito = ((sender as DataGridRow).DataContext as Model.Oklevel.Sablon).Azonosito;
+
+            foreach( var sablon in Model.Data.Data.Sablonok._sablonok ) {
+                if( sablon.Azonosito.Equals( azonosito ) ) {
+                    ( new Megjelenites.Oklevel.Sablon_Hozzaadas_Modositas( sablon ) ).ShowDialog( );
+                    return;
+                }
+            }
+        }
+        #endregion
+
         #endregion
 
         private void MainWindow_OnLoaded( object sender, RoutedEventArgs e ) {
@@ -307,6 +329,8 @@ namespace Ijasz2 {
             EgyesuletGrid.ItemsSource = Model.Data.Data.Egyesuletek._egyesuletek;
             InduloGrid.ItemsSource = Model.Data.Data.Indulok._indulok;
             //EredmenyGrid.ItemsSource = Model.Data.Data.Eredmenyek._eredmenyek;
+            SablonGrid.ItemsSource = Model.Data.Data.Sablonok._sablonok;
+
 
             cboVerseny.ItemsSource = Model.Data.Data.Versenyek._versenyek;
             cboEredmenyVerseny.ItemsSource = Model.Data.Data.Versenyek._versenyek;
@@ -318,29 +342,29 @@ namespace Ijasz2 {
             cboOklevelVeAzonosito.ItemsSource = Model.Data.Data.Versenyek._versenyek;
             cboOklevelVsAzonosito.ItemsSource = Model.Data.Data.Versenysorozatok._versenysorozatok;
 
-            cboOklevelLegjobb.ItemsSource = new ObservableCollection<int> {1, 2, 3, 4, 5};
+            cboOklevelLegjobb.ItemsSource = new ObservableCollection<int> { 1, 2, 3, 4, 5 };
 
         }
 
-
-        private void CbstartListaVersenyAzonosito_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
-            txtstartListaVersenyMegnevezes.Text = (((sender as ComboBox).SelectedItem) as Verseny).Megnevezes;
+        private void CbstartListaVersenyAzonosito_OnSelectionChanged( object sender, SelectionChangedEventArgs e ) {
+            txtstartListaVersenyMegnevezes.Text = ( ( ( sender as ComboBox ).SelectedItem ) as Verseny ).Megnevezes;
         }
 
-        private void CberedmenylapVersenyAzonosito_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
+        private void CberedmenylapVersenyAzonosito_OnSelectionChanged( object sender, SelectionChangedEventArgs e ) {
             txteredmenylapVersenyMegnevezes.Text = ( ( ( sender as ComboBox ).SelectedItem ) as Verseny ).Megnevezes;
         }
 
-        private void CberedmenylapVersenysorozatAzonosito_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
+        private void CberedmenylapVersenysorozatAzonosito_OnSelectionChanged( object sender, SelectionChangedEventArgs e ) {
             txteredmenylapVersenysorozatMegnevezes.Text = ( ( ( sender as ComboBox ).SelectedItem ) as Versenysorozat ).Megnevezes;
         }
 
-        private void CboOklevelVeAzonosito_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
+        private void CboOklevelVeAzonosito_OnSelectionChanged( object sender, SelectionChangedEventArgs e ) {
             txtOklevelVeMegnevezes.Text = ( ( ( sender as ComboBox ).SelectedItem ) as Verseny ).Megnevezes;
         }
 
-        private void CboOklevelVsAzonosito_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
+        private void CboOklevelVsAzonosito_OnSelectionChanged( object sender, SelectionChangedEventArgs e ) {
             txtOklevelVsMegnevezes.Text = ( ( ( sender as ComboBox ).SelectedItem ) as Versenysorozat ).Megnevezes;
         }
+
     }
 }

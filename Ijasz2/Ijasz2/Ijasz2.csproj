@@ -115,7 +115,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Megjelenites\Oklevel\Sablon_Hozzaadas.xaml">
+    <Page Include="Megjelenites\Oklevel\Sablon_Hozzaadas_Modositas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Megjelenites\Oklevel\Sablon_Torles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -177,8 +181,11 @@
     <Compile Include="Megjelenites\Korosztaly\Korosztaly_Torles.xaml.cs">
       <DependentUpon>Korosztaly_Torles.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Megjelenites\Oklevel\Sablon_Hozzaadas.xaml.cs">
-      <DependentUpon>Sablon_Hozzaadas.xaml</DependentUpon>
+    <Compile Include="Megjelenites\Oklevel\Sablon_Hozzaadas_Modositas.xaml.cs">
+      <DependentUpon>Sablon_Hozzaadas_Modositas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Megjelenites\Oklevel\Sablon_Torles.xaml.cs">
+      <DependentUpon>Sablon_Torles.xaml</DependentUpon>
     </Compile>
     <Compile Include="Megjelenites\Startlista\Startlista_Nyomtatas.xaml.cs">
       <DependentUpon>Startlista_Nyomtatas.xaml</DependentUpon>
@@ -209,6 +216,9 @@
     <Compile Include="Model\Korosztaly\Korosztaly.cs" />
     <Compile Include="Model\Korosztaly\VersenyKorosztaly.cs" />
     <Compile Include="Model\Korosztaly\VersenyKorosztalyok.cs" />
+    <Compile Include="Model\Oklevel\Sablon.cs" />
+    <Compile Include="Model\Oklevel\SablonMezo.cs" />
+    <Compile Include="Model\Oklevel\Sablonok.cs" />
     <Compile Include="Model\Versenysorozat\Versenysorozat.cs" />
     <Compile Include="Model\Versenysorozat\Versenysorozatok.cs" />
     <Compile Include="Model\Verseny\Verseny.cs" />
