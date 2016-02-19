@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using Ijasz2.Adatbazis;
 using Ijasz2.Model;
 using Ijasz2.Model.Data;
 using Ijasz2.Model.Eredmeny;
@@ -63,7 +64,6 @@ namespace Ijasz2 {
         private void Verseny_Modositas( object sender, MouseButtonEventArgs e ) {
             Verseny verseny = VersenyGrid.SelectedItem as Verseny;
             ( new Megjelenites.Verseny.Verseny_Hozzaadas_Modositas( verseny ) ).ShowDialog( );
-
         }
 
         private void BtnVersenyTorles_OnClick( object sender, RoutedEventArgs e ) {
@@ -230,6 +230,7 @@ namespace Ijasz2 {
         }
 
         private void btnEredmenyLezaras_Click( object sender, RoutedEventArgs e ) {
+            throw new NotImplementedException( );
 
         }
 
@@ -244,6 +245,7 @@ namespace Ijasz2 {
         }
 
         private void btnEredmenyTorles_Click( object sender, RoutedEventArgs e ) {
+            throw new NotImplementedException( );
 
         }
         #endregion
@@ -256,12 +258,14 @@ namespace Ijasz2 {
 
         #region EredmenyLapok
         private void btneredmenylapNyomtat_Click( object sender, RoutedEventArgs e ) {
+            throw new NotImplementedException( );
 
         }
         #endregion
 
         #region Oklevel
         private void btnOklevelNyomtat_Click( object sender, RoutedEventArgs e ) {
+            throw new NotImplementedException( );
 
         }
 
@@ -272,10 +276,12 @@ namespace Ijasz2 {
         }
 
         private void btnSablonHozzaadas_Click( object sender, RoutedEventArgs e ) {
+            throw new NotImplementedException( );
 
         }
 
         private void btnSablonTorles_Click_1( object sender, RoutedEventArgs e ) {
+            throw new NotImplementedException( );
 
         }
 
@@ -284,6 +290,7 @@ namespace Ijasz2 {
         }
 
         private void btnOklevelNyomtatas_Click( object sender, RoutedEventArgs e ) {
+            throw new NotImplementedException( );
 
         }
 
@@ -302,6 +309,9 @@ namespace Ijasz2 {
         #endregion
 
         private void MainWindow_OnLoaded( object sender, RoutedEventArgs e ) {
+            Adatbazis.Database database = new Database();
+
+
             var worker = new BackgroundWorker();
             worker.RunWorkerCompleted += WorkerOnRunWorkerCompleted;
             worker.DoWork += WorkerOnDoWork;
@@ -346,6 +356,7 @@ namespace Ijasz2 {
 
         }
 
+        #region ComboBox EventHandlers
         private void CbstartListaVersenyAzonosito_OnSelectionChanged( object sender, SelectionChangedEventArgs e ) {
             txtstartListaVersenyMegnevezes.Text = ( ( ( sender as ComboBox ).SelectedItem ) as Verseny ).Megnevezes;
         }
@@ -365,6 +376,6 @@ namespace Ijasz2 {
         private void CboOklevelVsAzonosito_OnSelectionChanged( object sender, SelectionChangedEventArgs e ) {
             txtOklevelVsMegnevezes.Text = ( ( ( sender as ComboBox ).SelectedItem ) as Versenysorozat ).Megnevezes;
         }
-
+        #endregion
     }
 }

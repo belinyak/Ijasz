@@ -18,7 +18,6 @@ C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Ijasz
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Ijasz2.pdb
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\bin\Debug\Ijasz2.exe
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\bin\Debug\Ijasz2.pdb
-C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Ijasz2.csprojResolveAssemblyReference.cache
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\MainWindow.g.cs
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\App.g.cs
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\Debug\Ijasz2_MarkupCompile.cache
