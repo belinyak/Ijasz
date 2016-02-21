@@ -54,6 +54,7 @@ namespace Ijasz2.Megjelenites.Indulo {
             dtSzuletes.Text = indulo.SzuletesiDatum;
             txtEngedely.Text = indulo.Engedely;
             cbEgyesulet.ItemsSource = Model.Data.Data.Egyesuletek._egyesuletek;
+            cbEgyesulet.Text = indulo.Egyesulet;
             txtEredmenyek.IsEnabled = false;
         }
 

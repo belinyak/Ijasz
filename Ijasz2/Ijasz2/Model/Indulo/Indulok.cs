@@ -11,6 +11,7 @@ namespace Ijasz2.Model.Indulo {
 
         public void Add( Indulo indulo ) {
             _indulok.Add( indulo );
+            Adatbazis.Indulo.Indulo.Add(indulo);
         }
 
         /// <summary>
@@ -21,6 +22,7 @@ namespace Ijasz2.Model.Indulo {
             for( int i = 0; i < _indulok.Count; i++ ) {
                 if(  _indulok[i].Eredmenyek.Equals(0) ) {
                     _indulok.Remove( _indulok.Single( s => s.Nev.Equals( indulo.Nev ) ) );
+                    Adatbazis.Indulo.Indulo.Remove(indulo.Nev);
                     return;
                 }
             }
@@ -38,45 +40,13 @@ namespace Ijasz2.Model.Indulo {
                     _indulok[i].Engedely = indulo.Engedely;
                     _indulok[i].Egyesulet = indulo.Egyesulet;
                     _indulok[i].Eredmenyek = indulo.Eredmenyek;
+                    Adatbazis.Indulo.Indulo.Update(indulo);
                 }
             }
         }
 
         public void Load( ) {
-            _indulok = new ObservableCollection<Indulo> {
-                new Indulo {
-                    Nev = "nev1",
-                    Nem = "F",
-                    Egyesulet = "egy1",
-                    Engedely = "",
-                    SzuletesiDatum = "1994.04.20",
-                    Eredmenyek = 0
-                },
-                new Indulo {
-                    Nev = "nev2",
-                    Nem = "N",
-                    Egyesulet = "egy1",
-                    Engedely = "",
-                    SzuletesiDatum = "1993.04.20",
-                    Eredmenyek = 0
-                },
-                new Indulo {
-                    Nev = "nev3",
-                    Nem = "F",
-                    Egyesulet = "egy1",
-                    Engedely = "",
-                    SzuletesiDatum = "1992.04.20",
-                    Eredmenyek = 0
-                },
-                new Indulo {
-                    Nev = "nev4",
-                    Nem = "N",
-                    Egyesulet = "egy1",
-                    Engedely = "",
-                    SzuletesiDatum = "1991.04.20",
-                    Eredmenyek = 0
-                }
-            };
+            _indulok =  Adatbazis.Indulo.Indulo.Load();
         }
     }
 }

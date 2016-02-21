@@ -87,6 +87,7 @@
     <Compile Include="Adatbazis\Database.cs" />
     <Compile Include="Adatbazis\Egyesulet\Egyesulet.cs" />
     <Compile Include="Adatbazis\Ijtipus\Ijtipus.cs" />
+    <Compile Include="Adatbazis\Indulo\Indulo.cs" />
     <Compile Include="Adatbazis\Korosztaly\Korosztaly.cs" />
     <Compile Include="Adatbazis\Versenysorozat\Versenysorozat.cs" />
     <Compile Include="Adatbazis\Verseny\Verseny.cs" />

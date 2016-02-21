@@ -30,7 +30,10 @@ namespace Ijasz2.Model.Indulo {
         }
         public string Nem {
             get { return _nem; }
-            set { _nem = value; }
+            set {
+                _nem = value; 
+                OnPropertyChanged( "Nem" );
+            }
         }
         public string SzuletesiDatum {
             get { return _szuletesidatum; }
