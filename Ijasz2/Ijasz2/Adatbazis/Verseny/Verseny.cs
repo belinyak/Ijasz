@@ -99,7 +99,7 @@ namespace Ijasz2.Adatbazis.Verseny {
         public static void Remove( string azonosito ) {
             Adatbazis.Database.Connection.Open( );
             SQLiteCommand command = Adatbazis.Database.Connection.CreateCommand();
-            command.CommandText = "DELETE FROM Verseny WHERE VEAZON=@VEAZON";
+            command.CommandText = "DELETE FROM Verseny WHERE VEAZON=@VEAZON;";
             command.Parameters.AddWithValue( "@VEAZON", azonosito );
             command.ExecuteNonQuery( );
 
@@ -107,6 +107,40 @@ namespace Ijasz2.Adatbazis.Verseny {
             Adatbazis.Database.Connection.Close( );
         }
 
+        /// <summary>
+        /// todo
+        /// </summary>
+        /// <param name="azonosito"></param>
+        /// <returns></returns>
+        public bool Verseny_IndulokNoveles( string azonosito ) {
+            Adatbazis.Database.Connection.Open( );
 
+            SQLiteCommand command = Adatbazis.Database.Connection.CreateCommand( );
+            command.CommandText = "UPDATE Verseny SET VEINSZ = VEINSZ + 1 WHERE VEAZON=@VEAZON;";
+            command.Parameters.AddWithValue( "@VEAZON", azonosito );
+            command.ExecuteNonQuery( );
+
+            command.Dispose( );
+            Adatbazis.Database.Connection.Close( );
+            return true;
+        }
+
+        /// <summary>
+        /// todo
+        /// </summary>
+        /// <param name="azonosito"></param>
+        /// <returns></returns>
+        public bool Verseny_IndulokCsokkentes( string azonosito ) {
+            Adatbazis.Database.Connection.Open( );
+
+            SQLiteCommand command = Adatbazis.Database.Connection.CreateCommand( );
+            command.CommandText = "UPDATE Verseny SET VEINSZ = VEINSZ - 1 WHERE VEAZON=@VEAZON;";
+            command.Parameters.AddWithValue( "@VEAZON", azonosito );
+            command.ExecuteNonQuery( );
+
+            command.Dispose( );
+            Adatbazis.Database.Connection.Close( );
+            return true;
+        }
     }
 }
