@@ -18,6 +18,7 @@ namespace Ijasz2.Model.Verseny {
         /// <param name="verseny"></param>
         public void Add( Verseny verseny ) {
             _versenyek.Add( verseny );
+            Adatbazis.Verseny.Verseny.Add(verseny);
 
             VersenyEredmeny versenyEredmeny = new VersenyEredmeny(verseny.Azonosito);
             if (Data.Data.Eredmenyek == null) {
@@ -47,6 +48,7 @@ namespace Ijasz2.Model.Verseny {
         /// <param name="azonosito"></param>
         public void Remove( string azonosito ) {
             _versenyek.Remove( _versenyek.Single( s => s.Azonosito.Equals( azonosito ) ) );
+            Adatbazis.Verseny.Verseny.Remove(azonosito);
 
             foreach( var versenyKorosztaly in Data.Data.Korosztalyok._versenyKorosztalyok ) {
                 if( versenyKorosztaly.VersenyAzonosito.Equals( azonosito ) ) {
@@ -69,6 +71,7 @@ namespace Ijasz2.Model.Verseny {
                     _versenyek[i].Osszes = ujVerseny.Osszes;
                     _versenyek[i].Allomasok = ujVerseny.Allomasok;
                     _versenyek[i].DuplaBeirolap = ujVerseny.DuplaBeirolap;
+                    Adatbazis.Verseny.Verseny.Update(ujVerseny);
                     return;
                 }
             }
@@ -78,12 +81,14 @@ namespace Ijasz2.Model.Verseny {
         /// adatok db-ből
         /// </summary>
         public void Load( ) {
-            _versenyek = new ObservableCollection<Verseny>( );
+            _versenyek = Adatbazis.Verseny.Verseny.Load();
 
-            Data.Data.Versenyek.Add( new Verseny { Azonosito = "ve1", Megnevezes = "verseny1" } );
-            Data.Data.Versenyek.Add( new Verseny { Azonosito = "ve2", Megnevezes = "verseny2" } );
-            Data.Data.Versenyek.Add( new Verseny { Azonosito = "ve3", Megnevezes = "verseny3" } );
-            Data.Data.Versenyek.Add( new Verseny { Azonosito = "ve4", Megnevezes = "verseny4" } );
+            //_versenyek = new ObservableCollection<Verseny>( );
+
+            //Data.Data.Versenyek.Add( new Verseny { Azonosito = "ve1", Megnevezes = "verseny1" } );
+            //Data.Data.Versenyek.Add( new Verseny { Azonosito = "ve2", Megnevezes = "verseny2" } );
+            //Data.Data.Versenyek.Add( new Verseny { Azonosito = "ve3", Megnevezes = "verseny3" } );
+            //Data.Data.Versenyek.Add( new Verseny { Azonosito = "ve4", Megnevezes = "verseny4" } );
         }
     }
 }

@@ -28,6 +28,7 @@ namespace Ijasz2.Megjelenites.Verseny {
         private void InitializeContent( ) {
             Title += " hozzáadás";
             dtDatum.SelectedDate = DateTime.Now;
+            cbVersenysorozat.ItemsSource = Model.Data.Data.Versenysorozatok._versenysorozatok;
         }
         #endregion
 
@@ -49,7 +50,6 @@ namespace Ijasz2.Megjelenites.Verseny {
             try {
                 dtDatum.SelectedDate = DateTime.Parse( _verseny.Datum );
             } catch( Exception ) {
-                // ignored
             }
             cbVersenysorozat.Text = _verseny.Versenysorozat;
             txtLovesek.Text = _verseny.Osszes.ToString( );

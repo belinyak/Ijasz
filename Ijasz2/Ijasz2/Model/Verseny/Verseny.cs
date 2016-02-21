@@ -42,7 +42,7 @@ namespace Ijasz2.Model.Verseny {
             get { return _versenysorozat; }
             set {
                 _versenysorozat = value;
-                OnPropertyChanged( "Versenysorozatc" );
+                OnPropertyChanged( "Versenysorozat" );
             }
         }
         public int Osszes {

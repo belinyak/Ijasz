@@ -9,7 +9,6 @@ using System.Windows;
 using System.Windows.Media.Media3D;
 using Ijasz2.Model.Verseny;
 
-
 namespace Ijasz2.Adatbazis.Versenysorozat {
     public class Versenysorozat{
 
@@ -38,7 +37,7 @@ namespace Ijasz2.Adatbazis.Versenysorozat {
             Adatbazis.Database.Connection.Open( );
             var command = Adatbazis.Database.Connection.CreateCommand();
 
-            command.CommandText = "INSERT INTO Versenysorozat (VSAZON, VSMEGN, VSVESZ) VALUES(@VSAZON, @VSMEGN, @VSVESZ) ;";
+            command.CommandText = "INSERT INTO Versenysorozat (VSAZON, VSMEGN, VSVESZ) VALUES(@VSAZON, @VSMEGN, @VSVESZ);";
             command.Parameters.AddWithValue( "@VSAZON", versenysorozat.Azonosito );
             command.Parameters.AddWithValue( "@VSMEGN", versenysorozat.Megnevezes );
             command.Parameters.AddWithValue( "@VSVESZ", "0" );
