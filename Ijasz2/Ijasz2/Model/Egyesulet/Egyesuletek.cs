@@ -11,6 +11,7 @@ namespace Ijasz2.Model.Egyesulet {
 
         public void Add( Egyesulet egyesulet ) {
             _egyesuletek.Add( egyesulet );
+            Adatbazis.Egyesulet.Egyesulet.Add(egyesulet);
         }
 
         public void Remove( Egyesulet egyesulet ) {
@@ -18,6 +19,7 @@ namespace Ijasz2.Model.Egyesulet {
                 _egyesuletek.Remove(
                         _egyesuletek.Single(
                             s => s.Azonosito.Equals( egyesulet.Azonosito ) ) );
+                Adatbazis.Egyesulet.Egyesulet.Remove(egyesulet.Azonosito);
             }
         }
 
@@ -32,46 +34,13 @@ namespace Ijasz2.Model.Egyesulet {
                     _egyesuletek[i].Email2 = egyesulet.Email2;
                     _egyesuletek[i].Listazando = egyesulet.Listazando;
                     _egyesuletek[i].TagokSzama = egyesulet.TagokSzama;
+                    Adatbazis.Egyesulet.Egyesulet.Update(egyesulet);
                 }
             }
         }
 
         public void Load( ) {
-            _egyesuletek = new ObservableCollection<Egyesulet> {
-                new Egyesulet {
-                    Azonosito = "egy1",
-                    Cim = "cim1",
-                    Vezeto = "vezeto1",
-                    Telefon1 = "telefon1",
-                    Telefon2 = "telefon2",
-                    Email1 = "email1",
-                    Email2 = "email2",
-                    Listazando = true,
-                    TagokSzama = 0
-                },
-                new Egyesulet {
-                    Azonosito = "egy2",
-                    Cim = "cim1",
-                    Vezeto = "vezeto1",
-                    Telefon1 = "telefon1",
-                    Telefon2 = "telefon2",
-                    Email1 = "email1",
-                    Email2 = "email2",
-                    Listazando = true,
-                    TagokSzama = 0
-                },
-                new Egyesulet {
-                    Azonosito = "egy3",
-                    Cim = "cim1",
-                    Vezeto = "vezeto1",
-                    Telefon1 = "telefon1",
-                    Telefon2 = "telefon2",
-                    Email1 = "email1",
-                    Email2 = "email2",
-                    Listazando = true,
-                    TagokSzama = 0
-                }
-            };
+            _egyesuletek = Adatbazis.Egyesulet.Egyesulet.Load();
         }
     }
 }
