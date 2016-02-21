@@ -15,6 +15,7 @@ namespace Ijasz2.Model.Versenysorozat {
         /// <param name="versenysorozat"></param>
         public void Add( Versenysorozat versenysorozat ) {
             _versenysorozatok.Add( versenysorozat );
+            Adatbazis.Versenysorozat.Versenysorozat.Add(versenysorozat);
         }
 
         /// <summary>
@@ -25,16 +26,18 @@ namespace Ijasz2.Model.Versenysorozat {
             _versenysorozatok.Remove(
                     _versenysorozatok.Single(
                         s => s.Azonosito.Equals( azonosito ) ) );
+            Adatbazis.Versenysorozat.Versenysorozat.Remove(azonosito);
         }
 
         /// <summary>
         /// egyesével kell settelni!
         /// </summary>
         /// <param name="ujVersenysorozat"></param>
-        public void Modify( Versenysorozat ujVersenysorozat ) {
+        public void Update( Versenysorozat ujVersenysorozat ) {
             foreach( var versenysorozat in _versenysorozatok ) {
                 if( versenysorozat.Azonosito.Equals( ujVersenysorozat.Azonosito ) ) {
                     versenysorozat.Megnevezes = ujVersenysorozat.Megnevezes;
+                    Adatbazis.Versenysorozat.Versenysorozat.Update(versenysorozat);
                     return;
                 }
             }
@@ -44,11 +47,7 @@ namespace Ijasz2.Model.Versenysorozat {
         /// adatok betoltese db-bol
         /// </summary>
         public void Load( ) {
-            _versenysorozatok = new ObservableCollection<Versenysorozat> {
-                new Versenysorozat { Azonosito = "vs1", Megnevezes = "versenysorozat1", VersenyekSzama = 0},
-                new Versenysorozat { Azonosito = "vs2", Megnevezes = "versenysorozat2", VersenyekSzama = 0},
-                new Versenysorozat { Azonosito = "vs3", Megnevezes = "versenysorozat3", VersenyekSzama = 0}
-            };
+            _versenysorozatok = Adatbazis.Versenysorozat.Versenysorozat.Load( );
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace Ijasz2.Adatbazis {
     public sealed partial class Database {
-        private SQLiteConnection Connection { get; set; }
+        public static SQLiteConnection Connection { get; set; }
 
         public Database( ) {
             Connection = new SQLiteConnection( "Data Source=adat.db; Version=3; New=False; Compress=True;" );

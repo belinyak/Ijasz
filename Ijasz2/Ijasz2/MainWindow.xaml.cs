@@ -311,7 +311,6 @@ namespace Ijasz2 {
         private void MainWindow_OnLoaded( object sender, RoutedEventArgs e ) {
             Adatbazis.Database database = new Database();
 
-
             var worker = new BackgroundWorker();
             worker.RunWorkerCompleted += WorkerOnRunWorkerCompleted;
             worker.DoWork += WorkerOnDoWork;

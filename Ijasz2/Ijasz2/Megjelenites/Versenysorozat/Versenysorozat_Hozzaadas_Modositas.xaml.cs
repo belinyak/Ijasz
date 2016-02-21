@@ -73,7 +73,7 @@ namespace Ijasz2.Megjelenites.Versenysorozat {
             }
             // modositas
             else {
-                Model.Data.Data.Versenysorozatok.Modify( versenysorozat );
+                Model.Data.Data.Versenysorozatok.Update( versenysorozat );
             }
             Close( );
         }
