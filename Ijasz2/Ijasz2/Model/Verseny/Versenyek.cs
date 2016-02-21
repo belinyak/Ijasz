@@ -17,13 +17,13 @@ namespace Ijasz2.Model.Verseny {
         /// <param name="verseny"></param>
         public void Add( Verseny verseny ) {
             _versenyek.Add( verseny );
-            Adatbazis.Verseny.Verseny.Add(verseny);
+            Adatbazis.Verseny.Verseny.Add( verseny );
 
             VersenyEredmeny versenyEredmeny = new VersenyEredmeny(verseny.Azonosito);
-            if (Model.Data.Data.Eredmenyek == null) {
-                Model.Data.Data.Eredmenyek = new VersenyEredmenyek {_versenyEredmenyek = new List<VersenyEredmeny>()};
+            if( Model.Data.Data.Eredmenyek == null ) {
+                Model.Data.Data.Eredmenyek = new VersenyEredmenyek { _versenyEredmenyek = new List<VersenyEredmeny>( ) };
             }
-            Data.Data.Eredmenyek._versenyEredmenyek.Add(versenyEredmeny);
+            Data.Data.Eredmenyek._versenyEredmenyek.Add( versenyEredmeny );
 
 
             VersenyKorosztaly versenyKorosztaly = new VersenyKorosztaly(verseny.Azonosito);
@@ -93,9 +93,12 @@ namespace Ijasz2.Model.Verseny {
             #endregion
 
             if( Data.Data.Korosztalyok == null ) {
-                Data.Data.Korosztalyok = new VersenyKorosztalyok {_versenyKorosztalyok = new List<VersenyKorosztaly>()};
+                Data.Data.Korosztalyok = new VersenyKorosztalyok { _versenyKorosztalyok = new List<VersenyKorosztaly>( ) };
             }
             Data.Data.Korosztalyok._versenyKorosztalyok.Add( versenyKorosztaly );
+            foreach( var korosztaly in versenyKorosztaly.Korosztalyok ) {
+                Adatbazis.Korosztaly.Korosztaly.Add( korosztaly);
+            }
         }
 
         /// <summary>
@@ -104,7 +107,7 @@ namespace Ijasz2.Model.Verseny {
         /// <param name="azonosito"></param>
         public void Remove( string azonosito ) {
             _versenyek.Remove( _versenyek.Single( s => s.Azonosito.Equals( azonosito ) ) );
-            Adatbazis.Verseny.Verseny.Remove(azonosito);
+            Adatbazis.Verseny.Verseny.Remove( azonosito );
 
             foreach( var versenyKorosztaly in Data.Data.Korosztalyok._versenyKorosztalyok ) {
                 if( versenyKorosztaly.VersenyAzonosito.Equals( azonosito ) ) {
@@ -127,7 +130,7 @@ namespace Ijasz2.Model.Verseny {
                     _versenyek[i].Osszes = ujVerseny.Osszes;
                     _versenyek[i].Allomasok = ujVerseny.Allomasok;
                     _versenyek[i].DuplaBeirolap = ujVerseny.DuplaBeirolap;
-                    Adatbazis.Verseny.Verseny.Update(ujVerseny);
+                    Adatbazis.Verseny.Verseny.Update( ujVerseny );
                     return;
                 }
             }
@@ -137,7 +140,7 @@ namespace Ijasz2.Model.Verseny {
         /// adatok db-ből
         /// </summary>
         public void Load( ) {
-            _versenyek = Adatbazis.Verseny.Verseny.Load();
+            _versenyek = Adatbazis.Verseny.Verseny.Load( );
 
             //_versenyek = new ObservableCollection<Verseny>( );
 

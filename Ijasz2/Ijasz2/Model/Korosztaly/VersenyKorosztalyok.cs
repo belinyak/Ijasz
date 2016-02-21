@@ -36,19 +36,8 @@ namespace Ijasz2.Model.Korosztaly {
         }
 
         public void Load( ) {
-            _versenyKorosztalyok = new List<VersenyKorosztaly>();
-
-            VersenyKorosztaly versenyKorosztaly = new VersenyKorosztaly();
-            versenyKorosztaly.VersenyAzonosito = "ve1";
-            versenyKorosztaly.Korosztalyok = new ObservableCollection<Korosztaly>();
-            versenyKorosztaly.Korosztalyok.Add( new Korosztaly {
-                Verseny = "ve1",
-                Azonosito = "k10",
-                AlsoHatar = 10,
-                FelsoHatar = 20,
-            } );
-
-            _versenyKorosztalyok.Add(versenyKorosztaly);
+            _versenyKorosztalyok = Adatbazis.Korosztaly.Korosztaly.Load();
+            
         }
     }
 }

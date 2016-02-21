@@ -48,12 +48,12 @@ namespace Ijasz2.Adatbazis.Verseny {
             command.CommandText = "INSERT INTO Verseny (VEAZON, VEMEGN, VEDATU, VSAZON, VEOSPO, VEALSZ, VEINSZ, VELEZAR, VEDUBE)"
                 + " VALUES(@VEAZON, @VEMEGN, @VEDATU, @VSAZON, @VEOSPO, @VEALSZ, @VEINSZ, @VELEZAR, @VEDUBE);";
 
-            command.CommandText += "INSERT INTO Korosztályok (VEAZON, KOAZON, KOMEGN, KOEKMI, KOEKMA, KONOK, KOFERF, KOINSF, KOINSN,KOEGYB) VALUES" +
-                "( @VEAZON, 'K10', '0-10', 1, 9, 1, 1, 0, 0,0)," +
-                "( @VEAZON, 'K14', '10-14', 10, 13, 1, 1, 0, 0,0)," +
-                "( @VEAZON, 'K18', '14-18', 14, 17, 1, 1, 0, 0,0)," +
-                "( @VEAZON, 'K50', '18-50', 18, 49, 1, 1, 0, 0,0)," +
-                "( @VEAZON, 'K100', '50-100', 50, 99, 1, 1, 0, 0,0);";
+            //command.CommandText += "INSERT INTO Korosztályok (VEAZON, KOAZON, KOMEGN, KOEKMI, KOEKMA, KONOK, KOFERF, KOINSF, KOINSN,KOEGYB) VALUES" +
+            //    "( @VEAZON, 'K10', '0-10', 1, 9, 1, 1, 0, 0,0)," +
+            //    "( @VEAZON, 'K14', '10-14', 10, 13, 1, 1, 0, 0,0)," +
+            //    "( @VEAZON, 'K18', '14-18', 14, 17, 1, 1, 0, 0,0)," +
+            //    "( @VEAZON, 'K50', '18-50', 18, 49, 1, 1, 0, 0,0)," +
+            //    "( @VEAZON, 'K100', '50-100', 50, 99, 1, 1, 0, 0,0);";
 
             command.Parameters.AddWithValue( "@VEAZON", verseny.Azonosito );
             command.Parameters.AddWithValue( "@VEMEGN", verseny.Megnevezes );
@@ -83,8 +83,8 @@ namespace Ijasz2.Adatbazis.Verseny {
             Adatbazis.Database.Connection.Open( );
             SQLiteCommand command = Adatbazis.Database.Connection.CreateCommand();
             command.CommandText = "UPDATE Verseny SET " +
-                "VEAZON=@VEAZON, " +
-                "VEMEGN=@VEMEGN, " +
+                "VEAZON=@VEAZON," +
+                "VEMEGN=@VEMEGN," +
                 "VEDATU=@VEDATU," +
                 "VSAZON=@VSAZON," +
                 "VEOSPO=@VEOSPO," +

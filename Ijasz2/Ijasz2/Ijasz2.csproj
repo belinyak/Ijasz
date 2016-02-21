@@ -85,6 +85,7 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="Adatbazis\Database.cs" />
+    <Compile Include="Adatbazis\Korosztaly\Korosztaly.cs" />
     <Compile Include="Adatbazis\Versenysorozat\Versenysorozat.cs" />
     <Compile Include="Adatbazis\Verseny\Verseny.cs" />
     <Compile Include="App.xaml.cs">

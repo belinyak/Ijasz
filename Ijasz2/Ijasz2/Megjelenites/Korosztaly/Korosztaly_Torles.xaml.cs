@@ -30,6 +30,7 @@ namespace Ijasz2.Megjelenites.Korosztaly {
             foreach( var versenyKorosztaly in Model.Data.Data.Korosztalyok._versenyKorosztalyok ) {
                 if( versenyKorosztaly.VersenyAzonosito.Equals( _korosztaly.Verseny ) ) {
                     versenyKorosztaly.Korosztalyok.Remove( _korosztaly );
+                    Adatbazis.Korosztaly.Korosztaly.Remove(_korosztaly);
                     break;
                 }
             }

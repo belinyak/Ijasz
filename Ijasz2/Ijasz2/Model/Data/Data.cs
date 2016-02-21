@@ -32,7 +32,7 @@ namespace Ijasz2.Model.Data {
         public Data( ) {
             Versenysorozatok = new Versenysorozatok( );
             Versenyek = new Versenyek( );
-            //Korosztalyok = new VersenyKorosztalyok();
+            Korosztalyok = new VersenyKorosztalyok();
             Ijtipusok = new Ijtipusok( );
             Egyesuletek = new Egyesuletek( );
             Indulok = new Indulok();
@@ -41,7 +41,7 @@ namespace Ijasz2.Model.Data {
 
             Versenyek.Load( );
             Versenysorozatok.Load( );
-            //Korosztalyok.Load( );
+            Korosztalyok.Load( );
             Ijtipusok.Load( );
             Egyesuletek.Load( );
             Indulok.Load();

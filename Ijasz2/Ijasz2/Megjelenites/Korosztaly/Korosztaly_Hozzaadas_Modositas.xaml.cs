@@ -100,14 +100,18 @@ namespace Ijasz2.Megjelenites.Korosztaly {
             };
 
             // hozzaadas
+            //TODO ki kell szedni a list<korosztalyt> korosztalyokba és oda rakni a remove/move 
             if( _korosztaly.Azonosito == null ) {
                 foreach( var versenyKorosztaly in Model.Data.Data.Korosztalyok._versenyKorosztalyok ) {
                     if( versenyKorosztaly.VersenyAzonosito.Equals( Korosztaly.Verseny ) ) {
                         versenyKorosztaly.Korosztalyok.Add( Korosztaly );
+                        Adatbazis.Korosztaly.Korosztaly.Add(Korosztaly);
+                        break;
                     }
                 }
             }
             // modositas
+            //TODO ki kell szedni a list<korosztalyt> korosztalyokba és oda rakni a remove/move 
             else {
                 foreach( var versenyKorosztaly in Model.Data.Data.Korosztalyok._versenyKorosztalyok ) {
                     if( versenyKorosztaly.VersenyAzonosito.Equals( Korosztaly.Verseny ) ) {
@@ -121,6 +125,7 @@ namespace Ijasz2.Megjelenites.Korosztaly {
                                 korosztaly.InduloNok = Korosztaly.InduloNok;
                                 korosztaly.InduloFerfiak = Korosztaly.InduloFerfiak;
                                 korosztaly.Egyben = Korosztaly.Egyben;
+                                Adatbazis.Korosztaly.Korosztaly.Update(Korosztaly);
                             }
                         }
                     }
