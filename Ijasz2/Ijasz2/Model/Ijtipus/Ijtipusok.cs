@@ -11,6 +11,7 @@ namespace Ijasz2.Model.Ijtipus {
 
         public void Add(Ijtipus ijtipus) {
             _ijtipusok.Add(ijtipus);
+            Adatbazis.Ijtipus.Ijtipus.Add(ijtipus);
         }
 
         /// <summary>
@@ -22,6 +23,7 @@ namespace Ijasz2.Model.Ijtipus {
                 _ijtipusok.Remove(
                         _ijtipusok.Single(
                             s => s.Azonosito.Equals( ijtipus.Azonosito ) ) );
+                Adatbazis.Ijtipus.Ijtipus.Remove(ijtipus.Azonosito);
             }
         }
 
@@ -35,16 +37,13 @@ namespace Ijasz2.Model.Ijtipus {
                     _ijtipusok[i].Megnevezes = ijtipus.Megnevezes;
                     _ijtipusok[i].Sorszam = ijtipus.Sorszam;
                     _ijtipusok[i].Eredmenyek = ijtipus.Eredmenyek;
+                    Adatbazis.Ijtipus.Ijtipus.Update(ijtipus);
                 }
             }
         }
 
         public void Load() {
-            _ijtipusok = new ObservableCollection<Ijtipus> {
-                new Ijtipus {Azonosito = "it1", Megnevezes = "ijtipus1", Sorszam = 1, Eredmenyek = 0},
-                new Ijtipus {Azonosito = "it2", Megnevezes = "ijtipus2", Sorszam = 2, Eredmenyek = 0},
-                new Ijtipus {Azonosito = "it3", Megnevezes = "ijtipus3", Sorszam = 3, Eredmenyek = 0}
-            };
+            _ijtipusok = Adatbazis.Ijtipus.Ijtipus.Load();
         }
     }
 }
