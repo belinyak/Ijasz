@@ -12,8 +12,7 @@ namespace Ijasz2.Model.Verseny {
         public ObservableCollection<Verseny> _versenyek;
 
         /// <summary>
-        /// TODO itt kellene default korosztalyokat felvenni
-        /// TODO itt kell az eredmenyeket letrehozni
+        /// TODO eredmenyek db mentes
         /// </summary>
         /// <param name="verseny"></param>
         public void Add( Verseny verseny ) {
@@ -21,20 +20,77 @@ namespace Ijasz2.Model.Verseny {
             Adatbazis.Verseny.Verseny.Add(verseny);
 
             VersenyEredmeny versenyEredmeny = new VersenyEredmeny(verseny.Azonosito);
-            if (Data.Data.Eredmenyek == null) {
-                Data.Data.Eredmenyek = new VersenyEredmenyek {_versenyEredmenyek = new List<VersenyEredmeny>()};
+            if (Model.Data.Data.Eredmenyek == null) {
+                Model.Data.Data.Eredmenyek = new VersenyEredmenyek {_versenyEredmenyek = new List<VersenyEredmeny>()};
             }
             Data.Data.Eredmenyek._versenyEredmenyek.Add(versenyEredmeny);
 
 
             VersenyKorosztaly versenyKorosztaly = new VersenyKorosztaly(verseny.Azonosito);
 
+            #region Default Korosztalyok
             versenyKorosztaly.Korosztalyok.Add( new Korosztaly.Korosztaly {
                 Verseny = verseny.Azonosito,
-                Azonosito = "k10" + verseny.Azonosito,
-                AlsoHatar = 9,
-                FelsoHatar = 20
+                Azonosito = "K10",
+                Megnevezes = "0-10",
+                AlsoHatar = 1,
+                FelsoHatar = 9,
+                Nokre = true,
+                Ferfiakra = true,
+                InduloFerfiak = 0,
+                InduloNok = 0,
+                Egyben = false
             } );
+            versenyKorosztaly.Korosztalyok.Add( new Korosztaly.Korosztaly {
+                Verseny = verseny.Azonosito,
+                Azonosito = "K14",
+                Megnevezes = "10-14",
+                AlsoHatar = 10,
+                FelsoHatar = 14,
+                Nokre = true,
+                Ferfiakra = true,
+                InduloFerfiak = 0,
+                InduloNok = 0,
+                Egyben = false
+            } );
+
+            versenyKorosztaly.Korosztalyok.Add( new Korosztaly.Korosztaly {
+                Verseny = verseny.Azonosito,
+                Azonosito = "K18",
+                Megnevezes = "14-18",
+                AlsoHatar = 14,
+                FelsoHatar = 17,
+                Nokre = true,
+                Ferfiakra = true,
+                InduloFerfiak = 0,
+                InduloNok = 0,
+                Egyben = false
+            } );
+            versenyKorosztaly.Korosztalyok.Add( new Korosztaly.Korosztaly {
+                Verseny = verseny.Azonosito,
+                Azonosito = "K50",
+                Megnevezes = "18-50",
+                AlsoHatar = 18,
+                FelsoHatar = 49,
+                Nokre = true,
+                Ferfiakra = true,
+                InduloFerfiak = 0,
+                InduloNok = 0,
+                Egyben = false
+            } );
+            versenyKorosztaly.Korosztalyok.Add( new Korosztaly.Korosztaly {
+                Verseny = verseny.Azonosito,
+                Azonosito = "K100",
+                Megnevezes = "50-100",
+                AlsoHatar = 50,
+                FelsoHatar = 99,
+                Nokre = true,
+                Ferfiakra = true,
+                InduloFerfiak = 0,
+                InduloNok = 0,
+                Egyben = false
+            } );
+            #endregion
 
             if( Data.Data.Korosztalyok == null ) {
                 Data.Data.Korosztalyok = new VersenyKorosztalyok {_versenyKorosztalyok = new List<VersenyKorosztaly>()};
