@@ -17,7 +17,7 @@ namespace Ijasz2.Megjelenites.Ijtipus {
     /// Interaction logic for Ijtipus_Hozzaadas_Modositas.xaml
     /// </summary>
     public partial class Ijtipus_Hozzaadas_Modositas : Window {
-        private Model.Ijtipus.Ijtipus _ijtipus;
+        private readonly Model.Ijtipus.Ijtipus _ijtipus;
 
         #region Hozzaadas
         public Ijtipus_Hozzaadas_Modositas( ) {

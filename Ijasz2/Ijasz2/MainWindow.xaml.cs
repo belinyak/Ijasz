@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Input;
 using Ijasz2.Adatbazis;
-using Ijasz2.Model;
 using Ijasz2.Model.Data;
 using Ijasz2.Model.Eredmeny;
 using Ijasz2.Model.Ijtipus;
@@ -22,7 +18,7 @@ namespace Ijasz2 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window {
+    public partial class MainWindow {
         public static Model.Data.Data Data;
 
         public MainWindow( ) {
@@ -83,7 +79,7 @@ namespace Ijasz2 {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void cboVerseny_SelectionChanged( object sender, System.Windows.Controls.SelectionChangedEventArgs e ) {
-            KorosztalyGrid.ItemsSource = null; ;
+            KorosztalyGrid.ItemsSource = null;
             var verseny = cboVerseny.SelectedItem as Verseny;
 
             if( verseny != null ) {
@@ -109,8 +105,9 @@ namespace Ijasz2 {
                 return;
             }
 
-            var korosztaly = new Korosztaly();
-            korosztaly.Verseny = cboVerseny.Text;
+            var korosztaly = new Korosztaly{
+                Verseny = cboVerseny.Text
+            };
 
             ( new Megjelenites.Korosztaly.Korosztaly_Hozzaadas_Modositas( korosztaly ) ).ShowDialog( );
         }
@@ -215,15 +212,13 @@ namespace Ijasz2 {
             EredmenyGrid.ItemsSource = null;
 
             var comboBox = sender as ComboBox;
-            if( comboBox != null ) {
-                var verseny = comboBox.SelectedItem as Verseny;
+            var verseny = comboBox?.SelectedItem as Verseny;
 
-                if( verseny != null ) {
-                    foreach( var versenyEredmeny in Model.Data.Data.Eredmenyek._versenyEredmenyek ) {
-                        if( versenyEredmeny.VersenyAzonosito.Equals( verseny.Azonosito ) ) {
-                            EredmenyGrid.ItemsSource = versenyEredmeny.Eredmenyek._eredmenyek;
-                            return;
-                        }
+            if( verseny != null ) {
+                foreach( var versenyEredmeny in Model.Data.Data.Eredmenyek._versenyEredmenyek ) {
+                    if( versenyEredmeny.VersenyAzonosito.Equals( verseny.Azonosito ) ) {
+                        EredmenyGrid.ItemsSource = versenyEredmeny.Eredmenyek._eredmenyek;
+                        return;
                     }
                 }
             }
@@ -309,7 +304,7 @@ namespace Ijasz2 {
         #endregion
 
         private void MainWindow_OnLoaded( object sender, RoutedEventArgs e ) {
-            Adatbazis.Database database = new Database();
+            var database = new Database();
 
             var worker = new BackgroundWorker();
             worker.RunWorkerCompleted += WorkerOnRunWorkerCompleted;
@@ -322,7 +317,7 @@ namespace Ijasz2 {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="doWorkEventArgs"></param>
-        private void WorkerOnDoWork( object sender, DoWorkEventArgs doWorkEventArgs ) {
+        private static void WorkerOnDoWork( object sender, DoWorkEventArgs doWorkEventArgs ) {
             Data = new Data( );
         }
 

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Windows;
 
 namespace Ijasz2.Adatbazis {
-    public sealed partial class Database {
+    public sealed class Database {
         public static SQLiteConnection Connection { get; set; }
 
         public Database( ) {

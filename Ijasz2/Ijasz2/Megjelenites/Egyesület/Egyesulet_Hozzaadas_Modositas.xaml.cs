@@ -17,7 +17,7 @@ namespace Ijasz2.Megjelenites.Egyesület {
     /// Interaction logic for Egyesulet_Hozzaadas_Modositas.xaml
     /// </summary>
     public partial class Egyesulet_Hozzaadas_Modositas : Window {
-        private Model.Egyesulet.Egyesulet _egyesulet;
+        private readonly Model.Egyesulet.Egyesulet _egyesulet;
 
         #region Hozzaadas
         public Egyesulet_Hozzaadas_Modositas( ) {

@@ -34,18 +34,18 @@ namespace Ijasz2.Model.Egyesulet {
         /// model update |
         /// adatbazis update |
         /// </summary>
-        /// <param name="egyesulet"></param>
-        public void Update( Egyesulet egyesulet ) {
-            for( int i = 0; i < _egyesuletek.Count; i++ ) {
-                if( _egyesuletek[i].Azonosito.Equals( egyesulet.Azonosito ) ) {
-                    _egyesuletek[i].Cim = egyesulet.Cim;
-                    _egyesuletek[i].Vezeto = egyesulet.Vezeto;
-                    _egyesuletek[i].Telefon1 = egyesulet.Telefon1;
-                    _egyesuletek[i].Telefon2 = egyesulet.Telefon2;
-                    _egyesuletek[i].Email1 = egyesulet.Email1;
-                    _egyesuletek[i].Email2 = egyesulet.Email2;
-                    _egyesuletek[i].Listazando = egyesulet.Listazando;
-                    _egyesuletek[i].TagokSzama = egyesulet.TagokSzama;
+        /// <param name="_egyesulet"></param>
+        public void Update( Egyesulet _egyesulet ) {
+            foreach( Egyesulet egyesulet in _egyesuletek ) {
+                if( egyesulet.Azonosito.Equals( _egyesulet.Azonosito ) ) {
+                    egyesulet.Cim = _egyesulet.Cim;
+                    egyesulet.Vezeto = _egyesulet.Vezeto;
+                    egyesulet.Telefon1 = _egyesulet.Telefon1;
+                    egyesulet.Telefon2 = _egyesulet.Telefon2;
+                    egyesulet.Email1 = _egyesulet.Email1;
+                    egyesulet.Email2 = _egyesulet.Email2;
+                    egyesulet.Listazando = _egyesulet.Listazando;
+                    egyesulet.TagokSzama = _egyesulet.TagokSzama;
                     Adatbazis.Egyesulet.Egyesulet.Update( egyesulet );
                 }
             }

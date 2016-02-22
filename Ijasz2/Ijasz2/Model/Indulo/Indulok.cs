@@ -20,7 +20,7 @@ namespace Ijasz2.Model.Indulo {
         /// model torles |
         /// adatbazis torles |
         /// </summary>
-        /// <param name="_indulo"></param>
+        /// <param name="indulo"></param>
         public void Remove( Indulo indulo ) {
             for( int i = 0; i < _indulok.Count; i++ ) {
                 if( _indulok[i].Eredmenyek.Equals( 0 ) ) {

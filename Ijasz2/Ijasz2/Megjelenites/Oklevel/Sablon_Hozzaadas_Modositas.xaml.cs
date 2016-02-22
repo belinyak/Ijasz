@@ -19,7 +19,7 @@ namespace Ijasz2.Megjelenites.Oklevel {
     /// Interaction logic for Sablon_Hozzaadas_Modositas.xaml
     /// </summary>
     public partial class Sablon_Hozzaadas_Modositas : Window {
-        private Model.Oklevel.Sablon _sablon;
+        private readonly Model.Oklevel.Sablon _sablon;
 
         #region Hozzaadas
         public Sablon_Hozzaadas_Modositas( ) {

@@ -17,7 +17,7 @@ namespace Ijasz2.Megjelenites.Indulo {
     /// Interaction logic for Indulo_Hozzaadas_Modositas.xaml
     /// </summary>
     public partial class Indulo_Hozzaadas_Modositas : Window {
-        private Model.Indulo.Indulo _indulo;
+        private readonly Model.Indulo.Indulo _indulo;
         #region Hozzaadas
         public Indulo_Hozzaadas_Modositas( ) {
             InitializeComponent( );

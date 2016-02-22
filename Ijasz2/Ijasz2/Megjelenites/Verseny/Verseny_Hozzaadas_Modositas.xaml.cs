@@ -17,7 +17,7 @@ namespace Ijasz2.Megjelenites.Verseny {
     /// Interaction logic for Verseny_Hozzaadas_Modositas.xaml
     /// </summary>
     public partial class Verseny_Hozzaadas_Modositas : Window {
-        private Model.Verseny.Verseny _verseny;
+        private readonly Model.Verseny.Verseny _verseny;
 
         #region Hozzaadas
         public Verseny_Hozzaadas_Modositas( ) {

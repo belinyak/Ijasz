@@ -17,7 +17,7 @@ namespace Ijasz2.Megjelenites.Korosztaly {
     /// Interaction logic for Korosztaly_Hozzaadas_Modositas.xaml
     /// </summary>
     public partial class Korosztaly_Hozzaadas_Modositas : Window {
-        private Model.Korosztaly.Korosztaly _korosztaly;
+        private readonly Model.Korosztaly.Korosztaly _korosztaly;
 
         #region Hozzaadas-Modositas
 

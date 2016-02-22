@@ -22,12 +22,11 @@ namespace Ijasz2.Adatbazis.Oklevel {
             "OKKOROX, OKKOROY, OKKOROH, OKKOROF , OKKOROB , OKKOROM , OKKOROI ," +
             "OKNEMEX, OKNEMEY, OKNEMEH, OKNEMEF , OKNEMEB , OKNEMEM , OKNEMEI ," +
             "OKDATUX, OKDATUY, OKDATUH, OKDATUF , OKDATUB , OKDATUM , OKDATUI " +
-            " FROM Oklevelek;"; ;
+            " FROM Oklevelek;";
 
             SQLiteDataReader reader = command.ExecuteReader( );
             while( reader.Read( ) ) {
                 int index = -1;
-                int index2 = -666;
                 value.Add( new Sablon {
                     Azonosito = reader.GetString( ++index ),
                     Tipus = reader.GetString( ++index ),
