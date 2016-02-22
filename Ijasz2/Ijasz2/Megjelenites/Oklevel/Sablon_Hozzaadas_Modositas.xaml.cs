@@ -102,7 +102,10 @@ namespace Ijasz2.Megjelenites.Oklevel {
                 if( txtVersenyMe.Text == "" ) { txtVersenyMe.BorderBrush = new SolidColorBrush( Colors.Red ); valid = false; }
                 try { Convert.ToInt32( txtVersenyMe.Text ); } catch { txtVersenyMe.BorderBrush = new SolidColorBrush( Colors.Red ); valid = false; }
 
-                if( cbVersenyBe.Text == null ) { lblBt.Foreground = new SolidColorBrush( Colors.Red ); valid = false; }
+                if( cbVersenyBe.Text == "" ) {
+                    MessageBox.Show( "Betűtípus kiválasztása kötelező.", "Verseny betűtípus" );
+                    valid = false;
+                }
 
                 if( chVersenyLe.IsChecked == false && chVersenyRi.IsChecked == false && chVersenyMi.IsChecked == false ) {
                     chVersenyLe.BorderBrush = new SolidColorBrush( Colors.Red );
@@ -142,7 +145,10 @@ namespace Ijasz2.Megjelenites.Oklevel {
                 if( txtVersenySorozatMe.Text == "" ) { txtVersenySorozatMe.BorderBrush = new SolidColorBrush( Colors.Red ); valid = false; }
                 try { Convert.ToInt32( txtVersenySorozatMe.Text ); } catch { txtVersenySorozatMe.BorderBrush = new SolidColorBrush( Colors.Red ); valid = false; }
 
-                if( cbVersenySorozatBe.Text == null ) { lblBt.Foreground = new SolidColorBrush( Colors.Red ); valid = false; }
+                if( cbVersenySorozatBe.Text == "" ) {
+                    MessageBox.Show( "Betűtípus kiválasztása kötelező.", "Versenysorozat betűtípus" );
+                    valid = false;
+                }
 
                 if( chVersenySorozatLe.IsChecked == false && chVersenySorozatRi.IsChecked == false && chVersenySorozatMi.IsChecked == false ) {
                     chVersenySorozatLe.BorderBrush = new SolidColorBrush( Colors.Red );
@@ -182,7 +188,10 @@ namespace Ijasz2.Megjelenites.Oklevel {
                 if( txtHelyezesMe.Text == "" ) { txtHelyezesMe.BorderBrush = new SolidColorBrush( Colors.Red ); valid = false; }
                 try { Convert.ToInt32( txtHelyezesMe.Text ); } catch { txtHelyezesMe.BorderBrush = new SolidColorBrush( Colors.Red ); valid = false; }
 
-                if( cbHelyezesBe.Text == null ) { lblBt.Foreground = new SolidColorBrush( Colors.Red ); valid = false; }
+                if( cbHelyezesBe.Text == "" ) {
+                    MessageBox.Show( "Betűtípus kiválasztása kötelező.", "Helyezés betűtípus" );
+                    valid = false;
+                }
 
                 if( chHelyezesLe.IsChecked == false && chHelyezesRi.IsChecked == false && chHelyezesMi.IsChecked == false ) {
                     chHelyezesLe.BorderBrush = new SolidColorBrush( Colors.Red );
@@ -222,7 +231,10 @@ namespace Ijasz2.Megjelenites.Oklevel {
                 if( txtInduloMe.Text == "" ) { txtInduloMe.BorderBrush = new SolidColorBrush( Colors.Red ); valid = false; }
                 try { Convert.ToInt32( txtInduloMe.Text ); } catch { txtInduloMe.BorderBrush = new SolidColorBrush( Colors.Red ); valid = false; }
 
-                if( cbInduloBe.Text == null ) { lblBt.Foreground = new SolidColorBrush( Colors.Red ); valid = false; }
+                if( cbInduloBe.Text == "" ) {
+                    MessageBox.Show( "Betűtípus kiválasztása kötelező.", "Induló betűtípus" );
+                    valid = false;
+                }
 
                 if( chInduloLe.IsChecked == false && chInduloRi.IsChecked == false && chInduloMi.IsChecked == false ) {
                     chInduloLe.BorderBrush = new SolidColorBrush( Colors.Red );
@@ -262,7 +274,10 @@ namespace Ijasz2.Megjelenites.Oklevel {
                 if( txtEgyesuletMe.Text == "" ) { txtEgyesuletMe.BorderBrush = new SolidColorBrush( Colors.Red ); valid = false; }
                 try { Convert.ToInt32( txtEgyesuletMe.Text ); } catch { txtEgyesuletMe.BorderBrush = new SolidColorBrush( Colors.Red ); valid = false; }
 
-                if( cbEgyesuletBe.Text == null ) { lblBt.Foreground = new SolidColorBrush( Colors.Red ); valid = false; }
+                if( cbEgyesuletBe.Text == "" ) {
+                    MessageBox.Show( "Betűtípus kiválasztása kötelező.", "Egyesület betűtípus" );
+                    valid = false;
+                }
 
                 if( chEgyesuletLe.IsChecked == false && chEgyesuletRi.IsChecked == false && chEgyesuletMi.IsChecked == false ) {
                     chEgyesuletLe.BorderBrush = new SolidColorBrush( Colors.Red );
@@ -302,7 +317,10 @@ namespace Ijasz2.Megjelenites.Oklevel {
                 if( txtIjtipusMe.Text == "" ) { txtIjtipusMe.BorderBrush = new SolidColorBrush( Colors.Red ); valid = false; }
                 try { Convert.ToInt32( txtIjtipusMe.Text ); } catch { txtIjtipusMe.BorderBrush = new SolidColorBrush( Colors.Red ); valid = false; }
 
-                if( cbIjtipusBe.Text == null ) { lblBt.Foreground = new SolidColorBrush( Colors.Red ); valid = false; }
+                if( cbIjtipusBe.Text == "" ) {
+                    MessageBox.Show( "Betűtípus kiválasztása kötelező.", "Íjtípus betűtípus" );
+                    valid = false;
+                }
 
                 if( chIjtipusLe.IsChecked == false && chIjtipusRi.IsChecked == false && chIjtipusMi.IsChecked == false ) {
                     chIjtipusLe.BorderBrush = new SolidColorBrush( Colors.Red );
@@ -342,7 +360,10 @@ namespace Ijasz2.Megjelenites.Oklevel {
                 if( txtKorosztalyMe.Text == "" ) { txtKorosztalyMe.BorderBrush = new SolidColorBrush( Colors.Red ); valid = false; }
                 try { Convert.ToInt32( txtKorosztalyMe.Text ); } catch { txtKorosztalyMe.BorderBrush = new SolidColorBrush( Colors.Red ); valid = false; }
 
-                if( cbKorosztalyBe.Text == null ) { lblBt.Foreground = new SolidColorBrush( Colors.Red ); valid = false; }
+                if( cbKorosztalyBe.Text == "" ) {
+                    MessageBox.Show( "Betűtípus kiválasztása kötelező.", "Korosztály betűtípus" );
+                    valid = false;
+                }
 
                 if( chKorosztalyLe.IsChecked == false && chKorosztalyRi.IsChecked == false && chKorosztalyMi.IsChecked == false ) {
                     chKorosztalyLe.BorderBrush = new SolidColorBrush( Colors.Red );
@@ -382,7 +403,10 @@ namespace Ijasz2.Megjelenites.Oklevel {
                 if( txtInduloNemeMe.Text == "" ) { txtInduloNemeMe.BorderBrush = new SolidColorBrush( Colors.Red ); valid = false; }
                 try { Convert.ToInt32( txtInduloNemeMe.Text ); } catch { txtInduloNemeMe.BorderBrush = new SolidColorBrush( Colors.Red ); valid = false; }
 
-                if( cbInduloNemeBe.Text == null ) { lblBt.Foreground = new SolidColorBrush( Colors.Red ); valid = false; }
+                if( cbInduloNemeBe.Text == "" ) {
+                    MessageBox.Show( "Betűtípus kiválasztása kötelező.", "Induló neme betűtípus" );
+                    valid = false;
+                }
 
                 if( chInduloNemeLe.IsChecked == false && chInduloNemeRi.IsChecked == false && chInduloNemeMi.IsChecked == false ) {
                     chInduloNemeLe.BorderBrush = new SolidColorBrush( Colors.Red );
@@ -422,7 +446,10 @@ namespace Ijasz2.Megjelenites.Oklevel {
                 if( txtDatumMe.Text == "" ) { txtDatumMe.BorderBrush = new SolidColorBrush( Colors.Red ); valid = false; }
                 try { Convert.ToInt32( txtDatumMe.Text ); } catch { txtDatumMe.BorderBrush = new SolidColorBrush( Colors.Red ); valid = false; }
 
-                if( cbDatumBe.Text == null ) { lblBt.Foreground = new SolidColorBrush( Colors.Red ); valid = false; }
+                if( cbDatumBe.Text == "" ) {
+                    MessageBox.Show( "Betűtípus kiválasztása kötelező.", "Dátum betűtípus" );
+                    valid = false;
+                }
 
                 if( chDatumLe.IsChecked == false && chDatumRi.IsChecked == false && chDatumMi.IsChecked == false ) {
                     chDatumLe.BorderBrush = new SolidColorBrush( Colors.Red );
@@ -531,14 +558,17 @@ namespace Ijasz2.Megjelenites.Oklevel {
                 })
             };
 
-
+            //TODO ezeket innen ki kéne tenni, nem???
             // modositas
             if( _sablon != null ) {
                 Model.Data.Data.Sablonok.Modify( sablon );
+                Adatbazis.Oklevel.Oklevel.Update( sablon );
+
             }
             //hozzaadas
             else {
-                Model.Data.Data.Sablonok.Add(sablon);
+                Model.Data.Data.Sablonok.Add( sablon );
+                Adatbazis.Oklevel.Oklevel.Add( sablon );
             }
             Close( );
 

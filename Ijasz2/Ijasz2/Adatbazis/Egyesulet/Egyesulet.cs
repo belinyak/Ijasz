@@ -102,7 +102,7 @@ namespace Ijasz2.Adatbazis.Egyesulet {
             Adatbazis.Database.Connection.Open( );
             SQLiteCommand command = Adatbazis.Database.Connection.CreateCommand();
 
-            command.CommandText = "DELETE FROM Egyesuletek WHERE EGAZON=@EGAZON ;";
+            command.CommandText = "DELETE FROM Egyesuletek WHERE EGAZON=@EGAZON;";
 
             command.Parameters.AddWithValue( "@EGAZON", azonosito );
 
