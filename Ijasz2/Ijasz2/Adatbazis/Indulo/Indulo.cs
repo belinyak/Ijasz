@@ -5,7 +5,6 @@ using System.Windows;
 
 namespace Ijasz2.Adatbazis.Indulo {
     public class Indulo {
-
         public static ObservableCollection<Model.Indulo.Indulo> Load( ) {
             var value = new ObservableCollection<Model.Indulo.Indulo>();
 
