@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace Ijasz2.Model.Verseny {
     public class Verseny : INotifyPropertyChanged {
@@ -55,7 +50,7 @@ namespace Ijasz2.Model.Verseny {
         public int Allomasok {
             get { return _allomasok; }
             set {
-                _allomasok = value; 
+                _allomasok = value;
                 OnPropertyChanged( "Allomasok" );
             }
         }
@@ -69,23 +64,21 @@ namespace Ijasz2.Model.Verseny {
         public bool Lezarva {
             get { return _lezarva; }
             set {
-                _lezarva = value; 
+                _lezarva = value;
                 OnPropertyChanged( "Lezarva" );
             }
         }
         public bool DuplaBeirolap {
             get { return _duplabeirolap; }
             set {
-                _duplabeirolap = value; 
+                _duplabeirolap = value;
                 OnPropertyChanged( "DuplaBeirolap" );
             }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged( string propertyName ) {
-            if( PropertyChanged != null ) {
-                PropertyChanged( this, new PropertyChangedEventArgs( propertyName ) );
-            }
+            PropertyChanged?.Invoke( this, new PropertyChangedEventArgs( propertyName ) );
         }
     }
 }

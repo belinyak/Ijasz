@@ -1,21 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 
 namespace Ijasz2.Model.Eredmeny {
     public class Eredmenyek {
         public ObservableCollection<Eredmeny> _eredmenyek;
 
-        public void Add(Eredmeny eredmeny) {
-            _eredmenyek.Add(eredmeny);
+        /// <summary> |
+        /// TODO adatbazis hozzaadas |
+        /// model add |
+        /// </summary>
+        /// <param name="eredmeny"></param>
+        public void Add( Eredmeny eredmeny ) {
+            _eredmenyek.Add( eredmeny );
         }
 
-        public void Modify( Eredmeny eredmeny ) {
-            foreach (var eredmeny1 in _eredmenyek) {
-                if (eredmeny1.Indulo.Equals(eredmeny.Indulo)) {
+        /// <summary> |
+        /// TODO adatbazis modositas |
+        /// model update |
+        /// </summary>
+        /// <param name="eredmeny"></param>
+        public void Update( Eredmeny eredmeny ) {
+            foreach( var eredmeny1 in _eredmenyek ) {
+                if( eredmeny1.Indulo.Equals( eredmeny.Indulo ) ) {
                     eredmeny1.Sorszam = eredmeny.Sorszam;
                     eredmeny1.Ijtipus = eredmeny.Ijtipus;
                     eredmeny1.Csapat = eredmeny.Csapat;

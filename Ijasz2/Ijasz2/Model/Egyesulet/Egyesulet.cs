@@ -1,22 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace Ijasz2.Model.Egyesulet {
-    /*
-        public string Azonosito;
-        public string Cim;
-        public string Vezeto;
-        public string Telefon1;
-        public string Telefon2;
-        public string Email1;
-        public string Email2;
-        public bool Listazando;
-        public int TagokSzama;
-    */
     public class Egyesulet : INotifyPropertyChanged {
         private string _azonosito;
         private string _cim;

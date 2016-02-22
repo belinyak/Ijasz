@@ -26,7 +26,6 @@ namespace Ijasz2.Megjelenites.Oklevel {
 
         private void BtnIgen_OnClick(object sender, RoutedEventArgs e) {
             Model.Data.Data.Sablonok.Remove(_azonosito);
-            Adatbazis.Oklevel.Oklevel.Remove(_azonosito);
             Close();
         }
 

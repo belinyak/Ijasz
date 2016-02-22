@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace Ijasz2.Model.Ijtipus {
     public class Ijtipus : INotifyPropertyChanged {
-
         private string _azonosito;
         private string _megnevezes;
         private int _sorszam;

@@ -561,14 +561,11 @@ namespace Ijasz2.Megjelenites.Oklevel {
             //TODO ezeket innen ki kéne tenni, nem???
             // modositas
             if( _sablon != null ) {
-                Model.Data.Data.Sablonok.Modify( sablon );
-                Adatbazis.Oklevel.Oklevel.Update( sablon );
-
+                Model.Data.Data.Sablonok.Update( sablon );
             }
             //hozzaadas
             else {
                 Model.Data.Data.Sablonok.Add( sablon );
-                Adatbazis.Oklevel.Oklevel.Add( sablon );
             }
             Close( );
 

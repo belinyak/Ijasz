@@ -112,7 +112,7 @@ namespace Ijasz2.Megjelenites.Verseny {
             }
             // modositas
             else {
-                Model.Data.Data.Versenyek.Modify( Verseny );
+                Model.Data.Data.Versenyek.Update( Verseny );
             }
             Close();
         }

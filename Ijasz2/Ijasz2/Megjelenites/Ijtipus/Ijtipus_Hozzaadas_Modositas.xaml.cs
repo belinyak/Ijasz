@@ -84,7 +84,7 @@ namespace Ijasz2.Megjelenites.Ijtipus {
             // modositas
             else {
                 Ijtipus.Eredmenyek = _ijtipus.Eredmenyek;
-                Model.Data.Data.Ijtipusok.Modify(Ijtipus);
+                Model.Data.Data.Ijtipusok.Update(Ijtipus);
             }
             Close();
         }

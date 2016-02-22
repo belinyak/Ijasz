@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace Ijasz2.Model.Oklevel {
+
     /// <summary>
-    /// TODO elég ennyi notify ???
+    /// mivel csak az azonosito, tipus van kirakva, igy csak arra kell notify
     /// </summary>
     public class Sablon : INotifyPropertyChanged {
         private string _azonosito;

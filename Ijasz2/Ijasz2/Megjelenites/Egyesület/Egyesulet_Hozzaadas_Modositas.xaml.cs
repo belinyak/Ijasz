@@ -86,7 +86,7 @@ namespace Ijasz2.Megjelenites.Egyesület {
             // modositas
             else {
                 Egyesulet.TagokSzama = _egyesulet.TagokSzama;
-                Model.Data.Data.Egyesuletek.Modify( Egyesulet );
+                Model.Data.Data.Egyesuletek.Update( Egyesulet );
             }
             Close( );
         }

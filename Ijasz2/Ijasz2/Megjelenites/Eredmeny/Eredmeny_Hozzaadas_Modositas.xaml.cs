@@ -41,5 +41,9 @@ namespace Ijasz2.Megjelenites.Eredmeny {
             txtOsszes.Text = eredmeny.OsszPont.ToString();
             txtEredmeny.Text = eredmeny.Szazalek.ToString();
         }
+
+        private void btnRendben_Click( object sender, RoutedEventArgs e ) {
+
+        }
     }
 }

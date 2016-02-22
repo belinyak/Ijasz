@@ -103,7 +103,7 @@ namespace Ijasz2.Megjelenites.Indulo {
 
             // modositas
             if( _indulo != null ) {
-                Model.Data.Data.Indulok.Modify( Indulo );
+                Model.Data.Data.Indulok.Update( Indulo );
             }
             //hozzaadas
             else {

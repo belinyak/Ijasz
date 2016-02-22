@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Ijasz2.Model.Eredmeny;
 using Ijasz2.Model.Korosztaly;
 
@@ -11,8 +8,13 @@ namespace Ijasz2.Model.Verseny {
     public class Versenyek {
         public ObservableCollection<Verseny> _versenyek;
 
-        /// <summary>
-        /// TODO eredmenyek db mentes
+        /// <summary> |
+        /// model hozzaadas |
+        /// adatbazishoz hozzaadas |
+        /// versenyeredmenyek model hozzaadas |
+        /// TODO versenyeredmenyek adatbazis hozzaadas |
+        /// default korosztalyok model hozzaadas |
+        /// default korosztalyok adatbazis hozzaadas |
         /// </summary>
         /// <param name="verseny"></param>
         public void Add( Verseny verseny ) {
@@ -95,14 +97,17 @@ namespace Ijasz2.Model.Verseny {
             if( Data.Data.Korosztalyok == null ) {
                 Data.Data.Korosztalyok = new VersenyKorosztalyok { _versenyKorosztalyok = new List<VersenyKorosztaly>( ) };
             }
-            Data.Data.Korosztalyok._versenyKorosztalyok.Add( versenyKorosztaly );
+            Data.Data.Korosztalyok.Add( versenyKorosztaly );
             foreach( var korosztaly in versenyKorosztaly.Korosztalyok ) {
-                Adatbazis.Korosztaly.Korosztaly.Add( korosztaly);
+                Adatbazis.Korosztaly.Korosztaly.Add( korosztaly );
             }
         }
 
-        /// <summary>
-        /// torleskor a versenyhez tartozo korosztalyokat is torolni kell
+        /// <summary> |
+        /// model torles |
+        /// model adatbazis torles |
+        /// versenyhez tartozo korosztalyok model torlese |
+        /// TODO versenyhez tartozo korosztalyok adatbazis torlese |
         /// </summary>
         /// <param name="azonosito"></param>
         public void Remove( string azonosito ) {
@@ -111,17 +116,19 @@ namespace Ijasz2.Model.Verseny {
 
             foreach( var versenyKorosztaly in Data.Data.Korosztalyok._versenyKorosztalyok ) {
                 if( versenyKorosztaly.VersenyAzonosito.Equals( azonosito ) ) {
-                    Data.Data.Korosztalyok._versenyKorosztalyok.Remove( versenyKorosztaly );
+                    Data.Data.Korosztalyok.Remove( versenyKorosztaly );
                     return;
                 }
             }
         }
 
-        /// <summary>
-        /// Egyesével kell módosítani a mezőket, hogy a nem szettelt mezők, pl:indulokszama ne 0-zódjon ki
+        /// <summary> |
+        /// indulok szamat nem set-teli |
+        /// model update |
+        /// adatbazis update |
         /// </summary>
         /// <param name="ujVerseny"></param>
-        public void Modify( Verseny ujVerseny ) {
+        public void Update( Verseny ujVerseny ) {
             for( var i = 0; i < _versenyek.Count; i++ ) {
                 if( _versenyek[i].Azonosito.Equals( ujVerseny.Azonosito ) ) {
                     _versenyek[i].Megnevezes = ujVerseny.Megnevezes;
@@ -136,18 +143,11 @@ namespace Ijasz2.Model.Verseny {
             }
         }
 
-        /// <summary>
-        /// adatok db-ből
+        /// <summary> |
+        /// adatbazis betoltes |
         /// </summary>
         public void Load( ) {
             _versenyek = Adatbazis.Verseny.Verseny.Load( );
-
-            //_versenyek = new ObservableCollection<Verseny>( );
-
-            //Data.Data.Versenyek.Add( new Verseny { Azonosito = "ve1", Megnevezes = "verseny1" } );
-            //Data.Data.Versenyek.Add( new Verseny { Azonosito = "ve2", Megnevezes = "verseny2" } );
-            //Data.Data.Versenyek.Add( new Verseny { Azonosito = "ve3", Megnevezes = "verseny3" } );
-            //Data.Data.Versenyek.Add( new Verseny { Azonosito = "ve4", Megnevezes = "verseny4" } );
         }
     }
 }

@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-/*
-      public string Nev;
-      public string Nem;
-      public string SzuletesiDatum;
-      public string Engedely;
-      public string Egyesulet;
-      public int Eredmenyek;
-*/
+﻿using System.ComponentModel;
+
 namespace Ijasz2.Model.Indulo {
     public class Indulo : INotifyPropertyChanged {
         private string _nev;
@@ -31,7 +19,7 @@ namespace Ijasz2.Model.Indulo {
         public string Nem {
             get { return _nem; }
             set {
-                _nem = value; 
+                _nem = value;
                 OnPropertyChanged( "Nem" );
             }
         }
