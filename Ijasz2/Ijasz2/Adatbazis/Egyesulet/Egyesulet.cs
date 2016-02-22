@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Ijasz2.Adatbazis.Egyesulet {
@@ -116,7 +112,7 @@ namespace Ijasz2.Adatbazis.Egyesulet {
             Adatbazis.Database.Connection.Close( );
         }
 
-        public bool Egyesulet_TagokNoveles( string azonosito ) {
+        public bool TagokNoveles( string azonosito ) {
             Adatbazis.Database.Connection.Open( );
 
             SQLiteCommand command = Adatbazis.Database.Connection.CreateCommand();
@@ -130,7 +126,7 @@ namespace Ijasz2.Adatbazis.Egyesulet {
             return true;
         }
 
-        public bool Egyesulet_TagokCsokkentes( string azonosito ) {
+        public bool TagokCsokkentes( string azonosito ) {
             Adatbazis.Database.Connection.Open( );
 
             SQLiteCommand command = Adatbazis.Database.Connection.CreateCommand();

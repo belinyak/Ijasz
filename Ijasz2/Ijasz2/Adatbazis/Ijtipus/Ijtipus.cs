@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Ijasz2.Adatbazis.Ijtipus {
     public class Ijtipus {
-
         public static ObservableCollection<Model.Ijtipus.Ijtipus> Load( ) {
             var value = new ObservableCollection<Model.Ijtipus.Ijtipus>();
 
@@ -91,7 +86,12 @@ namespace Ijasz2.Adatbazis.Ijtipus {
             Adatbazis.Database.Connection.Close( );
         }
 
-        public bool Ijtipus_EredmenyekNovelese( string azonosito ) {
+        /// <summary>
+        /// TODO 
+        /// </summary>
+        /// <param name="azonosito"></param>
+        /// <returns></returns>
+        public bool EredmenyekNovelese( string azonosito ) {
             Adatbazis.Database.Connection.Open( );
 
             SQLiteCommand command = Adatbazis.Database.Connection.CreateCommand();
@@ -105,7 +105,12 @@ namespace Ijasz2.Adatbazis.Ijtipus {
             return true;
         }
 
-        public bool Ijtipus_EredmenyekCsokkentes( string azonosito ) {
+        /// <summary>
+        /// TODO
+        /// </summary>
+        /// <param name="azonosito"></param>
+        /// <returns></returns>
+        public bool EredmenyekCsokkentes( string azonosito ) {
             Adatbazis.Database.Connection.Open( );
 
             SQLiteCommand command = Adatbazis.Database.Connection.CreateCommand();

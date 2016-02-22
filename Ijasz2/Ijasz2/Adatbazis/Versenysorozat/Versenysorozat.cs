@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Media.Media3D;
-using Ijasz2.Model.Verseny;
 
 namespace Ijasz2.Adatbazis.Versenysorozat {
     public class Versenysorozat {
@@ -80,8 +73,8 @@ namespace Ijasz2.Adatbazis.Versenysorozat {
             Adatbazis.Database.Connection.Close( );
         }
 
-        /// <summary>
-        /// todo
+        /// <summary> |
+        /// TODO verseny hozzaadashoz |
         /// </summary>
         /// <param name="azonosito"></param>
         /// <returns></returns>
@@ -98,8 +91,8 @@ namespace Ijasz2.Adatbazis.Versenysorozat {
             return true;
         }
 
-        /// <summary>
-        /// todo
+        /// <summary> |
+        /// TODO verseny torleshez |
         /// </summary>
         /// <param name="azonosito"></param>
         /// <returns></returns>

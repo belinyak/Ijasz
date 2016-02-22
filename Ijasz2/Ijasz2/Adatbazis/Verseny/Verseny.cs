@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Ijasz2.Adatbazis.Verseny {
     public class Verseny {
-
         public static ObservableCollection<Model.Verseny.Verseny> Load( ) {
             var value = new ObservableCollection<Model.Verseny.Verseny>();
 
@@ -37,10 +32,6 @@ namespace Ijasz2.Adatbazis.Verseny {
             return value;
         }
 
-        /// <summary>
-        /// + default korosztalyok
-        /// </summary>
-        /// <param name="verseny"></param>
         public static void Add( Model.Verseny.Verseny verseny ) {
             Adatbazis.Database.Connection.Open( );
             var command = Adatbazis.Database.Connection.CreateCommand();
@@ -68,23 +59,13 @@ namespace Ijasz2.Adatbazis.Verseny {
             }
         }
 
-        /// <summary>
-        /// korosztalyok 
-        /// </summary>
-        /// <param name="verseny"></param>
         public static void Update( Model.Verseny.Verseny verseny ) {
             Adatbazis.Database.Connection.Open( );
             SQLiteCommand command = Adatbazis.Database.Connection.CreateCommand();
             command.CommandText = "UPDATE Verseny SET " +
-                "VEAZON=@VEAZON," +
-                "VEMEGN=@VEMEGN," +
-                "VEDATU=@VEDATU," +
-                "VSAZON=@VSAZON," +
-                "VEOSPO=@VEOSPO," +
-                "VEALSZ=@VEALSZ," +
-                "VEINSZ=@VEINSZ," +
-                "VELEZAR=@VELEZAR," +
-                "VEDUBE=@VEDUBE" +
+                "VEAZON=@VEAZON, VEMEGN=@VEMEGN, VEDATU=@VEDATU," +
+                "VSAZON=@VSAZON, VEOSPO=@VEOSPO, VEALSZ=@VEALSZ," +
+                "VEINSZ=@VEINSZ, VELEZAR=@VELEZAR, VEDUBE=@VEDUBE" +
                 " WHERE VEAZON=@VEAZON;";
             command.Parameters.AddWithValue( "@VEAZON", verseny.Azonosito );
             command.Parameters.AddWithValue( "@VEMEGN", verseny.Megnevezes );
@@ -110,14 +91,12 @@ namespace Ijasz2.Adatbazis.Verseny {
             SQLiteCommand command = Adatbazis.Database.Connection.CreateCommand();
             command.CommandText = "DELETE FROM Verseny WHERE VEAZON=@VEAZON;";
             command.CommandText += "DELETE FROM Korosztályok WHERE VEAZON=@VEAZON;";
-
             command.Parameters.AddWithValue( "@VEAZON", azonosito );
 
             try {
                 command.ExecuteNonQuery( );
-            }
-            catch (Exception e) {
-                Console.WriteLine(e);
+            } catch( Exception e ) {
+                Console.WriteLine( e );
             }
 
             command.Dispose( );
@@ -125,7 +104,7 @@ namespace Ijasz2.Adatbazis.Verseny {
         }
 
         /// <summary>
-        /// todo
+        /// TODO indulo beirasakor
         /// </summary>
         /// <param name="azonosito"></param>
         /// <returns></returns>
@@ -143,7 +122,7 @@ namespace Ijasz2.Adatbazis.Verseny {
         }
 
         /// <summary>
-        /// todo
+        /// TODO eredmeny torlesekor
         /// </summary>
         /// <param name="azonosito"></param>
         /// <returns></returns>
