@@ -359,7 +359,7 @@
                     <CheckBox x:Name="chstartListaNevezesi" Grid.Row="3" Grid.Column="2" Content="Nevezési" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     <CheckBox x:Name="chstartListaCsapatlista" Grid.Row="4" Grid.Column="2" Content="Csapatlista" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     <CheckBox x:Name="chstartListaNemMegjelent" Grid.Row="5" Grid.Column="2" Content="Megjelent" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <Button x:Name="btnstartListaNyomtat" Content="Nyomtatás" Grid.Row="6" Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="96" Height="32" Margin="0,0,0,16" Click="btnstartListaNyomtat_Click"/>
+                    <Button x:Name="btnstartListaNyomtat" Content="Nyomtatás" Grid.Row="6" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="96" Height="32" Margin="0,0,0,16" Click="btnstartListaNyomtat_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Eredménylapok">

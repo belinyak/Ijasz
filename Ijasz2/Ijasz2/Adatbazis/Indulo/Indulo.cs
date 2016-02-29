@@ -76,7 +76,7 @@ namespace Ijasz2.Adatbazis.Indulo {
             SQLiteCommand command = Adatbazis.Database.Connection.CreateCommand();
             command.CommandText = "DELETE FROM Indulók WHERE INNEVE=@INNEVE;";
 
-            command.Parameters.Add( new SQLiteParameter( "@INNEVE", azonosito) );
+            command.Parameters.Add( new SQLiteParameter( "@INNEVE", azonosito ) );
 
             try {
                 command.ExecuteNonQuery( );
@@ -87,5 +87,30 @@ namespace Ijasz2.Adatbazis.Indulo {
             command.Dispose( );
             Adatbazis.Database.Connection.Close( );
         }
+
+        public static bool EredmenyekNoveles( string azonosito ) {
+            Adatbazis.Database.Connection.Open( );
+
+            SQLiteCommand command = Adatbazis.Database.Connection.CreateCommand( );
+            command.CommandText = "UPDATE Indulók SET INERSZ = INERSZ + 1 WHERE INNEVE=@INNEVE;";
+            command.Parameters.AddWithValue( "@INNEVE", azonosito );
+            command.ExecuteNonQuery( );
+
+            command.Dispose( );
+            Adatbazis.Database.Connection.Close( );
+            return true;
+        }
+
+        public static bool EredmenyekCsokkentes( string azonosito ) {
+            SQLiteCommand command = Adatbazis.Database.Connection.CreateCommand( );
+            command.CommandText = "UPDATE Indulók SET INERSZ = INERSZ - 1 WHERE INNEVE=@INNEVE;";
+            command.Parameters.AddWithValue( "@INNEVE", azonosito );
+            command.ExecuteNonQuery( );
+
+            command.Dispose( );
+            Adatbazis.Database.Connection.Close( );
+            return true;        }
+
+
     }
 }

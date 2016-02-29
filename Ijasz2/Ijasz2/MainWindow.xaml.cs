@@ -240,8 +240,11 @@ namespace Ijasz2 {
         }
 
         private void btnEredmenyTorles_Click( object sender, RoutedEventArgs e ) {
-            throw new NotImplementedException( );
-
+            if( EredmenyGrid.SelectedItem == null ) {
+                return;
+            }
+            var eredmeny = EredmenyGrid.SelectedItem as Eredmeny;
+            ( new Megjelenites.Eredmeny.Eredmeny_Torles( eredmeny ) ).ShowDialog( );
         }
         #endregion
 
@@ -347,7 +350,6 @@ namespace Ijasz2 {
             cboOklevelVsAzonosito.ItemsSource = Model.Data.Data.Versenysorozatok._versenysorozatok;
 
             cboOklevelLegjobb.ItemsSource = new ObservableCollection<int> { 1, 2, 3, 4, 5 };
-
         }
 
         #region ComboBox EventHandlers

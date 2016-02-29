@@ -40,7 +40,7 @@
         <TextBox x:Name="txtIjtipus" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
         <TextBox x:Name="txtCsapat" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
         <CheckBox x:Name="chMegjelent" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <TextBox x:Name="txtTiz" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
+        <TextBox x:Name="txtTiz" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap" />
         <TextBox x:Name="txtNyolc" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
         <TextBox x:Name="txtOt" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
         <TextBox x:Name="txtMelle" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>

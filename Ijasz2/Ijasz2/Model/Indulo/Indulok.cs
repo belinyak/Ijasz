@@ -19,6 +19,7 @@ namespace Ijasz2.Model.Indulo {
         /// eredmenyek == 0 check |
         /// model torles |
         /// adatbazis torles |
+        /// TODO msg???? |
         /// </summary>
         /// <param name="indulo"></param>
         public void Remove( Indulo indulo ) {
@@ -46,6 +47,7 @@ namespace Ijasz2.Model.Indulo {
                     _indulok[i].Egyesulet = indulo.Egyesulet;
                     _indulok[i].Eredmenyek = indulo.Eredmenyek;
                     Adatbazis.Indulo.Indulo.Update( indulo );
+                    return;
                 }
             }
         }
@@ -55,6 +57,34 @@ namespace Ijasz2.Model.Indulo {
         /// </summary>
         public void Load( ) {
             _indulok = Adatbazis.Indulo.Indulo.Load( );
+        }
+
+        /// <summary>
+        /// indulo beirasakor novelni az eredmenyt
+        /// </summary>
+        /// <param name="azonosito"></param>
+        public void EredmenyNoveles( string azonosito ) {
+            foreach( var indulo1 in _indulok ) {
+                if( indulo1.Nev.Equals( azonosito ) ) {
+                    indulo1.Eredmenyek += 1;
+                    Adatbazis.Indulo.Indulo.EredmenyekNoveles( azonosito );
+                    return;
+                }
+            }
+        }
+
+        /// <summary>
+        /// indulo beirasakor novelni az eredmenyt
+        /// </summary>
+        /// <param name="azonosito"></param>
+        public void EredmenyCsokkentes( string azonosito ) {
+            foreach( var indulo1 in _indulok ) {
+                if( indulo1.Nev.Equals( azonosito ) ) {
+                    indulo1.Eredmenyek -= 1;
+                    Adatbazis.Indulo.Indulo.EredmenyekCsokkentes( azonosito );
+                    return;
+                }
+            }
         }
     }
 }

@@ -149,5 +149,24 @@ namespace Ijasz2.Model.Verseny {
         public void Load( ) {
             _versenyek = Adatbazis.Verseny.Verseny.Load( );
         }
+
+        public void IndulokNoveles( string azonosito ) {
+            foreach( var verseny in _versenyek ) {
+                if( verseny.Azonosito.Equals( azonosito ) ) {
+                    verseny.Indulok += 1;
+                    Adatbazis.Verseny.Verseny.IndulokNoveles( azonosito );
+                    return;
+                }
+            }
+        }
+        public void IndulokCsokkentes( string azonosito ) {
+            foreach( var verseny in _versenyek ) {
+                if( verseny.Azonosito.Equals( azonosito ) ) {
+                    verseny.Indulok -= 1;
+                    Adatbazis.Verseny.Verseny.IndulokCsokkentes( azonosito );
+                    return;
+                }
+            }
+        }
     }
 }

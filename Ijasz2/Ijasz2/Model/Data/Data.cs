@@ -36,7 +36,7 @@ namespace Ijasz2.Model.Data {
             Ijtipusok = new Ijtipusok( );
             Egyesuletek = new Egyesuletek( );
             Indulok = new Indulok();
-            //Eredmenyek = new Eredmenyek();
+            Eredmenyek = new VersenyEredmenyek();
             Sablonok = new Sablonok();
 
             Versenyek.Load( );
@@ -45,7 +45,7 @@ namespace Ijasz2.Model.Data {
             Ijtipusok.Load( );
             Egyesuletek.Load( );
             Indulok.Load();
-            //Eredmenyek.Load();
+            Eredmenyek.Load();
             Sablonok.Load();
         }
     }

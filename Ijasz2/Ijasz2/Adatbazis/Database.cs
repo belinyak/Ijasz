@@ -38,7 +38,7 @@ namespace Ijasz2.Adatbazis {
                                 "OKDATUX int, OKDATUY int, OKDATUH int, OKDATUF char(1), OKDATUB char(30), OKDATUM int, OKDATUI char(1));";
 
                 const string createEredmenyek = "CREATE TABLE Eredmények(VEAZON char(10), INNEVE char(30) NOT NULL, INSOSZ INTEGER PRIMARY KEY AUTOINCREMENT, ITAZON char(10), INCSSZ int, " +
-                                                "IN10TA int, IN08TA int, IN05TA int, INMETA int, INOSZP int, INERSZ int, INMEGJ boolean, KOAZON char(10));";
+                                                "IN10TA int, IN08TA int, IN05TA int, INMETA int, INOSZP int, INERSZ int, INMEGJ boolean, INKOMO boolean, KOAZON char(10));";
 
 
                 command.CommandText = createVersenysorozat + createVerseny + createKorosztalyok + createIjtipusok +

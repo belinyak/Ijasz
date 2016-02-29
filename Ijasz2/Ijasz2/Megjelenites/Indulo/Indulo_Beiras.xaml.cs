@@ -130,6 +130,7 @@ namespace Ijasz2.Megjelenites.Indulo {
                         Megjelent = chMegjelent.IsChecked == true,
                         KorosztalyAzonosito = chKorosztalyFelulir.IsChecked == true ? cbUjKorosztaly.Text : ( "k10" + versenyEredmeny.VersenyAzonosito )
                     } );
+                    Model.Data.Data.Indulok.EredmenyNoveles(_indulo.Nev);
                     Close();
                     return;
                 }

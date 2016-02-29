@@ -104,3 +104,5 @@ Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Ijasz2.g.resources
 Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Ijasz2.Properties.Resources.resources
 Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Ijasz2.csproj.GenerateResource.Cache
 Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Ijasz2.exe
+Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Megjelenites\Eredmeny\Eredmeny_Torles.g.cs
+Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Megjelenites\Eredmeny\Eredmeny_Torles.baml

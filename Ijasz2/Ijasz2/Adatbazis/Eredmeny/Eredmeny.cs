@@ -61,6 +61,10 @@ namespace Ijasz2.Adatbazis.Eredmeny {
             return value;
         }
 
+        /// <summary> |
+        /// TODO ujrabeirast megcsinalni, most constraint fail van !!!
+        /// </summary>
+        /// <param name="eredmeny"></param>
         public static void Add( Model.Eredmeny.Eredmeny eredmeny ) {
             Adatbazis.Database.Connection.Open( );
             var command = Adatbazis.Database.Connection.CreateCommand();

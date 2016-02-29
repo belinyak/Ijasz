@@ -103,12 +103,12 @@ namespace Ijasz2.Adatbazis.Verseny {
             Adatbazis.Database.Connection.Close( );
         }
 
-        /// <summary>
-        /// TODO indulo beirasakor
+        /// <summary> |
+        /// indulo beirasakor |
         /// </summary>
         /// <param name="azonosito"></param>
         /// <returns></returns>
-        public bool IndulokNoveles( string azonosito ) {
+        public static bool IndulokNoveles( string azonosito ) {
             Adatbazis.Database.Connection.Open( );
 
             SQLiteCommand command = Adatbazis.Database.Connection.CreateCommand( );
@@ -126,7 +126,7 @@ namespace Ijasz2.Adatbazis.Verseny {
         /// </summary>
         /// <param name="azonosito"></param>
         /// <returns></returns>
-        public bool IndulokCsokkentes( string azonosito ) {
+        public static bool IndulokCsokkentes( string azonosito ) {
             Adatbazis.Database.Connection.Open( );
 
             SQLiteCommand command = Adatbazis.Database.Connection.CreateCommand( );
