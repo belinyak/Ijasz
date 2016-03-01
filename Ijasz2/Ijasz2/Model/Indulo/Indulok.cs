@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 
 namespace Ijasz2.Model.Indulo {
     public class Indulok {
@@ -29,6 +30,7 @@ namespace Ijasz2.Model.Indulo {
                     Adatbazis.Indulo.Indulo.Remove( indulo.Nev );
                     return;
                 }
+                MessageBox.Show("Ez az induló nem törölhető, mivel van hozzá rendelve eredmény!", "Hiba", MessageBoxButton.OKCancel, MessageBoxImage.Information);
             }
         }
 

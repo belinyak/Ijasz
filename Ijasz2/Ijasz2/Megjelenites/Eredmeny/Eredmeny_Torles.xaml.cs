@@ -28,6 +28,7 @@ namespace Ijasz2.Megjelenites.Eredmeny {
             foreach( var versenyEredmeny in Model.Data.Data.Eredmenyek._versenyEredmenyek ) {
                 if( versenyEredmeny.VersenyAzonosito.Equals( _eredmeny.Verseny ) ) {
                     versenyEredmeny.Eredmenyek.Remove( _eredmeny );
+                    
                     Close( );
                     return;
                 }

@@ -102,6 +102,8 @@ namespace Ijasz2.Adatbazis.Indulo {
         }
 
         public static bool EredmenyekCsokkentes( string azonosito ) {
+            Adatbazis.Database.Connection.Open( );
+
             SQLiteCommand command = Adatbazis.Database.Connection.CreateCommand( );
             command.CommandText = "UPDATE Indulók SET INERSZ = INERSZ - 1 WHERE INNEVE=@INNEVE;";
             command.Parameters.AddWithValue( "@INNEVE", azonosito );

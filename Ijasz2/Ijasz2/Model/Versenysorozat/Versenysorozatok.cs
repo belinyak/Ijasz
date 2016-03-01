@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace Ijasz2.Model.Versenysorozat {
     public class Versenysorozatok {
@@ -22,10 +23,15 @@ namespace Ijasz2.Model.Versenysorozat {
         /// </summary>
         /// <param name="azonosito"></param>
         public void Remove( string azonosito ) {
-            _versenysorozatok.Remove(
-                    _versenysorozatok.Single(
-                        s => s.Azonosito.Equals( azonosito ) ) );
-            Adatbazis.Versenysorozat.Versenysorozat.Remove( azonosito );
+            foreach( var versenysorozat in _versenysorozatok ) {
+                if( versenysorozat.Azonosito.Equals( azonosito ) &&
+                    versenysorozat.VersenyekSzama == 0 ) {
+                    _versenysorozatok.Remove( versenysorozat );
+                    Adatbazis.Versenysorozat.Versenysorozat.Remove( azonosito );
+                    return;
+                }
+                MessageBox.Show( "Ez a versenysorozat nem törölhető, mivel van hozzá rendelve verseny!", "Hiba", MessageBoxButton.OKCancel, MessageBoxImage.Information );
+            }
         }
 
         /// <summary> |

@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 
 namespace Ijasz2.Model.Ijtipus {
     public class Ijtipusok {
@@ -27,6 +28,9 @@ namespace Ijasz2.Model.Ijtipus {
                         _ijtipusok.Single(
                             s => s.Azonosito.Equals( ijtipus.Azonosito ) ) );
                 Adatbazis.Ijtipus.Ijtipus.Remove( ijtipus.Azonosito );
+            }
+            else {
+                MessageBox.Show("Ez az íjtípus nem törölhető, mivel van hozzá rendelve eredmény!", "Hiba", MessageBoxButton.OKCancel, MessageBoxImage.Information);
             }
         }
 
