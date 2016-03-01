@@ -56,6 +56,7 @@ namespace Ijasz2.Model.Eredmeny {
                     Adatbazis.Eredmeny.Eredmeny.Remove(eredmeny);
                     Model.Data.Data.Versenyek.IndulokCsokkentes(eredmeny1.Verseny);
                     Model.Data.Data.Indulok.EredmenyCsokkentes(eredmeny.Indulo);
+                    Model.Data.Data.Ijtipusok.EredmenyekCsokkentes(eredmeny.Ijtipus);
                     return;
                 }
             }

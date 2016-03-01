@@ -91,7 +91,7 @@ namespace Ijasz2.Adatbazis.Ijtipus {
         /// </summary>
         /// <param name="azonosito"></param>
         /// <returns></returns>
-        public bool EredmenyekNovelese( string azonosito ) {
+        public static bool EredmenyekNoveles( string azonosito ) {
             Adatbazis.Database.Connection.Open( );
 
             SQLiteCommand command = Adatbazis.Database.Connection.CreateCommand();
@@ -110,7 +110,7 @@ namespace Ijasz2.Adatbazis.Ijtipus {
         /// </summary>
         /// <param name="azonosito"></param>
         /// <returns></returns>
-        public bool EredmenyekCsokkentes( string azonosito ) {
+        public static bool EredmenyekCsokkentes( string azonosito ) {
             Adatbazis.Database.Connection.Open( );
 
             SQLiteCommand command = Adatbazis.Database.Connection.CreateCommand();

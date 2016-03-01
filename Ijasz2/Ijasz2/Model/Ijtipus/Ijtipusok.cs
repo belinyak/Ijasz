@@ -53,5 +53,22 @@ namespace Ijasz2.Model.Ijtipus {
         public void Load( ) {
             _ijtipusok = Adatbazis.Ijtipus.Ijtipus.Load( );
         }
+
+        public void EredmenyekNoveles( string azonosito ) {
+            foreach( var ijtipus in _ijtipusok ) {
+                if( ijtipus.Azonosito.Equals( azonosito ) ) {
+                    ijtipus.Eredmenyek += 1;
+                    Adatbazis.Ijtipus.Ijtipus.EredmenyekNoveles( azonosito );
+                }
+            }
+        }
+        public void EredmenyekCsokkentes( string azonosito ) {
+            foreach( var ijtipus in _ijtipusok ) {
+                if( ijtipus.Azonosito.Equals( azonosito ) ) {
+                    ijtipus.Eredmenyek -= 1;
+                    Adatbazis.Ijtipus.Ijtipus.EredmenyekCsokkentes( azonosito );
+                }
+            }
+        }
     }
 }
