@@ -78,7 +78,7 @@ namespace Ijasz2.Adatbazis.Versenysorozat {
         /// </summary>
         /// <param name="azonosito"></param>
         /// <returns></returns>
-        public bool VersenyekNovel( string azonosito ) {
+        public static bool VersenyekNovel( string azonosito ) {
             Adatbazis.Database.Connection.Open( );
 
             SQLiteCommand command =  Adatbazis.Database.Connection.CreateCommand();
@@ -96,7 +96,7 @@ namespace Ijasz2.Adatbazis.Versenysorozat {
         /// </summary>
         /// <param name="azonosito"></param>
         /// <returns></returns>
-        public bool VersenyekCsokkent( string azonosito ) {
+        public static bool VersenyekCsokkent( string azonosito ) {
             Adatbazis.Database.Connection.Open( );
 
             SQLiteCommand command =  Adatbazis.Database.Connection.CreateCommand();

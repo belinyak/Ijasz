@@ -338,17 +338,16 @@ namespace Ijasz2 {
             //EredmenyGrid.ItemsSource = Model.Data.Data.Eredmenyek._eredmenyek;
             SablonGrid.ItemsSource = Model.Data.Data.Sablonok._sablonok;
 
-
+            //TODO egységesen cb-re átnevezni !!!
+            //TODO a plusz üres mit csesz el ???
             cboVerseny.ItemsSource = Model.Data.Data.Versenyek._versenyek;
             cboEredmenyVerseny.ItemsSource = Model.Data.Data.Versenyek._versenyek;
             cbstartListaVersenyAzonosito.ItemsSource = Model.Data.Data.Versenyek._versenyek;
-
             cberedmenylapVersenyAzonosito.ItemsSource = Model.Data.Data.Versenyek._versenyek;
             cberedmenylapVersenysorozatAzonosito.ItemsSource = Model.Data.Data.Versenysorozatok._versenysorozatok;
 
             cboOklevelVeAzonosito.ItemsSource = Model.Data.Data.Versenyek._versenyek;
             cboOklevelVsAzonosito.ItemsSource = Model.Data.Data.Versenysorozatok._versenysorozatok;
-
             cboOklevelLegjobb.ItemsSource = new ObservableCollection<int> { 1, 2, 3, 4, 5 };
         }
 

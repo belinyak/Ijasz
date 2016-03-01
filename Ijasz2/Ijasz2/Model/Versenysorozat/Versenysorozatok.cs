@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Collections.ObjectModel;
 
 namespace Ijasz2.Model.Versenysorozat {
@@ -47,6 +48,35 @@ namespace Ijasz2.Model.Versenysorozat {
         /// </summary>
         public void Load( ) {
             _versenysorozatok = Adatbazis.Versenysorozat.Versenysorozat.Load( );
+        }
+
+        /// <summary> |
+        /// verseny hozzaadasakor |
+        /// model | adatbazis | 
+        /// </summary>
+        /// <param name="azonosito"></param>
+        public void VersenyekNovel( string azonosito ) {
+            foreach( var versenysorozat in _versenysorozatok ) {
+                if( versenysorozat.Azonosito.Equals( azonosito ) ) {
+                    versenysorozat.VersenyekSzama += 1;
+                    Adatbazis.Versenysorozat.Versenysorozat.VersenyekNovel( azonosito );
+                    return;
+                }
+            }
+        }
+
+        /// <summary> |
+        /// verseny torlesekor |
+        /// </summary>
+        /// <param name="azonosito"></param>
+        public void VersenyekCsokkent( string azonosito ) {
+            foreach( var versenysorozat in _versenysorozatok ) {
+                if( versenysorozat.Azonosito.Equals( azonosito ) ) {
+                    versenysorozat.VersenyekSzama -= 1;
+                    Adatbazis.Versenysorozat.Versenysorozat.VersenyekCsokkent( azonosito );
+                    return;
+                }
+            }
         }
     }
 }

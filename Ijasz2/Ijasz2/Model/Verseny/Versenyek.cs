@@ -12,6 +12,7 @@ namespace Ijasz2.Model.Verseny {
         /// model hozzaadas |
         /// adatbazishoz hozzaadas |
         /// versenyeredmenyek model hozzaadas |
+        /// versenysorozat versenyek novelese | 
         /// TODO versenyeredmenyek adatbazis hozzaadas |
         /// default korosztalyok model hozzaadas |
         /// default korosztalyok adatbazis hozzaadas |
@@ -20,6 +21,12 @@ namespace Ijasz2.Model.Verseny {
         public void Add( Verseny verseny ) {
             _versenyek.Add( verseny );
             Adatbazis.Verseny.Verseny.Add( verseny );
+
+            // versenysorozat eredmeny novelese
+            // TODO mindenhol lecserelni :verseny.Versenysorozat != null && verseny.Versenysorozat != ""
+            if( (verseny.Versenysorozat != null && verseny.Versenysorozat != "") ) {
+                Model.Data.Data.Versenysorozatok.VersenyekNovel( verseny.Versenysorozat );
+            }
 
             VersenyEredmeny versenyEredmeny = new VersenyEredmeny(verseny.Azonosito);
             if( Model.Data.Data.Eredmenyek == null ) {
@@ -111,6 +118,15 @@ namespace Ijasz2.Model.Verseny {
         /// </summary>
         /// <param name="azonosito"></param>
         public void Remove( string azonosito ) {
+
+            // versenysorozat eredmenyek csokkentese
+            foreach( var verseny in _versenyek ) {
+                if( ( verseny.Azonosito.Equals( azonosito ) ) &&
+                        !string.IsNullOrEmpty( verseny.Versenysorozat ) ) {
+                    Model.Data.Data.Versenysorozatok.VersenyekCsokkent( verseny.Versenysorozat );
+                }
+            }
+
             _versenyek.Remove( _versenyek.Single( s => s.Azonosito.Equals( azonosito ) ) );
             Adatbazis.Verseny.Verseny.Remove( azonosito );
 
@@ -131,6 +147,20 @@ namespace Ijasz2.Model.Verseny {
         public void Update( Verseny ujVerseny ) {
             for( var i = 0; i < _versenyek.Count; i++ ) {
                 if( _versenyek[i].Azonosito.Equals( ujVerseny.Azonosito ) ) {
+                    // meg kell nezni, hogy modosult-e a versenysorozat, ha igen akkor 
+                    //ha a regi null az uj nem null, akkor novel
+                    if( ( string.IsNullOrEmpty( _versenyek[i].Versenysorozat ) ||
+                        ( !string.IsNullOrEmpty( ujVerseny.Versenysorozat ) ) ) &&
+                        ( !_versenyek[i].Versenysorozat.Equals( ujVerseny.Versenysorozat ) ) ) {
+                        Model.Data.Data.Versenysorozatok.VersenyekNovel( ujVerseny.Azonosito );
+                    }
+                    //ha a regi nem null az uj null, akkor csokkent
+                    else if( ( !string.IsNullOrEmpty( _versenyek[i].Versenysorozat ) ||
+                      ( string.IsNullOrEmpty( ujVerseny.Versenysorozat ) ) ) &&
+                      ( !_versenyek[i].Versenysorozat.Equals( ujVerseny.Versenysorozat ) ) ) {
+                        Model.Data.Data.Versenysorozatok.VersenyekCsokkent( ujVerseny.Azonosito );
+                    }
+
                     _versenyek[i].Megnevezes = ujVerseny.Megnevezes;
                     _versenyek[i].Datum = ujVerseny.Datum;
                     _versenyek[i].Versenysorozat = ujVerseny.Versenysorozat;

@@ -116,5 +116,9 @@ namespace Ijasz2.Megjelenites.Verseny {
             }
             Close();
         }
+
+        private void BtnClearCombobox_OnClick(object sender, RoutedEventArgs e) {
+            cbVersenysorozat.SelectedIndex = -1;
+        }
     }
 }
