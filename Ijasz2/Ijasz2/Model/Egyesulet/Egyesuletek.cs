@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 
 namespace Ijasz2.Model.Egyesulet {
     public class Egyesuletek {
@@ -27,7 +28,9 @@ namespace Ijasz2.Model.Egyesulet {
                         _egyesuletek.Single(
                             s => s.Azonosito.Equals( egyesulet.Azonosito ) ) );
                 Adatbazis.Egyesulet.Egyesulet.Remove( egyesulet.Azonosito );
+                return;
             }
+             MessageBox.Show("Ez az egyesület nem törölhető, mivel van hozzá rendelve induló!", "Hiba", MessageBoxButton.OKCancel, MessageBoxImage.Information);
         }
 
         /// <summary> |

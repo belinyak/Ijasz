@@ -30,7 +30,7 @@ namespace Ijasz2.Model.Indulo {
                     Adatbazis.Indulo.Indulo.Remove( indulo.Nev );
                     return;
                 }
-                MessageBox.Show("Ez az induló nem törölhető, mivel van hozzá rendelve eredmény!", "Hiba", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                MessageBox.Show( "Ez az induló nem törölhető, mivel van hozzá rendelve eredmény!", "Hiba", MessageBoxButton.OKCancel, MessageBoxImage.Information );
             }
         }
 
