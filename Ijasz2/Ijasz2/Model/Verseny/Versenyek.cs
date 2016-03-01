@@ -138,7 +138,6 @@ namespace Ijasz2.Model.Verseny {
             }
         }
 
-        //TODO EZ ITT NAGYON NEM JÓ ÁT KELL GONDOLNI
         /// <summary> |
         /// indulok szamat nem set-teli |
         /// model update |
@@ -148,30 +147,7 @@ namespace Ijasz2.Model.Verseny {
         public void Update( Verseny ujVerseny ) {
             for( var i = 0; i < _versenyek.Count; i++ ) {
                 if( _versenyek[i].Azonosito.Equals( ujVerseny.Azonosito ) ) {
-                    // 1) meg kell nezni, hogy modosult-e a versenysorozat, ha igen akkor 
-                    // 2) ha a regi null az uj nem null, akkor novel
-                    // 3) ha a regi nem null az uj null, akkor csokkent
-                    // 4) ha egyik sem null akkor novel csokkent
-
-                    // 2)
-                    if( ( string.IsNullOrEmpty( _versenyek[i].Versenysorozat ) ||
-                        ( !string.IsNullOrEmpty( ujVerseny.Versenysorozat ) ) ) &&
-                        ( !_versenyek[i].Versenysorozat.Equals( ujVerseny.Versenysorozat ) ) ) {
-                        Model.Data.Data.Versenysorozatok.VersenyekNovel( ujVerseny.Azonosito );
-                    }
-                    // 3)
-                    else if( ( !string.IsNullOrEmpty( _versenyek[i].Versenysorozat ) ||
-                      ( string.IsNullOrEmpty( ujVerseny.Versenysorozat ) ) ) &&
-                      ( !_versenyek[i].Versenysorozat.Equals( ujVerseny.Versenysorozat ) ) ) {
-                        Model.Data.Data.Versenysorozatok.VersenyekCsokkent( _versenyek[i].Versenysorozat );
-                    }
-                    // 4)
-                    else if( ( !string.IsNullOrEmpty( _versenyek[i].Versenysorozat ) ||
-                      ( !string.IsNullOrEmpty( ujVerseny.Versenysorozat ) ) ) &&
-                      ( !_versenyek[i].Versenysorozat.Equals( ujVerseny.Versenysorozat ) ) ) {
-                        Model.Data.Data.Versenysorozatok.VersenyekCsokkent( _versenyek[i].Versenysorozat );
-                        Model.Data.Data.Versenysorozatok.VersenyekNovel( ujVerseny.Azonosito );
-                    }
+                    VersenyekSzamaSeged( _versenyek[i].Versenysorozat, ujVerseny.Versenysorozat );
 
                     _versenyek[i].Megnevezes = ujVerseny.Megnevezes;
                     _versenyek[i].Datum = ujVerseny.Datum;
@@ -184,6 +160,37 @@ namespace Ijasz2.Model.Verseny {
                 }
             }
         }
+
+        /// <summary> |
+        /// 1) meg kell nezni, hogy modosult-e a versenysorozat, ha igen akkor  |
+        /// 2) ha a regi null az uj nem null, akkor novel |
+        /// 3) ha a regi nem null az uj null, akkor csokkent |
+        /// 4) ha egyik sem null akkor novel csokkent |
+        /// </summary>
+        /// <param name="regiVersenysorozat"></param>
+        /// <param name="ujVersenysorozat"></param>
+        private void VersenyekSzamaSeged( string regiVersenysorozat, string ujVersenysorozat ) {
+            // 2)
+            if( regiVersenysorozat != null && ( ( string.IsNullOrEmpty( regiVersenysorozat ) ||
+                                                 ( !string.IsNullOrEmpty( ujVersenysorozat ) ) ) &&
+                                               ( !regiVersenysorozat.Equals( ujVersenysorozat ) ) ) ) {
+                Model.Data.Data.Versenysorozatok.VersenyekNovel( ujVersenysorozat );
+            }
+            // 3)
+            else if( regiVersenysorozat != null && ( ( !string.IsNullOrEmpty( regiVersenysorozat ) ||
+                                                      ( string.IsNullOrEmpty( ujVersenysorozat ) ) ) &&
+                                                    ( !regiVersenysorozat.Equals( ujVersenysorozat ) ) ) ) {
+                Model.Data.Data.Versenysorozatok.VersenyekCsokkent( regiVersenysorozat );
+            }
+            // 4)
+            else if( regiVersenysorozat != null && ( ( !string.IsNullOrEmpty( regiVersenysorozat ) ||
+                                                      ( !string.IsNullOrEmpty( ujVersenysorozat ) ) ) &&
+                                                    ( !regiVersenysorozat.Equals( ujVersenysorozat ) ) ) ) {
+                Model.Data.Data.Versenysorozatok.VersenyekCsokkent( regiVersenysorozat );
+                Model.Data.Data.Versenysorozatok.VersenyekNovel( ujVersenysorozat );
+            }
+        }
+
 
         /// <summary> |
         /// adatbazis betoltes |
