@@ -112,7 +112,7 @@ namespace Ijasz2.Adatbazis.Egyesulet {
             Adatbazis.Database.Connection.Close( );
         }
 
-        public bool TagokNoveles( string azonosito ) {
+        public static bool TagokNoveles( string azonosito ) {
             Adatbazis.Database.Connection.Open( );
 
             SQLiteCommand command = Adatbazis.Database.Connection.CreateCommand();
@@ -126,7 +126,7 @@ namespace Ijasz2.Adatbazis.Egyesulet {
             return true;
         }
 
-        public bool TagokCsokkentes( string azonosito ) {
+        public static bool TagokCsokkentes( string azonosito ) {
             Adatbazis.Database.Connection.Open( );
 
             SQLiteCommand command = Adatbazis.Database.Connection.CreateCommand();

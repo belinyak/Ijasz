@@ -4,7 +4,6 @@ using System.Windows;
 
 namespace Ijasz2.Adatbazis.Versenysorozat {
     public class Versenysorozat {
-
         public static ObservableCollection<Model.Versenysorozat.Versenysorozat> Load( ) {
             var value = new ObservableCollection<Model.Versenysorozat.Versenysorozat>();
 
@@ -108,6 +107,5 @@ namespace Ijasz2.Adatbazis.Versenysorozat {
             Adatbazis.Database.Connection.Close( );
             return true;
         }
-
     }
 }

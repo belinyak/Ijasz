@@ -14,6 +14,9 @@ namespace Ijasz2.Model.Indulo {
         public void Add( Indulo indulo ) {
             _indulok.Add( indulo );
             Adatbazis.Indulo.Indulo.Add( indulo );
+            if( !string.IsNullOrEmpty( indulo.Egyesulet ) ) {
+                Model.Data.Data.Egyesuletek.TagokNoveles( indulo.Egyesulet );
+            }
         }
 
         /// <summary> |
@@ -28,6 +31,9 @@ namespace Ijasz2.Model.Indulo {
                 if( _indulok[i].Eredmenyek.Equals( 0 ) ) {
                     _indulok.Remove( _indulok.Single( s => s.Nev.Equals( indulo.Nev ) ) );
                     Adatbazis.Indulo.Indulo.Remove( indulo.Nev );
+                    if( !string.IsNullOrEmpty( indulo.Egyesulet ) ) {
+                        Model.Data.Data.Egyesuletek.TagokNoveles( indulo.Egyesulet );
+                    }
                     return;
                 }
                 MessageBox.Show( "Ez az induló nem törölhető, mivel van hozzá rendelve eredmény!", "Hiba", MessageBoxButton.OKCancel, MessageBoxImage.Information );

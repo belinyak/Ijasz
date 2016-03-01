@@ -30,7 +30,7 @@ namespace Ijasz2.Model.Egyesulet {
                 Adatbazis.Egyesulet.Egyesulet.Remove( egyesulet.Azonosito );
                 return;
             }
-             MessageBox.Show("Ez az egyesület nem törölhető, mivel van hozzá rendelve induló!", "Hiba", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+            MessageBox.Show( "Ez az egyesület nem törölhető, mivel van hozzá rendelve induló!", "Hiba", MessageBoxButton.OKCancel, MessageBoxImage.Information );
         }
 
         /// <summary> |
@@ -59,6 +59,26 @@ namespace Ijasz2.Model.Egyesulet {
         /// </summary>
         public void Load( ) {
             _egyesuletek = Adatbazis.Egyesulet.Egyesulet.Load( );
+        }
+
+        public void TagokNoveles( string azonosito ) {
+            foreach( var egyesulet in _egyesuletek ) {
+                if( egyesulet.Azonosito.Equals( azonosito ) ) {
+                    egyesulet.TagokSzama += 1;
+                    Adatbazis.Egyesulet.Egyesulet.TagokNoveles( azonosito );
+                    return;
+                }
+            }
+        }
+
+        public void TagokCsokkentes( string azonosito ) {
+            foreach( var egyesulet in _egyesuletek ) {
+                if( egyesulet.Azonosito.Equals( azonosito ) ) {
+                    egyesulet.TagokSzama -= 1;
+                    Adatbazis.Egyesulet.Egyesulet.TagokCsokkentes( azonosito );
+                    return;
+                }
+            }
         }
     }
 }
