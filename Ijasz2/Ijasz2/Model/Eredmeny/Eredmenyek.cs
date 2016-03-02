@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Ijasz2.Model.Eredmeny {
     public class Eredmenyek {
@@ -11,12 +13,23 @@ namespace Ijasz2.Model.Eredmeny {
         /// </summary>
         /// <param name="eredmeny"></param>
         public void Add( Eredmeny eredmeny ) {
+            if( eredmeny.KorosztalyModositott.Equals( false ) ) {
+                var korosztaly = KorosztalySzamolas( eredmeny );
+                if( string.IsNullOrEmpty( korosztaly ) ) {
+                    throw new Exception( );
+                }
+                else {
+                    eredmeny.KorosztalyAzonosito = korosztaly;
+                }
+            }
+
+
             Adatbazis.Eredmeny.Eredmeny.Add( eredmeny );
-            eredmeny.Sorszam = Adatbazis.Eredmeny.Eredmeny.InduloSorszam(eredmeny);
+            eredmeny.Sorszam = Adatbazis.Eredmeny.Eredmeny.InduloSorszam( eredmeny );
             _eredmenyek.Add( eredmeny );
-            Model.Data.Data.Indulok.EredmenyNoveles(eredmeny.Indulo);
-            Model.Data.Data.Ijtipusok.EredmenyekNoveles(eredmeny.Ijtipus);
-            Model.Data.Data.Versenyek.IndulokNoveles(eredmeny.Verseny);
+            Model.Data.Data.Indulok.EredmenyNoveles( eredmeny.Indulo );
+            Model.Data.Data.Ijtipusok.EredmenyekNoveles( eredmeny.Ijtipus );
+            Model.Data.Data.Versenyek.IndulokNoveles( eredmeny.Verseny );
         }
 
         /// <summary> |
@@ -57,22 +70,53 @@ namespace Ijasz2.Model.Eredmeny {
             foreach( var eredmeny1 in _eredmenyek ) {
                 if( eredmeny1.Indulo.Equals( eredmeny.Indulo ) ) {
                     _eredmenyek.Remove( eredmeny1 );
-                    Adatbazis.Eredmeny.Eredmeny.Remove(eredmeny);
-                    Model.Data.Data.Versenyek.IndulokCsokkentes(eredmeny1.Verseny);
-                    Model.Data.Data.Indulok.EredmenyCsokkentes(eredmeny.Indulo);
-                    Model.Data.Data.Ijtipusok.EredmenyekCsokkentes(eredmeny.Ijtipus);
+                    Adatbazis.Eredmeny.Eredmeny.Remove( eredmeny );
+                    Model.Data.Data.Versenyek.IndulokCsokkentes( eredmeny1.Verseny );
+                    Model.Data.Data.Indulok.EredmenyCsokkentes( eredmeny.Indulo );
+                    Model.Data.Data.Ijtipusok.EredmenyekCsokkentes( eredmeny.Ijtipus );
+                    Model.Data.Data.Korosztalyok.TagokCsokkentes(eredmeny);
                     return;
                 }
             }
 
         }
 
-        /// <summary> |
-        /// ha van versenysorozat, akkor a versenysorozat 1. versenyekor betöltött életkor számít
-        /// </summary>
-        /// <param name="eredmeny"></param>
-        public void KorosztalySzamolas(Eredmeny eredmeny) {
-            
+        private string KorosztalySzamolas( Eredmeny eredmeny ) {
+            string datum = "";
+
+            var indulo = (from indulo1 in Model.Data.Data.Indulok._indulok
+                          where indulo1.Nev.Equals(eredmeny.Indulo)
+                          select indulo1).First();
+
+            foreach( var verseny1 in Model.Data.Data.Versenyek._versenyek.Where( verseny => verseny.Azonosito.Equals( eredmeny.Verseny ) ) ) {
+                if( !string.IsNullOrEmpty( verseny1.Versenysorozat ) ) {
+                    datum = ( from verseny in Model.Data.Data.Versenyek._versenyek
+                              where verseny.Versenysorozat.Equals( verseny1.Versenysorozat )
+                              orderby verseny.Datum ascending
+                              select verseny.Datum ).First( );
+                }
+                else {
+                    datum = ( from verseny in Model.Data.Data.Versenyek._versenyek
+                              where verseny.Azonosito.Equals( eredmeny.Verseny )
+                              select verseny.Datum ).First( );
+                }
+            }
+
+            var betoltottKor = (new DateTime(1, 1, 1) + ((Convert.ToDateTime(datum)) - DateTime.Parse(indulo.SzuletesiDatum))).Year - 1;
+
+            foreach( var korosztalyok in Model.Data.Data.Korosztalyok._versenyKorosztalyok.Where( korosztaly => korosztaly.VersenyAzonosito.Equals( eredmeny.Verseny ) ) ) {
+                foreach( var korosztaly in korosztalyok.Korosztalyok.Where( korosztaly => korosztaly.AlsoHatar <= betoltottKor && betoltottKor <= korosztaly.FelsoHatar ) ) {
+                    if( indulo.Nem.Equals( "F" ) || indulo.Nem.Equals( "f" ) ) {
+                        Model.Data.Data.Korosztalyok.FerfiakNoveles( korosztaly );
+                        return korosztaly.Azonosito;
+                    }
+                    else {
+                        Model.Data.Data.Korosztalyok.NokNoveles( korosztaly );
+                        return korosztaly.Azonosito;
+                    }
+                }
+            }
+            return null;
         }
     }
 }

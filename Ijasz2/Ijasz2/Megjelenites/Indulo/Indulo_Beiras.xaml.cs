@@ -130,7 +130,7 @@ namespace Ijasz2.Megjelenites.Indulo {
                             OsszPont = 0,
                             Szazalek = 0,
                             Megjelent = chMegjelent.IsChecked == true,
-                            KorosztalyAzonosito = chKorosztalyFelulir.IsChecked == true ? cbUjKorosztaly.Text : ( "k10" + versenyEredmeny.VersenyAzonosito )
+                            KorosztalyAzonosito = chKorosztalyFelulir.IsChecked == true ? cbUjKorosztaly.Text : ""
                         } );
                         Close( );
                         return;
@@ -152,7 +152,7 @@ namespace Ijasz2.Megjelenites.Indulo {
                         OsszPont = 0,
                         Szazalek = 0,
                         Megjelent = chMegjelent.IsChecked == true,
-                        KorosztalyAzonosito = chKorosztalyFelulir.IsChecked == true ? cbUjKorosztaly.Text : ( "k10" + versenyEredmeny.VersenyAzonosito )
+                        KorosztalyAzonosito = chKorosztalyFelulir.IsChecked == true ? cbUjKorosztaly.Text : ""
                     } );
                     Close( );
                     return;

@@ -65,10 +65,10 @@ namespace Ijasz2.Megjelenites.Verseny {
         private bool IsValid( ) {
             bool valid = true;
 
-            txtAzonosito.ClearValue(Border.BorderBrushProperty);
-            dtDatum.ClearValue(Border.BorderBrushProperty);
-            txtLovesek.ClearValue(Border.BorderBrushProperty);
-            txtAllomasok.ClearValue( Border.BorderBrushProperty);
+            txtAzonosito.ClearValue( Border.BorderBrushProperty );
+            dtDatum.ClearValue( Border.BorderBrushProperty );
+            txtLovesek.ClearValue( Border.BorderBrushProperty );
+            txtAllomasok.ClearValue( Border.BorderBrushProperty );
 
             if( txtAzonosito.Text.Length == 0 ) {
                 txtAzonosito.BorderBrush = new SolidColorBrush( Colors.Red );
@@ -118,10 +118,10 @@ namespace Ijasz2.Megjelenites.Verseny {
             else {
                 Model.Data.Data.Versenyek.Update( Verseny );
             }
-            Close();
+            Close( );
         }
 
-        private void BtnClearCombobox_OnClick(object sender, RoutedEventArgs e) {
+        private void BtnClearCombobox_OnClick( object sender, RoutedEventArgs e ) {
             cbVersenysorozat.SelectedIndex = -1;
         }
     }

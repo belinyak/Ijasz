@@ -133,5 +133,65 @@ namespace Ijasz2.Adatbazis.Korosztaly {
             command.Dispose( );
             Adatbazis.Database.Connection.Close( );
         }
+
+        public static void FerfiakNoveles( Model.Korosztaly.Korosztaly korosztaly ) {
+            Adatbazis.Database.Connection.Open( );
+
+            SQLiteCommand command = Adatbazis.Database.Connection.CreateCommand();
+            command.CommandText = "UPDATE Korosztályok SET KOINSF = KOINSF + 1 WHERE VEAZON=@VEAZON AND KOAZON=@KOAZON;";
+
+            command.Parameters.AddWithValue( "@VEAZON", korosztaly.Verseny );
+            command.Parameters.AddWithValue( "@KOAZON", korosztaly.Verseny );
+
+            command.ExecuteNonQuery( );
+
+            command.Dispose( );
+            Adatbazis.Database.Connection.Close( );
+        }
+
+        public static void NokNoveles( Model.Korosztaly.Korosztaly korosztaly ) {
+            Adatbazis.Database.Connection.Open( );
+
+            SQLiteCommand command = Adatbazis.Database.Connection.CreateCommand();
+            command.CommandText = "UPDATE Korosztályok SET KOINSN = KOINSN + 1 WHERE VEAZON=@VEAZON AND KOAZON=@KOAZON;";
+
+            command.Parameters.AddWithValue( "@VEAZON", korosztaly.Verseny );
+            command.Parameters.AddWithValue( "@KOAZON", korosztaly.Verseny );
+
+            command.ExecuteNonQuery( );
+
+            command.Dispose( );
+            Adatbazis.Database.Connection.Close( );
+        }
+
+        public static void FerfiakCsokkentes( Model.Korosztaly.Korosztaly korosztaly ) {
+            Adatbazis.Database.Connection.Open( );
+
+            SQLiteCommand command = Adatbazis.Database.Connection.CreateCommand();
+            command.CommandText = "UPDATE Korosztályok SET KOINSF = KOINSF - 1 WHERE VEAZON=@VEAZON AND KOAZON=@KOAZON;";
+
+            command.Parameters.AddWithValue( "@VEAZON", korosztaly.Verseny );
+            command.Parameters.AddWithValue( "@KOAZON", korosztaly.Verseny );
+
+            command.ExecuteNonQuery( );
+
+            command.Dispose( );
+            Adatbazis.Database.Connection.Close( );
+        }
+
+        public static void NokCsokkentes( Model.Korosztaly.Korosztaly korosztaly ) {
+            Adatbazis.Database.Connection.Open( );
+
+            SQLiteCommand command = Adatbazis.Database.Connection.CreateCommand();
+            command.CommandText = "UPDATE Korosztályok SET KOINSN = KOINSN - 1 WHERE VEAZON=@VEAZON AND KOAZON=@KOAZON;";
+
+            command.Parameters.AddWithValue( "@VEAZON", korosztaly.Verseny );
+            command.Parameters.AddWithValue( "@KOAZON", korosztaly.Verseny );
+
+            command.ExecuteNonQuery( );
+
+            command.Dispose( );
+            Adatbazis.Database.Connection.Close( );
+        }
     }
 }

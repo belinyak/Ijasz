@@ -14,7 +14,7 @@ using Ijasz2.Model.Korosztaly;
 using Ijasz2.Model.Oklevel;
 using Ijasz2.Model.Verseny;
 using Ijasz2.Model.Versenysorozat;
-
+using System.Linq;
 namespace Ijasz2 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -131,13 +131,41 @@ namespace Ijasz2 {
             ( new Megjelenites.Korosztaly.Korosztaly_Torles( korosztaly ) ).ShowDialog( );
         }
 
+        /// <summary> |
+        /// TODO a cbo as verseny !!!
+        /// ha van versenysorozat, akkor a versenysorozat 1. versenyekor betöltött életkor számít
+        /// </summary>
+        /// <param name="versenyAzonosito"></param>
+        public void KorosztalySzamolas( string versenyAzonosito ) {
+            string datum = "";
+            foreach( var verseny1 in Model.Data.Data.Versenyek._versenyek.Where( verseny => verseny.Azonosito.Equals( versenyAzonosito ) ) ) {
+                if( !string.IsNullOrEmpty( verseny1.Versenysorozat ) ) {
+                    datum = ( from verseny in Model.Data.Data.Versenyek._versenyek
+                              where verseny.Versenysorozat.Equals( verseny1.Versenysorozat )
+                              orderby verseny.Datum ascending
+                              select verseny.Datum ).First( );
+                }
+                else {
+                    datum = ( from verseny in Model.Data.Data.Versenyek._versenyek
+                              where verseny.Azonosito.Equals( versenyAzonosito )
+                              select verseny.Datum ).First( );
+                }
+
+
+            }
+        }
+
         /// <summary>
         /// TODO ezt automatizáni kéne
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnKorosztalySzamolas_Click( object sender, RoutedEventArgs e ) {
-            throw new NotImplementedException( );
+            if( string.IsNullOrEmpty( cboVerseny.Text ) ) {
+                return;
+            }
+            KorosztalySzamolas( cboVerseny.Text );
+            //throw new NotImplementedException( );
         }
         #endregion
 
