@@ -23,18 +23,15 @@ namespace Ijasz2.Model.Verseny {
             Adatbazis.Verseny.Verseny.Add( verseny );
 
             // versenysorozat eredmeny novelese
-            // TODO mindenhol lecserelni :verseny.Versenysorozat != null && verseny.Versenysorozat != ""
-            if( ( verseny.Versenysorozat != null && verseny.Versenysorozat != "" ) ) {
+            if( !string.IsNullOrEmpty( verseny.Versenysorozat ) ) {
                 Model.Data.Data.Versenysorozatok.VersenyekNovel( verseny.Versenysorozat );
             }
 
+            // eredmenyek letrehozasa
             VersenyEredmeny versenyEredmeny = new VersenyEredmeny(verseny.Azonosito);
-            if( Model.Data.Data.Eredmenyek == null ) {
-                Model.Data.Data.Eredmenyek = new VersenyEredmenyek { _versenyEredmenyek = new List<VersenyEredmeny>( ) };
-            }
             Data.Data.Eredmenyek._versenyEredmenyek.Add( versenyEredmeny );
 
-
+            // korosztalyok letrehozasa
             VersenyKorosztaly versenyKorosztaly = new VersenyKorosztaly(verseny.Azonosito);
 
             #region Default Korosztalyok
@@ -101,10 +98,9 @@ namespace Ijasz2.Model.Verseny {
             } );
             #endregion
 
-            if( Data.Data.Korosztalyok == null ) {
-                Data.Data.Korosztalyok = new VersenyKorosztalyok { _versenyKorosztalyok = new List<VersenyKorosztaly>( ) };
-            }
+            Data.Data.Korosztalyok = new VersenyKorosztalyok { _versenyKorosztalyok = new List<VersenyKorosztaly>( ) };
             Data.Data.Korosztalyok.Add( versenyKorosztaly );
+
             foreach( var korosztaly in versenyKorosztaly.Korosztalyok ) {
                 Adatbazis.Korosztaly.Korosztaly.Add( korosztaly );
             }
@@ -191,7 +187,6 @@ namespace Ijasz2.Model.Verseny {
             }
         }
 
-
         /// <summary> |
         /// adatbazis betoltes |
         /// </summary>
@@ -208,6 +203,7 @@ namespace Ijasz2.Model.Verseny {
                 }
             }
         }
+
         public void IndulokCsokkentes( string azonosito ) {
             foreach( var verseny in _versenyek ) {
                 if( verseny.Azonosito.Equals( azonosito ) ) {

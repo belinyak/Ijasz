@@ -11,8 +11,9 @@ namespace Ijasz2.Model.Eredmeny {
         /// </summary>
         /// <param name="eredmeny"></param>
         public void Add( Eredmeny eredmeny ) {
-            _eredmenyek.Add( eredmeny );
             Adatbazis.Eredmeny.Eredmeny.Add( eredmeny );
+            eredmeny.Sorszam = Adatbazis.Eredmeny.Eredmeny.InduloSorszam(eredmeny);
+            _eredmenyek.Add( eredmeny );
             Model.Data.Data.Versenyek.IndulokNoveles(eredmeny.Verseny);
         }
 

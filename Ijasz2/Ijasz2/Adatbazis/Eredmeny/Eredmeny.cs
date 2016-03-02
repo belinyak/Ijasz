@@ -63,20 +63,20 @@ namespace Ijasz2.Adatbazis.Eredmeny {
 
         /// <summary> |
         /// TODO ujrabeirast megcsinalni, most constraint fail van !!!
+        /// vissza kell adni az autoincrementelt insoszt |
         /// </summary>
         /// <param name="eredmeny"></param>
         public static void Add( Model.Eredmeny.Eredmeny eredmeny ) {
             Adatbazis.Database.Connection.Open( );
             var command = Adatbazis.Database.Connection.CreateCommand();
 
-            command.CommandText = "INSERT INTO Eredmények(VEAZON, INNEVE, INSOSZ, ITAZON, INCSSZ, IN10TA, IN08TA, IN05TA, INMETA, " +
+            command.CommandText = "INSERT INTO Eredmények(VEAZON, INNEVE, ITAZON, INCSSZ, IN10TA, IN08TA, IN05TA, INMETA, " +
                                   "INOSZP, INERSZ, INMEGJ, INKOMO, KOAZON)" +
-                                  "VALUES(@VEAZON, @INNEVE, @INSOSZ, @ITAZON, @INCSSZ, @IN10TA, @IN08TA, @IN05TA, @INMETA, " +
+                                  "VALUES(@VEAZON, @INNEVE, @ITAZON, @INCSSZ, @IN10TA, @IN08TA, @IN05TA, @INMETA, " +
                                   "@INOSZP, @INERSZ, @INMEGJ, @INKOMO, @KOAZON)";
 
             command.Parameters.AddWithValue( "@VEAZON", eredmeny.Verseny );
             command.Parameters.AddWithValue( "@INNEVE", eredmeny.Indulo );
-            command.Parameters.AddWithValue( "@INSOSZ", eredmeny.Sorszam );
             command.Parameters.AddWithValue( "@ITAZON", eredmeny.Ijtipus );
             command.Parameters.AddWithValue( "@INCSSZ", eredmeny.Csapat );
             command.Parameters.AddWithValue( "@IN10TA", eredmeny.Talalat10 );
@@ -150,7 +150,7 @@ namespace Ijasz2.Adatbazis.Eredmeny {
             SQLiteCommand command = Adatbazis.Database.Connection.CreateCommand();
             command.CommandText = "DELETE FROM Eredmények WHERE VEAZON=@VEAZON AND INNEVE=@INNEVE;";
 
-            command.Parameters.AddWithValue( "@VEAZON", eredmeny.Verseny);
+            command.Parameters.AddWithValue( "@VEAZON", eredmeny.Verseny );
             command.Parameters.AddWithValue( "@INNEVE", eredmeny.Indulo );
 
             try {
@@ -161,6 +161,26 @@ namespace Ijasz2.Adatbazis.Eredmeny {
 
             command.Dispose( );
             Adatbazis.Database.Connection.Close( );
+        }
+
+
+        public static int InduloSorszam( Model.Eredmeny.Eredmeny eredmeny ) {
+            int value = -1;
+
+            Adatbazis.Database.Connection.Open( );
+            SQLiteCommand command = Adatbazis.Database.Connection.CreateCommand( );
+
+            command.CommandText = "SELECT INSOSZ FROM Eredmények WHERE VEAZON=@VEAZON AND INNEVE=@INNEVE;";
+            command.Parameters.AddWithValue( "@VEAZON", eredmeny.Verseny );
+            command.Parameters.AddWithValue( "@INNEVE", eredmeny.Indulo );
+
+            SQLiteDataReader reader = command.ExecuteReader( );
+            while( reader.Read( ) ) {
+                value = reader.GetInt32( 0 );
+            }
+            command.Dispose( );
+            Adatbazis.Database.Connection.Close( );
+            return value;
         }
     }
 }

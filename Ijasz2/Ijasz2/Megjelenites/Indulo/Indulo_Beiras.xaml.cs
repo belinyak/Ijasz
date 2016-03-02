@@ -118,7 +118,6 @@ namespace Ijasz2.Megjelenites.Indulo {
                     versenyEredmeny.Eredmenyek.Add( new Model.Eredmeny.Eredmeny {
                         Verseny = versenyEredmeny.VersenyAzonosito,
                         Indulo = _indulo.Nev,
-                        Sorszam = 0,
                         Ijtipus = cbIjtipus.Text,
                         Csapat = Convert.ToInt32( cbCsapat.Text ),
                         Talalat10 = 0,
