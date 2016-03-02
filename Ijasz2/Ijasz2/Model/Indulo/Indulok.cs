@@ -9,6 +9,7 @@ namespace Ijasz2.Model.Indulo {
         /// <summary> |
         /// modelhez adas |
         /// adatbazishoz adas |
+        /// egyesulet tagok novelese |
         /// </summary>
         /// <param name="indulo"></param>
         public void Add( Indulo indulo ) {

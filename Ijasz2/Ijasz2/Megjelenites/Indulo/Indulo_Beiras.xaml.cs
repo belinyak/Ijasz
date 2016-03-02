@@ -101,16 +101,41 @@ namespace Ijasz2.Megjelenites.Indulo {
             return valid;
         }
 
-        /// <summary>
-        /// induló beírása
-        /// TODO korosztaly szamolas
-        /// TODO eredmenyek novelese
+        /// <summary> |
+        /// induló beírása |
+        /// TODO korosztaly szamolas |
+        /// TODO eredmenyek novelese |
+        /// TODO SZEBBEN, ha mar letezik akkor modositas nem add |
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void BtnRendben_OnClick( object sender, RoutedEventArgs e ) {
             if( IsValid( ) == false ) {
                 return;
+            }
+
+            foreach( var versenyEredmeny in Model.Data.Data.Eredmenyek._versenyEredmenyek ) {
+                if( versenyEredmeny.VersenyAzonosito.Equals( cbVerseny.Text ) ) {
+                    foreach( var eredmeny in versenyEredmeny.Eredmenyek._eredmenyek.Where( eredmeny => eredmeny.Indulo.Equals( _indulo.Nev ) ) ) {
+                        versenyEredmeny.Eredmenyek.Remove( eredmeny );
+                        versenyEredmeny.Eredmenyek.Add( new Model.Eredmeny.Eredmeny {
+                            Verseny = versenyEredmeny.VersenyAzonosito,
+                            Indulo = _indulo.Nev,
+                            Ijtipus = cbIjtipus.Text,
+                            Csapat = Convert.ToInt32( cbCsapat.Text ),
+                            Talalat10 = 0,
+                            Talalat8 = 0,
+                            Talalat5 = 0,
+                            Melle = 0,
+                            OsszPont = 0,
+                            Szazalek = 0,
+                            Megjelent = chMegjelent.IsChecked == true,
+                            KorosztalyAzonosito = chKorosztalyFelulir.IsChecked == true ? cbUjKorosztaly.Text : ( "k10" + versenyEredmeny.VersenyAzonosito )
+                        } );
+                        Close( );
+                        return;
+                    }
+                }
             }
 
             foreach( var versenyEredmeny in Model.Data.Data.Eredmenyek._versenyEredmenyek ) {
@@ -129,9 +154,7 @@ namespace Ijasz2.Megjelenites.Indulo {
                         Megjelent = chMegjelent.IsChecked == true,
                         KorosztalyAzonosito = chKorosztalyFelulir.IsChecked == true ? cbUjKorosztaly.Text : ( "k10" + versenyEredmeny.VersenyAzonosito )
                     } );
-                    Model.Data.Data.Indulok.EredmenyNoveles(_indulo.Nev);
-                    Model.Data.Data.Ijtipusok.EredmenyekNoveles(cbIjtipus.Text);
-                    Close();
+                    Close( );
                     return;
                 }
             }

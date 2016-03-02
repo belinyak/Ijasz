@@ -14,12 +14,15 @@ namespace Ijasz2.Model.Eredmeny {
             Adatbazis.Eredmeny.Eredmeny.Add( eredmeny );
             eredmeny.Sorszam = Adatbazis.Eredmeny.Eredmeny.InduloSorszam(eredmeny);
             _eredmenyek.Add( eredmeny );
+            Model.Data.Data.Indulok.EredmenyNoveles(eredmeny.Indulo);
+            Model.Data.Data.Ijtipusok.EredmenyekNoveles(eredmeny.Ijtipus);
             Model.Data.Data.Versenyek.IndulokNoveles(eredmeny.Verseny);
         }
 
         /// <summary> |
         /// model update |
         /// adatbazis update |
+        /// indulok eredmenyek ijtipusok count update-el nem kell foglakozni |
         /// </summary>
         /// <param name="eredmeny"></param>
         public void Update( Eredmeny eredmeny ) {

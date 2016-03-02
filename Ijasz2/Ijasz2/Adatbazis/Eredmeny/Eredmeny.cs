@@ -62,8 +62,8 @@ namespace Ijasz2.Adatbazis.Eredmeny {
         }
 
         /// <summary> |
-        /// TODO ujrabeirast megcsinalni, most constraint fail van !!!
         /// vissza kell adni az autoincrementelt insoszt |
+        /// veazon + inneve együtt key
         /// </summary>
         /// <param name="eredmeny"></param>
         public static void Add( Model.Eredmeny.Eredmeny eredmeny ) {
