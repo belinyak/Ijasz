@@ -11,13 +11,15 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Ijasz2.Model.Korosztaly;
 
 namespace Ijasz2.Megjelenites.Korosztaly {
     /// <summary>
     /// Interaction logic for Korosztaly_Indulok.xaml
     /// </summary>
     public partial class Korosztaly_Indulok : Window {
-        public Korosztaly_Indulok( ) {
+        public Korosztaly_Indulok( string versenyAzonosito, string korosztalyAzonosito) {
+            Model.Data.Data.Korosztalyok.Tagok(versenyAzonosito,korosztalyAzonosito);
             InitializeComponent( );
         }
     }

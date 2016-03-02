@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using Ijasz2.Adatbazis;
 using Ijasz2.Model.Data;
+using Ijasz2.Model.Egyesulet;
 using Ijasz2.Model.Eredmeny;
 using Ijasz2.Model.Ijtipus;
 using Ijasz2.Model.Indulo;
@@ -113,10 +114,13 @@ namespace Ijasz2 {
         }
 
         private void btnKorosztalyIndulok_Click( object sender, RoutedEventArgs e ) {
-            if( cboVerseny.Text == "" ) {
+            if( cboVerseny.Text == "" || KorosztalyGrid.SelectedItem == null ) {
                 return;
             }
-            ( new Megjelenites.Korosztaly.Korosztaly_Indulok( ) ).ShowDialog( );
+
+            var q = (KorosztalyGrid.SelectedItem as Korosztaly).Azonosito;
+
+            ( new Megjelenites.Korosztaly.Korosztaly_Indulok( cboVerseny.Text, q ) ).ShowDialog( );
         }
 
         private void btnKorosztalyTorles_Click( object sender, RoutedEventArgs e ) {

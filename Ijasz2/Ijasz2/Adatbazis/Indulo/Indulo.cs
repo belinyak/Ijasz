@@ -2,11 +2,13 @@
 using System.Collections.ObjectModel;
 using System.Data.SQLite;
 using System.Windows;
+using System.Windows.Media.TextFormatting;
 
 namespace Ijasz2.Adatbazis.Indulo {
     public class Indulo {
         public static ObservableCollection<Model.Indulo.Indulo> Load( ) {
             var value = new ObservableCollection<Model.Indulo.Indulo>();
+
 
             Adatbazis.Database.Connection.Open( );
             SQLiteCommand command = Adatbazis.Database.Connection.CreateCommand( );
@@ -112,7 +114,5 @@ namespace Ijasz2.Adatbazis.Indulo {
             command.Dispose( );
             Adatbazis.Database.Connection.Close( );
             return true;        }
-
-
     }
 }

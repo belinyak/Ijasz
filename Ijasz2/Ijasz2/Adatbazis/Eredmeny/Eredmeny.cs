@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Data.SQLite;
 using System.Windows;
 using Ijasz2.Model.Eredmeny;
@@ -40,7 +41,7 @@ namespace Ijasz2.Adatbazis.Eredmeny {
 
                 foreach( var versenyEredmeny in value ) {
                     if( versenyEredmeny.VersenyAzonosito.Equals( q.Verseny ) ) {
-                        versenyEredmeny.Eredmenyek.Add( q );
+                        versenyEredmeny.Eredmenyek._eredmenyek.Add(q);
                         found = true;
                         break;
                     }
@@ -67,6 +68,10 @@ namespace Ijasz2.Adatbazis.Eredmeny {
         /// </summary>
         /// <param name="eredmeny"></param>
         public static void Add( Model.Eredmeny.Eredmeny eredmeny ) {
+            if (Adatbazis.Database.Connection.State == ConnectionState.Open) {
+            Adatbazis.Database.Connection.Close( );
+                
+            }
             Adatbazis.Database.Connection.Open( );
             var command = Adatbazis.Database.Connection.CreateCommand();
 

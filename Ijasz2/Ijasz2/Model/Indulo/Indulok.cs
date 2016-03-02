@@ -68,6 +68,17 @@ namespace Ijasz2.Model.Indulo {
             _indulok = Adatbazis.Indulo.Indulo.Load( );
         }
 
+        public Indulo Get(string azonosito) {
+            Indulo value = new Indulo();
+            foreach (var indulo in _indulok) {
+                if (indulo.Nev.Equals(azonosito)) {
+                    value = indulo;
+                    return value;
+                }
+            }
+            return value;
+        }
+
         /// <summary>
         /// indulo beirasakor novelni az eredmenyt
         /// </summary>
