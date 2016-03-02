@@ -131,6 +131,11 @@ namespace Ijasz2 {
             ( new Megjelenites.Korosztaly.Korosztaly_Torles( korosztaly ) ).ShowDialog( );
         }
 
+        /// <summary>
+        /// TODO ezt automatizáni kéne
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnKorosztalySzamolas_Click( object sender, RoutedEventArgs e ) {
             throw new NotImplementedException( );
         }
@@ -341,6 +346,16 @@ namespace Ijasz2 {
             InduloGrid.ItemsSource = Model.Data.Data.Indulok._indulok;
             //EredmenyGrid.ItemsSource = Model.Data.Data.Eredmenyek._eredmenyek;
             SablonGrid.ItemsSource = Model.Data.Data.Sablonok._sablonok;
+
+            // nincs scrollbar
+            //VersenysorozatGrid.VerticalScrollBarVisibility = ScrollBarVisibility.Disabled;
+            //VersenyGrid.VerticalScrollBarVisibility = ScrollBarVisibility.Disabled;
+            //IjtipusGrid.VerticalScrollBarVisibility = ScrollBarVisibility.Disabled;
+            //EgyesuletGrid.VerticalScrollBarVisibility  = ScrollBarVisibility.Disabled;
+            //InduloGrid.VerticalScrollBarVisibility  = ScrollBarVisibility.Disabled;
+            //EredmenyGrid.VerticalScrollBarVisibility =  ScrollBarVisibility.Disabled;
+            //SablonGrid.VerticalScrollBarVisibility  = ScrollBarVisibility.Disabled;
+
 
             //TODO egységesen cb-re átnevezni !!!
             //TODO a plusz üres mit csesz el ???

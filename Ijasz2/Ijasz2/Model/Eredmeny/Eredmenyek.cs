@@ -66,5 +66,13 @@ namespace Ijasz2.Model.Eredmeny {
             }
 
         }
+
+        /// <summary> |
+        /// ha van versenysorozat, akkor a versenysorozat 1. versenyekor betöltött életkor számít
+        /// </summary>
+        /// <param name="eredmeny"></param>
+        public void KorosztalySzamolas(Eredmeny eredmeny) {
+            
+        }
     }
 }

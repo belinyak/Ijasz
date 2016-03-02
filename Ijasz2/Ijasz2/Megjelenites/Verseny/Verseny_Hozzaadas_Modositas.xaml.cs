@@ -42,18 +42,22 @@ namespace Ijasz2.Megjelenites.Verseny {
         private void InitializeContent( Model.Verseny.Verseny verseny ) {
             Title += " módosítás";
 
-
             txtAzonosito.Text = _verseny.Azonosito;
             txtAzonosito.IsEnabled = false;
             txtMegnevezes.Text = _verseny.Megnevezes;
             cbVersenysorozat.ItemsSource = Model.Data.Data.Versenysorozatok._versenysorozatok;
             try {
                 dtDatum.SelectedDate = DateTime.Parse( _verseny.Datum );
+                dtDatum.IsEnabled = _verseny.Indulok == 0;
             } catch( Exception ) {
             }
             cbVersenysorozat.Text = _verseny.Versenysorozat;
+            cbVersenysorozat.IsEnabled = _verseny.Indulok == 0;
+            BtnClearCombobox.IsEnabled = _verseny.Indulok == 0;
             txtLovesek.Text = _verseny.Osszes.ToString( );
+            txtLovesek.IsEnabled = _verseny.Indulok == 0;
             txtAllomasok.Text = _verseny.Allomasok.ToString( );
+            txtAllomasok.IsEnabled = _verseny.Indulok == 0;
             chDupla.IsChecked = _verseny.DuplaBeirolap;
         }
         #endregion
