@@ -39,10 +39,10 @@ namespace Ijasz2.Model.Korosztaly {
             //from eredmeny in Model.Data.Data.Eredmenyek._versenyEredmenyek.Where( q => q.VersenyAzonosito.Equals(versenyAzonosito)).Select(eredmeny => eredmeny.Eredmenyek)
             //from indulo in Model.Data.Data.Indulok._indulok.Where(indulo => )
 
-            foreach (var versenyEredmenyek in Model.Data.Data.Eredmenyek._versenyEredmenyek) {
-                if (versenyEredmenyek.VersenyAzonosito.Equals(versenyAzonosito)) {
-                    foreach (var versenyKorosztalyok in Model.Data.Data.Korosztalyok._versenyKorosztalyok) {
-                        if (versenyKorosztalyok.VersenyAzonosito.Equals(korosztalyAzonosito)) {
+            foreach( var versenyEredmenyek in Model.Data.Data.Eredmenyek._versenyEredmenyek ) {
+                if( versenyEredmenyek.VersenyAzonosito.Equals( versenyAzonosito ) ) {
+                    foreach( var versenyKorosztalyok in Model.Data.Data.Korosztalyok._versenyKorosztalyok ) {
+                        if( versenyKorosztalyok.VersenyAzonosito.Equals( korosztalyAzonosito ) ) {
                             var q =
                                 from eredmeny in
                                     versenyEredmenyek.Eredmenyek._eredmenyek.Where(
