@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.Data.SQLite;
 using System.Linq;
 using System.Windows;
-using System.Windows.Interop;
 using Ijasz2.Model.Korosztaly;
 
 namespace Ijasz2.Adatbazis.Korosztaly {

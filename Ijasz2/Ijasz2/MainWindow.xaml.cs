@@ -203,7 +203,7 @@ namespace Ijasz2 {
             if( string.IsNullOrEmpty( cboVerseny.Text ) ) {
                 return;
             }
-            foreach( var korosztalyok in Model.Data.Data.Korosztalyok._versenyKorosztalyok.Where( korosztaly => korosztaly.VersenyAzonosito.Equals( cboVerseny.Text ) ) ) {
+            foreach( var korosztalyok in Data.Korosztalyok._versenyKorosztalyok.Where( korosztaly => korosztaly.VersenyAzonosito.Equals( cboVerseny.Text ) ) ) {
                 korosztalyok.KorosztalySzamolas( cboVerseny.Text );
             }
             //throw new NotImplementedException( );

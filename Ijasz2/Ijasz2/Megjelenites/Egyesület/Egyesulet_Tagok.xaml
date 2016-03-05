@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Ijasz2.Megjelenites.Egyesület"
         mc:Ignorable="d"
         Title="Tagok" Height="768" Width="750" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
@@ -40,7 +39,7 @@
         </DataGrid>
         <Label Content="Verseny azonosító:" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"
 					       VerticalAlignment="Top" Margin="12,5,11,0" />
-        <ComboBox x:Name="cboEgyesuletTagokVerseny" DisplayMemberPath="Azonosito" Grid.Row="0" Grid.Column="3"
+        <ComboBox x:Name="cboEgyesuletTagokVerseny" DisplayMemberPath="Azonosito" Grid.Row="0" Grid.Column="2"
 					          HorizontalAlignment="Left" Width="100" VerticalAlignment="Top" Margin="0,10,0,0"
 					          SelectionChanged="cboEgyesuletTagokVerseny_SelectionChanged" />
         <Button Content="X" Grid.Column="2" HorizontalAlignment="Left" Margin="100,10,0,0" VerticalAlignment="Top" Width="20" Height="22" Click="BtnEgysuletTagokClear_OnClick" />

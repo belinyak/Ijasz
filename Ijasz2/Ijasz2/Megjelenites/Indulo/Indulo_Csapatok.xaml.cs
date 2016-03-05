@@ -46,8 +46,8 @@ namespace Ijasz2.Megjelenites.Indulo {
 
         private void CsapatGridOnSelectionChanged( object sender, SelectionChangedEventArgs selectionChangedEventArgs ) {
             CsapatIndulokGrid.ItemsSource = null;
-            var Csapat = CsapatGrid.SelectedItem as Csapat;
-            CsapatIndulokGrid.ItemsSource = Csapat.CsapatIndulok;
+            var csapat = CsapatGrid.SelectedItem as Csapat;
+            CsapatIndulokGrid.ItemsSource = csapat.CsapatIndulok;
         }
     }
 }

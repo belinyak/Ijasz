@@ -1,31 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Ijasz2.Model.Egyesulet;
 
 namespace Ijasz2.Megjelenites.Egyesület {
     /// <summary>
     /// Interaction logic for Egyesulet_Tagok.xaml
     /// </summary>
-    public partial class Egyesulet_Tagok : Window {
+    public partial class Egyesulet_Tagok  {
         private readonly Egyesulet _egyesulet;
-        public Egyesulet_Tagok( Model.Egyesulet.Egyesulet egyesulet ) {
+        public Egyesulet_Tagok( Egyesulet egyesulet ) {
             _egyesulet = egyesulet;
             InitializeComponent( );
             InitializeContent( egyesulet );
         }
 
-        private void InitializeContent( Model.Egyesulet.Egyesulet egyesulet ) {
+        private void InitializeContent( Egyesulet egyesulet ) {
 
             cboEgyesuletTagokVerseny.ItemsSource = Model.Data.Data.Versenyek._versenyek;
 
