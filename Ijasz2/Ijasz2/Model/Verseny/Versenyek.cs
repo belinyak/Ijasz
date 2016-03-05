@@ -187,11 +187,11 @@ namespace Ijasz2.Model.Verseny {
         }
 
         /// <summary>
-        ///     |
-        ///     adatbazis betoltes |
+        /// | adatbazis betoltes |
         /// </summary>
         public void Load() {
             _versenyek = Adatbazis.Verseny.Verseny.Load();
+
         }
 
         public void IndulokNoveles(string azonosito) {
