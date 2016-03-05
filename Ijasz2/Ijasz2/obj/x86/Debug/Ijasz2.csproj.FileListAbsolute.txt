@@ -25,7 +25,6 @@ C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\M
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Megjelenites\Verseny\Verseny_Torles.g.cs
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\App.g.cs
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Ijasz2_MarkupCompile.cache
-C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Ijasz2_MarkupCompile.lref
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\MainWindow.baml
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Megjelenites\Egyesület\Egyesulet_Hozzaadas_Modositas.baml
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Megjelenites\Egyesület\Egyesulet_Torles.baml
@@ -105,3 +104,5 @@ Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Ijasz2.csproj.GenerateResource.Cach
 Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Ijasz2.exe
 Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Megjelenites\Eredmeny\Eredmeny_Torles.g.cs
 Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Megjelenites\Eredmeny\Eredmeny_Torles.baml
+C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Megjelenites\Eredmeny\Eredmeny_Torles.baml
+C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Megjelenites\Eredmeny\Eredmeny_Torles.g.cs

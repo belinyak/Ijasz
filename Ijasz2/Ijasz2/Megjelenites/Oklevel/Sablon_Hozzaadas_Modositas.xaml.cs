@@ -256,26 +256,19 @@ namespace Ijasz2.Megjelenites.Oklevel {
                     txtInduloHo.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-
-                try {
-                    Convert.ToInt32( txtInduloSze.Text );
-                } catch {
+                int temp;
+                if( !Int32.TryParse( txtInduloSze.Text, out temp ) ) {
                     txtInduloSze.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-                try {
-                    Convert.ToInt32( txtInduloMa.Text );
-                } catch {
+                if( !Int32.TryParse( txtInduloMa.Text, out temp ) ) {
                     txtInduloMa.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-                try {
-                    Convert.ToInt32( txtInduloHo.Text );
-                } catch {
+                if( !Int32.TryParse( txtInduloHo.Text, out temp ) ) {
                     txtInduloHo.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-
                 if( chInduloBo.IsChecked == false && chInduloIt.IsChecked == false ) {
                     chInduloBo.BorderBrush = new SolidColorBrush( Colors.Red );
                     chInduloIt.BorderBrush = new SolidColorBrush( Colors.Red );
@@ -286,13 +279,10 @@ namespace Ijasz2.Megjelenites.Oklevel {
                     txtInduloMe.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-                try {
-                    Convert.ToInt32( txtInduloMe.Text );
-                } catch {
+                if( !Int32.TryParse( txtInduloMe.Text, out temp ) ) {
                     txtInduloMe.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-
                 if( cbInduloBe.Text == "" ) {
                     MessageBox.Show( "Betűtípus kiválasztása kötelező.", "Induló betűtípus" );
                     valid = false;
@@ -330,43 +320,32 @@ namespace Ijasz2.Megjelenites.Oklevel {
                     txtEgyesuletHo.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-
-                try {
-                    Convert.ToInt32( txtEgyesuletSze.Text );
-                } catch {
+                int temp;
+                if( !Int32.TryParse( txtEgyesuletSze.Text, out temp ) ) {
                     txtEgyesuletSze.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-                try {
-                    Convert.ToInt32( txtEgyesuletMa.Text );
-                } catch {
+                if( !Int32.TryParse( txtEgyesuletMa.Text, out temp ) ) {
                     txtEgyesuletMa.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-                try {
-                    Convert.ToInt32( txtEgyesuletHo.Text );
-                } catch {
+                if( !Int32.TryParse( txtEgyesuletHo.Text, out temp ) ) {
                     txtEgyesuletHo.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-
                 if( chEgyesuletBo.IsChecked == false && chEgyesuletIt.IsChecked == false ) {
                     chEgyesuletBo.BorderBrush = new SolidColorBrush( Colors.Red );
                     chEgyesuletIt.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-
                 if( txtEgyesuletMe.Text == "" ) {
                     txtEgyesuletMe.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-                try {
-                    Convert.ToInt32( txtEgyesuletMe.Text );
-                } catch {
+                if( !Int32.TryParse( txtEgyesuletMe.Text, out temp ) ) {
                     txtEgyesuletMe.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-
                 if( cbEgyesuletBe.Text == "" ) {
                     MessageBox.Show( "Betűtípus kiválasztása kötelező.", "Egyesület betűtípus" );
                     valid = false;
@@ -405,26 +384,19 @@ namespace Ijasz2.Megjelenites.Oklevel {
                     txtIjtipusHo.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-
-                try {
-                    Convert.ToInt32( txtIjtipusSze.Text );
-                } catch {
+                int temp;
+                if( !Int32.TryParse( txtIjtipusSze.Text, out temp ) ) {
                     txtIjtipusSze.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-                try {
-                    Convert.ToInt32( txtIjtipusMa.Text );
-                } catch {
+                if( !Int32.TryParse( txtIjtipusMa.Text, out temp ) ) {
                     txtIjtipusMa.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-                try {
-                    Convert.ToInt32( txtIjtipusHo.Text );
-                } catch {
+                if( !Int32.TryParse( txtIjtipusHo.Text, out temp ) ) {
                     txtIjtipusHo.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-
                 if( chIjtipusBo.IsChecked == false && chIjtipusIt.IsChecked == false ) {
                     chIjtipusBo.BorderBrush = new SolidColorBrush( Colors.Red );
                     chIjtipusIt.BorderBrush = new SolidColorBrush( Colors.Red );
@@ -435,13 +407,10 @@ namespace Ijasz2.Megjelenites.Oklevel {
                     txtIjtipusMe.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-                try {
-                    Convert.ToInt32( txtIjtipusMe.Text );
-                } catch {
+                if( !Int32.TryParse( txtIjtipusMe.Text, out temp ) ) {
                     txtIjtipusMe.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-
                 if( cbIjtipusBe.Text == "" ) {
                     MessageBox.Show( "Betűtípus kiválasztása kötelező.", "Íjtípus betűtípus" );
                     valid = false;
@@ -479,26 +448,19 @@ namespace Ijasz2.Megjelenites.Oklevel {
                     txtKorosztalyHo.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-
-                try {
-                    Convert.ToInt32( txtKorosztalySze.Text );
-                } catch {
+                int temp;
+                if( !Int32.TryParse( txtKorosztalySze.Text, out temp ) ) {
                     txtKorosztalySze.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-                try {
-                    Convert.ToInt32( txtKorosztalyMa.Text );
-                } catch {
+                if( !Int32.TryParse( txtKorosztalyMa.Text, out temp ) ) {
                     txtKorosztalyMa.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-                try {
-                    Convert.ToInt32( txtKorosztalyHo.Text );
-                } catch {
+                if( !Int32.TryParse( txtKorosztalyHo.Text, out temp ) ) {
                     txtKorosztalyHo.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-
                 if( chKorosztalyBo.IsChecked == false && chKorosztalyIt.IsChecked == false ) {
                     chKorosztalyBo.BorderBrush = new SolidColorBrush( Colors.Red );
                     chKorosztalyIt.BorderBrush = new SolidColorBrush( Colors.Red );
@@ -509,13 +471,10 @@ namespace Ijasz2.Megjelenites.Oklevel {
                     txtKorosztalyMe.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-                try {
-                    Convert.ToInt32( txtKorosztalyMe.Text );
-                } catch {
+                if( !Int32.TryParse( txtKorosztalyMe.Text, out temp ) ) {
                     txtKorosztalyMe.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-
                 if( cbKorosztalyBe.Text == "" ) {
                     MessageBox.Show( "Betűtípus kiválasztása kötelező.", "Korosztály betűtípus" );
                     valid = false;
@@ -554,43 +513,32 @@ namespace Ijasz2.Megjelenites.Oklevel {
                     txtInduloNemeHo.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-
-                try {
-                    Convert.ToInt32( txtInduloNemeSze.Text );
-                } catch {
+                int temp;
+                if( !Int32.TryParse( txtInduloNemeSze.Text, out temp ) ) {
                     txtInduloNemeSze.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-                try {
-                    Convert.ToInt32( txtInduloNemeMa.Text );
-                } catch {
+                if( !Int32.TryParse( txtInduloNemeMa.Text, out temp ) ) {
                     txtInduloNemeMa.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-                try {
-                    Convert.ToInt32( txtInduloNemeHo.Text );
-                } catch {
+                if( !Int32.TryParse( txtInduloNemeHo.Text, out temp ) ) {
                     txtInduloNemeHo.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-
                 if( chInduloNemeBo.IsChecked == false && chInduloNemeIt.IsChecked == false ) {
                     chInduloNemeBo.BorderBrush = new SolidColorBrush( Colors.Red );
                     chInduloNemeIt.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-
                 if( txtInduloNemeMe.Text == "" ) {
                     txtInduloNemeMe.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-                try {
-                    Convert.ToInt32( txtInduloNemeMe.Text );
-                } catch {
+                if( !Int32.TryParse( txtInduloNemeMe.Text, out temp ) ) {
                     txtInduloNemeMe.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-
                 if( cbInduloNemeBe.Text == "" ) {
                     MessageBox.Show( "Betűtípus kiválasztása kötelező.", "Induló neme betűtípus" );
                     valid = false;
@@ -629,26 +577,19 @@ namespace Ijasz2.Megjelenites.Oklevel {
                     txtDatumHo.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-
-                try {
-                    Convert.ToInt32( txtDatumSze.Text );
-                } catch {
+                int temp;
+                if( !Int32.TryParse( txtDatumSze.Text, out temp ) ) {
                     txtDatumSze.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-                try {
-                    Convert.ToInt32( txtDatumMa.Text );
-                } catch {
+                if( !Int32.TryParse( txtDatumMa.Text, out temp ) ) {
                     txtDatumMa.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-                try {
-                    Convert.ToInt32( txtDatumHo.Text );
-                } catch {
+                if( !Int32.TryParse( txtDatumHo.Text, out temp ) ) {
                     txtDatumHo.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-
                 if( chDatumBo.IsChecked == false && chDatumIt.IsChecked == false ) {
                     chDatumBo.BorderBrush = new SolidColorBrush( Colors.Red );
                     chDatumIt.BorderBrush = new SolidColorBrush( Colors.Red );
@@ -659,13 +600,10 @@ namespace Ijasz2.Megjelenites.Oklevel {
                     txtDatumMe.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-                try {
-                    Convert.ToInt32( txtDatumMe.Text );
-                } catch {
+                if( !Int32.TryParse( txtDatumMe.Text, out temp ) ) {
                     txtDatumMe.BorderBrush = new SolidColorBrush( Colors.Red );
                     valid = false;
                 }
-
                 if( cbDatumBe.Text == "" ) {
                     MessageBox.Show( "Betűtípus kiválasztása kötelező.", "Dátum betűtípus" );
                     valid = false;
