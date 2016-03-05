@@ -77,7 +77,7 @@ namespace Ijasz2 {
             //EredmenyGrid.VerticalScrollBarVisibility =  ScrollBarVisibility.Disabled;
             //SablonGrid.VerticalScrollBarVisibility  = ScrollBarVisibility.Disabled;
 
-            
+
 
             //TODO egységesen cb-re átnevezni !!!
             //TODO a plusz üres mit csesz el ???
@@ -188,7 +188,7 @@ namespace Ijasz2 {
                 return;
             }
             var korosztaly = KorosztalyGrid.SelectedItem as Korosztaly;
-            
+
             ( new Korosztaly_Torles( korosztaly ) ).ShowDialog( );
         }
 
@@ -255,6 +255,15 @@ namespace Ijasz2 {
             ( new Egyesulet_Hozzaadas_Modositas( egyesulet ) ).ShowDialog( );
         }
 
+        private void btnTagok_Click( object sender, RoutedEventArgs e ) {
+            var egyesulet = EgyesuletGrid.SelectedItem as Egyesulet;
+
+            if (egyesulet == null) {
+                return;
+            }
+
+            (new Megjelenites.Egyesület.Egyesulet_Tagok(egyesulet)).Show();
+        }
         #endregion
 
         #region Indulo

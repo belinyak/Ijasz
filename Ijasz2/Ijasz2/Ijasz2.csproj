@@ -105,6 +105,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Megjelenites\Egyesület\Egyesulet_Tagok.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Megjelenites\Egyesület\Egyesulet_Torles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -186,6 +190,9 @@
     <Compile Include="Megjelenites\Egyesület\Egyesulet_Hozzaadas_Modositas.xaml.cs">
       <DependentUpon>Egyesulet_Hozzaadas_Modositas.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Megjelenites\Egyesület\Egyesulet_Tagok.xaml.cs">
+      <DependentUpon>Egyesulet_Tagok.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Megjelenites\Egyesület\Egyesulet_Torles.xaml.cs">
       <DependentUpon>Egyesulet_Torles.xaml</DependentUpon>
     </Compile>
@@ -246,6 +253,7 @@
     <Compile Include="Model\Data\Data.cs" />
     <Compile Include="Model\Egyesulet\Egyesulet.cs" />
     <Compile Include="Model\Egyesulet\Egyesuletek.cs" />
+    <Compile Include="Model\Egyesulet\Egyesulet_Tagok.cs" />
     <Compile Include="Model\Eredmeny\Eredmeny.cs" />
     <Compile Include="Model\Eredmeny\Eredmenyek.cs" />
     <Compile Include="Model\Eredmeny\VersenyEredmeny.cs" />

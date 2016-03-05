@@ -135,8 +135,6 @@
 					          CanUserResizeRows="False"
 					          RowHeaderWidth="0"
 					          HorizontalScrollBarVisibility="Disabled">
-
-
 						<DataGrid.Resources>
 							<Style TargetType="DataGridCell">
 								<Setter Property="BorderThickness" Value="0" />
@@ -248,7 +246,12 @@
 						<ColumnDefinition Width="131" />
 						<ColumnDefinition Width="131" />
 					</Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="630" />
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
 					<DataGrid x:Name="EgyesuletGrid"
+                              Grid.RowSpan="2"
 					          HorizontalAlignment="Stretch"
 					          IsReadOnly="True"
 					          SelectionMode="Single"
@@ -292,11 +295,13 @@
 							                    CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="50" Header="Tagok" />
 						</DataGrid.Columns>
 					</DataGrid>
-					<Button Content="Törlés" Grid.Column="2" HorizontalAlignment="Center"
+					<Button Content="Törlés" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center"
 					        VerticalAlignment="Bottom" Width="96" Height="32" Margin="18,0,17,16" Click="btnEgyesuletTorles_Click" />
-					<Button Content="Hozzáadás" Grid.Column="3" HorizontalAlignment="Left"
+                    <Button Content="Hozzáadás" Grid.Column="3" Grid.Row="1"  HorizontalAlignment="Left"
 					        VerticalAlignment="Bottom" Width="96" Height="32" Margin="0,0,0,16" Click="btnEgyesuletHozzaadas_Click" />
-				</Grid>
+                    <Button Content="Tagok" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Left"
+					        VerticalAlignment="Bottom" Width="96" Height="32" Margin="0,0,0,16" Click="btnTagok_Click" />
+                </Grid>
 			</TabItem>
 			<TabItem Header="Indulók">
 				<Grid Background="#FFE5E5E5">
@@ -640,7 +645,6 @@
 					        VerticalAlignment="Bottom" Width="96" Height="32" Margin="0,0,0,16" Click="btnOSablonHozzaadas_Click" />
 				</Grid>
 			</TabItem>
-
 		</TabControl>
 	</Grid>
 </Window>

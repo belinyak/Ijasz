@@ -106,3 +106,6 @@ Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Megjelenites\Eredmeny\Eredmeny_Torl
 Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Megjelenites\Eredmeny\Eredmeny_Torles.baml
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Megjelenites\Eredmeny\Eredmeny_Torles.baml
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Megjelenites\Eredmeny\Eredmeny_Torles.g.cs
+C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Megjelenites\Egyesület\Egyesulet_Tagok.g.cs
+C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Ijasz2_MarkupCompile.lref
+C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Megjelenites\Egyesület\Egyesulet_Tagok.baml
