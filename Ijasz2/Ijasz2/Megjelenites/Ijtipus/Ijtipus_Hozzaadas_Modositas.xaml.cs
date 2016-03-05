@@ -11,8 +11,8 @@ namespace Ijasz2.Megjelenites.Ijtipus {
     public partial class Ijtipus_Hozzaadas_Modositas {
         private readonly Model.Ijtipus.Ijtipus _ijtipus;
 
-        private void BtnRendben_OnClick(object sender, RoutedEventArgs e) {
-            if (IsValid() == false) {
+        private void BtnRendben_OnClick( object sender, RoutedEventArgs e ) {
+            if( IsValid( ) == false ) {
                 return;
             }
 
@@ -23,25 +23,25 @@ namespace Ijasz2.Megjelenites.Ijtipus {
                 Eredmenyek = 0
             };
             // hozzaadas
-            if (_ijtipus == null) {
-                Data.Ijtipusok.Add(Ijtipus);
+            if( _ijtipus == null ) {
+                Data.Ijtipusok.Add( Ijtipus );
             }
             // modositas
             else {
                 Ijtipus.Eredmenyek = _ijtipus.Eredmenyek;
-                Data.Ijtipusok.Update(Ijtipus);
+                Data.Ijtipusok.Update( Ijtipus );
             }
-            Close();
+            Close( );
         }
 
         #region Hozzaadas
 
-        public Ijtipus_Hozzaadas_Modositas() {
-            InitializeComponent();
-            InitializeContent();
+        public Ijtipus_Hozzaadas_Modositas( ) {
+            InitializeComponent( );
+            InitializeContent( );
         }
 
-        private void InitializeContent() {
+        private void InitializeContent( ) {
             Title += " hozzáadás";
         }
 
@@ -49,38 +49,36 @@ namespace Ijasz2.Megjelenites.Ijtipus {
 
         #region Modositas
 
-        public Ijtipus_Hozzaadas_Modositas(Model.Ijtipus.Ijtipus ijtipus) {
+        public Ijtipus_Hozzaadas_Modositas( Model.Ijtipus.Ijtipus ijtipus ) {
             _ijtipus = ijtipus;
-            InitializeComponent();
-            InitializeContent(_ijtipus);
+            InitializeComponent( );
+            InitializeContent( _ijtipus );
         }
 
-        private void InitializeContent(Model.Ijtipus.Ijtipus ijtipus) {
+        private void InitializeContent( Model.Ijtipus.Ijtipus ijtipus ) {
             Title += " módosítás";
             txtAzonosito.Text = ijtipus.Azonosito;
             txtAzonosito.IsEnabled = false;
             txtMegnevezes.Text = ijtipus.Megnevezes;
-            txtListazas.Text = ijtipus.Sorszam.ToString();
+            txtListazas.Text = ijtipus.Sorszam.ToString( );
         }
 
-        private bool IsValid() {
+        private bool IsValid( ) {
             var valid = true;
-            txtAzonosito.ClearValue(Border.BorderBrushProperty);
-            txtListazas.ClearValue(Border.BorderBrushProperty);
+            txtAzonosito.ClearValue( Border.BorderBrushProperty );
+            txtListazas.ClearValue( Border.BorderBrushProperty );
 
-            if (txtAzonosito.Text.Length == 0) {
-                txtAzonosito.BorderBrush = new SolidColorBrush(Colors.Red);
+            if( txtAzonosito.Text.Length == 0 ) {
+                txtAzonosito.BorderBrush = new SolidColorBrush( Colors.Red );
                 valid = false;
             }
 
-            try {
-                Convert.ToInt32(txtListazas.Text);
-            }
-            catch {
-                txtListazas.BorderBrush = new SolidColorBrush(Colors.Red);
+            int temp;
+            if( !Int32.TryParse( txtListazas.Text, out temp ) ) {
+                txtListazas.BorderBrush = new SolidColorBrush( Colors.Red );
                 valid = false;
             }
-
+            
             return valid;
         }
 

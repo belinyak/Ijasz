@@ -8,47 +8,45 @@ namespace Ijasz2.Megjelenites.Verseny {
     /// <summary>
     ///     Interaction logic for Verseny_Hozzaadas_Modositas.xaml
     /// </summary>
-    public partial class Verseny_Hozzaadas_Modositas  {
+    public partial class Verseny_Hozzaadas_Modositas {
         private readonly Model.Verseny.Verseny _verseny;
 
-        private bool IsValid() {
+        private bool IsValid( ) {
             var valid = true;
 
-            txtAzonosito.ClearValue(Border.BorderBrushProperty);
-            dtDatum.ClearValue(Border.BorderBrushProperty);
-            txtLovesek.ClearValue(Border.BorderBrushProperty);
-            txtAllomasok.ClearValue(Border.BorderBrushProperty);
+            txtAzonosito.ClearValue( Border.BorderBrushProperty );
+            dtDatum.ClearValue( Border.BorderBrushProperty );
+            txtLovesek.ClearValue( Border.BorderBrushProperty );
+            txtAllomasok.ClearValue( Border.BorderBrushProperty );
 
-            if (txtAzonosito.Text.Length == 0) {
-                txtAzonosito.BorderBrush = new SolidColorBrush(Colors.Red);
+            if( txtAzonosito.Text.Length == 0 ) {
+                txtAzonosito.BorderBrush = new SolidColorBrush( Colors.Red );
                 valid = false;
             }
-            try {
-                dtDatum.SelectedDate.ToString();
-            }
-            catch (Exception) {
-                dtDatum.BorderBrush = new SolidColorBrush(Colors.Red);
+
+            //try {
+            //    dtDatum.SelectedDate.ToString();
+            //}
+            //catch (Exception) {
+            //    dtDatum.BorderBrush = new SolidColorBrush(Colors.Red);
+            //    valid = false;
+            //}
+
+            int temp;
+            if( !Int32.TryParse( txtLovesek.Text, out temp ) ) {
+                txtLovesek.BorderBrush = new SolidColorBrush( Colors.Red );
                 valid = false;
             }
-            try {
-                Convert.ToInt32(txtLovesek.Text);
-            }
-            catch (Exception) {
-                txtLovesek.BorderBrush = new SolidColorBrush(Colors.Red);
-                valid = false;
-            }
-            try {
-                Convert.ToInt32(txtAllomasok.Text);
-            }
-            catch (Exception) {
-                txtAllomasok.BorderBrush = new SolidColorBrush(Colors.Red);
+
+            if( !Int32.TryParse( txtAllomasok.Text, out temp ) ) {
+                txtAllomasok.BorderBrush = new SolidColorBrush( Colors.Red );
                 valid = false;
             }
             return valid;
         }
 
-        private void BtnRendben_OnClick(object sender, RoutedEventArgs e) {
-            if (IsValid() == false) {
+        private void BtnRendben_OnClick( object sender, RoutedEventArgs e ) {
+            if( IsValid( ) == false ) {
                 return;
             }
 
@@ -63,28 +61,28 @@ namespace Ijasz2.Megjelenites.Verseny {
             };
 
             // hozzaadas
-            if (_verseny == null) {
-                Data.Versenyek.Add(Verseny);
+            if( _verseny == null ) {
+                Data.Versenyek.Add( Verseny );
             }
             // modositas
             else {
-                Data.Versenyek.Update(Verseny);
+                Data.Versenyek.Update( Verseny );
             }
-            Close();
+            Close( );
         }
 
-        private void BtnClearCombobox_OnClick(object sender, RoutedEventArgs e) {
+        private void BtnClearCombobox_OnClick( object sender, RoutedEventArgs e ) {
             cbVersenysorozat.SelectedIndex = -1;
         }
 
         #region Hozzaadas
 
-        public Verseny_Hozzaadas_Modositas() {
-            InitializeComponent();
-            InitializeContent();
+        public Verseny_Hozzaadas_Modositas( ) {
+            InitializeComponent( );
+            InitializeContent( );
         }
 
-        private void InitializeContent() {
+        private void InitializeContent( ) {
             Title += " hozzáadás";
             dtDatum.SelectedDate = DateTime.Now;
             cbVersenysorozat.ItemsSource = Data.Versenysorozatok._versenysorozatok;
@@ -94,13 +92,13 @@ namespace Ijasz2.Megjelenites.Verseny {
 
         #region Modositas
 
-        public Verseny_Hozzaadas_Modositas(Model.Verseny.Verseny verseny) {
+        public Verseny_Hozzaadas_Modositas( Model.Verseny.Verseny verseny ) {
             _verseny = verseny;
-            InitializeComponent();
-            InitializeContent(_verseny);
+            InitializeComponent( );
+            InitializeContent( _verseny );
         }
 
-        private void InitializeContent(Model.Verseny.Verseny verseny) {
+        private void InitializeContent( Model.Verseny.Verseny verseny ) {
             Title += " módosítás";
 
             txtAzonosito.Text = _verseny.Azonosito;
@@ -108,18 +106,17 @@ namespace Ijasz2.Megjelenites.Verseny {
             txtMegnevezes.Text = _verseny.Megnevezes;
             cbVersenysorozat.ItemsSource = Data.Versenysorozatok._versenysorozatok;
             try {
-                dtDatum.SelectedDate = DateTime.Parse(_verseny.Datum);
+                dtDatum.SelectedDate = DateTime.Parse( _verseny.Datum );
                 dtDatum.IsEnabled = _verseny.Indulok == 0;
-            }
-            catch (Exception) {
+            } catch( Exception ) {
                 // ignored
             }
             cbVersenysorozat.Text = _verseny.Versenysorozat;
             cbVersenysorozat.IsEnabled = _verseny.Indulok == 0;
             BtnClearCombobox.IsEnabled = _verseny.Indulok == 0;
-            txtLovesek.Text = _verseny.Osszes.ToString();
+            txtLovesek.Text = _verseny.Osszes.ToString( );
             txtLovesek.IsEnabled = _verseny.Indulok == 0;
-            txtAllomasok.Text = _verseny.Allomasok.ToString();
+            txtAllomasok.Text = _verseny.Allomasok.ToString( );
             txtAllomasok.IsEnabled = _verseny.Indulok == 0;
             chDupla.IsChecked = _verseny.DuplaBeirolap;
         }

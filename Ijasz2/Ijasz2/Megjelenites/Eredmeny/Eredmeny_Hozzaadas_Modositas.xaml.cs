@@ -50,27 +50,20 @@ namespace Ijasz2.Megjelenites.Eredmeny {
             txtOt.ClearValue( Border.BorderBrushProperty );
             txtMelle.ClearValue( Border.BorderBrushProperty );
 
-            try {
-                Convert.ToInt32( txtTiz.Text );
-            } catch {
+            int temp;
+            if( !Int32.TryParse( txtTiz.Text, out temp ) ) {
                 txtTiz.BorderBrush = new SolidColorBrush( Colors.Red );
                 valid = false;
             }
-            try {
-                Convert.ToInt32( txtNyolc.Text );
-            } catch {
+            if( !Int32.TryParse( txtNyolc.Text, out temp ) ) {
                 txtNyolc.BorderBrush = new SolidColorBrush( Colors.Red );
                 valid = false;
             }
-            try {
-                Convert.ToInt32( txtOt.Text );
-            } catch {
+            if( !Int32.TryParse( txtOt.Text, out temp ) ) {
                 txtOt.BorderBrush = new SolidColorBrush( Colors.Red );
                 valid = false;
             }
-            try {
-                Convert.ToInt32( txtMelle.Text );
-            } catch {
+            if( !Int32.TryParse( txtMelle.Text, out temp ) ) {
                 txtMelle.BorderBrush = new SolidColorBrush( Colors.Red );
                 valid = false;
             }
@@ -117,12 +110,12 @@ namespace Ijasz2.Megjelenites.Eredmeny {
             _eredmeny.Melle = Convert.ToInt32( txtMelle.Text );
             _eredmeny.OsszPont = ( _eredmeny.Talalat10 * 10 + _eredmeny.Talalat8 * 8 + _eredmeny.Talalat5 * 5 );
 
-            foreach (var verseny in Data.Versenyek._versenyek.Where(verseny => verseny.Azonosito.Equals( _eredmeny.Verseny ))) {
+            foreach( var verseny in Data.Versenyek._versenyek.Where( verseny => verseny.Azonosito.Equals( _eredmeny.Verseny ) ) ) {
                 _eredmeny.Szazalek = (int)( _eredmeny.OsszPont / ( verseny.Osszes / 10.0f ) );
                 break;
             }
 
-            foreach (var versenyEredmeny in Data.Eredmenyek._versenyEredmenyek.Where(versenyEredmeny => versenyEredmeny.VersenyAzonosito.Equals( _eredmeny.Verseny ))) {
+            foreach( var versenyEredmeny in Data.Eredmenyek._versenyEredmenyek.Where( versenyEredmeny => versenyEredmeny.VersenyAzonosito.Equals( _eredmeny.Verseny ) ) ) {
                 versenyEredmeny.Eredmenyek.Update( _eredmeny );
                 break;
             }
