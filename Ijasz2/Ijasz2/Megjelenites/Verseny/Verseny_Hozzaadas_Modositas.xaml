@@ -3,44 +3,56 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Ijasz2.Megjelenites.Verseny"
         mc:Ignorable="d"
         Title="Verseny" Height="300" Width="245" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
-    <!--Width="255"-->
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Label x:Name="lblAzonosito" Content="Azonosító:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-        <Label x:Name="lblMegnevezes" Content="Megnevezés:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-        <Label x:Name="lblDatum" Content="Dátum:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-        <Label x:Name="lblVersenysorozat" Content="Versenysorozat:" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-        <Label x:Name="lblLovesek" Content="Lövések:" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+	<!--Width="255"-->
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="32" />
+			<RowDefinition Height="32" />
+			<RowDefinition Height="32" />
+			<RowDefinition Height="32" />
+			<RowDefinition Height="32" />
+			<RowDefinition Height="32" />
+			<RowDefinition Height="32" />
+			<RowDefinition Height="32" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="Auto" />
+		</Grid.ColumnDefinitions>
+		<Label Content="Azonosító:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch"
+		       VerticalAlignment="Center" />
+		<Label Content="Megnevezés:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch"
+		       VerticalAlignment="Center" />
+		<Label Content="Dátum:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch"
+		       VerticalAlignment="Center" />
+		<Label Content="Versenysorozat:" Grid.Row="3" Grid.Column="0"
+		       HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+		<Label Content="Lövések:" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Stretch"
+		       VerticalAlignment="Center" />
 
-        <Label x:Name="lblAllomasok" Content="Állomások:" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-        <Label x:Name="lblDupla" Content="Dupla beírólap:" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+		<Label Content="Állomások:" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Stretch"
+		       VerticalAlignment="Center" />
+		<Label Content="Dupla beírólap:" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Stretch"
+		       VerticalAlignment="Center" />
 
-        <TextBox x:Name="txtAzonosito" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
-        <TextBox x:Name="txtMegnevezes" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
-        <DatePicker x:Name="dtDatum" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <ComboBox x:Name="cbVersenysorozat" DisplayMemberPath="Azonosito" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100">
-        </ComboBox>
-        <TextBox x:Name="txtLovesek" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
-        <TextBox x:Name="txtAllomasok" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
-        <CheckBox x:Name="chDupla" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <Button x:Name="btnRendben" Content="Rendben" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="86" Height="28" Click="BtnRendben_OnClick" />
-        <Button x:Name="BtnClearCombobox" Content="X" Grid.Column="1" HorizontalAlignment="Left" Margin="100,5,0,0" Grid.Row="3" VerticalAlignment="Top" Width="20" Height="22" Click="BtnClearCombobox_OnClick"/>
-    </Grid>
+		<TextBox x:Name="txtAzonosito" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"
+		         Width="120" Height="23" TextWrapping="Wrap" />
+		<TextBox x:Name="txtMegnevezes" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"
+		         Width="120" Height="23" TextWrapping="Wrap" />
+		<DatePicker x:Name="dtDatum" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" />
+		<ComboBox x:Name="cbVersenysorozat" DisplayMemberPath="Azonosito" Grid.Row="3" Grid.Column="1"
+		          HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" />
+		<TextBox x:Name="txtLovesek" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"
+		         Width="120" Height="23" TextWrapping="Wrap" />
+		<TextBox x:Name="txtAllomasok" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"
+		         Width="120" Height="23" TextWrapping="Wrap" />
+		<CheckBox x:Name="chDupla" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" />
+		<Button Content="Rendben" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Right"
+		        VerticalAlignment="Bottom" Width="86" Height="28" Click="BtnRendben_OnClick" />
+		<Button x:Name="BtnClearCombobox" Content="X" Grid.Column="1" HorizontalAlignment="Left" Margin="100,5,0,0"
+		        Grid.Row="3" VerticalAlignment="Top" Width="20" Height="22" Click="BtnClearCombobox_OnClick" />
+	</Grid>
 </Window>

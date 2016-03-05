@@ -8,34 +8,36 @@ namespace Ijasz2.Model.Verseny {
     public class Versenyek {
         public ObservableCollection<Verseny> _versenyek;
 
-        /// <summary> |
-        /// model hozzaadas |
-        /// adatbazishoz hozzaadas |
-        /// versenyeredmenyek model hozzaadas |
-        /// versenysorozat versenyek novelese | 
-        /// TODO versenyeredmenyek adatbazis hozzaadas |
-        /// default korosztalyok model hozzaadas |
-        /// default korosztalyok adatbazis hozzaadas |
+        /// <summary>
+        ///     |
+        ///     model hozzaadas |
+        ///     adatbazishoz hozzaadas |
+        ///     versenyeredmenyek model hozzaadas |
+        ///     versenysorozat versenyek novelese |
+        ///     TODO versenyeredmenyek adatbazis hozzaadas |
+        ///     default korosztalyok model hozzaadas |
+        ///     default korosztalyok adatbazis hozzaadas |
         /// </summary>
         /// <param name="verseny"></param>
-        public void Add( Verseny verseny ) {
-            _versenyek.Add( verseny );
-            Adatbazis.Verseny.Verseny.Add( verseny );
+        public void Add(Verseny verseny) {
+            _versenyek.Add(verseny);
+            Adatbazis.Verseny.Verseny.Add(verseny);
 
             // versenysorozat eredmeny novelese
-            if( !string.IsNullOrEmpty( verseny.Versenysorozat ) ) {
-                Model.Data.Data.Versenysorozatok.VersenyekNovel( verseny.Versenysorozat );
+            if (!string.IsNullOrEmpty(verseny.Versenysorozat)) {
+                Data.Data.Versenysorozatok.VersenyekNovel(verseny.Versenysorozat);
             }
 
             // eredmenyek letrehozasa
-            VersenyEredmeny versenyEredmeny = new VersenyEredmeny(verseny.Azonosito);
-            Data.Data.Eredmenyek._versenyEredmenyek.Add( versenyEredmeny );
+            var versenyEredmeny = new VersenyEredmeny(verseny.Azonosito);
+            Data.Data.Eredmenyek._versenyEredmenyek.Add(versenyEredmeny);
 
             // korosztalyok letrehozasa
-            VersenyKorosztaly versenyKorosztaly = new VersenyKorosztaly(verseny.Azonosito);
+            var versenyKorosztaly = new VersenyKorosztaly(verseny.Azonosito);
 
             #region Default Korosztalyok
-            versenyKorosztaly.Korosztalyok.Add( new Korosztaly.Korosztaly {
+
+            versenyKorosztaly.Korosztalyok.Add(new Korosztaly.Korosztaly {
                 Verseny = verseny.Azonosito,
                 Azonosito = "K10",
                 Megnevezes = "0-10",
@@ -46,8 +48,8 @@ namespace Ijasz2.Model.Verseny {
                 InduloFerfiak = 0,
                 InduloNok = 0,
                 Egyben = false
-            } );
-            versenyKorosztaly.Korosztalyok.Add( new Korosztaly.Korosztaly {
+            });
+            versenyKorosztaly.Korosztalyok.Add(new Korosztaly.Korosztaly {
                 Verseny = verseny.Azonosito,
                 Azonosito = "K14",
                 Megnevezes = "10-14",
@@ -58,9 +60,9 @@ namespace Ijasz2.Model.Verseny {
                 InduloFerfiak = 0,
                 InduloNok = 0,
                 Egyben = false
-            } );
+            });
 
-            versenyKorosztaly.Korosztalyok.Add( new Korosztaly.Korosztaly {
+            versenyKorosztaly.Korosztalyok.Add(new Korosztaly.Korosztaly {
                 Verseny = verseny.Azonosito,
                 Azonosito = "K18",
                 Megnevezes = "14-18",
@@ -71,8 +73,8 @@ namespace Ijasz2.Model.Verseny {
                 InduloFerfiak = 0,
                 InduloNok = 0,
                 Egyben = false
-            } );
-            versenyKorosztaly.Korosztalyok.Add( new Korosztaly.Korosztaly {
+            });
+            versenyKorosztaly.Korosztalyok.Add(new Korosztaly.Korosztaly {
                 Verseny = verseny.Azonosito,
                 Azonosito = "K50",
                 Megnevezes = "18-50",
@@ -83,8 +85,8 @@ namespace Ijasz2.Model.Verseny {
                 InduloFerfiak = 0,
                 InduloNok = 0,
                 Egyben = false
-            } );
-            versenyKorosztaly.Korosztalyok.Add( new Korosztaly.Korosztaly {
+            });
+            versenyKorosztaly.Korosztalyok.Add(new Korosztaly.Korosztaly {
                 Verseny = verseny.Azonosito,
                 Azonosito = "K100",
                 Megnevezes = "50-100",
@@ -95,122 +97,116 @@ namespace Ijasz2.Model.Verseny {
                 InduloFerfiak = 0,
                 InduloNok = 0,
                 Egyben = false
-            } );
+            });
+
             #endregion
 
-            Data.Data.Korosztalyok = new VersenyKorosztalyok { _versenyKorosztalyok = new List<VersenyKorosztaly>( ) };
-            Data.Data.Korosztalyok.Add( versenyKorosztaly );
+            Data.Data.Korosztalyok = new VersenyKorosztalyok {_versenyKorosztalyok = new List<VersenyKorosztaly>()};
+            Data.Data.Korosztalyok.Add(versenyKorosztaly);
 
-            foreach( var korosztaly in versenyKorosztaly.Korosztalyok ) {
-                Adatbazis.Korosztaly.Korosztaly.Add( korosztaly );
+            foreach (var korosztaly in versenyKorosztaly.Korosztalyok) {
+                Adatbazis.Korosztaly.Korosztaly.Add(korosztaly);
             }
         }
 
-        /// <summary> |
-        /// model torles |
-        /// model adatbazis torles |
-        /// versenyhez tartozo korosztalyok model torlese |
-        /// TODO versenyhez tartozo korosztalyok adatbazis torlese |
+        /// <summary>
+        ///     |
+        ///     model torles |
+        ///     model adatbazis torles |
+        ///     versenyhez tartozo korosztalyok model torlese |
+        ///     TODO versenyhez tartozo korosztalyok adatbazis torlese |
         /// </summary>
         /// <param name="azonosito"></param>
-        public void Remove( string azonosito ) {
-
+        public void Remove(string azonosito) {
             // versenysorozat eredmenyek csokkentese
-            foreach( var verseny in _versenyek ) {
-                if( ( verseny.Azonosito.Equals( azonosito ) ) &&
-                        !string.IsNullOrEmpty( verseny.Versenysorozat ) ) {
-                    Model.Data.Data.Versenysorozatok.VersenyekCsokkent( verseny.Versenysorozat );
-                }
+            foreach (var verseny in _versenyek.Where(verseny => (verseny.Azonosito.Equals(azonosito)) &&
+                                                                !string.IsNullOrEmpty(verseny.Versenysorozat))) {
+                Data.Data.Versenysorozatok.VersenyekCsokkent(verseny.Versenysorozat);
             }
 
-            _versenyek.Remove( _versenyek.Single( s => s.Azonosito.Equals( azonosito ) ) );
-            Adatbazis.Verseny.Verseny.Remove( azonosito );
+            _versenyek.Remove(_versenyek.Single(s => s.Azonosito.Equals(azonosito)));
+            Adatbazis.Verseny.Verseny.Remove(azonosito);
 
-            foreach( var versenyKorosztaly in Data.Data.Korosztalyok._versenyKorosztalyok ) {
-                if( versenyKorosztaly.VersenyAzonosito.Equals( azonosito ) ) {
-                    Data.Data.Korosztalyok.Remove( versenyKorosztaly );
-                    return;
-                }
+            foreach (var versenyKorosztaly in Data.Data.Korosztalyok._versenyKorosztalyok.Where(versenyKorosztaly => versenyKorosztaly.VersenyAzonosito.Equals(azonosito))) {
+                Data.Data.Korosztalyok.Remove(versenyKorosztaly);
+                return;
             }
         }
 
-        /// <summary> |
-        /// indulok szamat nem set-teli |
-        /// model update |
-        /// adatbazis update |
+        /// <summary>
+        ///     |
+        ///     indulok szamat nem set-teli |
+        ///     model update |
+        ///     adatbazis update |
         /// </summary>
         /// <param name="ujVerseny"></param>
-        public void Update( Verseny ujVerseny ) {
-            for( var i = 0; i < _versenyek.Count; i++ ) {
-                if( _versenyek[i].Azonosito.Equals( ujVerseny.Azonosito ) ) {
-                    VersenyekSzamaSeged( _versenyek[i].Versenysorozat, ujVerseny.Versenysorozat );
+        public void Update(Verseny ujVerseny) {
+            foreach (var verseny in _versenyek.Where(verseny => verseny.Azonosito.Equals(ujVerseny.Azonosito))) {
+                VersenyekSzamaSeged(verseny.Versenysorozat, ujVerseny.Versenysorozat);
 
-                    _versenyek[i].Megnevezes = ujVerseny.Megnevezes;
-                    _versenyek[i].Datum = ujVerseny.Datum;
-                    _versenyek[i].Versenysorozat = ujVerseny.Versenysorozat;
-                    _versenyek[i].Osszes = ujVerseny.Osszes;
-                    _versenyek[i].Allomasok = ujVerseny.Allomasok;
-                    _versenyek[i].DuplaBeirolap = ujVerseny.DuplaBeirolap;
-                    Adatbazis.Verseny.Verseny.Update( ujVerseny );
-                    return;
-                }
+                verseny.Megnevezes = ujVerseny.Megnevezes;
+                verseny.Datum = ujVerseny.Datum;
+                verseny.Versenysorozat = ujVerseny.Versenysorozat;
+                verseny.Osszes = ujVerseny.Osszes;
+                verseny.Allomasok = ujVerseny.Allomasok;
+                verseny.DuplaBeirolap = ujVerseny.DuplaBeirolap;
+                Adatbazis.Verseny.Verseny.Update(ujVerseny);
+                return;
             }
         }
 
-        /// <summary> |
-        /// 1) meg kell nezni, hogy modosult-e a versenysorozat, ha igen akkor  |
-        /// 2) ha a regi null az uj nem null, akkor novel |
-        /// 3) ha a regi nem null az uj null, akkor csokkent |
-        /// 4) ha egyik sem null akkor novel csokkent |
+        /// <summary>
+        ///     |
+        ///     1) meg kell nezni, hogy modosult-e a versenysorozat, ha igen akkor  |
+        ///     2) ha a regi null az uj nem null, akkor novel |
+        ///     3) ha a regi nem null az uj null, akkor csokkent |
+        ///     4) ha egyik sem null akkor novel csokkent |
         /// </summary>
         /// <param name="regiVersenysorozat"></param>
         /// <param name="ujVersenysorozat"></param>
-        private void VersenyekSzamaSeged( string regiVersenysorozat, string ujVersenysorozat ) {
+        private static void VersenyekSzamaSeged(string regiVersenysorozat, string ujVersenysorozat) {
             // 2)
-            if( regiVersenysorozat != null && ( ( string.IsNullOrEmpty( regiVersenysorozat ) ||
-                                                 ( !string.IsNullOrEmpty( ujVersenysorozat ) ) ) &&
-                                               ( !regiVersenysorozat.Equals( ujVersenysorozat ) ) ) ) {
-                Model.Data.Data.Versenysorozatok.VersenyekNovel( ujVersenysorozat );
+            if (regiVersenysorozat != null && ((string.IsNullOrEmpty(regiVersenysorozat) ||
+                                                (!string.IsNullOrEmpty(ujVersenysorozat))) &&
+                                               (!regiVersenysorozat.Equals(ujVersenysorozat)))) {
+                Data.Data.Versenysorozatok.VersenyekNovel(ujVersenysorozat);
             }
             // 3)
-            else if( regiVersenysorozat != null && ( ( !string.IsNullOrEmpty( regiVersenysorozat ) ||
-                                                      ( string.IsNullOrEmpty( ujVersenysorozat ) ) ) &&
-                                                    ( !regiVersenysorozat.Equals( ujVersenysorozat ) ) ) ) {
-                Model.Data.Data.Versenysorozatok.VersenyekCsokkent( regiVersenysorozat );
+            else if (regiVersenysorozat != null && ((!string.IsNullOrEmpty(regiVersenysorozat) ||
+                                                     (string.IsNullOrEmpty(ujVersenysorozat))) &&
+                                                    (!regiVersenysorozat.Equals(ujVersenysorozat)))) {
+                Data.Data.Versenysorozatok.VersenyekCsokkent(regiVersenysorozat);
             }
             // 4)
-            else if( regiVersenysorozat != null && ( ( !string.IsNullOrEmpty( regiVersenysorozat ) ||
-                                                      ( !string.IsNullOrEmpty( ujVersenysorozat ) ) ) &&
-                                                    ( !regiVersenysorozat.Equals( ujVersenysorozat ) ) ) ) {
-                Model.Data.Data.Versenysorozatok.VersenyekCsokkent( regiVersenysorozat );
-                Model.Data.Data.Versenysorozatok.VersenyekNovel( ujVersenysorozat );
+            else if (regiVersenysorozat != null && ((!string.IsNullOrEmpty(regiVersenysorozat) ||
+                                                     (!string.IsNullOrEmpty(ujVersenysorozat))) &&
+                                                    (!regiVersenysorozat.Equals(ujVersenysorozat)))) {
+                Data.Data.Versenysorozatok.VersenyekCsokkent(regiVersenysorozat);
+                Data.Data.Versenysorozatok.VersenyekNovel(ujVersenysorozat);
             }
         }
 
-        /// <summary> |
-        /// adatbazis betoltes |
+        /// <summary>
+        ///     |
+        ///     adatbazis betoltes |
         /// </summary>
-        public void Load( ) {
-            _versenyek = Adatbazis.Verseny.Verseny.Load( );
+        public void Load() {
+            _versenyek = Adatbazis.Verseny.Verseny.Load();
         }
 
-        public void IndulokNoveles( string azonosito ) {
-            foreach( var verseny in _versenyek ) {
-                if( verseny.Azonosito.Equals( azonosito ) ) {
-                    verseny.Indulok += 1;
-                    Adatbazis.Verseny.Verseny.IndulokNoveles( azonosito );
-                    return;
-                }
+        public void IndulokNoveles(string azonosito) {
+            foreach (var verseny in _versenyek.Where(verseny => verseny.Azonosito.Equals(azonosito))) {
+                verseny.Indulok += 1;
+                Adatbazis.Verseny.Verseny.IndulokNoveles(azonosito);
+                return;
             }
         }
 
-        public void IndulokCsokkentes( string azonosito ) {
-            foreach( var verseny in _versenyek ) {
-                if( verseny.Azonosito.Equals( azonosito ) ) {
-                    verseny.Indulok -= 1;
-                    Adatbazis.Verseny.Verseny.IndulokCsokkentes( azonosito );
-                    return;
-                }
+        public void IndulokCsokkentes(string azonosito) {
+            foreach (var verseny in _versenyek.Where(verseny => verseny.Azonosito.Equals(azonosito))) {
+                verseny.Indulok -= 1;
+                Adatbazis.Verseny.Verseny.IndulokCsokkentes(azonosito);
+                return;
             }
         }
     }

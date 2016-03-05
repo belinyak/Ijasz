@@ -79,7 +79,6 @@ Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Megjelenites\Verseny\Verseny_Hozzaa
 Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Megjelenites\Verseny\Verseny_Torles.g.cs
 Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\App.g.cs
 Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Ijasz2_MarkupCompile.cache
-Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Ijasz2_MarkupCompile.lref
 Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\MainWindow.baml
 Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Megjelenites\Egyesület\Egyesulet_Hozzaadas_Modositas.baml
 Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Megjelenites\Egyesület\Egyesulet_Torles.baml

@@ -3,41 +3,54 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Ijasz2.Megjelenites.Egyesület"
         mc:Ignorable="d"
-       Title="Egyesület" Height="340" Width="230" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <!--Width="255"-->
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Label x:Name="lblNev" Content="Név:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-        <Label x:Name="lblCim" Content="Cím:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-        <Label x:Name="lblVezeto" Content="Vezető:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-        <Label x:Name="lblTelefon" Content="Telefon:" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-        <Label x:Name="lblEmail" Content="E-mail:" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-        <Label x:Name="lblLista" Content="Listázandó:" Grid.Row="7" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+        Title="Egyesület" Height="340" Width="230" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+	<!--Width="255"-->
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="32" />
+			<RowDefinition Height="32" />
+			<RowDefinition Height="32" />
+			<RowDefinition Height="32" />
+			<RowDefinition Height="32" />
+			<RowDefinition Height="32" />
+			<RowDefinition Height="32" />
+			<RowDefinition Height="32" />
+			<RowDefinition Height="32" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="Auto" />
+		</Grid.ColumnDefinitions>
+		<Label Content="Név:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch"
+		       VerticalAlignment="Center" />
+		<Label Content="Cím:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch"
+		       VerticalAlignment="Center" />
+		<Label Content="Vezető:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch"
+		       VerticalAlignment="Center" />
+		<Label Content="Telefon:" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Stretch"
+		       VerticalAlignment="Center" />
+		<Label Content="E-mail:" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Stretch"
+		       VerticalAlignment="Center" />
+		<Label Content="Listázandó:" Grid.Row="7" Grid.Column="0" HorizontalAlignment="Stretch"
+		       VerticalAlignment="Center" />
 
-        <TextBox x:Name="txtNev" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
-        <TextBox x:Name="txtCim" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
-        <TextBox x:Name="txtVezeto" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
-        <TextBox x:Name="txtTelefon0" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
-        <TextBox x:Name="txtTelefon1" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
-        <TextBox x:Name="txtEmail0" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
-        <TextBox x:Name="txtEmail1" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Height="23" TextWrapping="Wrap"/>
-        <CheckBox x:Name="chLista" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <Button x:Name="btnRendben" Content="Rendben" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="86" Height="28"  Click="BtnRendben_OnClick"/>
-    </Grid>
+		<TextBox x:Name="txtNev" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"
+		         Width="120" Height="23" TextWrapping="Wrap" />
+		<TextBox x:Name="txtCim" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"
+		         Width="120" Height="23" TextWrapping="Wrap" />
+		<TextBox x:Name="txtVezeto" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"
+		         Width="120" Height="23" TextWrapping="Wrap" />
+		<TextBox x:Name="txtTelefon0" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"
+		         Width="120" Height="23" TextWrapping="Wrap" />
+		<TextBox x:Name="txtTelefon1" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"
+		         Width="120" Height="23" TextWrapping="Wrap" />
+		<TextBox x:Name="txtEmail0" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"
+		         Width="120" Height="23" TextWrapping="Wrap" />
+		<TextBox x:Name="txtEmail1" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"
+		         Width="120" Height="23" TextWrapping="Wrap" />
+		<CheckBox x:Name="chLista" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" />
+		<Button Content="Rendben" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Right"
+		        VerticalAlignment="Bottom" Width="86" Height="28" Click="BtnRendben_OnClick" />
+	</Grid>
 </Window>

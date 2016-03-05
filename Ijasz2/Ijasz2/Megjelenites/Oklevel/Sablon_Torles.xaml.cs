@@ -1,31 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using Ijasz2.Model.Data;
 
 namespace Ijasz2.Megjelenites.Oklevel {
     /// <summary>
-    /// Interaction logic for Sablon_Torles.xaml
+    ///     Interaction logic for Sablon_Torles.xaml
     /// </summary>
-    public partial class Sablon_Torles : Window {
+    public partial class Sablon_Torles {
         private readonly string _azonosito;
-        public Sablon_Torles( string azonosito ) {
-            InitializeComponent( );
+
+        public Sablon_Torles(string azonosito) {
+            InitializeComponent();
             _azonosito = azonosito;
             lblKerdes.Content += Environment.NewLine + "Azonosító: " + _azonosito;
         }
 
         private void BtnIgen_OnClick(object sender, RoutedEventArgs e) {
-            Model.Data.Data.Sablonok.Remove(_azonosito);
+            Data.Sablonok.Remove(_azonosito);
             Close();
         }
 

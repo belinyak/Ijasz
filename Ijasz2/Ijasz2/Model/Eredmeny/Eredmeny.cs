@@ -2,20 +2,20 @@
 
 namespace Ijasz2.Model.Eredmeny {
     public class Eredmeny : INotifyPropertyChanged {
-        private string _verseny;
-        private string _indulo;
-        private int _sorszam;
-        private string _ijtipus;
         private int _csapat;
-        private int _talalat10;
-        private int _talalat8;
-        private int _talalat5;
+        private string _ijtipus;
+        private string _indulo;
+        private string _korosztalyazonosito;
+        private bool _korosztalymodositott;
+        private bool _megjelent;
         private int _melle;
         private int _osszpont;
+        private int _sorszam;
         private int _szazalek;
-        private bool _megjelent;
-        private bool _korosztalymodositott;
-        private string _korosztalyazonosito;
+        private int _talalat10;
+        private int _talalat5;
+        private int _talalat8;
+        private string _verseny;
 
         public string Verseny {
             get { return _verseny; }
@@ -24,6 +24,7 @@ namespace Ijasz2.Model.Eredmeny {
                 OnPropertyChanged( "Verseny" );
             }
         }
+
         public string Indulo {
             get { return _indulo; }
             set {
@@ -31,6 +32,7 @@ namespace Ijasz2.Model.Eredmeny {
                 OnPropertyChanged( "Indulo" );
             }
         }
+
         public int Sorszam {
             get { return _sorszam; }
             set {
@@ -38,6 +40,7 @@ namespace Ijasz2.Model.Eredmeny {
                 OnPropertyChanged( "Sorszam" );
             }
         }
+
         public string Ijtipus {
             get { return _ijtipus; }
             set {
@@ -45,6 +48,7 @@ namespace Ijasz2.Model.Eredmeny {
                 OnPropertyChanged( "Ijtipus" );
             }
         }
+
         public int Csapat {
             get { return _csapat; }
             set {
@@ -52,6 +56,7 @@ namespace Ijasz2.Model.Eredmeny {
                 OnPropertyChanged( "Csapat" );
             }
         }
+
         public int Talalat10 {
             get { return _talalat10; }
             set {
@@ -59,6 +64,7 @@ namespace Ijasz2.Model.Eredmeny {
                 OnPropertyChanged( "Talalat10" );
             }
         }
+
         public int Talalat8 {
             get { return _talalat8; }
             set {
@@ -66,6 +72,7 @@ namespace Ijasz2.Model.Eredmeny {
                 OnPropertyChanged( "Talalat8" );
             }
         }
+
         public int Talalat5 {
             get { return _talalat5; }
             set {
@@ -73,6 +80,7 @@ namespace Ijasz2.Model.Eredmeny {
                 OnPropertyChanged( "Talalat5" );
             }
         }
+
         public int Melle {
             get { return _melle; }
             set {
@@ -80,6 +88,7 @@ namespace Ijasz2.Model.Eredmeny {
                 OnPropertyChanged( "Melle" );
             }
         }
+
         public int OsszPont {
             get { return _osszpont; }
             set {
@@ -87,6 +96,7 @@ namespace Ijasz2.Model.Eredmeny {
                 OnPropertyChanged( "OsszPont" );
             }
         }
+
         public int Szazalek {
             get { return _szazalek; }
             set {
@@ -94,6 +104,7 @@ namespace Ijasz2.Model.Eredmeny {
                 OnPropertyChanged( "Szazalek" );
             }
         }
+
         public bool Megjelent {
             get { return _megjelent; }
             set {
@@ -101,6 +112,7 @@ namespace Ijasz2.Model.Eredmeny {
                 OnPropertyChanged( "Megjelent" );
             }
         }
+
         public bool KorosztalyModositott {
             get { return _korosztalymodositott; }
             set {
@@ -108,6 +120,7 @@ namespace Ijasz2.Model.Eredmeny {
                 OnPropertyChanged( "KorosztalyModositott" );
             }
         }
+
         public string KorosztalyAzonosito {
             get { return _korosztalyazonosito; }
             set {
@@ -117,10 +130,9 @@ namespace Ijasz2.Model.Eredmeny {
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         private void OnPropertyChanged( string propertyName ) {
-            if( PropertyChanged != null ) {
-                PropertyChanged( this, new PropertyChangedEventArgs( propertyName ) );
-            }
+            PropertyChanged?.Invoke( this, new PropertyChangedEventArgs( propertyName ) );
         }
     }
 }

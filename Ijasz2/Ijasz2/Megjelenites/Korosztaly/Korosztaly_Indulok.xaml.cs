@@ -1,25 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Ijasz2.Model.Korosztaly;
+﻿using Ijasz2.Model.Korosztaly;
 
 namespace Ijasz2.Megjelenites.Korosztaly {
     /// <summary>
-    /// Interaction logic for Korosztaly_Indulok.xaml
+    ///     Interaction logic for Korosztaly_Indulok.xaml
     /// </summary>
-    public partial class Korosztaly_Indulok : Window {
-        public Korosztaly_Indulok( string versenyAzonosito, string korosztalyAzonosito) {
-            Model.Data.Data.Korosztalyok.Tagok(versenyAzonosito,korosztalyAzonosito);
+    public partial class Korosztaly_Indulok {
+        public Korosztaly_Indulok( string versenyAzonosito, string korosztalyAzonosito ) {
+            VersenyKorosztalyok.Tagok( versenyAzonosito, korosztalyAzonosito );
             InitializeComponent( );
         }
     }

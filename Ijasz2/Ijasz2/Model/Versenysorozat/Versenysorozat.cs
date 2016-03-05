@@ -10,27 +10,30 @@ namespace Ijasz2.Model.Versenysorozat {
             get { return _azonosito; }
             set {
                 _azonosito = value;
-                OnPropertyChanged( "Azonosito" );
+                OnPropertyChanged("Azonosito");
             }
         }
+
         public string Megnevezes {
             get { return _megnevezes; }
             set {
                 _megnevezes = value;
-                OnPropertyChanged( "Megnevezes" );
+                OnPropertyChanged("Megnevezes");
             }
         }
+
         public int VersenyekSzama {
             get { return _versenyekszama; }
             set {
                 _versenyekszama = value;
-                OnPropertyChanged( "VersenyekSzama" );
+                OnPropertyChanged("VersenyekSzama");
             }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged( string propertyName ) {
-            PropertyChanged?.Invoke( this, new PropertyChangedEventArgs( propertyName ) );
+
+        private void OnPropertyChanged(string propertyName) {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

@@ -1,102 +1,54 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using Ijasz2.Model.Data;
 
 namespace Ijasz2.Megjelenites.Verseny {
     /// <summary>
-    /// Interaction logic for Verseny_Hozzaadas_Modositas.xaml
+    ///     Interaction logic for Verseny_Hozzaadas_Modositas.xaml
     /// </summary>
-    public partial class Verseny_Hozzaadas_Modositas : Window {
+    public partial class Verseny_Hozzaadas_Modositas  {
         private readonly Model.Verseny.Verseny _verseny;
 
-        #region Hozzaadas
-        public Verseny_Hozzaadas_Modositas( ) {
-            InitializeComponent( );
-            InitializeContent( );
-        }
+        private bool IsValid() {
+            var valid = true;
 
-        private void InitializeContent( ) {
-            Title += " hozzáadás";
-            dtDatum.SelectedDate = DateTime.Now;
-            cbVersenysorozat.ItemsSource = Model.Data.Data.Versenysorozatok._versenysorozatok;
-        }
-        #endregion
+            txtAzonosito.ClearValue(Border.BorderBrushProperty);
+            dtDatum.ClearValue(Border.BorderBrushProperty);
+            txtLovesek.ClearValue(Border.BorderBrushProperty);
+            txtAllomasok.ClearValue(Border.BorderBrushProperty);
 
-        #region Modositas
-        public Verseny_Hozzaadas_Modositas( Model.Verseny.Verseny verseny ) {
-            _verseny = verseny;
-            InitializeComponent( );
-            InitializeContent( _verseny );
-        }
-
-        private void InitializeContent( Model.Verseny.Verseny verseny ) {
-            Title += " módosítás";
-
-            txtAzonosito.Text = _verseny.Azonosito;
-            txtAzonosito.IsEnabled = false;
-            txtMegnevezes.Text = _verseny.Megnevezes;
-            cbVersenysorozat.ItemsSource = Model.Data.Data.Versenysorozatok._versenysorozatok;
-            try {
-                dtDatum.SelectedDate = DateTime.Parse( _verseny.Datum );
-                dtDatum.IsEnabled = _verseny.Indulok == 0;
-            } catch( Exception ) {
-            }
-            cbVersenysorozat.Text = _verseny.Versenysorozat;
-            cbVersenysorozat.IsEnabled = _verseny.Indulok == 0;
-            BtnClearCombobox.IsEnabled = _verseny.Indulok == 0;
-            txtLovesek.Text = _verseny.Osszes.ToString( );
-            txtLovesek.IsEnabled = _verseny.Indulok == 0;
-            txtAllomasok.Text = _verseny.Allomasok.ToString( );
-            txtAllomasok.IsEnabled = _verseny.Indulok == 0;
-            chDupla.IsChecked = _verseny.DuplaBeirolap;
-        }
-        #endregion
-
-        private bool IsValid( ) {
-            bool valid = true;
-
-            txtAzonosito.ClearValue( Border.BorderBrushProperty );
-            dtDatum.ClearValue( Border.BorderBrushProperty );
-            txtLovesek.ClearValue( Border.BorderBrushProperty );
-            txtAllomasok.ClearValue( Border.BorderBrushProperty );
-
-            if( txtAzonosito.Text.Length == 0 ) {
-                txtAzonosito.BorderBrush = new SolidColorBrush( Colors.Red );
+            if (txtAzonosito.Text.Length == 0) {
+                txtAzonosito.BorderBrush = new SolidColorBrush(Colors.Red);
                 valid = false;
             }
             try {
-                dtDatum.SelectedDate.ToString( );
-            } catch( Exception ) {
-                dtDatum.BorderBrush = new SolidColorBrush( Colors.Red );
+                dtDatum.SelectedDate.ToString();
+            }
+            catch (Exception) {
+                dtDatum.BorderBrush = new SolidColorBrush(Colors.Red);
                 valid = false;
             }
             try {
-                Convert.ToInt32( txtLovesek.Text );
-            } catch( Exception ) {
-                txtLovesek.BorderBrush = new SolidColorBrush( Colors.Red );
+                Convert.ToInt32(txtLovesek.Text);
+            }
+            catch (Exception) {
+                txtLovesek.BorderBrush = new SolidColorBrush(Colors.Red);
                 valid = false;
             }
             try {
-                Convert.ToInt32( txtAllomasok.Text );
-            } catch( Exception ) {
-                txtAllomasok.BorderBrush = new SolidColorBrush( Colors.Red );
+                Convert.ToInt32(txtAllomasok.Text);
+            }
+            catch (Exception) {
+                txtAllomasok.BorderBrush = new SolidColorBrush(Colors.Red);
                 valid = false;
             }
             return valid;
         }
 
-        private void BtnRendben_OnClick( object sender, RoutedEventArgs e ) {
-            if( IsValid( ) == false ) {
+        private void BtnRendben_OnClick(object sender, RoutedEventArgs e) {
+            if (IsValid() == false) {
                 return;
             }
 
@@ -111,18 +63,67 @@ namespace Ijasz2.Megjelenites.Verseny {
             };
 
             // hozzaadas
-            if( _verseny == null ) {
-                Model.Data.Data.Versenyek.Add( Verseny );
+            if (_verseny == null) {
+                Data.Versenyek.Add(Verseny);
             }
             // modositas
             else {
-                Model.Data.Data.Versenyek.Update( Verseny );
+                Data.Versenyek.Update(Verseny);
             }
-            Close( );
+            Close();
         }
 
-        private void BtnClearCombobox_OnClick( object sender, RoutedEventArgs e ) {
+        private void BtnClearCombobox_OnClick(object sender, RoutedEventArgs e) {
             cbVersenysorozat.SelectedIndex = -1;
         }
+
+        #region Hozzaadas
+
+        public Verseny_Hozzaadas_Modositas() {
+            InitializeComponent();
+            InitializeContent();
+        }
+
+        private void InitializeContent() {
+            Title += " hozzáadás";
+            dtDatum.SelectedDate = DateTime.Now;
+            cbVersenysorozat.ItemsSource = Data.Versenysorozatok._versenysorozatok;
+        }
+
+        #endregion
+
+        #region Modositas
+
+        public Verseny_Hozzaadas_Modositas(Model.Verseny.Verseny verseny) {
+            _verseny = verseny;
+            InitializeComponent();
+            InitializeContent(_verseny);
+        }
+
+        private void InitializeContent(Model.Verseny.Verseny verseny) {
+            Title += " módosítás";
+
+            txtAzonosito.Text = _verseny.Azonosito;
+            txtAzonosito.IsEnabled = false;
+            txtMegnevezes.Text = _verseny.Megnevezes;
+            cbVersenysorozat.ItemsSource = Data.Versenysorozatok._versenysorozatok;
+            try {
+                dtDatum.SelectedDate = DateTime.Parse(_verseny.Datum);
+                dtDatum.IsEnabled = _verseny.Indulok == 0;
+            }
+            catch (Exception) {
+                // ignored
+            }
+            cbVersenysorozat.Text = _verseny.Versenysorozat;
+            cbVersenysorozat.IsEnabled = _verseny.Indulok == 0;
+            BtnClearCombobox.IsEnabled = _verseny.Indulok == 0;
+            txtLovesek.Text = _verseny.Osszes.ToString();
+            txtLovesek.IsEnabled = _verseny.Indulok == 0;
+            txtAllomasok.Text = _verseny.Allomasok.ToString();
+            txtAllomasok.IsEnabled = _verseny.Indulok == 0;
+            chDupla.IsChecked = _verseny.DuplaBeirolap;
+        }
+
+        #endregion
     }
 }
