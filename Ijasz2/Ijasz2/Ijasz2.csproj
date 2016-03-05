@@ -252,6 +252,7 @@
     <Compile Include="Model\Eredmeny\VersenyEredmenyek.cs" />
     <Compile Include="Model\Ijtipus\Ijtipus.cs" />
     <Compile Include="Model\Ijtipus\Ijtipusok.cs" />
+    <Compile Include="Model\Indulo\Csapat.cs" />
     <Compile Include="Model\Indulo\Indulo.cs" />
     <Compile Include="Model\Indulo\Indulok.cs" />
     <Compile Include="Model\Korosztaly\Korosztaly.cs" />

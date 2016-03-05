@@ -62,8 +62,6 @@ namespace Ijasz2.Megjelenites.Eredmeny {
         }
 
         private void EredmenySzamolas( object sender, TextChangedEventArgs textChangedEventArgs ) {
-            int temp;
-
             int találat_10;
             try { találat_10 = Convert.ToInt32( txtTiz.Text ); if( találat_10 < 0 ) { return; } } catch { return; }
             int találat_8;

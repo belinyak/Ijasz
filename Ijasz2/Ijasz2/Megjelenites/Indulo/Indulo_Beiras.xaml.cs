@@ -47,7 +47,9 @@ namespace Ijasz2.Megjelenites.Indulo {
         }
 
         private void btnCsapatok_Click( object sender, RoutedEventArgs e ) {
-            ( new Indulo_Csapatok( ) ).ShowDialog( );
+
+
+            ( new Indulo_Csapatok( cbVerseny.Text )).ShowDialog( );
         }
 
         private void ChKorosztalyFelulir_OnClick( object sender, RoutedEventArgs e ) {
@@ -75,6 +77,9 @@ namespace Ijasz2.Megjelenites.Indulo {
             }
         }
 
+        /// <summary>
+        /// TODO korosztalyt elore kiszamolni
+        /// </summary>
         private void EloTolt( ) {
             // ha mar be volt irva akkor mindent elotoltunk
             foreach( var versenyEredmeny in Model.Data.Data.Eredmenyek._versenyEredmenyek.Where( eredmeny => eredmeny.VersenyAzonosito.Equals( cbVerseny.Text ) ) ) {

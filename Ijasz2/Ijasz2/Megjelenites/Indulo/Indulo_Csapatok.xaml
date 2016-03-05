@@ -4,33 +4,48 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Csapatok" Height="500" Width="650" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-	<Grid>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="Auto" />
-			<ColumnDefinition Width="Auto" />
-		</Grid.ColumnDefinitions>
-		<DataGrid HorizontalAlignment="Stretch" Grid.Column="0" Margin="0,0,5,0">
-			<DataGrid.Columns>
-				<DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100"
+        Title="Csapatok" Height="500" Width="750" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <DataGrid HorizontalAlignment="Stretch" Grid.Column="0" Margin="0,0,5,0"
+                  x:Name="CsapatGrid"
+				    Grid.RowSpan="2"
+				    IsReadOnly="True"
+				    SelectionMode="Single"
+				    SelectionUnit="FullRow"
+				    AutoGenerateColumns="False"
+				    CanUserResizeRows="False"
+				    RowHeaderWidth="0"
+				    HorizontalScrollBarVisibility="Disabled">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Azonosito, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100"
 				                    Header="Csapat" />
-				<DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100"
+                <DataGridTextColumn Binding="{Binding IndulokSzama, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100"
 				                    Header="Indulók száma" />
-			</DataGrid.Columns>
-		</DataGrid>
-		<DataGrid HorizontalAlignment="Stretch" Grid.Column="1" Margin="5,0,0,0">
-			<DataGrid.Columns>
-				<DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100"
-				                    Header="Csapat" />
-				<DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100"
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid HorizontalAlignment="Stretch" Grid.Column="1" Margin="5,0,0,0"
+                  IsReadOnly="True"
+                   x:Name="CsapatIndulokGrid"
+				    SelectionMode="Single"
+				    SelectionUnit="FullRow"
+				    AutoGenerateColumns="False"
+				    CanUserResizeRows="False"
+				    RowHeaderWidth="0"
+				    HorizontalScrollBarVisibility="Disabled">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Indulo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="150"
 				                    Header="Név" />
-				<DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100"
+                <DataGridTextColumn Binding="{Binding Ijtipus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100"
 				                    Header="Íjtípus" />
-				<DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="40"
-				                    Header="Kor" />
-				<DataGridTextColumn Binding="{x:Null}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100"
+                <DataGridTextColumn Binding="{Binding Korosztaly, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserReorder="False" CanUserResize="False" Width="90"
+				                    Header="Korosztály" />
+                <DataGridTextColumn Binding="{Binding Egyesulet, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserReorder="False" CanUserResize="False" Width="200"
 				                    Header="Egyesület" />
-			</DataGrid.Columns>
-		</DataGrid>
-	</Grid>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
 </Window>
