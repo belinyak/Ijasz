@@ -35,11 +35,59 @@ namespace Ijasz2.Megjelenites.Eredmeny {
             txtOsszes.IsEnabled = false;
             txtEredmeny.Text = eredmeny.Szazalek.ToString( );
             txtEredmeny.IsEnabled = false;
+
+            txtTiz.TextChanged += EredmenySzamolas;
+            txtNyolc.TextChanged += EredmenySzamolas;
+            txtOt.TextChanged += EredmenySzamolas;
+            txtMelle.TextChanged += EredmenySzamolas;
+
+            txtTiz.GotFocus += TxtTizOnGotFocus;
+            txtNyolc.GotFocus += TxtNyolcOnGotFocus;
+            txtOt.GotFocus += TxtOtOnGotFocus;
+            txtMelle.GotFocus += TxtMelleOnGotFocus;
         }
 
+        #region Talalatok EventHandlers
+        private void TxtTizOnGotFocus( object sender, RoutedEventArgs routedEventArgs ) {
+            txtTiz.SelectAll( );
+        }
+        private void TxtNyolcOnGotFocus( object sender, RoutedEventArgs routedEventArgs ) {
+            txtNyolc.SelectAll( );
+        }
+        private void TxtOtOnGotFocus( object sender, RoutedEventArgs routedEventArgs ) {
+            txtOt.SelectAll( );
+        }
+        private void TxtMelleOnGotFocus( object sender, RoutedEventArgs routedEventArgs ) {
+            txtMelle.SelectAll( );
+        }
+
+        private void EredmenySzamolas( object sender, TextChangedEventArgs textChangedEventArgs ) {
+            int temp;
+
+            int találat_10;
+            try { találat_10 = Convert.ToInt32( txtTiz.Text ); if( találat_10 < 0 ) { return; } } catch { return; }
+            int találat_8;
+            try { találat_8 = Convert.ToInt32( txtNyolc.Text ); if( találat_8 < 0 ) { return; } } catch { return; }
+            int találat_5;
+            try { találat_5 = Convert.ToInt32( txtOt.Text ); if( találat_5 < 0 ) { return; } } catch { return; }
+            int találat_mellé;
+            try { találat_mellé = Convert.ToInt32( txtMelle.Text ); if( találat_mellé < 0 ) { return; } } catch { return; }
+
+            txtOsszes.Text = ( találat_10 * 10 + találat_8 * 8 + találat_5 * 5 ).ToString( );
+
+            // TODO ezt sem kéne mindig lekérni, hanem átadni
+            var versenyOsszPont = (from verseny in Model.Data.Data.Versenyek._versenyek
+                                   where verseny.Azonosito.Equals(_eredmeny.Verseny)
+                                   select verseny.Osszes).First();
+
+            txtEredmeny.Text = ( (int)( ( (double)Convert.ToInt32( txtOsszes.Text ) / ( versenyOsszPont * 10 ) ) * 100 ) ).ToString( ) + "%"; return;
+
+        }
+        #endregion
+
         /// <summary>
-        ///     |
-        ///     meg kell nezni, hogy minden talalat ures vagy valid int(nem negativ), osszeadni a lovesek szamat |
+        ///     
+        /// | meg kell nezni, hogy minden talalat ures vagy valid int(nem negativ), osszeadni a lovesek szamat |
         /// </summary>
         /// <returns></returns>
         private bool IsValid( ) {
@@ -109,6 +157,7 @@ namespace Ijasz2.Megjelenites.Eredmeny {
             _eredmeny.Talalat5 = Convert.ToInt32( txtOt.Text );
             _eredmeny.Melle = Convert.ToInt32( txtMelle.Text );
             _eredmeny.OsszPont = ( _eredmeny.Talalat10 * 10 + _eredmeny.Talalat8 * 8 + _eredmeny.Talalat5 * 5 );
+            _eredmeny.Szazalek = Convert.ToInt32(txtEredmeny.Text.Replace("%", ""));
 
             foreach( var verseny in Data.Versenyek._versenyek.Where( verseny => verseny.Azonosito.Equals( _eredmeny.Verseny ) ) ) {
                 _eredmeny.Szazalek = (int)( _eredmeny.OsszPont / ( verseny.Osszes / 10.0f ) );

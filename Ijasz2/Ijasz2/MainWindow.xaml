@@ -27,7 +27,8 @@
 					          CanUserResizeRows="False"
 					          RowHeaderWidth="0"
 					          HorizontalScrollBarVisibility="Disabled"
-					          x:Name="VersenysorozatGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch">
+					          x:Name="VersenysorozatGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch"
+                              >
 						<!--azért, hogy ne legyen selected cell-->
 						<DataGrid.Resources>
 							<Style TargetType="DataGridCell">
@@ -305,9 +306,9 @@
 					</Grid.RowDefinitions>
 					<Grid.ColumnDefinitions>
 						<!--columnwidth-->
-						<ColumnDefinition Width="570" />
+						<ColumnDefinition Width="590" />
 						<!--762-columnwidth-->
-						<ColumnDefinition Width="192" />
+						<ColumnDefinition Width="172" />
 						<ColumnDefinition Width="131" />
 						<ColumnDefinition Width="131" />
 					</Grid.ColumnDefinitions>
@@ -345,7 +346,7 @@
 							                    CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100"
 							                    Header="Egyesület" />
 							<DataGridTextColumn Binding="{Binding Eredmenyek, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-							                    CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="80"
+							                    CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100"
 							                    Header="Eredmények" />
 						</DataGrid.Columns>
 					</DataGrid>
@@ -367,9 +368,9 @@
 					</Grid.RowDefinitions>
 					<Grid.ColumnDefinitions>
 						<!--columnwidth-->
-						<ColumnDefinition Width="670" />
+						<ColumnDefinition Width="685" />
 						<!--762-columnwidth-->
-						<ColumnDefinition Width="92" />
+						<ColumnDefinition Width="77" />
 						<ColumnDefinition Width="131" />
 						<ColumnDefinition Width="131" />
 					</Grid.ColumnDefinitions>
@@ -382,7 +383,8 @@
 					          AutoGenerateColumns="False"
 					          CanUserResizeRows="False"
 					          RowHeaderWidth="0"
-					          HorizontalScrollBarVisibility="Disabled">
+					          HorizontalScrollBarVisibility="Disabled"
+                              >
 						<DataGrid.Resources>
 							<Style TargetType="DataGridCell">
 								<Setter Property="BorderThickness" Value="0" />
@@ -419,7 +421,7 @@
 							                    CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="25" Header="%" />
 							<DataGridCheckBoxColumn Binding="{Binding Megjelent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 							                        CanUserSort="False" CanUserReorder="False" CanUserResize="False"
-							                        ClipboardContentBinding="{x:Null}" Header="Megjelent" Width="70" />
+							                        ClipboardContentBinding="{x:Null}" Header="Megjelent" Width="85" />
 							<DataGridCheckBoxColumn
 								Binding="{Binding KorosztalyModositott, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False"
 								CanUserReorder="False" CanUserResize="False" ClipboardContentBinding="{x:Null}" Header="Korosztaly módosított"

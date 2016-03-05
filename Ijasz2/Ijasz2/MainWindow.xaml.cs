@@ -77,6 +77,7 @@ namespace Ijasz2 {
             //EredmenyGrid.VerticalScrollBarVisibility =  ScrollBarVisibility.Disabled;
             //SablonGrid.VerticalScrollBarVisibility  = ScrollBarVisibility.Disabled;
 
+            
 
             //TODO egységesen cb-re átnevezni !!!
             //TODO a plusz üres mit csesz el ???
