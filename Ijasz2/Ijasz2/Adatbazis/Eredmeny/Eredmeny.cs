@@ -154,6 +154,55 @@ namespace Ijasz2.Adatbazis.Eredmeny {
             }
         }
 
+        public static void UpdateHelper(Model.Eredmeny.Eredmeny eredmeny) {
+            Database.Connection.Open();
+            var command = Database.Connection.CreateCommand();
+
+            command.CommandText =
+                "UPDATE Eredmények SET " +
+                "VEAZON=@VEAZON," +
+                "INNEVE=@INNEVE," +
+                "INSOSZ=@INSOSZ," +
+                "ITAZON=@ITAZON," +
+                "INCSSZ=@INCSSZ," +
+                "IN10TA=@IN10TA," +
+                "IN08TA=@IN08TA," +
+                "IN05TA=@IN05TA," +
+                "INMETA=@INMETA," +
+                "INOSZP=@INOSZP," +
+                "INERSZ=@INERSZ," +
+                "INMEGJ=@INMEGJ," +
+                "INKOMO=@INKOMO," +
+                "KOAZON=@KOAZON " + "WHERE VEAZON=@VEAZON AND INNEVE=@INNEVE";
+
+            command.Parameters.AddWithValue("@VEAZON", eredmeny.Verseny);
+            command.Parameters.AddWithValue("@INNEVE", eredmeny.Indulo);
+            command.Parameters.AddWithValue("@INSOSZ", eredmeny.Sorszam);
+            command.Parameters.AddWithValue("@ITAZON", eredmeny.Ijtipus);
+            command.Parameters.AddWithValue("@INCSSZ", eredmeny.Csapat);
+            command.Parameters.AddWithValue("@IN10TA", eredmeny.Talalat10);
+            command.Parameters.AddWithValue("@IN08TA", eredmeny.Talalat8);
+            command.Parameters.AddWithValue("@IN05TA", eredmeny.Talalat5);
+            command.Parameters.AddWithValue("@INMETA", eredmeny.Melle);
+            command.Parameters.AddWithValue("@INOSZP", eredmeny.OsszPont);
+            command.Parameters.AddWithValue("@INERSZ", eredmeny.Szazalek);
+            command.Parameters.AddWithValue("@INMEGJ", eredmeny.Megjelent);
+            command.Parameters.AddWithValue("@INKOMO", eredmeny.KorosztalyModositott);
+            command.Parameters.AddWithValue("@KOAZON", eredmeny.KorosztalyAzonosito);
+
+            try {
+                command.ExecuteNonQuery();
+            }
+            catch (SQLiteException exception) {
+                MessageBox.Show(exception.Message);
+            }
+            finally {
+                command.Dispose();
+                Database.Connection.Close();
+            }
+        }
+
+
         public static void Remove(Model.Eredmeny.Eredmeny eredmeny) {
             Database.Connection.Open();
             var command = Database.Connection.CreateCommand();

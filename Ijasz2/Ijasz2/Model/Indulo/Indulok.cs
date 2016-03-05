@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 
@@ -13,11 +14,11 @@ namespace Ijasz2.Model.Indulo {
         ///     egyesulet tagok novelese |
         /// </summary>
         /// <param name="indulo"></param>
-        public void Add(Indulo indulo) {
-            _indulok.Add(indulo);
-            Adatbazis.Indulo.Indulo.Add(indulo);
-            if (!string.IsNullOrEmpty(indulo.Egyesulet)) {
-                Data.Data.Egyesuletek.TagokNoveles(indulo.Egyesulet);
+        public void Add( Indulo indulo ) {
+            _indulok.Add( indulo );
+            Adatbazis.Indulo.Indulo.Add( indulo );
+            if( !string.IsNullOrEmpty( indulo.Egyesulet ) ) {
+                Data.Data.Egyesuletek.TagokNoveles( indulo.Egyesulet );
             }
         }
 
@@ -29,18 +30,18 @@ namespace Ijasz2.Model.Indulo {
         ///     TODO msg???? |
         /// </summary>
         /// <param name="indulo"></param>
-        public void Remove(Indulo indulo) {
-            for (var i = 0; i < _indulok.Count; i++) {
-                if (_indulok[i].Eredmenyek.Equals(0)) {
-                    _indulok.Remove(_indulok.Single(s => s.Nev.Equals(indulo.Nev)));
-                    Adatbazis.Indulo.Indulo.Remove(indulo.Nev);
-                    if (!string.IsNullOrEmpty(indulo.Egyesulet)) {
-                        Data.Data.Egyesuletek.TagokNoveles(indulo.Egyesulet);
+        public void Remove( Indulo indulo ) {
+            for( var i = 0; i < _indulok.Count; i++ ) {
+                if( _indulok[i].Eredmenyek.Equals( 0 ) ) {
+                    _indulok.Remove( _indulok.Single( s => s.Nev.Equals( indulo.Nev ) ) );
+                    Adatbazis.Indulo.Indulo.Remove( indulo.Nev );
+                    if( !string.IsNullOrEmpty( indulo.Egyesulet ) ) {
+                        Data.Data.Egyesuletek.TagokNoveles( indulo.Egyesulet );
                     }
                     return;
                 }
-                MessageBox.Show("Ez az induló nem törölhető, mivel van hozzá rendelve eredmény!", "Hiba",
-                    MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                MessageBox.Show( "Ez az induló nem törölhető, mivel van hozzá rendelve eredmény!", "Hiba",
+                    MessageBoxButton.OKCancel, MessageBoxImage.Information );
             }
         }
 
@@ -51,14 +52,14 @@ namespace Ijasz2.Model.Indulo {
         ///     adatbazis update |
         /// </summary>
         /// <param name="indulo"></param>
-        public void Update(Indulo indulo) {
-            foreach (var it in _indulok.Where(it => it.Nev.Equals(indulo.Nev))) {
+        public void Update( Indulo indulo ) {
+            foreach( var it in _indulok.Where( it => it.Nev.Equals( indulo.Nev ) ) ) {
                 it.Nem = indulo.Nem;
                 it.SzuletesiDatum = indulo.SzuletesiDatum;
                 it.Engedely = indulo.Engedely;
                 it.Egyesulet = indulo.Egyesulet;
                 it.Eredmenyek = indulo.Eredmenyek;
-                Adatbazis.Indulo.Indulo.Update(indulo);
+                Adatbazis.Indulo.Indulo.Update( indulo );
                 return;
             }
         }
@@ -66,13 +67,13 @@ namespace Ijasz2.Model.Indulo {
         /// <summary>
         ///     adatbazis betoltes
         /// </summary>
-        public void Load() {
-            _indulok = Adatbazis.Indulo.Indulo.Load();
+        public void Load( ) {
+            _indulok = Adatbazis.Indulo.Indulo.Load( );
         }
 
-        public Indulo Get(string azonosito) {
+        public Indulo Get( string azonosito ) {
             var value = new Indulo();
-            foreach (var indulo in _indulok.Where(indulo => indulo.Nev.Equals(azonosito))) {
+            foreach( var indulo in _indulok.Where( indulo => indulo.Nev.Equals( azonosito ) ) ) {
                 value = indulo;
                 return value;
             }
@@ -83,10 +84,10 @@ namespace Ijasz2.Model.Indulo {
         ///     indulo beirasakor novelni az eredmenyt
         /// </summary>
         /// <param name="azonosito"></param>
-        public void EredmenyNoveles(string azonosito) {
-            foreach (var indulo1 in _indulok.Where(indulo1 => indulo1.Nev.Equals(azonosito))) {
+        public void EredmenyNoveles( string azonosito ) {
+            foreach( var indulo1 in _indulok.Where( indulo1 => indulo1.Nev.Equals( azonosito ) ) ) {
                 indulo1.Eredmenyek += 1;
-                Adatbazis.Indulo.Indulo.EredmenyekNoveles(azonosito);
+                Adatbazis.Indulo.Indulo.EredmenyekNoveles( azonosito );
                 return;
             }
         }
@@ -95,12 +96,23 @@ namespace Ijasz2.Model.Indulo {
         ///     indulo beirasakor novelni az eredmenyt
         /// </summary>
         /// <param name="azonosito"></param>
-        public void EredmenyCsokkentes(string azonosito) {
-            foreach (var indulo1 in _indulok.Where(indulo1 => indulo1.Nev.Equals(azonosito))) {
+        public void EredmenyCsokkentes( string azonosito ) {
+            foreach( var indulo1 in _indulok.Where( indulo1 => indulo1.Nev.Equals( azonosito ) ) ) {
                 indulo1.Eredmenyek -= 1;
-                Adatbazis.Indulo.Indulo.EredmenyekCsokkentes(azonosito);
+                Adatbazis.Indulo.Indulo.EredmenyekCsokkentes( azonosito );
                 return;
             }
+        }
+
+        /// <summary>
+        /// TODO ennek lehet nem itt van a helye
+        /// </summary>
+        /// <param name="versenyDatum"></param>
+        /// <param name="induloSzuletesiDatum"></param>
+        /// <returns></returns>
+        public int BetoltottKor( string versenyDatum, string induloSzuletesiDatum ) {
+            var value = (new DateTime(1, 1, 1) + ((Convert.ToDateTime(versenyDatum)) - DateTime.Parse(induloSzuletesiDatum))).Year - 1;
+            return value;
         }
     }
 }

@@ -255,6 +255,7 @@
     <Compile Include="Model\Indulo\Indulo.cs" />
     <Compile Include="Model\Indulo\Indulok.cs" />
     <Compile Include="Model\Korosztaly\Korosztaly.cs" />
+    <Compile Include="Model\Korosztaly\KorosztalyInduloSeged.cs" />
     <Compile Include="Model\Korosztaly\VersenyKorosztaly.cs" />
     <Compile Include="Model\Korosztaly\VersenyKorosztalyok.cs" />
     <Compile Include="Model\Oklevel\Sablon.cs" />

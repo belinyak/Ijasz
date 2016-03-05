@@ -71,25 +71,14 @@ namespace Ijasz2.Megjelenites.Korosztaly {
             //TODO ki kell szedni a list<korosztalyt> korosztalyokba és oda rakni a remove/move 
             if (_korosztaly.Azonosito == null) {
                 foreach (var versenyKorosztaly in Data.Korosztalyok._versenyKorosztalyok.Where(versenyKorosztaly => versenyKorosztaly.VersenyAzonosito.Equals(Korosztaly.Verseny))) {
-                    versenyKorosztaly.Korosztalyok.Add(Korosztaly);
-                    Adatbazis.Korosztaly.Korosztaly.Add(Korosztaly);
+                    versenyKorosztaly.Add(Korosztaly);
                     break;
                 }
             }
-            // modositas
+            // modositas TODO szar helyen van !!
             //TODO ki kell szedni a list<korosztalyt> korosztalyokba és oda rakni a remove/move 
             else {
-                foreach (var korosztaly in from versenyKorosztaly in Data.Korosztalyok._versenyKorosztalyok where versenyKorosztaly.VersenyAzonosito.Equals(Korosztaly.Verseny) from korosztaly in versenyKorosztaly.Korosztalyok where korosztaly.Azonosito.Equals(Korosztaly.Azonosito) select korosztaly) {
-                    korosztaly.Megnevezes = Korosztaly.Megnevezes;
-                    korosztaly.AlsoHatar = Korosztaly.AlsoHatar;
-                    korosztaly.FelsoHatar = Korosztaly.FelsoHatar;
-                    korosztaly.Nokre = Korosztaly.Nokre;
-                    korosztaly.Ferfiakra = Korosztaly.Ferfiakra;
-                    korosztaly.InduloNok = Korosztaly.InduloNok;
-                    korosztaly.InduloFerfiak = Korosztaly.InduloFerfiak;
-                    korosztaly.Egyben = Korosztaly.Egyben;
-                    Adatbazis.Korosztaly.Korosztaly.Update(Korosztaly);
-                }
+                Model.Data.Data.Korosztalyok.Update(Korosztaly);
             }
             Close();
         }

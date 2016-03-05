@@ -17,7 +17,7 @@ namespace Ijasz2.Model.Korosztaly {
             get { return _verseny; }
             set {
                 _verseny = value;
-                OnPropertyChanged("Verseny");
+                OnPropertyChanged( "Verseny" );
             }
         }
 
@@ -25,7 +25,7 @@ namespace Ijasz2.Model.Korosztaly {
             get { return _azonosito; }
             set {
                 _azonosito = value;
-                OnPropertyChanged("Azonosito");
+                OnPropertyChanged( "Azonosito" );
             }
         }
 
@@ -33,7 +33,7 @@ namespace Ijasz2.Model.Korosztaly {
             get { return _megnevezes; }
             set {
                 _megnevezes = value;
-                OnPropertyChanged("Megnevezes");
+                OnPropertyChanged( "Megnevezes" );
             }
         }
 
@@ -41,7 +41,7 @@ namespace Ijasz2.Model.Korosztaly {
             get { return _alsohatar; }
             set {
                 _alsohatar = value;
-                OnPropertyChanged("AlsoHatar");
+                OnPropertyChanged( "AlsoHatar" );
             }
         }
 
@@ -49,7 +49,7 @@ namespace Ijasz2.Model.Korosztaly {
             get { return _felsohatar; }
             set {
                 _felsohatar = value;
-                OnPropertyChanged("FelsoHatar");
+                OnPropertyChanged( "FelsoHatar" );
             }
         }
 
@@ -57,7 +57,7 @@ namespace Ijasz2.Model.Korosztaly {
             get { return _nokre; }
             set {
                 _nokre = value;
-                OnPropertyChanged("Nokre");
+                OnPropertyChanged( "Nokre" );
             }
         }
 
@@ -65,7 +65,7 @@ namespace Ijasz2.Model.Korosztaly {
             get { return _ferfiakra; }
             set {
                 _ferfiakra = value;
-                OnPropertyChanged("Ferfiakra");
+                OnPropertyChanged( "Ferfiakra" );
             }
         }
 
@@ -73,7 +73,7 @@ namespace Ijasz2.Model.Korosztaly {
             get { return _indulonok; }
             set {
                 _indulonok = value;
-                OnPropertyChanged("InduloNok");
+                OnPropertyChanged( "InduloNok" );
             }
         }
 
@@ -81,7 +81,7 @@ namespace Ijasz2.Model.Korosztaly {
             get { return _induloferfiak; }
             set {
                 _induloferfiak = value;
-                OnPropertyChanged("InduloFerfiak");
+                OnPropertyChanged( "InduloFerfiak" );
             }
         }
 
@@ -89,14 +89,14 @@ namespace Ijasz2.Model.Korosztaly {
             get { return _egyben; }
             set {
                 _egyben = value;
-                OnPropertyChanged("Egyben");
+                OnPropertyChanged( "Egyben" );
             }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void OnPropertyChanged(string propertyName) {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        private void OnPropertyChanged( string propertyName ) {
+            PropertyChanged?.Invoke( this, new PropertyChangedEventArgs( propertyName ) );
         }
     }
 }
