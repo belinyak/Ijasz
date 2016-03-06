@@ -85,27 +85,9 @@ namespace Ijasz2.Model.Eredmeny {
         /// <param name="eredmeny"></param>
         /// <returns></returns>
         private static string KorosztalySzamolas( Eredmeny eredmeny ) {
-            var datum = "";
-
             var indulo =
                 (from indulo1 in Data.Data.Indulok._indulok where indulo1.Nev.Equals(eredmeny.Indulo) select indulo1)
                     .First();
-
-            foreach( var verseny1 in
-                Data.Data.Versenyek._versenyek.Where( verseny => verseny.Azonosito.Equals( eredmeny.Verseny ) ) ) {
-                if( !string.IsNullOrEmpty( verseny1.Versenysorozat ) ) {
-                    datum = ( from verseny in Data.Data.Versenyek._versenyek
-                              where verseny.Versenysorozat.Equals( verseny1.Versenysorozat )
-                              orderby verseny.Datum ascending
-                              select verseny.Datum ).First( );
-                }
-                else {
-                    datum =
-                        ( from verseny in Data.Data.Versenyek._versenyek
-                          where verseny.Azonosito.Equals( eredmeny.Verseny )
-                          select verseny.Datum ).First( );
-                }
-            }
 
             foreach(
                 var korosztaly in

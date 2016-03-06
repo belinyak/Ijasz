@@ -62,24 +62,26 @@ namespace Ijasz2.Megjelenites.Eredmeny {
         }
 
         private void EredmenySzamolas( object sender, TextChangedEventArgs textChangedEventArgs ) {
-            int találat_10;
-            try { találat_10 = Convert.ToInt32( txtTiz.Text ); if( találat_10 < 0 ) { return; } } catch { return; }
-            int találat_8;
-            try { találat_8 = Convert.ToInt32( txtNyolc.Text ); if( találat_8 < 0 ) { return; } } catch { return; }
-            int találat_5;
-            try { találat_5 = Convert.ToInt32( txtOt.Text ); if( találat_5 < 0 ) { return; } } catch { return; }
-            int találat_mellé;
-            try { találat_mellé = Convert.ToInt32( txtMelle.Text ); if( találat_mellé < 0 ) { return; } } catch { return; }
+            int találat10;
+            try { találat10 = Convert.ToInt32( txtTiz.Text ); if( találat10 < 0 ) { return; } } catch { return; }
+            int találat8;
+            try { találat8 = Convert.ToInt32( txtNyolc.Text ); if( találat8 < 0 ) { return; } } catch { return; }
+            int találat5;
+            try { találat5 = Convert.ToInt32( txtOt.Text ); if( találat5 < 0 ) { return; } } catch { return; }
+            try {
+                var találatMellé = Convert.ToInt32( txtMelle.Text );
+                if( találatMellé < 0 ) { return; }
+            }
+            catch { return; }
 
-            txtOsszes.Text = ( találat_10 * 10 + találat_8 * 8 + találat_5 * 5 ).ToString( );
+            txtOsszes.Text = ( találat10 * 10 + találat8 * 8 + találat5 * 5 ).ToString( );
 
             // TODO ezt sem kéne mindig lekérni, hanem átadni
-            var versenyOsszPont = (from verseny in Model.Data.Data.Versenyek._versenyek
+            var versenyOsszPont = (from verseny in Data.Versenyek._versenyek
                                    where verseny.Azonosito.Equals(_eredmeny.Verseny)
                                    select verseny.Osszes).First();
 
-            txtEredmeny.Text = ( (int)( ( (double)Convert.ToInt32( txtOsszes.Text ) / ( versenyOsszPont * 10 ) ) * 100 ) ).ToString( ) + "%"; return;
-
+            txtEredmeny.Text = ( (int)( ( (double)Convert.ToInt32( txtOsszes.Text ) / ( versenyOsszPont * 10 ) ) * 100 ) ).ToString( ) + "%";
         }
         #endregion
 

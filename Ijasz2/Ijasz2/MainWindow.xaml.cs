@@ -5,7 +5,6 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
 using Ijasz2.Adatbazis;
 using Ijasz2.Megjelenites.Egyesület;
 using Ijasz2.Megjelenites.Eredmeny;
@@ -38,7 +37,7 @@ namespace Ijasz2 {
         }
 
         private void MainWindow_OnLoaded( object sender, RoutedEventArgs e ) {
-            loadWait = new Megjelenites.Seged.WaitWindow("Adatok betöltése folyamatban...");
+            loadWait = new Megjelenites.Seged.WaitWindow("Adatok betöltése...");
             loadWait.Show();
 
             new Database( );
@@ -101,9 +100,6 @@ namespace Ijasz2 {
         }
 
         private void BtnVersenysorozatTorles_OnClick( object sender, RoutedEventArgs e ) {
-            if( VersenysorozatGrid.SelectedItem == null ) {
-                return;
-            }
             var vs = VersenysorozatGrid.SelectedItem as Versenysorozat;
 
             if( vs != null ) ( new Versenysorozat_Torles( vs.Azonosito ) ).ShowDialog( );
@@ -132,9 +128,6 @@ namespace Ijasz2 {
         }
 
         private void BtnVersenyTorles_OnClick( object sender, RoutedEventArgs e ) {
-            if( VersenyGrid.SelectedItem == null ) {
-                return;
-            }
             var ve = VersenyGrid.SelectedItem as Verseny;
 
             if( ve != null ) ( new Verseny_Torles( ve.Azonosito ) ).ShowDialog( );
@@ -377,15 +370,13 @@ namespace Ijasz2 {
 
         private void Sablon_Modositas( object sender, MouseButtonEventArgs e ) {
             var dataGridRow = sender as DataGridRow;
-            if( dataGridRow != null ) {
-                var sablon1 = dataGridRow.DataContext as Sablon;
-                if( sablon1 != null ) {
-                    var azonosito = sablon1.Azonosito;
+            var sablon1 = dataGridRow?.DataContext as Sablon;
+            if( sablon1 != null ) {
+                var azonosito = sablon1.Azonosito;
 
-                    foreach( var sablon in Data.Sablonok._sablonok.Where( sablon => sablon.Azonosito.Equals( azonosito ) ) ) {
-                        ( new Sablon_Hozzaadas_Modositas( sablon ) ).ShowDialog( );
-                        return;
-                    }
+                foreach( var sablon in Data.Sablonok._sablonok.Where( sablon => sablon.Azonosito.Equals( azonosito ) ) ) {
+                    ( new Sablon_Hozzaadas_Modositas( sablon ) ).ShowDialog( );
+                    return;
                 }
             }
         }
@@ -464,7 +455,7 @@ namespace Ijasz2 {
                 return;
             }
 
-            ( new Megjelenites.Eredmeny.Eredmeny_Hozzaadas_Modositas( eredmeny ) ).Show( );
+            ( new Eredmeny_Hozzaadas_Modositas( eredmeny ) ).Show( );
         }
 
         private void TxtInduloNev_OnTextChanged( object sender, TextChangedEventArgs e ) {
@@ -476,7 +467,7 @@ namespace Ijasz2 {
                 int talalt = 0;
                 var indulo = induloitem as Indulo;
                 for( int i = 0; i < txtInduloNev.Text.Length; i++ ) {
-                    if( indulo.Nev.Length < txtInduloNev.Text.Length ) {
+                    if( indulo != null && indulo.Nev.Length < txtInduloNev.Text.Length ) {
                         break;
                     }
                     if( indulo.Nev[i].ToString( ).ToLower( ) == txtInduloNev.Text[i].ToString( ).ToLower( ) ) {

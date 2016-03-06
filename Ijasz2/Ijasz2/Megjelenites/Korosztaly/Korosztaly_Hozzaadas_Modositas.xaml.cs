@@ -78,7 +78,7 @@ namespace Ijasz2.Megjelenites.Korosztaly {
             // modositas TODO szar helyen van !!
             //TODO ki kell szedni a list<korosztalyt> korosztalyokba és oda rakni a remove/move 
             else {
-                Model.Data.Data.Korosztalyok.Update(Korosztaly);
+                Data.Korosztalyok.Update(Korosztaly);
             }
             Close();
         }

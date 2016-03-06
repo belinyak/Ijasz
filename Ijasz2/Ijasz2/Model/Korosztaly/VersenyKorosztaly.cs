@@ -1,6 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows.Media.TextFormatting;
 
 namespace Ijasz2.Model.Korosztaly {
     public class VersenyKorosztaly {
@@ -21,28 +20,11 @@ namespace Ijasz2.Model.Korosztaly {
         /// </summary>
         /// <param name="versenyAzonosito"></param>
         public void KorosztalySzamolas( string versenyAzonosito ) {
-            var datum = "";
-
             // mivel ujraszamolom ki kell nullazni
             // itt nem kell db update, ugyis lesz a vegen
             foreach( var korosztaly in Korosztalyok ) {
                 korosztaly.InduloFerfiak = 0;
                 korosztaly.InduloNok = 0;
-            }
-
-            // kell a datum, ha van versenysorozat, akkor az 1. verseny datuma, kulonben verseny datum
-            foreach(
-                var verseny1 in
-                    Data.Data.Versenyek._versenyek.Where( verseny => verseny.Azonosito.Equals( versenyAzonosito ) ) ) {
-                if( !string.IsNullOrEmpty( verseny1.Versenysorozat ) ) {
-                    datum = ( from verseny in Data.Data.Versenyek._versenyek
-                              where verseny.Versenysorozat.Equals( verseny1.Versenysorozat )
-                              orderby verseny.Datum ascending
-                              select verseny.Datum ).First( );
-                }
-                else {
-                    datum = verseny1.Datum;
-                }
             }
 
             // indulokat localba, mert nem modositom, így lehet torolni, gyorsul a kereses

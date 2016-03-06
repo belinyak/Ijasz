@@ -13,7 +13,7 @@ namespace Ijasz2.Megjelenites.Indulo {
     /// </summary>
     public partial class Indulo_Beiras {
         private readonly Model.Indulo.Indulo _indulo;
-        public static int utolseSelectedVersenyIndex = -1;
+        private static int utolseSelectedVersenyIndex = -1;
 
         public Indulo_Beiras( Model.Indulo.Indulo indulo ) {
             _indulo = indulo;
@@ -82,7 +82,7 @@ namespace Ijasz2.Megjelenites.Indulo {
         /// </summary>
         private void EloTolt( ) {
             // ha mar be volt irva akkor mindent elotoltunk
-            foreach( var versenyEredmeny in Model.Data.Data.Eredmenyek._versenyEredmenyek.Where( eredmeny => eredmeny.VersenyAzonosito.Equals( cbVerseny.Text ) ) ) {
+            foreach( var versenyEredmeny in Data.Eredmenyek._versenyEredmenyek.Where( eredmeny => eredmeny.VersenyAzonosito.Equals( cbVerseny.Text ) ) ) {
                 foreach( var eredmeny in versenyEredmeny.Eredmenyek._eredmenyek.Where( eredmeny => eredmeny.Indulo.Equals( txtNev.Text ) ) ) {
                     cbIjtipus.Text = eredmeny.Ijtipus;
                     cbCsapat.Text = eredmeny.Csapat.ToString( );
@@ -146,9 +146,9 @@ namespace Ijasz2.Megjelenites.Indulo {
             string datum = "";
             foreach(
                 var verseny1 in
-                    Model.Data.Data.Versenyek._versenyek.Where( verseny => verseny.Azonosito.Equals( cbVerseny.Text ) ) ) {
+                    Data.Versenyek._versenyek.Where( verseny => verseny.Azonosito.Equals( cbVerseny.Text ) ) ) {
                 if( !string.IsNullOrEmpty( verseny1.Versenysorozat ) ) {
-                    datum = ( from verseny in Model.Data.Data.Versenyek._versenyek
+                    datum = ( from verseny in Data.Versenyek._versenyek
                               where verseny.Versenysorozat.Equals( verseny1.Versenysorozat )
                               orderby verseny.Datum ascending
                               select verseny.Datum ).First( );
@@ -180,7 +180,7 @@ namespace Ijasz2.Megjelenites.Indulo {
                             Szazalek = 0,
                             Megjelent = chMegjelent.IsChecked == true,
                             KorosztalyAzonosito = chKorosztalyFelulir.IsChecked == true ? cbUjKorosztaly.Text : "",
-                            Kor = Model.Data.Data.Korosztalyok.BetoltottKor( datum, _indulo.SzuletesiDatum ),
+                            Kor = Data.Korosztalyok.BetoltottKor( datum, _indulo.SzuletesiDatum ),
                             KorosztalyModositott = chKorosztalyFelulir.IsChecked == true,
                         } );
                         Close( );
@@ -203,7 +203,7 @@ namespace Ijasz2.Megjelenites.Indulo {
                     Szazalek = 0,
                     Megjelent = chMegjelent.IsChecked == true,
                     KorosztalyAzonosito = chKorosztalyFelulir.IsChecked == true ? cbUjKorosztaly.Text : "",
-                    Kor = Model.Data.Data.Korosztalyok.BetoltottKor( datum, _indulo.SzuletesiDatum ),
+                    Kor = Data.Korosztalyok.BetoltottKor( datum, _indulo.SzuletesiDatum ),
                     KorosztalyModositott = chKorosztalyFelulir.IsChecked == true,
                 } );
                 Close( );

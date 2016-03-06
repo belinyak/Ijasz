@@ -66,12 +66,12 @@ namespace Ijasz2.Model.Korosztaly {
         /// </summary>
         /// <param name="versenyAzonosito"></param>
         /// <param name="korosztalyAzonosito"></param>
-        public static List<Model.Korosztaly.KorosztalyInduloSeged> Tagok( string versenyAzonosito, string korosztalyAzonosito ) {
-            List<Model.Korosztaly.KorosztalyInduloSeged> tagokList = new List<KorosztalyInduloSeged>();
+        public static List<KorosztalyInduloSeged> Tagok( string versenyAzonosito, string korosztalyAzonosito ) {
+            List<KorosztalyInduloSeged> tagokList = new List<KorosztalyInduloSeged>();
 
-            foreach( var versenyeredmenyek in Model.Data.Data.Eredmenyek._versenyEredmenyek.Where( eredmeny => eredmeny.VersenyAzonosito.Equals( versenyAzonosito ) ) ) {
+            foreach( var versenyeredmenyek in Data.Data.Eredmenyek._versenyEredmenyek.Where( eredmeny => eredmeny.VersenyAzonosito.Equals( versenyAzonosito ) ) ) {
                 foreach( var eredmeny in versenyeredmenyek.Eredmenyek._eredmenyek.Where( eredmeny => eredmeny.KorosztalyAzonosito.Equals( korosztalyAzonosito ) ) ) {
-                    var indulo = (from indulo1 in Model.Data.Data.Indulok._indulok
+                    var indulo = (from indulo1 in Data.Data.Indulok._indulok
                                   where indulo1.Nev.Equals(eredmeny.Indulo)
                                   select indulo1).First();
 
