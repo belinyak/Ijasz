@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using Ijasz2.Adatbazis;
 using Ijasz2.Megjelenites.Egyesület;
 using Ijasz2.Megjelenites.Eredmeny;
@@ -264,7 +265,7 @@ namespace Ijasz2 {
         #region Indulo
 
         private void Indulo_Modositas( object sender, MouseButtonEventArgs e ) {
-            var Indulo = InduloGrid.SelectedItem as Indulo;
+         var Indulo = InduloGrid.SelectedItem as Indulo;
 
             ( new Indulo_Hozzaadas_Modositas( Indulo ) ).ShowDialog( );
         }
@@ -431,7 +432,7 @@ namespace Ijasz2 {
             if( versenysorozat != null )
                 txtOklevelVsMegnevezes.Text = versenysorozat.Megnevezes;
         }
-
+        #endregion
         private void TxtEredmenySorszam_OnTextChanged( object sender, TextChangedEventArgs e ) {
             if( cboEredmenyVerseny.SelectedItem == null ) {
                 return;
@@ -447,18 +448,64 @@ namespace Ijasz2 {
                 }
             }
         }
-        #endregion
-
         private void TxtEredmenySorszam_OnKeyDown( object sender, KeyEventArgs e ) {
             if( e.Key != Key.Enter ) {
                 return;
             }
             var eredmeny = EredmenyGrid.SelectedItem as Eredmeny;
-            if (eredmeny == null) {
+            if( eredmeny == null ) {
                 return;
             }
 
-            (new Megjelenites.Eredmeny.Eredmeny_Hozzaadas_Modositas(eredmeny)).Show();
+            ( new Megjelenites.Eredmeny.Eredmeny_Hozzaadas_Modositas( eredmeny ) ).Show( );
+        }
+
+        private void TxtInduloNev_OnTextChanged( object sender, TextChangedEventArgs e ) {
+            if( InduloGrid.Items.Count.Equals( 0 ) ) {
+                return;
+            }
+
+            foreach( var induloitem in InduloGrid.Items ) {
+                int talalt = 0;
+                var indulo = induloitem as Indulo;
+                for( int i = 0; i < txtInduloNev.Text.Length; i++ ) {
+                    if( indulo.Nev.Length < txtInduloNev.Text.Length ) {
+                        break;
+                    }
+                    if( indulo.Nev[i].ToString( ).ToLower( ) == txtInduloNev.Text[i].ToString( ).ToLower( ) ) {
+                        talalt++;
+                    }
+                }
+                if( talalt.Equals( txtInduloNev.Text.Length ) ) {
+                    InduloGrid.SelectedItem = induloitem;
+                    InduloGrid.ScrollIntoView( induloitem );
+                    return;
+                }
+            }
+
+            /*
+             foreach ( DataGridViewRow row in table.Rows )
+         {
+            int talált = 0;
+            for ( int i = 0 ; i < keresés.Text.Length ; i++ )
+            {
+               if ( row.Cells[ 0 ].Value.ToString( ).Length < keresés.Text.Length )
+               {
+                  break;
+               }
+               if ( row.Cells[ 0 ].Value.ToString( )[ i ] == keresés.Text[ i ] || row.Cells[ 0 ].Value.ToString( )[ i ] == Char.ToUpper( keresés.Text[ i ] ) )
+               {
+                  talált++;
+               }
+            }
+            if ( talált == keresés.Text.Length )
+            {
+               table.Rows[ row.Index ].Selected = true;
+               table.FirstDisplayedScrollingRowIndex = row.Index;
+               return;
+            }
+         }
+            */
         }
     }
 }
