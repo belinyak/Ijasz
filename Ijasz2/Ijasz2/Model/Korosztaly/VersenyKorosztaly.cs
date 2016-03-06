@@ -22,7 +22,6 @@ namespace Ijasz2.Model.Korosztaly {
         /// <param name="versenyAzonosito"></param>
         public void KorosztalySzamolas( string versenyAzonosito ) {
             var datum = "";
-            string korosztalymodositascommand = "";
 
             // mivel ujraszamolom ki kell nullazni
             // itt nem kell db update, ugyis lesz a vegen
@@ -58,9 +57,6 @@ namespace Ijasz2.Model.Korosztaly {
 
                     if( eredmeny.KorosztalyModositott.Equals( false ) ) {
                         var induloBetoltottKor = Data.Data.Indulok.BetoltottKor(datum, indulo.SzuletesiDatum);
-                        string temp = "update table eredmények set INBEEK=" + induloBetoltottKor + " where inneve='" +
-                                      indulo.Nev + "';";
-                        korosztalymodositascommand += temp;
 
                         foreach( var korosztaly in Korosztalyok ) {
                             if( indulo.Nem.ToLower( ).Equals( "f" ) && korosztaly.Ferfiakra.Equals( true ) &&
@@ -76,11 +72,6 @@ namespace Ijasz2.Model.Korosztaly {
 
                     }
                     else if( eredmeny.KorosztalyModositott.Equals( true ) ) {
-                        var induloBetoltottKor = Data.Data.Indulok.BetoltottKor(datum, indulo.SzuletesiDatum);
-                        string temp = "update table eredmények set INBEEK=" + induloBetoltottKor + " where inneve='" +
-                                      indulo.Nev + "';";
-                        korosztalymodositascommand += temp;
-
                         foreach( var korosztaly in Korosztalyok.Where( korosztaly => korosztaly.Azonosito.Equals( eredmeny.KorosztalyAzonosito ) ) ) {
                             if( indulo.Nem.ToLower( ).Equals( "f" ) ) {
                                 korosztaly.InduloFerfiak += 1;

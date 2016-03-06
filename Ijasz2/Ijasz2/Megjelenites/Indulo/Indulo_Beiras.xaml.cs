@@ -49,7 +49,7 @@ namespace Ijasz2.Megjelenites.Indulo {
         private void btnCsapatok_Click( object sender, RoutedEventArgs e ) {
 
 
-            ( new Indulo_Csapatok( cbVerseny.Text )).ShowDialog( );
+            ( new Indulo_Csapatok( cbVerseny.Text ) ).ShowDialog( );
         }
 
         private void ChKorosztalyFelulir_OnClick( object sender, RoutedEventArgs e ) {
@@ -133,12 +133,29 @@ namespace Ijasz2.Megjelenites.Indulo {
         ///     TODO korosztaly szamolas |
         ///     TODO eredmenyek novelese |
         ///     TODO SZEBBEN, ha mar letezik akkor modositas nem add |
+        ///     betoltott kor szamolas | 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void BtnRendben_OnClick( object sender, RoutedEventArgs e ) {
             if( IsValid( ) == false ) {
                 return;
+            }
+
+            // kell a datum, ha van versenysorozat, akkor az 1. verseny datuma, kulonben verseny datum
+            string datum = "";
+            foreach(
+                var verseny1 in
+                    Model.Data.Data.Versenyek._versenyek.Where( verseny => verseny.Azonosito.Equals( cbVerseny.Text ) ) ) {
+                if( !string.IsNullOrEmpty( verseny1.Versenysorozat ) ) {
+                    datum = ( from verseny in Model.Data.Data.Versenyek._versenyek
+                              where verseny.Versenysorozat.Equals( verseny1.Versenysorozat )
+                              orderby verseny.Datum ascending
+                              select verseny.Datum ).First( );
+                }
+                else {
+                    datum = verseny1.Datum;
+                }
             }
 
             utolseSelectedVersenyIndex = cbVerseny.SelectedIndex;
@@ -162,7 +179,9 @@ namespace Ijasz2.Megjelenites.Indulo {
                             OsszPont = 0,
                             Szazalek = 0,
                             Megjelent = chMegjelent.IsChecked == true,
-                            KorosztalyAzonosito = chKorosztalyFelulir.IsChecked == true ? cbUjKorosztaly.Text : ""
+                            KorosztalyAzonosito = chKorosztalyFelulir.IsChecked == true ? cbUjKorosztaly.Text : "",
+                            Kor = Model.Data.Data.Korosztalyok.BetoltottKor( datum, _indulo.SzuletesiDatum ),
+                            KorosztalyModositott = chKorosztalyFelulir.IsChecked == true,
                         } );
                         Close( );
                         return;
@@ -183,7 +202,9 @@ namespace Ijasz2.Megjelenites.Indulo {
                     OsszPont = 0,
                     Szazalek = 0,
                     Megjelent = chMegjelent.IsChecked == true,
-                    KorosztalyAzonosito = chKorosztalyFelulir.IsChecked == true ? cbUjKorosztaly.Text : ""
+                    KorosztalyAzonosito = chKorosztalyFelulir.IsChecked == true ? cbUjKorosztaly.Text : "",
+                    Kor = Model.Data.Data.Korosztalyok.BetoltottKor( datum, _indulo.SzuletesiDatum ),
+                    KorosztalyModositott = chKorosztalyFelulir.IsChecked == true,
                 } );
                 Close( );
                 return;
