@@ -23,9 +23,13 @@ namespace Ijasz2.Megjelenites.Egyesület {
         }
         private void cboEgyesuletTagokVerseny_SelectionChanged( object sender, SelectionChangedEventArgs e ) {
             EgyesuletTagokGrid.ItemsSource = null;
+
             List<Model.Egyesulet.Egyesulet_Tagok> egyesuletIndulok = new List<Model.Egyesulet.Egyesulet_Tagok>();
             foreach( var indulo in Model.Data.Data.Indulok._indulok.Where( indulo => indulo.Egyesulet.Equals( _egyesulet.Azonosito ) ) ) {
-                foreach( var eredmenyek in Model.Data.Data.Eredmenyek._versenyEredmenyek.Where( eredmeny => eredmeny.VersenyAzonosito.Equals( cboEgyesuletTagokVerseny.Text ) ) ) {
+                foreach( var eredmenyek in Model.Data.Data.Eredmenyek._versenyEredmenyek.Where( eredmeny => {
+                    var verseny = cboEgyesuletTagokVerseny.SelectedItem as Model.Verseny.Verseny;
+                    return verseny != null && eredmeny.VersenyAzonosito.Equals( verseny.Azonosito);
+                }) ) {
                     foreach( var eredmeny in eredmenyek.Eredmenyek._eredmenyek ) {
                         if( eredmeny.Indulo.Equals( indulo.Nev ) ) {
                             egyesuletIndulok.Add( new Model.Egyesulet.Egyesulet_Tagok {

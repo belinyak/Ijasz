@@ -65,27 +65,9 @@ namespace Ijasz2 {
             IjtipusGrid.ItemsSource = Data.Ijtipusok._ijtipusok;
             EgyesuletGrid.ItemsSource = Data.Egyesuletek._egyesuletek;
             InduloGrid.ItemsSource = Data.Indulok._indulok;
-            /*
-             var firstCol = dataGrid.Columns.First();
-    firstCol.SortDirection = ListSortDirection.Ascending;
-    dataGrid.Items.SortDescriptions.Add(new SortDescription(firstCol.SortMemberPath, ListSortDirection.Ascending));
-}
-            */
-            InduloGrid.Items.SortDescriptions.Add(new SortDescription(InduloGrid.Columns.First().SortMemberPath,ListSortDirection.Ascending));
 
             //EredmenyGrid.ItemsSource = Model.Data.Data.Eredmenyek._eredmenyek;
             SablonGrid.ItemsSource = Data.Sablonok._sablonok;
-
-            // nincs scrollbar
-            //VersenysorozatGrid.VerticalScrollBarVisibility = ScrollBarVisibility.Disabled;
-            //VersenyGrid.VerticalScrollBarVisibility = ScrollBarVisibility.Disabled;
-            //IjtipusGrid.VerticalScrollBarVisibility = ScrollBarVisibility.Disabled;
-            //EgyesuletGrid.VerticalScrollBarVisibility  = ScrollBarVisibility.Disabled;
-            //InduloGrid.VerticalScrollBarVisibility  = ScrollBarVisibility.Disabled;
-            //EredmenyGrid.VerticalScrollBarVisibility =  ScrollBarVisibility.Disabled;
-            //SablonGrid.VerticalScrollBarVisibility  = ScrollBarVisibility.Disabled;
-
-
 
             //TODO egységesen cb-re átnevezni !!!
             //TODO a plusz üres mit csesz el ???
@@ -98,6 +80,11 @@ namespace Ijasz2 {
             cboOklevelVeAzonosito.ItemsSource = Data.Versenyek._versenyek;
             cboOklevelVsAzonosito.ItemsSource = Data.Versenysorozatok._versenysorozatok;
             cboOklevelLegjobb.ItemsSource = new ObservableCollection<int> { 1, 2, 3, 4, 5 };
+
+            // set sort order
+            InduloGrid.Items.SortDescriptions.Add( new SortDescription( InduloGrid.Columns.First( ).SortMemberPath, ListSortDirection.Ascending ) );
+            EgyesuletGrid.Items.SortDescriptions.Add( new SortDescription( EgyesuletGrid.Columns.First( ).SortMemberPath, ListSortDirection.Ascending ) );
+
         }
 
         #region Button EventHandlers
@@ -319,6 +306,7 @@ namespace Ijasz2 {
             if( verseny != null ) {
                 foreach( var versenyEredmeny in Data.Eredmenyek._versenyEredmenyek.Where( versenyEredmeny => versenyEredmeny.VersenyAzonosito.Equals( verseny.Azonosito ) ) ) {
                     EredmenyGrid.ItemsSource = versenyEredmeny.Eredmenyek._eredmenyek;
+                    EredmenyGrid.Items.SortDescriptions.Add( new SortDescription( EredmenyGrid.Columns[1].SortMemberPath, ListSortDirection.Ascending ) );
                     return;
                 }
             }
@@ -415,6 +403,7 @@ namespace Ijasz2 {
             if( verseny != null ) {
                 foreach( var versenykorosztalyok in Data.Korosztalyok._versenyKorosztalyok.Where( versenykorosztalyok => versenykorosztalyok.VersenyAzonosito.Equals( verseny.Azonosito ) ) ) {
                     KorosztalyGrid.ItemsSource = versenykorosztalyok.Korosztalyok;
+                    KorosztalyGrid.Items.SortDescriptions.Add( new SortDescription( KorosztalyGrid.Columns.First( ).SortMemberPath, ListSortDirection.Ascending ) );
                     return;
                 }
             }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows.Controls;
 using Ijasz2.Model.Indulo;
@@ -35,19 +36,23 @@ namespace Ijasz2.Megjelenites.Indulo {
                         Indulo = eredmeny.Indulo,
                         Ijtipus = eredmeny.Ijtipus,
                         Kor = eredmeny.Kor,
-                        Egyesulet = (from indulo in Model.Data.Data.Indulok._indulok
-                                    where indulo.Nev.Equals(eredmeny.Indulo)
-                                    select indulo.Egyesulet).First()
+                        Egyesulet = ( from indulo in Model.Data.Data.Indulok._indulok
+                                      where indulo.Nev.Equals( eredmeny.Indulo )
+                                      select indulo.Egyesulet ).First( )
                     } );
                 }
             }
             CsapatGrid.ItemsSource = _csapatok;
+            CsapatGrid.Items.SortDescriptions.Add( new SortDescription( CsapatGrid.Columns.First( ).SortMemberPath, ListSortDirection.Ascending ) );
+
         }
 
         private void CsapatGridOnSelectionChanged( object sender, SelectionChangedEventArgs selectionChangedEventArgs ) {
             CsapatIndulokGrid.ItemsSource = null;
             var csapat = CsapatGrid.SelectedItem as Csapat;
             CsapatIndulokGrid.ItemsSource = csapat.CsapatIndulok;
+            CsapatIndulokGrid.Items.SortDescriptions.Add( new SortDescription( CsapatIndulokGrid.Columns.First( ).SortMemberPath, ListSortDirection.Ascending ) );
+
         }
     }
 }
