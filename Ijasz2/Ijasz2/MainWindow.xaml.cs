@@ -482,30 +482,6 @@ namespace Ijasz2 {
                     return;
                 }
             }
-
-            /*
-             foreach ( DataGridViewRow row in table.Rows )
-         {
-            int talált = 0;
-            for ( int i = 0 ; i < keresés.Text.Length ; i++ )
-            {
-               if ( row.Cells[ 0 ].Value.ToString( ).Length < keresés.Text.Length )
-               {
-                  break;
-               }
-               if ( row.Cells[ 0 ].Value.ToString( )[ i ] == keresés.Text[ i ] || row.Cells[ 0 ].Value.ToString( )[ i ] == Char.ToUpper( keresés.Text[ i ] ) )
-               {
-                  talált++;
-               }
-            }
-            if ( talált == keresés.Text.Length )
-            {
-               table.Rows[ row.Index ].Selected = true;
-               table.FirstDisplayedScrollingRowIndex = row.Index;
-               return;
-            }
-         }
-            */
         }
     }
 }

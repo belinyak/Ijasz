@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Ijasz2.Megjelenites.Korosztaly.Korosztaly_Indulok"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Indulók" Height="768" Width="367" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Indulók" Height="768" Width="385" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <DataGrid x:Name="TagokGrid"
                    HorizontalAlignment="Stretch" Grid.RowSpan="10"
@@ -12,6 +12,12 @@
 				    CanUserResizeRows="False"
 				    RowHeaderWidth="0"
 				    HorizontalScrollBarVisibility="Disabled">
+            <DataGrid.Resources>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                </Style>
+            </DataGrid.Resources>
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Nev, Mode=OneWay}"
 							                    CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="250"
@@ -20,7 +26,7 @@
 							                    CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="50"
 							                    Header="Nem" />
                 <DataGridTextColumn Binding="{Binding Kor, Mode=OneWay}"
-							                    CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="48"
+							                    CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="68"
 							                    Header="Életkor" />
             </DataGrid.Columns>
         </DataGrid>

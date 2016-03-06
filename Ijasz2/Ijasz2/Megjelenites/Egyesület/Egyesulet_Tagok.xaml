@@ -4,24 +4,31 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Tagok" Height="768" Width="750" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Tagok" Height="550" Width="620" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="467"></ColumnDefinition>
+            <ColumnDefinition Width="315"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <DataGrid x:Name="EgyesuletTagokGrid"
-                   HorizontalAlignment="Stretch"
-                  Grid.Column="0"
-				    IsReadOnly="True"
-				    SelectionMode="Single"
-				    SelectionUnit="FullRow"
-				    AutoGenerateColumns="False"
-				    CanUserResizeRows="False"
-				    RowHeaderWidth="0"
-				    HorizontalScrollBarVisibility="Disabled">
+                Grid.RowSpan="4"
+                HorizontalAlignment="Stretch"
+                IsReadOnly="True"
+                SelectionMode="Single"
+                SelectionUnit="FullRow"
+                AutoGenerateColumns="False"
+                CanUserResizeRows="False"
+                RowHeaderWidth="0"
+                HorizontalScrollBarVisibility="Disabled"
+                >
+            <DataGrid.Resources>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                </Style>
+            </DataGrid.Resources>
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Indulo, Mode=OneWay}"
 							                    CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="150"
