@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
@@ -11,17 +12,32 @@ namespace Ijasz2.Megjelenites.Egyesület {
     /// </summary>
     public partial class Egyesulet_Tagok {
         private readonly Egyesulet _egyesulet;
+
         public Egyesulet_Tagok( Egyesulet egyesulet ) {
             _egyesulet = egyesulet;
             InitializeComponent( );
             InitializeContent( egyesulet );
+            cboEgyesuletTagokVerseny.SelectedIndex = -1;
         }
 
         private void InitializeContent( Egyesulet egyesulet ) {
+            var egyesuletIndulok = new List<Model.Egyesulet.Egyesulet_Tagok>();
 
             cboEgyesuletTagokVerseny.ItemsSource = Model.Data.Data.Versenyek._versenyek;
+            foreach( var indulo in Model.Data.Data.Indulok._indulok.Where( indulo => indulo.Egyesulet.Equals( _egyesulet.Azonosito ) ) ) {
+                // ha nincs verseny akkor mindenki, szuletesi datum + mai nap alapján számol kort
+                egyesuletIndulok.Add( new Model.Egyesulet.Egyesulet_Tagok {
+                    Indulo = indulo.Nev,
+                    Nem = indulo.Nem,
+                    Kor = Model.Data.Data.Korosztalyok.BetoltottKor( DateTime.Now.ToString( ), indulo.SzuletesiDatum ),
+                    Megjelent = false
+                } );
+            }
+            EgyesuletTagokGrid.ItemsSource = egyesuletIndulok;
+            EgyesuletTagokGrid.Items.SortDescriptions.Add( new SortDescription( EgyesuletTagokGrid.Columns[2].SortMemberPath, ListSortDirection.Ascending ) );
 
         }
+
 
         /// <summary>
         /// TODO ha nincs kiválasztva, akkor maz összeset mutassa
@@ -31,19 +47,27 @@ namespace Ijasz2.Megjelenites.Egyesület {
         private void cboEgyesuletTagokVerseny_SelectionChanged( object sender, SelectionChangedEventArgs e ) {
             EgyesuletTagokGrid.ItemsSource = null;
 
-            List<Model.Egyesulet.Egyesulet_Tagok> egyesuletIndulok = new List<Model.Egyesulet.Egyesulet_Tagok>();
+            var egyesuletIndulok = new List<Model.Egyesulet.Egyesulet_Tagok>();
+            var verseny = cboEgyesuletTagokVerseny.SelectedItem as Model.Verseny.Verseny;
+
             foreach( var indulo in Model.Data.Data.Indulok._indulok.Where( indulo => indulo.Egyesulet.Equals( _egyesulet.Azonosito ) ) ) {
-                foreach( var eredmenyek in Model.Data.Data.Eredmenyek._versenyEredmenyek.Where( eredmeny => {
-                    var verseny = cboEgyesuletTagokVerseny.SelectedItem as Model.Verseny.Verseny;
-                    return verseny != null && eredmeny.VersenyAzonosito.Equals( verseny.Azonosito );
-                } ) ) {
-                    foreach( var eredmeny in eredmenyek.Eredmenyek._eredmenyek ) {
-                        if( eredmeny.Indulo.Equals( indulo.Nev ) ) {
+                // ha nincs verseny akkor mindenki, szuletesi datum + mai nap alapján számol kort
+                if( verseny == null ) {
+                    egyesuletIndulok.Add( new Model.Egyesulet.Egyesulet_Tagok {
+                        Indulo = indulo.Nev,
+                        Nem = indulo.Nem,
+                        Kor = Model.Data.Data.Korosztalyok.BetoltottKor( DateTime.Now.ToString( ), indulo.SzuletesiDatum ),
+                        Megjelent = false
+                    } );
+                }
+                else {
+                    foreach( var versenyeredmenyek in Model.Data.Data.Eredmenyek._versenyEredmenyek.Where( eredmeny => eredmeny.VersenyAzonosito.Equals( verseny.Azonosito ) ) ) {
+                        foreach( var eredmeny in versenyeredmenyek.Eredmenyek._eredmenyek.Where( eredmeny => eredmeny.Indulo.Equals( indulo.Nev ) ) ) {
                             egyesuletIndulok.Add( new Model.Egyesulet.Egyesulet_Tagok {
-                                Indulo = eredmeny.Indulo,
+                                Indulo = indulo.Nev,
+                                Kor = eredmeny.Kor,
                                 Nem = indulo.Nem,
-                                Megjelent = eredmeny.Megjelent,
-                                Kor = eredmeny.Kor
+                                Megjelent = eredmeny.Megjelent
                             } );
                         }
                     }
