@@ -12,7 +12,7 @@ namespace Ijasz2.Nyomtatas.Seged {
         /// <param name="verseny"></param>
         /// <param name="dokumentumTipus"></param>
         /// <returns></returns>
-        public static string CreateFileName( string versenysorozat, string verseny, DokumentumTipus dokumentumTipus ) {
+        public static string CreateFileName( string versenysorozat, string verseny, StartlistaTipus dokumentumTipus ) {
             string FileName;
 
             FileName = dokumentumTipus + ".docx";

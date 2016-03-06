@@ -526,19 +526,19 @@
                     <Label Grid.Row="1" Grid.Column="1" Content="Eredménylap típus:"
 					       HorizontalAlignment="Stretch" VerticalAlignment="Center" />
                     <Label Grid.Row="3" Grid.Column="1"
-					       Content="Versenysorozat azonosító:" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+					       Content="Verseny azonosító:" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
                     <Label Grid.Row="4" Grid.Column="1"
-					       Content="Versenysorozat megnevezés:" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
-                    <Label Grid.Row="5" Grid.Column="1" Content="Verseny azonosító:"
+					       Content="Verseny megnevezés:" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+                    <Label Grid.Row="5" Grid.Column="1" Content="Versenysorozat azonosító:"
 					       HorizontalAlignment="Stretch" VerticalAlignment="Center" />
-                    <Label Grid.Row="6" Grid.Column="1" Content="Verseny megnevezés:"
+                    <Label Grid.Row="6" Grid.Column="1" Content="Versenysorozat megnevezés:"
 					       HorizontalAlignment="Stretch" VerticalAlignment="Center" />
                     <Label Grid.Row="7" Grid.Column="1" Content="Startlista típusa:"
 					       HorizontalAlignment="Stretch" VerticalAlignment="Bottom" />
                     <CheckBox x:Name="cheredmenylapVerseny" Grid.Row="1" Grid.Column="2" Content="Verseny" HorizontalAlignment="Left"
-					          VerticalAlignment="Center" />
+					          VerticalAlignment="Center" Click="CheredmenylapVerseny_OnClick"/>
                     <CheckBox x:Name="cheredmenylapVersenysorozat" Grid.Row="2" Grid.Column="2" Content="Versenysorozat"
-					          HorizontalAlignment="Left" VerticalAlignment="Center" />
+					          HorizontalAlignment="Left" VerticalAlignment="Center" Click="CheredmenylapVerseny_OnClick" />
                     <ComboBox x:Name="cberedmenylapVersenyAzonosito" DisplayMemberPath="Azonosito" Grid.Row="3" Grid.Column="2"
 					          HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"
 					          SelectionChanged="CberedmenylapVersenyAzonosito_OnSelectionChanged" />
@@ -550,13 +550,13 @@
                     <TextBox x:Name="txteredmenylapVersenysorozatMegnevezes" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Left"
 					         Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" IsEnabled="False" />
                     <CheckBox x:Name="cheredmenylapTeljes" Grid.Row="7" Grid.Column="2" Content="Teljes" HorizontalAlignment="Left"
-					          VerticalAlignment="Center" />
+					          VerticalAlignment="Center" Click="CheredmenylapTeljes_OnClick" />
                     <CheckBox x:Name="cheredmenylapMisz" Grid.Row="8" Grid.Column="2" Content="MISZ" HorizontalAlignment="Left"
-					          VerticalAlignment="Center" />
+					          VerticalAlignment="Center" Click="CheredmenylapTeljes_OnClick" />
                     <CheckBox x:Name="cheredmenylapEgyesulet" Grid.Row="9" Grid.Column="2" Content="Egyesület"
-					          HorizontalAlignment="Left" VerticalAlignment="Center" />
+					          HorizontalAlignment="Left" VerticalAlignment="Center" Click="CheredmenylapTeljes_OnClick" />
                     <CheckBox x:Name="cheredmenylapReszletes" Grid.Row="10" Grid.Column="2" Content="Részletes"
-					          HorizontalAlignment="Left" VerticalAlignment="Center" />
+					          HorizontalAlignment="Left" VerticalAlignment="Center" Click="CheredmenylapTeljes_OnClick" />
                     <Button Content="Nyomtatás" Grid.Row="12" Grid.Column="3"
 					        HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="96" Height="32" Margin="0,0,0,16"
 					        Click="btneredmenylapNyomtat_Click" />

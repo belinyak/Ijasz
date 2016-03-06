@@ -335,7 +335,7 @@ namespace Ijasz2 {
 
         private void btnstartListaNyomtat_Click( object sender, RoutedEventArgs e ) {
             if( chStartlistaNevezesi.IsChecked.Equals( true ) ) {
-                ( new Startlista_Nyomtatas( DokumentumTipus.NevezesiLista, versenyAzonosito: cbstartListaVersenyAzonosito.Text ) ).ShowDialog( );
+                ( new Startlista_Nyomtatas( StartlistaTipus.NevezesiLista, versenyAzonosito: cbstartListaVersenyAzonosito.Text ) ).ShowDialog( );
             }
             if( chStartlistaCsapat.IsChecked.Equals( true ) ) {
                 ( new Startlista_Nyomtatas( DokumentumTipus.CsapatLista, cbstartListaVersenyAzonosito.Text ) ).ShowDialog( );
@@ -350,7 +350,27 @@ namespace Ijasz2 {
         #region EredmenyLapok
 
         private void btneredmenylapNyomtat_Click( object sender, RoutedEventArgs e ) {
-            throw new NotImplementedException( );
+            // ha nincs kivalasztva, hogy verseny/versenysorozat
+            if( cheredmenylapVerseny.IsChecked == false && cheredmenylapVersenysorozat.IsChecked == false ) {
+                return;
+            }
+            // ha verseny van
+            if( cheredmenylapVerseny.IsChecked == true ) {
+                if( string.IsNullOrEmpty( cberedmenylapVersenyAzonosito.Text ) ) {
+                    return;
+                }
+            }
+            if( cheredmenylapVersenysorozat.IsChecked == true ) {
+                if( string.IsNullOrEmpty( cberedmenylapVersenysorozatAzonosito.Text ) ) {
+                    return;
+                }
+            }
+
+            if( cheredmenylapTeljes.IsChecked == false && cheredmenylapMisz.IsChecked == false &&
+                    cheredmenylapEgyesulet.IsChecked == false && cheredmenylapReszletes.IsChecked == false ) {
+                return;
+            }
+            MessageBox.Show( "NYOMTATAS" );
         }
 
         #endregion
@@ -522,7 +542,64 @@ namespace Ijasz2 {
                 chStartlistaMegjelent.IsChecked = false;
             }
         }
-        #endregion
 
+        private void CheredmenylapVerseny_OnClick( object sender, RoutedEventArgs e ) {
+            var aktiv = sender as CheckBox;
+            if( aktiv == null ) {
+                return;
+            }
+
+            if( aktiv.Equals( cheredmenylapVerseny ) ) {
+                cheredmenylapVerseny.IsChecked = true;
+                cheredmenylapVersenysorozat.IsChecked = false;
+
+                cberedmenylapVersenyAzonosito.IsEnabled = true;
+                cberedmenylapVersenysorozatAzonosito.IsEnabled = false;
+                cberedmenylapVersenysorozatAzonosito.SelectedIndex = -1;
+                txteredmenylapVersenysorozatMegnevezes.Text = "";
+            }
+            else if( aktiv.Equals( cheredmenylapVersenysorozat ) ) {
+                cheredmenylapVersenysorozat.IsChecked = true;
+                cheredmenylapVerseny.IsChecked = false;
+
+                cberedmenylapVersenysorozatAzonosito.IsEnabled = true;
+                cberedmenylapVersenyAzonosito.IsEnabled = false;
+                cberedmenylapVersenyAzonosito.SelectedIndex = -1;
+                txteredmenylapVersenyMegnevezes.Text = "";
+            }
+        }
+
+        private void CheredmenylapTeljes_OnClick( object sender, RoutedEventArgs e ) {
+            var aktiv = sender as CheckBox;
+            if( aktiv == null ) {
+                return;
+            }
+
+            if( aktiv.Equals( cheredmenylapTeljes ) ) {
+                cheredmenylapTeljes.IsChecked = true;
+                cheredmenylapMisz.IsChecked = false;
+                cheredmenylapEgyesulet.IsChecked = false;
+                cheredmenylapReszletes.IsChecked = false;
+            }
+            else if( aktiv.Equals( cheredmenylapMisz ) ) {
+                cheredmenylapMisz.IsChecked = true;
+                cheredmenylapTeljes.IsChecked = false;
+                cheredmenylapEgyesulet.IsChecked = false;
+                cheredmenylapReszletes.IsChecked = false;
+            }
+            else if( aktiv.Equals( cheredmenylapEgyesulet ) ) {
+                cheredmenylapEgyesulet.IsChecked = true;
+                cheredmenylapTeljes.IsChecked = false;
+                cheredmenylapMisz.IsChecked = false;
+                cheredmenylapReszletes.IsChecked = false;
+            }
+            else if( aktiv.Equals( cheredmenylapReszletes ) ) {
+                cheredmenylapReszletes.IsChecked = true;
+                cheredmenylapTeljes.IsChecked = false;
+                cheredmenylapMisz.IsChecked = false;
+                cheredmenylapEgyesulet.IsChecked = false;
+            }
+        }
+        #endregion
     }
 }
