@@ -56,16 +56,15 @@ namespace Ijasz2.Model.Korosztaly {
                     localIndulok.Remove( indulo );
 
                     if( eredmeny.KorosztalyModositott.Equals( false ) ) {
-                        var induloBetoltottKor = Data.Data.Indulok.BetoltottKor(datum, indulo.SzuletesiDatum);
 
                         foreach( var korosztaly in Korosztalyok ) {
                             if( indulo.Nem.ToLower( ).Equals( "f" ) && korosztaly.Ferfiakra.Equals( true ) &&
-                                ( korosztaly.AlsoHatar <= induloBetoltottKor && induloBetoltottKor <= korosztaly.FelsoHatar ) ) {
+                                ( korosztaly.AlsoHatar <= eredmeny.Kor && eredmeny.Kor <= korosztaly.FelsoHatar ) ) {
                                 korosztaly.InduloFerfiak += 1;
                                 eredmeny.KorosztalyAzonosito = korosztaly.Azonosito;
                             }
                             else if( indulo.Nem.ToLower( ).Equals( "n" ) && korosztaly.Nokre.Equals( true ) &&
-                                 ( korosztaly.AlsoHatar <= induloBetoltottKor && induloBetoltottKor <= korosztaly.FelsoHatar ) ) {
+                                 ( korosztaly.AlsoHatar <= eredmeny.Kor && eredmeny.Kor <= korosztaly.FelsoHatar ) ) {
                                 korosztaly.InduloNok += 1;
                             }
                         }

@@ -103,16 +103,5 @@ namespace Ijasz2.Model.Indulo {
                 return;
             }
         }
-
-        /// <summary>
-        /// TODO ennek lehet nem itt van a helye
-        /// </summary>
-        /// <param name="versenyDatum"></param>
-        /// <param name="induloSzuletesiDatum"></param>
-        /// <returns></returns>
-        public int BetoltottKor( string versenyDatum, string induloSzuletesiDatum ) {
-            var value = (new DateTime(1, 1, 1) + ((Convert.ToDateTime(versenyDatum)) - DateTime.Parse(induloSzuletesiDatum))).Year - 1;
-            return value;
-        }
     }
 }

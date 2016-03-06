@@ -107,17 +107,12 @@ namespace Ijasz2.Model.Eredmeny {
                 }
             }
 
-            var betoltottKor = Data.Data.Korosztalyok.BetoltottKor(datum, indulo.SzuletesiDatum);
-
             foreach(
                 var korosztaly in
                     Data.Data.Korosztalyok._versenyKorosztalyok.Where(
                         korosztaly => korosztaly.VersenyAzonosito.Equals( eredmeny.Verseny ) )
-                        .SelectMany(
-                            korosztalyok =>
-                                korosztalyok.Korosztalyok.Where(
-                                    korosztaly =>
-                                        korosztaly.AlsoHatar <= betoltottKor && betoltottKor <= korosztaly.FelsoHatar ) ) ) {
+                        .SelectMany( korosztalyok => korosztalyok.Korosztalyok.Where( korosztaly =>
+                                        korosztaly.AlsoHatar <= eredmeny.Kor && eredmeny.Kor <= korosztaly.FelsoHatar ) ) ) {
                 if( indulo.Nem.Equals( "F" ) || indulo.Nem.Equals( "f" ) ) {
                     Data.Data.Korosztalyok.FerfiakNoveles( korosztaly );
                     return korosztaly.Azonosito;

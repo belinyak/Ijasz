@@ -53,7 +53,7 @@ namespace Ijasz2.Model.Korosztaly {
                         korosztaly1.InduloNok = korosztaly.InduloNok;
                         korosztaly1.InduloFerfiak = korosztaly.InduloFerfiak;
                         korosztaly1.Egyben = korosztaly.Egyben;
-                        Adatbazis.Korosztaly.Korosztaly.Update(korosztaly);
+                        Adatbazis.Korosztaly.Korosztaly.Update( korosztaly );
                         return;
 
                     }
@@ -75,26 +75,10 @@ namespace Ijasz2.Model.Korosztaly {
                                   where indulo1.Nev.Equals(eredmeny.Indulo)
                                   select indulo1).First();
 
-                    string versenyDatum;
-
-                    var verseny = (from verseny1 in Model.Data.Data.Versenyek._versenyek.Where(
-                                verseny1 => verseny1.Azonosito.Equals(versenyAzonosito))
-                                   select verseny1).First();
-
-                    if( string.IsNullOrEmpty( verseny.Versenysorozat ) ) {
-                        versenyDatum = verseny.Datum;
-                    }
-                    else {
-                        versenyDatum = ( from verseny1 in Model.Data.Data.Versenyek._versenyek
-                                         where verseny.Versenysorozat.Equals( verseny1.Versenysorozat )
-                                         orderby verseny1.Datum ascending
-                                         select verseny1.Datum ).First( );
-                    }
-
                     tagokList.Add( new KorosztalyInduloSeged {
                         Nev = indulo.Nev,
                         Nem = indulo.Nem,
-                        Kor = Model.Data.Data.Korosztalyok.BetoltottKor( versenyDatum, indulo.SzuletesiDatum )
+                        Kor = eredmeny.Kor
                     } );
 
                     tagokList = tagokList.OrderBy( seged => seged.Kor ).ToList( );
