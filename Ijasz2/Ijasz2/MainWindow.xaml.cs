@@ -312,18 +312,10 @@ namespace Ijasz2 {
             }
         }
 
-        private void btnEredmenyLezaras_Click( object sender, RoutedEventArgs e ) {
-            throw new NotImplementedException( );
-        }
-
         private void Eredmeny_Modositas( object sender, MouseButtonEventArgs e ) {
             var Eredmeny = EredmenyGrid.SelectedItem as Eredmeny;
 
             ( new Eredmeny_Hozzaadas_Modositas( Eredmeny ) ).ShowDialog( );
-        }
-
-        private void btnEredmenyMegnyitas_Click( object sender, RoutedEventArgs e ) {
-            throw new NotImplementedException( );
         }
 
         private void btnEredmenyTorles_Click( object sender, RoutedEventArgs e ) {
@@ -399,7 +391,6 @@ namespace Ijasz2 {
         private void cboVerseny_SelectionChanged( object sender, SelectionChangedEventArgs e ) {
             KorosztalyGrid.ItemsSource = null;
             var verseny = cboVerseny.SelectedItem as Verseny;
-
             if( verseny != null ) {
                 foreach( var versenykorosztalyok in Data.Korosztalyok._versenyKorosztalyok.Where( versenykorosztalyok => versenykorosztalyok.VersenyAzonosito.Equals( verseny.Azonosito ) ) ) {
                     KorosztalyGrid.ItemsSource = versenykorosztalyok.Korosztalyok;
@@ -417,8 +408,9 @@ namespace Ijasz2 {
 
         private void CberedmenylapVersenyAzonosito_OnSelectionChanged( object sender, SelectionChangedEventArgs e ) {
             var verseny = (((ComboBox) sender).SelectedItem) as Verseny;
-            if( verseny != null )
+            if( verseny != null ) {
                 txteredmenylapVersenyMegnevezes.Text = verseny.Megnevezes;
+            }
         }
 
         private void CberedmenylapVersenysorozatAzonosito_OnSelectionChanged( object sender, SelectionChangedEventArgs e ) {
@@ -440,6 +432,33 @@ namespace Ijasz2 {
                 txtOklevelVsMegnevezes.Text = versenysorozat.Megnevezes;
         }
 
+        private void TxtEredmenySorszam_OnTextChanged( object sender, TextChangedEventArgs e ) {
+            if( cboEredmenyVerseny.SelectedItem == null ) {
+                return;
+            }
+            int temp;
+            if( Int32.TryParse( ( sender as TextBox ).Text, out temp ) ) {
+                foreach( var item in EredmenyGrid.Items ) {
+                    var q = item as Eredmeny;
+                    if( q != null && q.Sorszam.ToString( ).Equals( txtEredmenySorszam.Text ) ) {
+                        EredmenyGrid.SelectedItem = q;
+                        EredmenyGrid.ScrollIntoView( q );
+                    }
+                }
+            }
+        }
         #endregion
+
+        private void TxtEredmenySorszam_OnKeyDown( object sender, KeyEventArgs e ) {
+            if( e.Key != Key.Enter ) {
+                return;
+            }
+            var eredmeny = EredmenyGrid.SelectedItem as Eredmeny;
+            if (eredmeny == null) {
+                return;
+            }
+
+            (new Megjelenites.Eredmeny.Eredmeny_Hozzaadas_Modositas(eredmeny)).Show();
+        }
     }
 }

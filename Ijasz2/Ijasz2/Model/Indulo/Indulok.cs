@@ -23,11 +23,11 @@ namespace Ijasz2.Model.Indulo {
         }
 
         /// <summary>
-        ///     |
-        ///     eredmenyek == 0 check |
-        ///     model torles |
-        ///     adatbazis torles |
-        ///     TODO msg???? |
+        /// | eredmenyek == 0 check |
+        /// model torles |
+        /// adatbazis torles |
+        /// egyesulet tagok csokkentese | 
+        /// TODO msg???? |
         /// </summary>
         /// <param name="indulo"></param>
         public void Remove( Indulo indulo ) {
