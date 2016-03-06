@@ -165,6 +165,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Megjelenites\Seged\WaitWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Megjelenites\Startlista\Startlista_Nyomtatas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -234,6 +238,9 @@
     </Compile>
     <Compile Include="Megjelenites\Oklevel\Sablon_Torles.xaml.cs">
       <DependentUpon>Sablon_Torles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Megjelenites\Seged\WaitWindow.xaml.cs">
+      <DependentUpon>WaitWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Megjelenites\Startlista\Startlista_Nyomtatas.xaml.cs">
       <DependentUpon>Startlista_Nyomtatas.xaml</DependentUpon>

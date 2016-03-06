@@ -32,12 +32,15 @@ namespace Ijasz2 {
     /// </summary>
     public partial class MainWindow {
         private static Data Data;
-
+        private Megjelenites.Seged.WaitWindow loadWait;
         public MainWindow( ) {
             InitializeComponent( );
         }
 
         private void MainWindow_OnLoaded( object sender, RoutedEventArgs e ) {
+            loadWait = new Megjelenites.Seged.WaitWindow("Adatok betöltése folyamatban...");
+            loadWait.Show();
+
             new Database( );
 
             var worker = new BackgroundWorker();
@@ -85,6 +88,7 @@ namespace Ijasz2 {
             // set sort order
             InduloGrid.Items.SortDescriptions.Add( new SortDescription( InduloGrid.Columns.First( ).SortMemberPath, ListSortDirection.Ascending ) );
             EgyesuletGrid.Items.SortDescriptions.Add( new SortDescription( EgyesuletGrid.Columns.First( ).SortMemberPath, ListSortDirection.Ascending ) );
+            loadWait.Close();
 
         }
 
@@ -199,10 +203,13 @@ namespace Ijasz2 {
             if( string.IsNullOrEmpty( cboVerseny.Text ) ) {
                 return;
             }
+
+            var korosztalySzamolasWindow = new Megjelenites.Seged.WaitWindow("Számolás folyamatban...");
+            korosztalySzamolasWindow.Show();
             foreach( var korosztalyok in Data.Korosztalyok._versenyKorosztalyok.Where( korosztaly => korosztaly.VersenyAzonosito.Equals( cboVerseny.Text ) ) ) {
                 korosztalyok.KorosztalySzamolas( cboVerseny.Text );
             }
-            //throw new NotImplementedException( );
+            korosztalySzamolasWindow.Close();
         }
 
         #endregion

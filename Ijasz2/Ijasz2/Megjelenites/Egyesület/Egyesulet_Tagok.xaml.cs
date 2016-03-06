@@ -51,7 +51,6 @@ namespace Ijasz2.Megjelenites.Egyesület {
             }
             EgyesuletTagokGrid.ItemsSource = egyesuletIndulok;
             EgyesuletTagokGrid.Items.SortDescriptions.Add( new SortDescription( EgyesuletTagokGrid.Columns[2].SortMemberPath, ListSortDirection.Ascending ) );
-
         }
 
         private void BtnEgysuletTagokClear_OnClick( object sender, RoutedEventArgs e ) {
