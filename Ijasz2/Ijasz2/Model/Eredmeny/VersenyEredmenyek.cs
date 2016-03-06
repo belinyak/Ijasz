@@ -10,7 +10,7 @@ namespace Ijasz2.Model.Eredmeny {
         /// </summary>
         public void Load( ) {
             _versenyEredmenyek = Adatbazis.Eredmeny.Eredmeny.Load( );
-            foreach( var verseny in Model.Data.Data.Versenyek._versenyek ) {
+            foreach( var verseny in Data.Data.Versenyek._versenyek ) {
                 bool found = false;
                 foreach( var versenyEredmeny in _versenyEredmenyek ) {
                     if( verseny.Azonosito.Equals( versenyEredmeny.VersenyAzonosito ) ) {

@@ -31,7 +31,7 @@ namespace Ijasz2.Model.Korosztaly {
             var localIndulok = Data.Data.Indulok._indulok.ToList();
 
             foreach( var versenyEredmenyek in Data.Data.Eredmenyek._versenyEredmenyek.Where( eredmeny => eredmeny.VersenyAzonosito.Equals( versenyAzonosito ) ) ) {
-                foreach( var eredmeny in versenyEredmenyek.Eredmenyek._eredmenyek /*.Where(eredmeny => eredmeny.Megjelent.Equals(true))*/) {
+                foreach( var eredmeny in versenyEredmenyek.Eredmenyek._eredmenyek.Where(eredmeny => eredmeny.Megjelent.Equals(true))) {
                     var indulo = (from indulo2 in localIndulok
                                   where indulo2.Nev.Equals(eredmeny.Indulo)
                                   select indulo2).First();
@@ -48,6 +48,7 @@ namespace Ijasz2.Model.Korosztaly {
                             else if( indulo.Nem.ToLower( ).Equals( "n" ) && korosztaly.Nokre.Equals( true ) &&
                                  ( korosztaly.AlsoHatar <= eredmeny.Kor && eredmeny.Kor <= korosztaly.FelsoHatar ) ) {
                                 korosztaly.InduloNok += 1;
+                                eredmeny.KorosztalyAzonosito = korosztaly.Azonosito;
                             }
                         }
 

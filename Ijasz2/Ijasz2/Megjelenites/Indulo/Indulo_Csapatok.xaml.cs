@@ -49,7 +49,7 @@ namespace Ijasz2.Megjelenites.Indulo {
         private void CsapatGridOnSelectionChanged( object sender, SelectionChangedEventArgs selectionChangedEventArgs ) {
             CsapatIndulokGrid.ItemsSource = null;
             var csapat = CsapatGrid.SelectedItem as Csapat;
-            CsapatIndulokGrid.ItemsSource = csapat.CsapatIndulok;
+            CsapatIndulokGrid.ItemsSource = csapat?.CsapatIndulok;
             CsapatIndulokGrid.Items.SortDescriptions.Add( new SortDescription( CsapatIndulokGrid.Columns.First( ).SortMemberPath, ListSortDirection.Ascending ) );
 
         }
