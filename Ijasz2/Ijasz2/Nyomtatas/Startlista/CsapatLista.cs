@@ -36,7 +36,7 @@ namespace Ijasz2.Nyomtatas.Startlista {
         }
 
         private string CreateDoc( ) {
-            string fileName = Seged.Seged.CreateFileName(versenyAdatok.VersenysorozatAzonosito, versenyAdatok.Azonosito, DokumentumTipus.CsapatLista);
+            string fileName = Seged.Seged.CreateFileName(versenyAdatok.VersenysorozatAzonosito, versenyAdatok.Azonosito, StartlistaTipus.CsapatLista);
             var document = DocX.Create(fileName);
             document.AddHeaders( );
             Seged.Seged.OldalSzamozas( document );

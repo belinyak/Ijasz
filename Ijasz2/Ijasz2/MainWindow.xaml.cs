@@ -338,13 +338,12 @@ namespace Ijasz2 {
                 ( new Startlista_Nyomtatas( StartlistaTipus.NevezesiLista, versenyAzonosito: cbstartListaVersenyAzonosito.Text ) ).ShowDialog( );
             }
             if( chStartlistaCsapat.IsChecked.Equals( true ) ) {
-                ( new Startlista_Nyomtatas( DokumentumTipus.CsapatLista, cbstartListaVersenyAzonosito.Text ) ).ShowDialog( );
+                ( new Startlista_Nyomtatas( StartlistaTipus.CsapatLista, cbstartListaVersenyAzonosito.Text ) ).ShowDialog( );
             }
             if( chStartlistaMegjelent.IsChecked.Equals( true ) ) {
-                ( new Startlista_Nyomtatas( DokumentumTipus.HianyzokLista, cbstartListaVersenyAzonosito.Text ) ).ShowDialog( );
+                ( new Startlista_Nyomtatas( StartlistaTipus.HianyzokLista, cbstartListaVersenyAzonosito.Text ) ).ShowDialog( );
             }
         }
-
         #endregion
 
         #region EredmenyLapok

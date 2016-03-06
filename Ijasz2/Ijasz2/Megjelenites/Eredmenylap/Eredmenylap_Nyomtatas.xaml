@@ -19,11 +19,11 @@
         </Grid.RowDefinitions>
         <Label Content="Biztosan nyomtatni akar?" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
 		       HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <Button Content="Igen" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center"
-		        VerticalAlignment="Top" Width="86" Height="28" Click="BtnIgen_OnClick" />
-        <Button Content="Nem" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center"
-		        VerticalAlignment="Top" Width="86" Height="28" Click="BtnNem_OnClick" />
-        <Button Content="Megnyitás" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center"
-		        VerticalAlignment="Top" Width="86" Height="28" Click="BtnMegnyitas_OnClick" />
+        <Button x:Name="IgenButton" Content="Igen" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center"
+		        VerticalAlignment="Top" Width="86" Height="28" Click="IgenButton_OnClick" />
+        <Button x:Name="NemButton" Content="Nem" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center"
+		        VerticalAlignment="Top" Width="86" Height="28" Click="NemButton_OnClick" />
+        <Button x:Name="MegnyitasButton"  Content="Megnyitás" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center"
+		        VerticalAlignment="Top" Width="86" Height="28" Click="MegnyitasButton_OnClick" />
     </Grid>
 </Window>
