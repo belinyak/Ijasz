@@ -20,7 +20,7 @@ namespace Ijasz2.Nyomtatas.Seged {
                 if( nemMegjelentNyomtat ) {
                     foreach( var versenyeredmenyek in Model.Data.Data.Eredmenyek._versenyEredmenyek.Where( eredmeny => eredmeny.VersenyAzonosito.Equals( versenyAzonosito ) ) ) {
                         IndulokSzama =
-                            ( from eredmeny in versenyeredmenyek.Eredmenyek._eredmenyek where eredmeny.Megjelent.Equals( true ) select eredmeny.Indulo ).Count( );
+                            ( from eredmeny in versenyeredmenyek.Eredmenyek._eredmenyek where eredmeny.Megjelent.Equals( false ) select eredmeny.Indulo ).Count( );
                     }
                 }
                 else {

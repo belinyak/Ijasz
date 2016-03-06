@@ -494,7 +494,7 @@
 					          VerticalAlignment="Center" Click="StartlistaTipus_Click" />
                     <CheckBox x:Name="chStartlistaCsapat" Grid.Row="4" Grid.Column="2" Content="Csapatlista"
 					          HorizontalAlignment="Left" VerticalAlignment="Center" Click="StartlistaTipus_Click" />
-                    <CheckBox x:Name="chStartlistaMegjelent" Grid.Row="5" Grid.Column="2" Content="Megjelent"
+                    <CheckBox x:Name="chStartlistaMegjelent" Grid.Row="5" Grid.Column="2" Content="Hiányzók"
 					          HorizontalAlignment="Left" VerticalAlignment="Center" Click="StartlistaTipus_Click" />
                     <Button Content="Nyomtatás" Grid.Row="6" Grid.Column="3" HorizontalAlignment="Left"
 					        VerticalAlignment="Bottom" Width="96" Height="32" Margin="0,0,0,16" Click="btnstartListaNyomtat_Click" />

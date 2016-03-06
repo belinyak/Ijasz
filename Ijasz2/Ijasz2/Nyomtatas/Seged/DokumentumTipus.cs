@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Ijasz2.Nyomtatas.Seged {
     public enum DokumentumTipus {
         NevezesiLista,
-        MegjelentLista,
+        HianyzokLista,
         CsapatLista
     }
 }

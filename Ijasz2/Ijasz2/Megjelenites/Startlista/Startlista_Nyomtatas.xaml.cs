@@ -21,8 +21,8 @@ namespace Ijasz2.Megjelenites.Startlista {
                 case DokumentumTipus.CsapatLista:
                     new Nyomtatas.Startlista.CsapatLista( _versenyAzonosito ).Open( );
                     break;
-                case DokumentumTipus.MegjelentLista:
-                    new Nyomtatas.Startlista.MegjelentLista( _versenyAzonosito );
+                case DokumentumTipus.HianyzokLista:
+                    new Nyomtatas.Startlista.HianyzokLista( _versenyAzonosito ).Open();
                     break;
                 case DokumentumTipus.NevezesiLista:
                     new Nyomtatas.Startlista.NevezesiLista( _versenyAzonosito ).Open();
@@ -36,7 +36,8 @@ namespace Ijasz2.Megjelenites.Startlista {
                 case DokumentumTipus.CsapatLista:
                     new Nyomtatas.Startlista.CsapatLista( _versenyAzonosito ).Print();
                     break;
-                case DokumentumTipus.MegjelentLista:
+                case DokumentumTipus.HianyzokLista:
+                    new Nyomtatas.Startlista.HianyzokLista( _versenyAzonosito ).Print();
                     break;
                 case DokumentumTipus.NevezesiLista:
                     new Nyomtatas.Startlista.NevezesiLista( _versenyAzonosito ).Print();

@@ -29,7 +29,7 @@ namespace Ijasz2.Nyomtatas.Seged {
 
         }
 
-        public static void AddOldalSzam( DocX document ) {
+        public static void OldalSzamozas( DocX document ) {
             document.AddFooters( );
             var footer = document.Footers.odd;
 

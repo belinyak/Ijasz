@@ -292,7 +292,7 @@
     <Compile Include="Nyomtatas\Seged\Seged.cs" />
     <Compile Include="Nyomtatas\Seged\VersenyAdatok.cs" />
     <Compile Include="Nyomtatas\Startlista\CsapatLista.cs" />
-    <Compile Include="Nyomtatas\Startlista\MegjelentLista.cs" />
+    <Compile Include="Nyomtatas\Startlista\HianyzokLista.cs" />
     <Compile Include="Nyomtatas\Startlista\NevezesiLista.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

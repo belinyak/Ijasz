@@ -39,7 +39,7 @@ namespace Ijasz2.Nyomtatas.Startlista {
             string fileName = Seged.Seged.CreateFileName(versenyAdatok.VersenysorozatAzonosito, versenyAdatok.Azonosito, DokumentumTipus.CsapatLista);
             var document = DocX.Create(fileName);
             document.AddHeaders( );
-            Seged.Seged.AddOldalSzam( document );
+            Seged.Seged.OldalSzamozas( document );
 
             #region Címbekezdés
             var titleFormat = new Formatting();

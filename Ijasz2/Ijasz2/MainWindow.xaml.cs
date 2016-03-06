@@ -341,7 +341,7 @@ namespace Ijasz2 {
                 ( new Startlista_Nyomtatas( DokumentumTipus.CsapatLista, cbstartListaVersenyAzonosito.Text ) ).ShowDialog( );
             }
             if( chStartlistaMegjelent.IsChecked.Equals( true ) ) {
-                ( new Startlista_Nyomtatas( DokumentumTipus.MegjelentLista, cbstartListaVersenyAzonosito.Text ) ).ShowDialog( );
+                ( new Startlista_Nyomtatas( DokumentumTipus.HianyzokLista, cbstartListaVersenyAzonosito.Text ) ).ShowDialog( );
             }
         }
 

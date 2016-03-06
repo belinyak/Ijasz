@@ -14,7 +14,7 @@ namespace Ijasz2.Nyomtatas.Seged {
         internal static string VersenySorozat = "Versenysorozat: ";
 
         internal static string HeadLineHianyzoklista = "H I Á N Y Z Ó K  L I S T A";
-        internal static string VersenyHianyzokSzama = "Hiányzók:";
+        internal static string VersenyHianyzokSzama = "Hiányzók: ";
         internal static string HeadLineNevezesiLista = "N E V E Z É S I  L I S T A";
 
 
