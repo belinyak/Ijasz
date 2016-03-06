@@ -86,33 +86,38 @@ namespace Ijasz2.Model.Korosztaly {
             }
             return tagokList;
         }
+        
+        /// <summary>
+        /// | model update |
+        /// adatbazis update |
+        /// </summary>
+        /// <param name="versenyAzonosito"></param>
+        /// <param name="korosztalyAzonosito"></param>
+        public void NokNoveles( string versenyAzonosito, string korosztalyAzonosito ) {
+            foreach( var versenykorosztaly in _versenyKorosztalyok.Where( korosztaly => korosztaly.VersenyAzonosito.Equals( versenyAzonosito ) ) ) {
+                foreach( var korosztaly in versenykorosztaly.Korosztalyok.Where( korosztaly => korosztaly.Azonosito.Equals( korosztalyAzonosito ) ) ) {
+                    korosztaly.InduloNok += 1;
+                    Adatbazis.Korosztaly.Korosztaly.NokNoveles( korosztaly );
 
-        public void NokNoveles( Korosztaly korosztaly ) {
-            foreach(
-                var korosztaly1 in
-                    _versenyKorosztalyok.Where(
-                        versenyKorosztaly => versenyKorosztaly.VersenyAzonosito.Equals( korosztaly.Verseny ) )
-                        .SelectMany(
-                            versenyKorosztaly =>
-                                versenyKorosztaly.Korosztalyok.Where(
-                                    korosztaly1 => korosztaly1.Azonosito.Equals( korosztaly.Azonosito ) ) ) ) {
-                korosztaly1.InduloNok += 1;
-                Adatbazis.Korosztaly.Korosztaly.NokNoveles( korosztaly );
+                }
             }
         }
 
-        public void FerfiakNoveles( Korosztaly korosztaly ) {
-            foreach(
-                var korosztaly1 in
-                    _versenyKorosztalyok.Where(
-                        versenyKorosztaly => versenyKorosztaly.VersenyAzonosito.Equals( korosztaly.Verseny ) )
-                        .SelectMany(
-                            versenyKorosztaly =>
-                                versenyKorosztaly.Korosztalyok.Where(
-                                    korosztaly1 => korosztaly1.Azonosito.Equals( korosztaly.Azonosito ) ) ) ) {
-                korosztaly1.InduloFerfiak += 1;
-                Adatbazis.Korosztaly.Korosztaly.FerfiakNoveles( korosztaly );
+        /// <summary>
+        /// | model update |
+        /// adatbazis update |
+        /// </summary>
+        /// <param name="versenyAzonosito"></param>
+        /// <param name="korosztalyAzonosito"></param>
+        public void FerfiakNoveles( string versenyAzonosito, string korosztalyAzonosito ) {
+            foreach( var versenykorosztaly in _versenyKorosztalyok.Where( korosztaly => korosztaly.VersenyAzonosito.Equals( versenyAzonosito ) ) ) {
+                foreach( var korosztaly in versenykorosztaly.Korosztalyok.Where( korosztaly => korosztaly.Azonosito.Equals( korosztalyAzonosito ) ) ) {
+                    korosztaly.InduloFerfiak += 1;
+                    Adatbazis.Korosztaly.Korosztaly.FerfiakNoveles( korosztaly );
+
+                }
             }
+
         }
 
         public void TagokCsokkentes( Eredmeny.Eredmeny eredmeny ) {

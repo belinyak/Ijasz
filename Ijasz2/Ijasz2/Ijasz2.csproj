@@ -56,12 +56,17 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DocX, Version=1.0.1.13, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x86\Debug\DocX.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.SQLite, Version=1.0.92.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\System.Data.SQLite.dll</HintPath>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -281,6 +286,14 @@
     <Compile Include="Model\Versenysorozat\Versenysorozatok.cs" />
     <Compile Include="Model\Verseny\Verseny.cs" />
     <Compile Include="Model\Verseny\Versenyek.cs" />
+    <Compile Include="Nyomtatas\Seged\DokumentumTipus.cs" />
+    <Compile Include="Nyomtatas\Seged\Feliratok.cs" />
+    <Compile Include="Nyomtatas\Seged\InduloAdatok.cs" />
+    <Compile Include="Nyomtatas\Seged\Seged.cs" />
+    <Compile Include="Nyomtatas\Seged\VersenyAdatok.cs" />
+    <Compile Include="Nyomtatas\Startlista\CsapatLista.cs" />
+    <Compile Include="Nyomtatas\Startlista\MegjelentLista.cs" />
+    <Compile Include="Nyomtatas\Startlista\NevezesiLista.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

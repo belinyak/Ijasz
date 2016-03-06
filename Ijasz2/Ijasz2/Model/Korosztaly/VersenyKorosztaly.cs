@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace Ijasz2.Model.Korosztaly {
@@ -68,6 +69,41 @@ namespace Ijasz2.Model.Korosztaly {
                 Adatbazis.Korosztaly.Korosztaly.KorosztalySzamolas_EredmenyUpdate( versenyEredmenyek );
             }
             Adatbazis.Korosztaly.Korosztaly.KorosztalySzamolas_IndulokSzamaUpdate( Korosztalyok );
+        }
+
+        public static string InduloBeirasKorosztaly( Model.Indulo.Indulo indulo, Model.Verseny.Verseny verseny ) {
+            string datum = "";
+
+            if( string.IsNullOrEmpty( verseny.Versenysorozat ) ) {
+                datum = verseny.Datum;
+            }
+            else {
+                datum = ( from verseny1 in Model.Data.Data.Versenyek._versenyek
+                          where verseny1.Versenysorozat.Equals( verseny.Versenysorozat )
+                          orderby verseny1.Datum ascending
+                          select verseny1.Datum ).First( );
+            }
+
+
+            var kor = Model.Data.Data.Korosztalyok.BetoltottKor(datum, indulo.SzuletesiDatum);
+
+            foreach( var versenykorosztalyok in Model.Data.Data.Korosztalyok._versenyKorosztalyok.Where( korosztaly => korosztaly.VersenyAzonosito.Equals( verseny.Azonosito ) ) ) {
+                foreach( var korosztaly in versenykorosztalyok.Korosztalyok ) {
+                    if( indulo.Nem.ToLower( ).Equals( "f" ) && korosztaly.Ferfiakra.Equals( true ) ) {
+                        if( korosztaly.AlsoHatar <= kor && kor <= korosztaly.FelsoHatar ) {
+                            return korosztaly.Azonosito;
+                        }
+                    }
+                    else if( indulo.Nem.ToLower( ).Equals( "n" ) && korosztaly.Nokre.Equals( true ) ) {
+                        if( korosztaly.AlsoHatar <= kor && kor <= korosztaly.FelsoHatar ) {
+                            return korosztaly.Azonosito;
+                        }
+                    }
+                }
+            }
+            // TODO
+            throw new Exception();
+
         }
 
         /// <summary> |

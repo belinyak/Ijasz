@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Ijasz2.Megjelenites.Korosztaly.Korosztaly_Indulok"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Indulók" Height="768" Width="385" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Indulók" Height="768" Width="385" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" MaxHeight="768">
     <Grid>
         <DataGrid x:Name="TagokGrid"
                    HorizontalAlignment="Stretch" Grid.RowSpan="10"

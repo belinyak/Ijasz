@@ -13,19 +13,17 @@ namespace Ijasz2.Model.Eredmeny {
         ///     indulok novelese |
         /// </summary>
         /// <param name="eredmeny"></param>
-        public void Add( Eredmeny eredmeny ) {
-            if( eredmeny.KorosztalyModositott.Equals( false ) ) {
-                var korosztaly = KorosztalySzamolas(eredmeny);
-                if( string.IsNullOrEmpty( korosztaly ) ) {
-                    throw new Exception( );
-                }
-                eredmeny.KorosztalyAzonosito = korosztaly;
-            }
-
-
+        public void Add( Eredmeny eredmeny, string induloNeme ) {
             Adatbazis.Eredmeny.Eredmeny.Add( eredmeny );
             eredmeny.Sorszam = Adatbazis.Eredmeny.Eredmeny.InduloSorszam( eredmeny );
             _eredmenyek.Add( eredmeny );
+            if( induloNeme.ToLower( ).Equals( "f" ) ) {
+                Model.Data.Data.Korosztalyok.FerfiakNoveles( eredmeny.Verseny, eredmeny.KorosztalyAzonosito );
+            }
+            else {
+                Model.Data.Data.Korosztalyok.NokNoveles( eredmeny.Verseny, eredmeny.KorosztalyAzonosito );
+            }
+
             Data.Data.Indulok.EredmenyNoveles( eredmeny.Indulo );
             Data.Data.Ijtipusok.EredmenyekNoveles( eredmeny.Ijtipus );
             Data.Data.Versenyek.IndulokNoveles( eredmeny.Verseny );
@@ -84,25 +82,6 @@ namespace Ijasz2.Model.Eredmeny {
         /// </summary>
         /// <param name="eredmeny"></param>
         /// <returns></returns>
-        private static string KorosztalySzamolas( Eredmeny eredmeny ) {
-            var indulo =
-                (from indulo1 in Data.Data.Indulok._indulok where indulo1.Nev.Equals(eredmeny.Indulo) select indulo1)
-                    .First();
 
-            foreach(
-                var korosztaly in
-                    Data.Data.Korosztalyok._versenyKorosztalyok.Where(
-                        korosztaly => korosztaly.VersenyAzonosito.Equals( eredmeny.Verseny ) )
-                        .SelectMany( korosztalyok => korosztalyok.Korosztalyok.Where( korosztaly =>
-                                        korosztaly.AlsoHatar <= eredmeny.Kor && eredmeny.Kor <= korosztaly.FelsoHatar ) ) ) {
-                if( indulo.Nem.Equals( "F" ) || indulo.Nem.Equals( "f" ) ) {
-                    Data.Data.Korosztalyok.FerfiakNoveles( korosztaly );
-                    return korosztaly.Azonosito;
-                }
-                Data.Data.Korosztalyok.NokNoveles( korosztaly );
-                return korosztaly.Azonosito;
-            }
-            return null;
-        }
     }
 }

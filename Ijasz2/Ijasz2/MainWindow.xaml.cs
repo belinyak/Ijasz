@@ -24,6 +24,8 @@ using Ijasz2.Model.Korosztaly;
 using Ijasz2.Model.Oklevel;
 using Ijasz2.Model.Verseny;
 using Ijasz2.Model.Versenysorozat;
+using Ijasz2.Nyomtatas.Seged;
+using Ijasz2.Nyomtatas.Startlista;
 
 namespace Ijasz2 {
     /// <summary>
@@ -37,8 +39,8 @@ namespace Ijasz2 {
         }
 
         private void MainWindow_OnLoaded( object sender, RoutedEventArgs e ) {
-            loadWait = new Megjelenites.Seged.WaitWindow("Adatok betöltése...");
-            loadWait.Show();
+            loadWait = new Megjelenites.Seged.WaitWindow( "Adatok betöltése..." );
+            loadWait.Show( );
 
             new Database( );
 
@@ -87,7 +89,7 @@ namespace Ijasz2 {
             // set sort order
             InduloGrid.Items.SortDescriptions.Add( new SortDescription( InduloGrid.Columns.First( ).SortMemberPath, ListSortDirection.Ascending ) );
             EgyesuletGrid.Items.SortDescriptions.Add( new SortDescription( EgyesuletGrid.Columns.First( ).SortMemberPath, ListSortDirection.Ascending ) );
-            loadWait.Close();
+            loadWait.Close( );
 
         }
 
@@ -198,11 +200,11 @@ namespace Ijasz2 {
             }
 
             var korosztalySzamolasWindow = new Megjelenites.Seged.WaitWindow("Számolás folyamatban...");
-            korosztalySzamolasWindow.Show();
+            korosztalySzamolasWindow.Show( );
             foreach( var korosztalyok in Data.Korosztalyok._versenyKorosztalyok.Where( korosztaly => korosztaly.VersenyAzonosito.Equals( cboVerseny.Text ) ) ) {
                 korosztalyok.KorosztalySzamolas( cboVerseny.Text );
             }
-            korosztalySzamolasWindow.Close();
+            korosztalySzamolasWindow.Close( );
         }
 
         #endregion
@@ -265,7 +267,7 @@ namespace Ijasz2 {
         #region Indulo
 
         private void Indulo_Modositas( object sender, MouseButtonEventArgs e ) {
-         var Indulo = InduloGrid.SelectedItem as Indulo;
+            var Indulo = InduloGrid.SelectedItem as Indulo;
 
             ( new Indulo_Hozzaadas_Modositas( Indulo ) ).ShowDialog( );
         }
@@ -332,7 +334,15 @@ namespace Ijasz2 {
         #region Startlista
 
         private void btnstartListaNyomtat_Click( object sender, RoutedEventArgs e ) {
-            ( new Startlista_Nyomtatas( ) ).ShowDialog( );
+            if( chStartlistaNevezesi.IsChecked.Equals( true ) ) {
+                ( new Startlista_Nyomtatas( DokumentumTipus.NevezesiLista, versenyAzonosito: cbstartListaVersenyAzonosito.Text ) ).ShowDialog( );
+            }
+            if( chStartlistaCsapat.IsChecked.Equals( true ) ) {
+                ( new Startlista_Nyomtatas( DokumentumTipus.CsapatLista, cbstartListaVersenyAzonosito.Text ) ).ShowDialog( );
+            }
+            if( chStartlistaMegjelent.IsChecked.Equals( true ) ) {
+                ( new Startlista_Nyomtatas( DokumentumTipus.MegjelentLista, cbstartListaVersenyAzonosito.Text ) ).ShowDialog( );
+            }
         }
 
         #endregion
@@ -431,6 +441,8 @@ namespace Ijasz2 {
                 txtOklevelVsMegnevezes.Text = versenysorozat.Megnevezes;
         }
         #endregion
+
+        #region TextBox EventHandlers
         private void TxtEredmenySorszam_OnTextChanged( object sender, TextChangedEventArgs e ) {
             if( cboEredmenyVerseny.SelectedItem == null ) {
                 return;
@@ -457,7 +469,6 @@ namespace Ijasz2 {
 
             ( new Eredmeny_Hozzaadas_Modositas( eredmeny ) ).Show( );
         }
-
         private void TxtInduloNev_OnTextChanged( object sender, TextChangedEventArgs e ) {
             if( InduloGrid.Items.Count.Equals( 0 ) ) {
                 return;
@@ -481,5 +492,37 @@ namespace Ijasz2 {
                 }
             }
         }
+        #endregion
+
+        #region CheckBox EventHandlers
+        private void StartlistaTipus_Click( object sender, RoutedEventArgs e ) {
+            if( string.IsNullOrEmpty( cbstartListaVersenyAzonosito.Text ) ) {
+                chStartlistaCsapat.IsChecked = false;
+                chStartlistaMegjelent.IsChecked = false;
+                chStartlistaNevezesi.IsChecked = false;
+                return;
+            }
+
+            var aktiv = sender as CheckBox;
+
+            if( aktiv.Equals( chStartlistaCsapat ) ) {
+                chStartlistaCsapat.IsChecked = true;
+                chStartlistaMegjelent.IsChecked = false;
+                chStartlistaNevezesi.IsChecked = false;
+            }
+            else if( aktiv.Equals( chStartlistaMegjelent ) ) {
+                chStartlistaMegjelent.IsChecked = true;
+                chStartlistaCsapat.IsChecked = false;
+                chStartlistaNevezesi.IsChecked = false;
+
+            }
+            else if( aktiv.Equals( chStartlistaNevezesi ) ) {
+                chStartlistaNevezesi.IsChecked = true;
+                chStartlistaCsapat.IsChecked = false;
+                chStartlistaMegjelent.IsChecked = false;
+            }
+        }
+        #endregion
+
     }
 }

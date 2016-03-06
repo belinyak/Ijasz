@@ -37,9 +37,14 @@ namespace Ijasz2.Megjelenites.Indulo {
             }
             else {
                 cbVerseny.SelectedIndex = utolseSelectedVersenyIndex;
-
             }
+
             cbUjKorosztaly.IsEnabled = false;
+
+            var verseny = cbVerseny.SelectedItem as Model.Verseny.Verseny;
+            if( verseny != null ) {
+                cbUjKorosztaly.Text = Model.Korosztaly.VersenyKorosztaly.InduloBeirasKorosztaly( _indulo, verseny );
+            }
 
             txtNev.Text = indulo.Nev;
             txtNev.IsEnabled = false;
@@ -160,6 +165,7 @@ namespace Ijasz2.Megjelenites.Indulo {
 
             utolseSelectedVersenyIndex = cbVerseny.SelectedIndex;
 
+            // modositas
             foreach( var versenyEredmeny in Data.Eredmenyek._versenyEredmenyek ) {
                 if( versenyEredmeny.VersenyAzonosito.Equals( cbVerseny.Text ) ) {
                     foreach(
@@ -179,16 +185,17 @@ namespace Ijasz2.Megjelenites.Indulo {
                             OsszPont = 0,
                             Szazalek = 0,
                             Megjelent = chMegjelent.IsChecked == true,
-                            KorosztalyAzonosito = chKorosztalyFelulir.IsChecked == true ? cbUjKorosztaly.Text : "",
+                            KorosztalyAzonosito = cbUjKorosztaly.Text,
                             Kor = Data.Korosztalyok.BetoltottKor( datum, _indulo.SzuletesiDatum ),
                             KorosztalyModositott = chKorosztalyFelulir.IsChecked == true,
-                        } );
+                        },_indulo.Nem );
                         Close( );
                         return;
                     }
                 }
             }
 
+            // hozzaadas
             foreach( var versenyEredmeny in Data.Eredmenyek._versenyEredmenyek.Where( versenyEredmeny => versenyEredmeny.VersenyAzonosito.Equals( cbVerseny.Text ) ) ) {
                 versenyEredmeny.Eredmenyek.Add( new Model.Eredmeny.Eredmeny {
                     Verseny = versenyEredmeny.VersenyAzonosito,
@@ -202,13 +209,22 @@ namespace Ijasz2.Megjelenites.Indulo {
                     OsszPont = 0,
                     Szazalek = 0,
                     Megjelent = chMegjelent.IsChecked == true,
-                    KorosztalyAzonosito = chKorosztalyFelulir.IsChecked == true ? cbUjKorosztaly.Text : "",
+                    KorosztalyAzonosito = cbUjKorosztaly.Text,
                     Kor = Data.Korosztalyok.BetoltottKor( datum, _indulo.SzuletesiDatum ),
                     KorosztalyModositott = chKorosztalyFelulir.IsChecked == true,
-                } );
+                }, _indulo.Nem );
                 Close( );
                 return;
             }
+        }
+
+        private void TagokButton_OnClick( object sender, RoutedEventArgs e ) {
+            if( string.IsNullOrEmpty( cbUjKorosztaly.Text ) ) {
+                return;
+            }
+
+            ( new Megjelenites.Korosztaly.Korosztaly_Indulok( cbVerseny.Text, cbUjKorosztaly.Text ) ).Show( );
+
         }
     }
 }

@@ -490,12 +490,12 @@
 					          SelectionChanged="CbstartListaVersenyAzonosito_OnSelectionChanged" />
                     <TextBox x:Name="txtstartListaVersenyMegnevezes" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left"
 					         Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" IsEnabled="False" />
-                    <CheckBox Grid.Row="3" Grid.Column="2" Content="Nevezési" HorizontalAlignment="Left"
-					          VerticalAlignment="Center" />
-                    <CheckBox Grid.Row="4" Grid.Column="2" Content="Csapatlista"
-					          HorizontalAlignment="Left" VerticalAlignment="Center" />
-                    <CheckBox Grid.Row="5" Grid.Column="2" Content="Megjelent"
-					          HorizontalAlignment="Left" VerticalAlignment="Center" />
+                    <CheckBox x:Name="chStartlistaNevezesi"  Grid.Row="3" Grid.Column="2" Content="Nevezési" HorizontalAlignment="Left"
+					          VerticalAlignment="Center" Click="StartlistaTipus_Click" />
+                    <CheckBox x:Name="chStartlistaCsapat" Grid.Row="4" Grid.Column="2" Content="Csapatlista"
+					          HorizontalAlignment="Left" VerticalAlignment="Center" Click="StartlistaTipus_Click" />
+                    <CheckBox x:Name="chStartlistaMegjelent" Grid.Row="5" Grid.Column="2" Content="Megjelent"
+					          HorizontalAlignment="Left" VerticalAlignment="Center" Click="StartlistaTipus_Click" />
                     <Button Content="Nyomtatás" Grid.Row="6" Grid.Column="3" HorizontalAlignment="Left"
 					        VerticalAlignment="Bottom" Width="96" Height="32" Margin="0,0,0,16" Click="btnstartListaNyomtat_Click" />
                 </Grid>

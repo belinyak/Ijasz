@@ -235,7 +235,6 @@ namespace Ijasz2.Adatbazis.Korosztaly {
             Database.Connection.Open( );
             var command = Database.Connection.CreateCommand();
             command.CommandText = "";
-
             foreach( var korosztaly in versenyKorosztaly ) {
                 command.CommandText += "UPDATE Korosztályok SET " +
                                 "KOINSF=@KOINSF," +
