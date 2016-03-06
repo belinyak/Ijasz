@@ -122,8 +122,8 @@ namespace Ijasz2.Nyomtatas.Startlista {
             }
             try {
                 document.Save( );
-            } catch( System.Exception e ) {
-                MessageBox.Show( "A dokumentum meg van nyitva!", "CSAPATLISTA.DOCX", MessageBoxButton.OK, MessageBoxImage.Error );
+            } catch( System.Exception) {
+                MessageBox.Show( "A dokumentum meg van nyitva!", "Csapatlista", MessageBoxButton.OK, MessageBoxImage.Error );
             }
 
             return fileName;

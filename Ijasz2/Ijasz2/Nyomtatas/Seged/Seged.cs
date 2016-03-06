@@ -50,6 +50,34 @@ namespace Ijasz2.Nyomtatas.Seged {
         }
 
         public static void CsapatlistaTablazatFormazas( Table table ) {
+            var b = new Border(Novacode.BorderStyle.Tcbs_none, BorderSize.seven, 0, Color.Blue);
+            var c = new Border(Novacode.BorderStyle.Tcbs_single, BorderSize.seven, 0, Color.Black);
+
+            table.SetBorder( TableBorderType.InsideH, b );
+            table.SetBorder( TableBorderType.InsideV, b );
+            table.SetBorder( TableBorderType.Bottom, b );
+            table.SetBorder( TableBorderType.Top, b );
+            table.SetBorder( TableBorderType.Left, b );
+            table.SetBorder( TableBorderType.Right, b );
+
+            for( var i = 0; i < 6; i++ ) {
+                table.Rows[0].Cells[i].SetBorder( TableCellBorderType.Bottom, c );
+            }
+
+            foreach( var row in table.Rows ) {
+                row.Cells[0].Width = 57;
+                row.Cells[1].Width = 70;
+                row.Cells[2].Width = 160;
+                row.Cells[3].Width = 160;
+                row.Cells[4].Width = 70;
+                row.Cells[5].Width = 200;
+            }
+            table.AutoFit = AutoFit.ColumnWidth;
+        }
+
+        public static void NevezesiListaTablazatFormazas( Table table ) {
+            table.Alignment = Alignment.center;
+
             Border b = new Border(Novacode.BorderStyle.Tcbs_none, BorderSize.seven, 0, Color.Blue);
             Border c = new Border(Novacode.BorderStyle.Tcbs_single, BorderSize.seven, 0, Color.Black);
 
@@ -64,28 +92,29 @@ namespace Ijasz2.Nyomtatas.Seged {
                 table.Rows[0].Cells[i].SetBorder( TableCellBorderType.Bottom, c );
             }
 
-            for( int i = 0; i < table.Rows.Count; i++ ) {
-                table.Rows[i].Cells[0].Width = 57;
-                table.Rows[i].Cells[1].Width = 70;
-                table.Rows[i].Cells[2].Width = 160;
-                table.Rows[i].Cells[3].Width = 160;
-                table.Rows[i].Cells[4].Width = 70;
-                table.Rows[i].Cells[5].Width = 200;
+            foreach( Row row in table.Rows ) {
+                row.Cells[0].Width = 70;
+                row.Cells[1].Width = 200;
+                row.Cells[2].Width = 150;
+                row.Cells[3].Width = 40;
+                row.Cells[4].Width = 150;
+                row.Cells[5].Width = 70;
             }
+
             table.AutoFit = AutoFit.ColumnWidth;
         }
 
         public static void Print( string fileName ) {
-            ProcessStartInfo info = new ProcessStartInfo(fileName.Trim());
-            info.Verb = "Print";
-            info.CreateNoWindow = true;
-            info.WindowStyle = ProcessWindowStyle.Hidden;
+            var info = new ProcessStartInfo(fileName.Trim()) {
+                Verb = "Print",
+                CreateNoWindow = true,
+                WindowStyle = ProcessWindowStyle.Hidden
+            };
             Process.Start( info );
         }
 
         public static void Open( string fileName ) {
             Process.Start( fileName );
         }
-
     }
 }

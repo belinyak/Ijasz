@@ -37,7 +37,9 @@ namespace Ijasz2.Nyomtatas.Seged {
                         Sorszam = eredmeny.Sorszam,
                         Kor = eredmeny.Kor,
                         Csapat = eredmeny.Csapat,
-                        Ijtipus = eredmeny.Ijtipus,
+                        Ijtipus = ( from ijtipus in Model.Data.Data.Ijtipusok._ijtipusok
+                                    where ijtipus.Azonosito.Equals( eredmeny.Ijtipus )
+                                    select ijtipus.Megnevezes ).First( ),
                         Egyesulet = indulo.Egyesulet,
                     } );
                 }
