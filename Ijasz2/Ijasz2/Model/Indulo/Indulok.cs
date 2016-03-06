@@ -45,14 +45,27 @@ namespace Ijasz2.Model.Indulo {
         }
 
         /// <summary>
-        ///     |
-        ///     TODO utánanézni, hogy mit lehet mosositani |
-        ///     model update |
-        ///     adatbazis update |
+        /// | TODO utánanézni, hogy mit lehet mosositani |
+        /// model update |
+        /// adatbazis update |
+        /// egyesuletek update | 
         /// </summary>
         /// <param name="indulo"></param>
         public void Update( Indulo indulo ) {
             foreach( var it in _indulok.Where( it => it.Nev.Equals( indulo.Nev ) ) ) {
+                // ha van egyesulet és nem ugyanaz mint eddig, akkor uj egyesulet novel
+                if( !string.IsNullOrEmpty( indulo.Egyesulet ) && !indulo.Egyesulet.Equals( it.Egyesulet ) ) {
+                    Data.Data.Egyesuletek.TagokNoveles( indulo.Egyesulet );
+                    // ha eddig volt egyesulet, akkor azt csokkenteni
+                    if( !string.IsNullOrEmpty( it.Egyesulet ) ) {
+                        Data.Data.Egyesuletek.TagokCsokkentes( it.Egyesulet );
+                    }
+                }
+                // ha nincs egyesulet, de eddig volt
+                else if( string.IsNullOrEmpty( indulo.Egyesulet ) && !string.IsNullOrEmpty( it.Egyesulet ) ) {
+                    Data.Data.Egyesuletek.TagokCsokkentes( it.Egyesulet );
+                }
+
                 it.Nem = indulo.Nem;
                 it.SzuletesiDatum = indulo.SzuletesiDatum;
                 it.Engedely = indulo.Engedely;
