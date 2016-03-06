@@ -34,7 +34,7 @@ namespace Ijasz2.Megjelenites.Indulo {
                     _csapatok[eredmeny.Csapat].CsapatIndulok.Add( new CsapatIndulo {
                         Indulo = eredmeny.Indulo,
                         Ijtipus = eredmeny.Ijtipus,
-                        Korosztaly = eredmeny.KorosztalyAzonosito,
+                        Kor = eredmeny.Kor,
                         Egyesulet = (from indulo in Model.Data.Data.Indulok._indulok
                                     where indulo.Nev.Equals(eredmeny.Indulo)
                                     select indulo.Egyesulet).First()

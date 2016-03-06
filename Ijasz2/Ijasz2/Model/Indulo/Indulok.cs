@@ -31,17 +31,16 @@ namespace Ijasz2.Model.Indulo {
         /// </summary>
         /// <param name="indulo"></param>
         public void Remove( Indulo indulo ) {
-            for( var i = 0; i < _indulok.Count; i++ ) {
-                if( _indulok[i].Eredmenyek.Equals( 0 ) ) {
-                    _indulok.Remove( _indulok.Single( s => s.Nev.Equals( indulo.Nev ) ) );
+            foreach( var indulo1 in _indulok.Where( indulo1 => indulo1.Nev.Equals( indulo.Nev ) ) ) {
+                if( indulo1.Eredmenyek.Equals( 0 ) ) {
+                    _indulok.Remove( indulo1 );
                     Adatbazis.Indulo.Indulo.Remove( indulo.Nev );
                     if( !string.IsNullOrEmpty( indulo.Egyesulet ) ) {
-                        Data.Data.Egyesuletek.TagokNoveles( indulo.Egyesulet );
+                        Data.Data.Egyesuletek.TagokCsokkentes( indulo.Egyesulet );
                     }
                     return;
                 }
-                MessageBox.Show( "Ez az induló nem törölhető, mivel van hozzá rendelve eredmény!", "Hiba",
-                    MessageBoxButton.OKCancel, MessageBoxImage.Information );
+                MessageBox.Show( "Ez az induló nem törölhető, mivel van hozzá rendelve eredmény!", "Hiba", MessageBoxButton.OKCancel, MessageBoxImage.Information );
             }
         }
 

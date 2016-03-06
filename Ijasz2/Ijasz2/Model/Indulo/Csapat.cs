@@ -3,7 +3,7 @@
 namespace Ijasz2.Model.Indulo {
     public struct CsapatIndulo{
         public string Indulo { get; set; }
-        public string Korosztaly { get; set; }
+        public int Kor { get; set; }
         public string Ijtipus { get; set; }
         public string Egyesulet { get; set; }
     }

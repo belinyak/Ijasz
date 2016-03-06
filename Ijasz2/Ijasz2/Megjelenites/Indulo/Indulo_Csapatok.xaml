@@ -41,8 +41,8 @@
 				                    Header="Név" />
                 <DataGridTextColumn Binding="{Binding Ijtipus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="100"
 				                    Header="Íjtípus" />
-                <DataGridTextColumn Binding="{Binding Korosztaly, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserReorder="False" CanUserResize="False" Width="90"
-				                    Header="Korosztály" />
+                <DataGridTextColumn Binding="{Binding Kor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserReorder="False" CanUserResize="False" Width="90"
+				                    Header="Kor" />
                 <DataGridTextColumn Binding="{Binding Egyesulet, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserReorder="False" CanUserResize="False" Width="200"
 				                    Header="Egyesület" />
             </DataGrid.Columns>

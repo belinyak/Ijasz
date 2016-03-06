@@ -65,6 +65,14 @@ namespace Ijasz2 {
             IjtipusGrid.ItemsSource = Data.Ijtipusok._ijtipusok;
             EgyesuletGrid.ItemsSource = Data.Egyesuletek._egyesuletek;
             InduloGrid.ItemsSource = Data.Indulok._indulok;
+            /*
+             var firstCol = dataGrid.Columns.First();
+    firstCol.SortDirection = ListSortDirection.Ascending;
+    dataGrid.Items.SortDescriptions.Add(new SortDescription(firstCol.SortMemberPath, ListSortDirection.Ascending));
+}
+            */
+            InduloGrid.Items.SortDescriptions.Add(new SortDescription(InduloGrid.Columns.First().SortMemberPath,ListSortDirection.Ascending));
+
             //EredmenyGrid.ItemsSource = Model.Data.Data.Eredmenyek._eredmenyek;
             SablonGrid.ItemsSource = Data.Sablonok._sablonok;
 
@@ -258,11 +266,11 @@ namespace Ijasz2 {
         private void btnTagok_Click( object sender, RoutedEventArgs e ) {
             var egyesulet = EgyesuletGrid.SelectedItem as Egyesulet;
 
-            if (egyesulet == null) {
+            if( egyesulet == null ) {
                 return;
             }
 
-            (new Megjelenites.Egyesület.Egyesulet_Tagok(egyesulet)).Show();
+            ( new Megjelenites.Egyesület.Egyesulet_Tagok( egyesulet ) ).Show( );
         }
         #endregion
 
