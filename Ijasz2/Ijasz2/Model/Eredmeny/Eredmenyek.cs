@@ -50,6 +50,7 @@ namespace Ijasz2.Model.Eredmeny {
                 eredmeny1.OsszPont = eredmeny.OsszPont;
                 eredmeny1.Szazalek = eredmeny.Szazalek;
                 eredmeny1.Megjelent = eredmeny.Megjelent;
+                eredmeny1.Kor = eredmeny.Kor;
                 eredmeny1.KorosztalyModositott = eredmeny.KorosztalyModositott;
                 eredmeny1.KorosztalyAzonosito = eredmeny.KorosztalyAzonosito;
 
@@ -86,13 +87,12 @@ namespace Ijasz2.Model.Eredmeny {
         private static string KorosztalySzamolas( Eredmeny eredmeny ) {
             var datum = "";
 
-            var indulo = (from indulo1 in Data.Data.Indulok._indulok
-                          where indulo1.Nev.Equals(eredmeny.Indulo)
-                          select indulo1).First();
+            var indulo =
+                (from indulo1 in Data.Data.Indulok._indulok where indulo1.Nev.Equals(eredmeny.Indulo) select indulo1)
+                    .First();
 
-            foreach(
-                var verseny1 in
-                    Data.Data.Versenyek._versenyek.Where( verseny => verseny.Azonosito.Equals( eredmeny.Verseny ) ) ) {
+            foreach( var verseny1 in
+                Data.Data.Versenyek._versenyek.Where( verseny => verseny.Azonosito.Equals( eredmeny.Verseny ) ) ) {
                 if( !string.IsNullOrEmpty( verseny1.Versenysorozat ) ) {
                     datum = ( from verseny in Data.Data.Versenyek._versenyek
                               where verseny.Versenysorozat.Equals( verseny1.Versenysorozat )
@@ -100,17 +100,24 @@ namespace Ijasz2.Model.Eredmeny {
                               select verseny.Datum ).First( );
                 }
                 else {
-                    datum = ( from verseny in Data.Data.Versenyek._versenyek
-                              where verseny.Azonosito.Equals( eredmeny.Verseny )
-                              select verseny.Datum ).First( );
+                    datum =
+                        ( from verseny in Data.Data.Versenyek._versenyek
+                          where verseny.Azonosito.Equals( eredmeny.Verseny )
+                          select verseny.Datum ).First( );
                 }
             }
 
-            var betoltottKor = Data.Data.Korosztalyok.BetoltottKor(datum,indulo.SzuletesiDatum);
+            var betoltottKor = Data.Data.Korosztalyok.BetoltottKor(datum, indulo.SzuletesiDatum);
 
-            foreach( var korosztaly in Data.Data.Korosztalyok._versenyKorosztalyok.Where(
-                korosztaly => korosztaly.VersenyAzonosito.Equals( eredmeny.Verseny ) ).SelectMany( korosztalyok => korosztalyok.Korosztalyok.Where(
-                        korosztaly => korosztaly.AlsoHatar <= betoltottKor && betoltottKor <= korosztaly.FelsoHatar ) ) ) {
+            foreach(
+                var korosztaly in
+                    Data.Data.Korosztalyok._versenyKorosztalyok.Where(
+                        korosztaly => korosztaly.VersenyAzonosito.Equals( eredmeny.Verseny ) )
+                        .SelectMany(
+                            korosztalyok =>
+                                korosztalyok.Korosztalyok.Where(
+                                    korosztaly =>
+                                        korosztaly.AlsoHatar <= betoltottKor && betoltottKor <= korosztaly.FelsoHatar ) ) ) {
                 if( indulo.Nem.Equals( "F" ) || indulo.Nem.Equals( "f" ) ) {
                     Data.Data.Korosztalyok.FerfiakNoveles( korosztaly );
                     return korosztaly.Azonosito;
@@ -119,11 +126,6 @@ namespace Ijasz2.Model.Eredmeny {
                 return korosztaly.Azonosito;
             }
             return null;
-        }
-
-
-        public void Update() {
-            
         }
     }
 }

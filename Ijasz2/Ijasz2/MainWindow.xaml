@@ -373,9 +373,9 @@
 					</Grid.RowDefinitions>
 					<Grid.ColumnDefinitions>
 						<!--columnwidth-->
-						<ColumnDefinition Width="685" />
+						<ColumnDefinition Width="735" />
 						<!--762-columnwidth-->
-						<ColumnDefinition Width="77" />
+						<ColumnDefinition Width="27" />
 						<ColumnDefinition Width="131" />
 						<ColumnDefinition Width="131" />
 					</Grid.ColumnDefinitions>
@@ -434,7 +434,10 @@
 							<DataGridTextColumn Binding="{Binding KorosztalyAzonosito, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 							                    CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="25"
 							                    Header="Korosztály azonosító" Visibility="Hidden" />
-						</DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Kor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+							                    CanUserSort="False" CanUserReorder="False" CanUserResize="False" Width="50" Header="Kor" />
+
+                        </DataGrid.Columns>
 					</DataGrid>
 					<Label Content="Verseny azonosító:" Grid.Row="0" Grid.Column="2"
 					       HorizontalAlignment="Center" VerticalAlignment="Top" Margin="12,5,11,0" />

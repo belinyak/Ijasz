@@ -3,12 +3,12 @@ using System.IO;
 
 namespace Ijasz2.Adatbazis {
     public sealed class Database {
-        public Database() {
-            Connection = new SQLiteConnection("Data Source=adat.db; Version=3; New=False; Compress=True;");
+        public Database( ) {
+            Connection = new SQLiteConnection( "Data Source=adat.db; Version=3; New=False; Compress=True;" );
 
-            if (!File.Exists("adat.db")) {
-                SQLiteConnection.CreateFile("adat.db");
-                Connection.Open();
+            if( !File.Exists( "adat.db" ) ) {
+                SQLiteConnection.CreateFile( "adat.db" );
+                Connection.Open( );
 
                 var command = Connection.CreateCommand();
                 //TODO beállítani a primary key párokat!
@@ -36,20 +36,19 @@ namespace Ijasz2.Adatbazis {
                                                "OKKOROX int, OKKOROY int, OKKOROH int, OKKOROF char(1), OKKOROB char(30), OKKOROM int, OKKOROI char(1)," +
                                                "OKNEMEX int, OKNEMEY int, OKNEMEH int, OKNEMEF char(1), OKNEMEB char(30), OKNEMEM int, OKNEMEI char(1)," +
                                                "OKDATUX int, OKDATUY int, OKDATUH int, OKDATUF char(1), OKDATUB char(30), OKDATUM int, OKDATUI char(1));";
-
                 const string createEredmenyek =
                     "CREATE TABLE Eredmények(VEAZON char(10), INNEVE char(30) NOT NULL, INSOSZ INTEGER PRIMARY KEY AUTOINCREMENT, ITAZON char(10), INCSSZ int, " +
-                    "IN10TA int, IN08TA int, IN05TA int, INMETA int, INOSZP int, INERSZ int, INMEGJ boolean, INKOMO boolean, KOAZON char(10),UNIQUE(INNEVE, VEAZON));";
+                    "IN10TA int, IN08TA int, IN05TA int, INMETA int, INOSZP int, INERSZ int, INMEGJ boolean, INKOMO boolean, KOAZON char(10), INBEEK int,UNIQUE(INNEVE, VEAZON));";
 
 
                 command.CommandText = createVersenysorozat + createVerseny + createKorosztalyok + createIjtipusok +
                                       createEgyesuletek + createIndulok + createOklevelek + createEredmenyek;
 
-                if (command.ExecuteNonQuery() != 0) {
+                if( command.ExecuteNonQuery( ) != 0 ) {
                 } // MessageBox.Show("Adatbázis hiba!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //MessageBox.Show( "Adatbázis létrehozva!", "Információ", MessageBoxButtons.OK, MessageBoxIcon.Information );
-                command.Dispose();
-                Connection.Close();
+                command.Dispose( );
+                Connection.Close( );
 
                 // Biztonsági mentések mappája
 

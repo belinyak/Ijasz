@@ -16,6 +16,7 @@ namespace Ijasz2.Model.Eredmeny {
         private int _talalat5;
         private int _talalat8;
         private string _verseny;
+        private int _kor;
 
         public string Verseny {
             get { return _verseny; }
@@ -126,6 +127,15 @@ namespace Ijasz2.Model.Eredmeny {
             set {
                 _korosztalyazonosito = value;
                 OnPropertyChanged( "KorosztalyAzonosito" );
+            }
+        }
+
+        public int Kor {
+            get { return _kor; }
+            set {
+                _kor = value;
+                OnPropertyChanged( "Kor" );
+
             }
         }
 
