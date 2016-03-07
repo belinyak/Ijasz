@@ -6,6 +6,7 @@ namespace Ijasz2.Nyomtatas.Seged {
         public string Megnevezes { get; set; }
         public string Datum { get; set; }
         public int OsszesPont { get; set; }
+        public int AllomasokSzama { get; set; }
         public int IndulokSzama { get; set; }
         public string VersenysorozatAzonosito { get; set; }
         public string VersenysorozatMegnevezes { get; set; }
@@ -16,6 +17,7 @@ namespace Ijasz2.Nyomtatas.Seged {
                 Megnevezes = verseny.Megnevezes;
                 Datum = verseny.Datum;
                 OsszesPont = verseny.Osszes;
+                AllomasokSzama = verseny.Allomasok;
 
                 if( nemMegjelentNyomtat ) {
                     foreach( var versenyeredmenyek in Model.Data.Data.Eredmenyek._versenyEredmenyek.Where( eredmeny => eredmeny.VersenyAzonosito.Equals( versenyAzonosito ) ) ) {

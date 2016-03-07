@@ -37,7 +37,6 @@ namespace Ijasz2.Nyomtatas.Startlista {
             #endregion
 
             #region Cimbekezdes
-
             var titleFormat = new Formatting( );
             titleFormat.Size = 14D;
             titleFormat.Position = 1;
@@ -55,7 +54,6 @@ namespace Ijasz2.Nyomtatas.Startlista {
             title.AppendLine( );
             title.Bold( );
             titleFormat.Position = 12;
-
             #endregion
 
             #region Header

@@ -40,7 +40,6 @@ namespace Ijasz2.Nyomtatas.Startlista {
             var document = DocX.Create(fileName);
             document.AddHeaders( );
             Seged.Seged.OldalSzamozas( document );
-
             #region Címbekezdés
             var titleFormat = new Formatting();
             titleFormat.Size = 14D;
@@ -60,6 +59,7 @@ namespace Ijasz2.Nyomtatas.Startlista {
             title.Bold( );
             titleFormat.Position = 12;
             #endregion
+
             //TODO tablazatra csere !!!!
             #region Header
 
@@ -122,7 +122,7 @@ namespace Ijasz2.Nyomtatas.Startlista {
             }
             try {
                 document.Save( );
-            } catch( System.Exception) {
+            } catch( System.Exception ) {
                 MessageBox.Show( "A dokumentum meg van nyitva!", "Csapatlista", MessageBoxButton.OK, MessageBoxImage.Error );
             }
 

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Ijasz2.Model.Eredmeny;
 
 namespace Ijasz2.Nyomtatas.Seged {
@@ -11,19 +12,35 @@ namespace Ijasz2.Nyomtatas.Seged {
         public string Egyesulet { get; set; }
         public int Csapat { get; set; }
         public string Ijtipus { get; set; }
+        public string Nem { get; set; }
+        public string Engedely { get; set; }
+
+        public string KorosztalyMegnevezes { get; set; }
+
 
         public InduloAdat( ) {
         }
 
         public InduloAdat( Eredmeny eredmeny ) {
+            var indulo = ( from indulo1 in Model.Data.Data.Indulok._indulok
+                           where indulo1.Nev.Equals( eredmeny.Indulo )
+                           select indulo1 ).First( );
             Nev = eredmeny.Indulo;
             Sorszam = eredmeny.Sorszam;
             Kor = eredmeny.Kor;
-            Egyesulet = ( from indulo in Model.Data.Data.Indulok._indulok
-                          where indulo.Nev.Equals( eredmeny.Indulo )
-                          select indulo.Egyesulet ).First( );
+            Egyesulet = indulo.Egyesulet;
+            Engedely = indulo.Engedely;
+            Nem = indulo.Nem;
             Csapat = eredmeny.Csapat;
-            Ijtipus = eredmeny.Ijtipus;
+            Ijtipus = ( from ijtipus in Model.Data.Data.Ijtipusok._ijtipusok
+                        where ijtipus.Azonosito.Equals( eredmeny.Ijtipus )
+                        select ijtipus.Megnevezes ).First( );
+
+            foreach( var versenykorosztaly in Model.Data.Data.Korosztalyok._versenyKorosztalyok.Where( korosztaly => korosztaly.VersenyAzonosito.Equals( eredmeny.Verseny ) ) ) {
+                foreach( var korosztaly in versenykorosztaly.Korosztalyok.Where( korosztaly => korosztaly.Azonosito.Equals( eredmeny.KorosztalyAzonosito ) ) ) {
+                    KorosztalyMegnevezes = korosztaly.Megnevezes;
+                }
+            }
         }
     }
 
