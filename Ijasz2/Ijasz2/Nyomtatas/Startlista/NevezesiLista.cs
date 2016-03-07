@@ -56,34 +56,7 @@ namespace Ijasz2.Nyomtatas.Startlista {
             titleFormat.Position = 12;
             #endregion
 
-            #region Header
-
-            var titleFormat2 = new Formatting( );
-            titleFormat2.Size = 10D;
-            titleFormat2.Position = 1;
-
-            Paragraph paragraph_1 = FirstPageHeader.InsertParagraph( Seged.Feliratok.VersenyMegnevezes, false, titleFormat2 );
-
-            paragraph_1.Append( string.IsNullOrEmpty( versenyAdatok.Megnevezes ) ? versenyAdatok.Azonosito : versenyAdatok.Megnevezes );
-            paragraph_1.Bold( );
-            titleFormat2.Bold = false;
-            paragraph_1.AppendLine( Feliratok.VersenyDatum );
-            paragraph_1.Append( versenyAdatok.Datum );
-            paragraph_1.Bold( );
-            paragraph_1.Append( "\t\t" + Feliratok.OsszesPont );
-            paragraph_1.Append( ( versenyAdatok.OsszesPont * 10 ).ToString( ) );
-            paragraph_1.Bold( );
-            paragraph_1.Append( "\t\t" + Feliratok.VersenyIndulokSzama );
-            paragraph_1.Append( versenyAdatok.IndulokSzama.ToString( ) );
-            paragraph_1.Bold( );
-
-            if( !string.IsNullOrEmpty( versenyAdatok.VersenysorozatAzonosito ) ) {
-                paragraph_1.AppendLine( Feliratok.VersenySorozat );
-                paragraph_1.Append( string.IsNullOrEmpty( versenyAdatok.VersenysorozatMegnevezes ) ? versenyAdatok.VersenysorozatAzonosito : versenyAdatok.VersenysorozatMegnevezes );
-                paragraph_1.Bold( );
-            }
-            paragraph_1.AppendLine( );
-            #endregion
+            Seged.Seged.NevezesilistaHeaderTablazat(document,versenyAdatok);
 
             #region HeaderTable
             var tablazatFejlec = document.Headers.odd;

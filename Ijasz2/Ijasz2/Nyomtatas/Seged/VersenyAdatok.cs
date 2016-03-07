@@ -8,10 +8,12 @@ namespace Ijasz2.Nyomtatas.Seged {
         public int OsszesPont { get; set; }
         public int AllomasokSzama { get; set; }
         public int IndulokSzama { get; set; }
+
+        public int HianyzokSzama { get; set; }
         public string VersenysorozatAzonosito { get; set; }
         public string VersenysorozatMegnevezes { get; set; }
 
-        public VersenyAdatok( string versenyAzonosito, bool nemMegjelentNyomtat = false ) {
+        public VersenyAdatok( string versenyAzonosito ) {
             foreach( var verseny in Model.Data.Data.Versenyek._versenyek.Where( verseny => verseny.Azonosito.Equals( versenyAzonosito ) ) ) {
                 Azonosito = verseny.Azonosito;
                 Megnevezes = verseny.Megnevezes;
@@ -19,15 +21,11 @@ namespace Ijasz2.Nyomtatas.Seged {
                 OsszesPont = verseny.Osszes;
                 AllomasokSzama = verseny.Allomasok;
 
-                if( nemMegjelentNyomtat ) {
-                    foreach( var versenyeredmenyek in Model.Data.Data.Eredmenyek._versenyEredmenyek.Where( eredmeny => eredmeny.VersenyAzonosito.Equals( versenyAzonosito ) ) ) {
-                        IndulokSzama =
-                            ( from eredmeny in versenyeredmenyek.Eredmenyek._eredmenyek where eredmeny.Megjelent.Equals( false ) select eredmeny.Indulo ).Count( );
-                    }
-                }
-                else {
-                    IndulokSzama = verseny.Indulok;
-
+                foreach( var versenyeredmenyek in Model.Data.Data.Eredmenyek._versenyEredmenyek.Where( eredmeny => eredmeny.VersenyAzonosito.Equals( versenyAzonosito ) ) ) {
+                    IndulokSzama =
+                        ( from eredmeny in versenyeredmenyek.Eredmenyek._eredmenyek where eredmeny.Megjelent.Equals( true ) select eredmeny.Indulo ).Count( );
+                    HianyzokSzama =
+                       ( from eredmeny in versenyeredmenyek.Eredmenyek._eredmenyek where eredmeny.Megjelent.Equals( false ) select eredmeny.Indulo ).Count( );
                 }
 
                 if( !string.IsNullOrEmpty( verseny.Versenysorozat ) ) {

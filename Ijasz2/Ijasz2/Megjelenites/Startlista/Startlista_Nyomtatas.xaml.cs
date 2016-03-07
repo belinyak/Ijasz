@@ -28,7 +28,6 @@ namespace Ijasz2.Megjelenites.Startlista {
                     new Nyomtatas.Startlista.NevezesiLista( _versenyAzonosito ).Open();
                     break;
             }
-            Close( );
         }
 
         private void BtnIgen_OnClick( object sender, RoutedEventArgs e ) {

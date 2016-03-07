@@ -8,7 +8,7 @@ namespace Ijasz2.Nyomtatas.Startlista {
         public VersenyAdatok versenyAdatok { get; set; }
         public InduloAdatok induloAdatok { get; set; }
         public HianyzokLista( string versenyAzonosito ) {
-            versenyAdatok = new VersenyAdatok( versenyAzonosito, true );
+            versenyAdatok = new VersenyAdatok( versenyAzonosito );
             induloAdatok = new InduloAdatok( versenyAzonosito, true );
         }
 
@@ -57,35 +57,8 @@ namespace Ijasz2.Nyomtatas.Startlista {
 
             #endregion
 
-            #region Header
-
-            var titleFormat2 = new Formatting( );
-            titleFormat2.Size = 10D;
-            titleFormat2.Position = 1;
-
-            Paragraph paragraph_1 = FirstPageHeader.InsertParagraph( Seged.Feliratok.VersenyMegnevezes, false, titleFormat2 );
-
-            paragraph_1.Append( string.IsNullOrEmpty( versenyAdatok.Megnevezes ) ? versenyAdatok.Azonosito : versenyAdatok.Megnevezes );
-            paragraph_1.Bold( );
-            titleFormat2.Bold = false;
-            paragraph_1.AppendLine( Feliratok.VersenyDatum );
-            paragraph_1.Append( versenyAdatok.Datum );
-            paragraph_1.Bold( );
-            paragraph_1.Append( "\t\t" + Feliratok.OsszesPont );
-            paragraph_1.Append( ( versenyAdatok.OsszesPont * 10 ).ToString( ) );
-            paragraph_1.Bold( );
-            paragraph_1.Append( "\t\t" + Feliratok.VersenyHianyzokSzama );
-            paragraph_1.Append( versenyAdatok.IndulokSzama.ToString( ) );
-            paragraph_1.Bold( );
-
-            if( !string.IsNullOrEmpty( versenyAdatok.VersenysorozatAzonosito ) ) {
-                paragraph_1.AppendLine( Feliratok.VersenySorozat );
-                paragraph_1.Append( string.IsNullOrEmpty( versenyAdatok.VersenysorozatMegnevezes ) ? versenyAdatok.VersenysorozatAzonosito : versenyAdatok.VersenysorozatMegnevezes );
-                paragraph_1.Bold( );
-            }
-            paragraph_1.AppendLine( );
-            #endregion
-
+            Seged.Seged.HianyzoklistaHeaderTablazat(document,versenyAdatok);
+     
             #region HeaderTable
             var tablazatFejlec = document.Headers.odd;
 
@@ -103,7 +76,7 @@ namespace Ijasz2.Nyomtatas.Startlista {
             tablazatFejlec.InsertTable( headerTable );
             #endregion
 
-            Table table = document.AddTable( versenyAdatok.IndulokSzama + 1, 6 );
+            Table table = document.AddTable( versenyAdatok.HianyzokSzama + 1, 6 );
 
             table.Rows[0].Cells[0].Paragraphs[0].Append( "Sorszám" );
             table.Rows[0].Cells[1].Paragraphs[0].Append( "Név" );
