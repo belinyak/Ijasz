@@ -22,7 +22,8 @@ namespace Ijasz2.Nyomtatas.Startlista {
             Seged.Seged.OldalSzamozas( document );
             FirstPageFooter( );
             AddHeader( );
-            NevezesilistaHeaderTablazat( );
+            HeaderTablazat();
+            VersenyAdatokTablazat( );
             IndulokTablazat( );
 
             try { document.Save( ); } catch( System.Exception ) { MessageBox.Show( "A dokumentum meg van nyitva!", "Nevezési lista", MessageBoxButton.OK, MessageBoxImage.Error ); }
@@ -119,7 +120,7 @@ namespace Ijasz2.Nyomtatas.Startlista {
 
             document.InsertTable( table );
         }
-        private void NevezesilistaHeaderTablazat( ) {
+        private void VersenyAdatokTablazat( ) {
             var table = document.AddTable(3, 2);
             table.Alignment = Alignment.left;
             table.Rows[0].Cells[0].Paragraphs[0].Append( Feliratok.VersenyMegnevezes );
@@ -150,6 +151,50 @@ namespace Ijasz2.Nyomtatas.Startlista {
             table.SetBorder( TableBorderType.Right, b );
             document.InsertTable( table );
             document.InsertParagraph( );
+        }
+
+        private void HeaderTablazat( ) {
+            var tablazatFejlec = document.Headers.odd;
+
+            var table = document.AddTable( 1, 6 );
+            table.AutoFit = AutoFit.ColumnWidth;
+
+            table.Rows[0].Cells[0].Paragraphs[0].Append( "Sorszám" );
+            table.Rows[0].Cells[1].Paragraphs[0].Append( "Név" );
+            table.Rows[0].Cells[2].Paragraphs[0].Append( "Íjtípus" );
+            table.Rows[0].Cells[3].Paragraphs[0].Append( "Kor" );
+            table.Rows[0].Cells[4].Paragraphs[0].Append( "Egyesület" );
+            table.Rows[0].Cells[5].Paragraphs[0].Append( "Csapat" );
+
+            #region Formazas
+            table.Alignment = Alignment.center;
+
+            Border b = new Border(Novacode.BorderStyle.Tcbs_none, BorderSize.seven, 0, Color.Blue);
+            Border c = new Border(Novacode.BorderStyle.Tcbs_single, BorderSize.seven, 0, Color.Black);
+
+            table.SetBorder( TableBorderType.InsideH, b );
+            table.SetBorder( TableBorderType.InsideV, b );
+            table.SetBorder( TableBorderType.Bottom, b );
+            table.SetBorder( TableBorderType.Top, b );
+            table.SetBorder( TableBorderType.Left, b );
+            table.SetBorder( TableBorderType.Right, b );
+
+            for( int i = 0; i < 6; i++ ) {
+                table.Rows[0].Cells[i].SetBorder( TableCellBorderType.Bottom, c );
+            }
+
+            foreach( Row row in table.Rows ) {
+                row.Cells[0].Width = 70;
+                row.Cells[1].Width = 200;
+                row.Cells[2].Width = 150;
+                row.Cells[3].Width = 40;
+                row.Cells[4].Width = 150;
+                row.Cells[5].Width = 70;
+            }
+
+            table.AutoFit = AutoFit.ColumnWidth;
+            #endregion
+            tablazatFejlec.InsertTable( table );
         }
     }
 }
