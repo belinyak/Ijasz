@@ -54,10 +54,10 @@ namespace Ijasz2.Nyomtatas.Seged {
             Indulok = new List<InduloAdat>( );
 
             // cache-eljuk az indulokat
-            var indulok = Model.Data.Data.Indulok._indulok;
+            var indulok = Model.Data.Data.Indulok._indulok.ToList();
 
             foreach( var versenyeredmenyek in Model.Data.Data.Eredmenyek._versenyEredmenyek.Where( eredmeny => eredmeny.VersenyAzonosito.Equals( versenyAzonosito ) ) ) {
-                foreach( var eredmeny in versenyeredmenyek.Eredmenyek._eredmenyek.Where( eredmeny => eredmeny.Megjelent.Equals( !nemMegjelentNyomtat ) ) ) {
+                foreach( var eredmeny in versenyeredmenyek.Eredmenyek._eredmenyek.Where( eredmeny => eredmeny.Megjelent.Equals( !nemMegjelentNyomtat ) ).OrderBy(eredmeny => eredmeny.Indulo) ) {
                     var indulo = (from indulo1 in indulok
                                   where indulo1.Nev.Equals(eredmeny.Indulo)
                                   select indulo1).First();
@@ -84,7 +84,7 @@ namespace Ijasz2.Nyomtatas.Seged {
             var indulok = Model.Data.Data.Indulok._indulok.ToList();
 
             foreach( var versenyeredmenyek in Model.Data.Data.Eredmenyek._versenyEredmenyek.Where( eredmeny => eredmeny.VersenyAzonosito.Equals( versenyAzonosito ) ) ) {
-                foreach( var eredmeny in versenyeredmenyek.Eredmenyek._eredmenyek.Where( eredmeny => eredmeny.Megjelent.Equals( true ) && eredmeny.Csapat.Equals( csapat ) ) ) {
+                foreach( var eredmeny in versenyeredmenyek.Eredmenyek._eredmenyek.Where( eredmeny => eredmeny.Megjelent.Equals( true ) && eredmeny.Csapat.Equals( csapat ) ).OrderBy(eredmeny => eredmeny.Indulo) ) {
                     var indulo = (from indulo1 in indulok
                                   where indulo1.Nev.Equals(eredmeny.Indulo)
                                   select indulo1).First();
