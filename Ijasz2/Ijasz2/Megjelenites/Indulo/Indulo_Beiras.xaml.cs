@@ -62,7 +62,7 @@ namespace Ijasz2.Megjelenites.Indulo {
                 return;
             }
 
-            cbUjKorosztaly.IsEnabled = !( cbUjKorosztaly.IsEnabled );
+            cbUjKorosztaly.IsEnabled = chKorosztalyFelulir.IsChecked == true;
         }
 
         /// <summary>
@@ -87,8 +87,8 @@ namespace Ijasz2.Megjelenites.Indulo {
         /// </summary>
         private void EloTolt( ) {
             // ha mar be volt irva akkor mindent elotoltunk
-            foreach( var versenyEredmeny in Data.Eredmenyek._versenyEredmenyek.Where( eredmeny => eredmeny.VersenyAzonosito.Equals( cbVerseny.Text ) ) ) {
-                foreach( var eredmeny in versenyEredmeny.Eredmenyek._eredmenyek.Where( eredmeny => eredmeny.Indulo.Equals( txtNev.Text ) ) ) {
+            foreach( var versenyEredmeny in Data.Eredmenyek._versenyEredmenyek.Where( eredmeny => eredmeny.VersenyAzonosito.Equals( ( (Model.Verseny.Verseny)cbVerseny.SelectedItem ).Azonosito ) ) ) {
+                foreach( var eredmeny in versenyEredmeny.Eredmenyek._eredmenyek.Where( eredmeny => eredmeny.Indulo.Equals( _indulo.Nev ) ) ) {
                     cbIjtipus.Text = eredmeny.Ijtipus;
                     cbCsapat.Text = eredmeny.Csapat.ToString( );
                     chKorosztalyFelulir.IsChecked = eredmeny.KorosztalyModositott;
@@ -168,8 +168,7 @@ namespace Ijasz2.Megjelenites.Indulo {
             // modositas
             foreach( var versenyEredmeny in Data.Eredmenyek._versenyEredmenyek ) {
                 if( versenyEredmeny.VersenyAzonosito.Equals( cbVerseny.Text ) ) {
-                    foreach(
-                        var eredmeny in
+                    foreach( var eredmeny in
                             versenyEredmeny.Eredmenyek._eredmenyek.Where( eredmeny => eredmeny.Indulo.Equals( _indulo.Nev ) )
                         ) {
                         versenyEredmeny.Eredmenyek.Remove( eredmeny );

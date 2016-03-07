@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Induló beírás" Height="310" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Induló beírás" Height="310" Width="260" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="32" />
@@ -46,11 +46,11 @@
         <CheckBox x:Name="chKorosztalyFelulir" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left"
 		          VerticalAlignment="Center" Click="ChKorosztalyFelulir_OnClick" />
         <ComboBox x:Name="cbUjKorosztaly" DisplayMemberPath="Azonosito" Grid.Row="6" Grid.Column="1"
-		          HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" />
+		          HorizontalAlignment="Left" VerticalAlignment="Center" Width="80" />
         <Button Content="Rendben" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Right"
 		        VerticalAlignment="Bottom" Width="86" Height="28" Click="BtnRendben_OnClick" />
         <Button Content="Csapatok" Grid.Row="7" Grid.Column="0" HorizontalAlignment="Right"
 		        VerticalAlignment="Bottom" Width="86" Height="28" Click="btnCsapatok_Click" />
-        <Button x:Name="TagokButton" Content="Tagok" Grid.Column="1" HorizontalAlignment="Right" Grid.Row="6" VerticalAlignment="Top" Width="40" RenderTransformOrigin="2.383,1.8" Margin="0,5,-39,0" Height="22" Click="TagokButton_OnClick"/>
+        <Button x:Name="TagokButton" Content="Tagok" Grid.Column="1" HorizontalAlignment="Right" Grid.Row="6" VerticalAlignment="Top" Width="40" RenderTransformOrigin="2.383,1.8" Margin="0,5,1,0" Height="22" Click="TagokButton_OnClick"/>
     </Grid>
 </Window>
