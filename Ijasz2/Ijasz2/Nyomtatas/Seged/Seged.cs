@@ -157,8 +157,31 @@ namespace Ijasz2.Nyomtatas.Seged {
             document.InsertParagraph( );
         }
 
-        static public void BeirolapAdatTablazatFormazas( Table table ) {
+        public static void BeirolapAdatTablazat( DocX document, VersenyAdatok versenyAdatok ) {
+            var table = document.AddTable(versenyAdatok.AllomasokSzama + 3, 8);
+            table.Alignment = Alignment.center;
+
+            table.Rows[0].Cells[0].Paragraphs[0].Append( "Sorszám" ).Bold( );
+            table.Rows[0].Cells[1].Paragraphs[0].Append( "Lőállás" ).Bold( );
+            table.Rows[0].Cells[2].Paragraphs[0].Append( "10 pont" ).Bold( );
+            table.Rows[0].Cells[3].Paragraphs[0].Append( "8 pont" ).Bold( );
+            table.Rows[0].Cells[4].Paragraphs[0].Append( "5 pont" ).Bold( );
+            table.Rows[0].Cells[5].Paragraphs[0].Append( "Mellé" ).Bold( );
+            table.Rows[0].Cells[6].Paragraphs[0].Append( "Összesen" ).Bold( );
+            table.Rows[0].Cells[7].Paragraphs[0].Append( "Göngyölt" ).Bold( );
+
+            for( var i = 1; i < versenyAdatok.AllomasokSzama; i++ ) {
+                table.Rows[i].Cells[0].Paragraphs[0].Append( i.ToString( ) );
+            }
+
+            table.Rows[versenyAdatok.AllomasokSzama + 1].Cells[1].Paragraphs[0].Append( "Össz db" ).Bold( );
+            table.Rows[versenyAdatok.AllomasokSzama + 2].Cells[1].Paragraphs[0].Append( "Össz pont" ).Bold( );
+            document.InsertTable( table );
+            document.InsertParagraph( );
+
+            #region Formazas
             table.AutoFit = AutoFit.Contents;
+            #endregion
         }
 
         #endregion
@@ -196,7 +219,7 @@ namespace Ijasz2.Nyomtatas.Seged {
             document.InsertParagraph( );
         }
 
-         public static void HianyzoklistaHeaderTablazat( DocX document, VersenyAdatok versenyAdatok ) {
+        public static void HianyzoklistaHeaderTablazat( DocX document, VersenyAdatok versenyAdatok ) {
             var table = document.AddTable(3, 2);
             table.Alignment = Alignment.left;
             table.Rows[0].Cells[0].Paragraphs[0].Append( Feliratok.VersenyMegnevezes );
@@ -228,7 +251,6 @@ namespace Ijasz2.Nyomtatas.Seged {
             document.InsertTable( table );
             document.InsertParagraph( );
         }
-
 
         public static void CsapatlistaHeaderTablazat( DocX document, VersenyAdatok versenyAdatok ) {
             var table = document.AddTable(3, 2);

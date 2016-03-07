@@ -61,7 +61,6 @@ namespace Ijasz2.Megjelenites.Indulo {
             if( cbVerseny.SelectedItem == null ) {
                 return;
             }
-
             cbUjKorosztaly.IsEnabled = chKorosztalyFelulir.IsChecked == true;
         }
 
