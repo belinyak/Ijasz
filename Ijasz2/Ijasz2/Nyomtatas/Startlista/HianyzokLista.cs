@@ -5,23 +5,40 @@ using System.Drawing;
 
 namespace Ijasz2.Nyomtatas.Startlista {
     class HianyzokLista {
-        public VersenyAdatok versenyAdatok { get; set; }
-        public InduloAdatok induloAdatok { get; set; }
+        private VersenyAdatok versenyAdatok { get; set; }
+        private InduloAdatok induloAdatok { get; set; }
+        private DocX document { get; set; }
+
         public HianyzokLista( string versenyAzonosito ) {
             versenyAdatok = new VersenyAdatok( versenyAzonosito );
             induloAdatok = new InduloAdatok( versenyAzonosito, true );
         }
 
         private string CreateDoc( ) {
-            string fileName = Seged.Seged.CreateFileName(versenyAdatok.VersenysorozatAzonosito, versenyAdatok.Azonosito, StartlistaTipus.HianyzokLista);
-            var document = DocX.Create(fileName);
+            var fileName = Seged.Seged.CreateFileName(versenyAdatok.VersenysorozatAzonosito, versenyAdatok.Azonosito, StartlistaTipus.HianyzokLista);
+            document = DocX.Create( fileName );
             Seged.Seged.OldalSzamozas( document );
             document.DifferentFirstPage = true;
 
-            #region FirstPageFooter
-            Footer footer = document.Footers.first;
+            FirstPageFooter( );
+            AddHeader( );
+            HianyzoklistaHeaderTablazat( );
+            HianyzokListaTablazat( );
 
-            Table footerTable = footer.InsertTable( 1, 2 );
+            try { document.Save( ); } catch( System.Exception ) { MessageBox.Show( "A dokumentum meg van nyitva!", "Nevezési lista", MessageBoxButton.OK, MessageBoxImage.Error ); }
+            return fileName;
+        }
+        public void Print( ) {
+            Seged.Seged.Print( CreateDoc( ) );
+        }
+        public void Open( ) {
+            Seged.Seged.Open( CreateDoc( ) );
+        }
+
+        private void FirstPageFooter( ) {
+            var footer = document.Footers.first;
+
+            var footerTable = footer.InsertTable( 1, 2 );
             footerTable.Rows[0].Cells[1].Paragraphs[0].Append( "1. oldal" );
             footerTable.AutoFit = AutoFit.ColumnWidth;
             footerTable.Rows[0].Cells[0].Width = document.PageWidth - 200;
@@ -34,9 +51,8 @@ namespace Ijasz2.Nyomtatas.Startlista {
             footerTable.SetBorder( TableBorderType.Top, c );
             footerTable.SetBorder( TableBorderType.Left, c );
             footerTable.SetBorder( TableBorderType.Right, c );
-            #endregion
-
-            #region Cimbekezdes
+        }
+        private void AddHeader( ) {
             var titleFormat = new Formatting( );
             titleFormat.Size = 14D;
             titleFormat.Position = 1;
@@ -44,9 +60,9 @@ namespace Ijasz2.Nyomtatas.Startlista {
             titleFormat.Bold = true;
 
             document.AddHeaders( );
-            Header FirstPageHeader = document.Headers.first;
+            var FirstPageHeader = document.Headers.first;
 
-            Paragraph title = FirstPageHeader.InsertParagraph();
+            var title = FirstPageHeader.InsertParagraph();
             title.Append( Seged.Feliratok.HeadLineHianyzoklista );
             title.Alignment = Alignment.center;
             titleFormat.Size = 10D;
@@ -54,27 +70,40 @@ namespace Ijasz2.Nyomtatas.Startlista {
             title.AppendLine( );
             title.Bold( );
             titleFormat.Position = 12;
+        }
+        private void HianyzoklistaHeaderTablazat( ) {
+            var table = document.AddTable(3, 2);
+            table.Alignment = Alignment.left;
+            table.Rows[0].Cells[0].Paragraphs[0].Append( Feliratok.VersenyMegnevezes );
+            table.Rows[0].Cells[0].Paragraphs[0].Append( string.IsNullOrEmpty( versenyAdatok.Megnevezes ) ? versenyAdatok.Azonosito : versenyAdatok.Megnevezes ).Bold( );
 
-            #endregion
+            table.Rows[1].Cells[0].Paragraphs[0].Append( Feliratok.VersenyDatum );
+            table.Rows[1].Cells[0].Paragraphs[0].Append( versenyAdatok.Datum ).Bold( );
 
-            Seged.Seged.HianyzoklistaHeaderTablazat(document,versenyAdatok);
-     
-            #region HeaderTable
-            var tablazatFejlec = document.Headers.odd;
+            if( !string.IsNullOrEmpty( versenyAdatok.VersenysorozatAzonosito ) ) {
+                table.Rows[2].Cells[0].Paragraphs[0].Append( Feliratok.VersenySorozat );
+                table.Rows[2].Cells[0].Paragraphs[0].Append( string.IsNullOrEmpty( versenyAdatok.VersenysorozatMegnevezes ) ? versenyAdatok.VersenysorozatAzonosito : versenyAdatok.VersenysorozatMegnevezes ).Bold( );
+            }
 
-            var headerTable = document.AddTable( 1, 6 );
-            headerTable.AutoFit = AutoFit.ColumnWidth;
+            table.Rows[0].Cells[1].Paragraphs[0].Append( Feliratok.OsszesPont );
+            table.Rows[0].Cells[1].Paragraphs[0].Append( ( versenyAdatok.OsszesPont * 10 ).ToString( ) ).Bold( );
 
-            headerTable.Rows[0].Cells[0].Paragraphs[0].Append( "Sorszám" );
-            headerTable.Rows[0].Cells[1].Paragraphs[0].Append( "Név" );
-            headerTable.Rows[0].Cells[2].Paragraphs[0].Append( "Íjtípus" );
-            headerTable.Rows[0].Cells[3].Paragraphs[0].Append( "Kor" );
-            headerTable.Rows[0].Cells[4].Paragraphs[0].Append( "Egyesület" );
-            headerTable.Rows[0].Cells[5].Paragraphs[0].Append( "Csapat" );
+            table.Rows[1].Cells[1].Paragraphs[0].Append( Feliratok.VersenyHianyzokSzama );
+            table.Rows[1].Cells[1].Paragraphs[0].Append( versenyAdatok.HianyzokSzama.ToString( ) ).Bold( );
 
-            Seged.Seged.NevezesiListaTablazatFormazas( headerTable );
-            tablazatFejlec.InsertTable( headerTable );
-            #endregion
+            table.AutoFit = AutoFit.Contents;
+
+            var b = new Border(Novacode.BorderStyle.Tcbs_none, BorderSize.seven, 0, Color.Blue);
+            table.SetBorder( TableBorderType.InsideH, b );
+            table.SetBorder( TableBorderType.InsideV, b );
+            table.SetBorder( TableBorderType.Bottom, b );
+            table.SetBorder( TableBorderType.Top, b );
+            table.SetBorder( TableBorderType.Left, b );
+            table.SetBorder( TableBorderType.Right, b );
+            document.InsertTable( table );
+            document.InsertParagraph( );
+        }
+        private void HianyzokListaTablazat( ) {
 
             Table table = document.AddTable( versenyAdatok.HianyzokSzama + 1, 6 );
 
@@ -84,17 +113,7 @@ namespace Ijasz2.Nyomtatas.Startlista {
             table.Rows[0].Cells[3].Paragraphs[0].Append( "Kor" );
             table.Rows[0].Cells[4].Paragraphs[0].Append( "Egyesület" );
             table.Rows[0].Cells[5].Paragraphs[0].Append( "Csapat" );
-            //TODO itt baj van
-            /*
-            for( int i = 0; i < versenyAdatok.IndulokSzama; i++ ) {
-                table.Rows[i + 1].Cells[0].Paragraphs[0].Append( induloAdatok.Indulok[i].Sorszam.ToString( ) );
-                table.Rows[i + 1].Cells[1].Paragraphs[0].Append( induloAdatok.Indulok[i].Nev );
-                table.Rows[i + 1].Cells[2].Paragraphs[0].Append( induloAdatok.Indulok[i].Ijtipus );
-                table.Rows[i + 1].Cells[3].Paragraphs[0].Append( ( induloAdatok.Indulok[i].Kor.ToString( ) ) );
-                table.Rows[i + 1].Cells[4].Paragraphs[0].Append( induloAdatok.Indulok[i].Egyesulet );
-                table.Rows[i + 1].Cells[5].Paragraphs[0].Append( induloAdatok.Indulok[i].Csapat.ToString( ) );
-            }
-            */
+
             var rowIndex = 1;
             foreach( var indulo in induloAdatok.Indulok ) {
                 table.Rows[rowIndex].Cells[0].Paragraphs[0].Append( indulo.Sorszam.ToString( ) );
@@ -108,15 +127,6 @@ namespace Ijasz2.Nyomtatas.Startlista {
 
             Seged.Seged.NevezesiListaTablazatFormazas( table );
             document.InsertTable( table );
-
-            try { document.Save( ); } catch( System.Exception ) { MessageBox.Show( "A dokumentum meg van nyitva!", "Nevezési lista", MessageBoxButton.OK, MessageBoxImage.Error ); }
-            return fileName;
-        }
-        public void Print( ) {
-            Seged.Seged.Print( CreateDoc( ) );
-        }
-        public void Open( ) {
-            Seged.Seged.Open( CreateDoc( ) );
         }
     }
 }
