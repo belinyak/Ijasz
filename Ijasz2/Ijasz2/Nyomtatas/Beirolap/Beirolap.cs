@@ -7,18 +7,19 @@ using VerticalAlignment = Novacode.VerticalAlignment;
 
 namespace Ijasz2.Nyomtatas.Beirolap {
     class Beirolap {
-        private readonly VersenyAdatok _versenyAdatok;
-        private readonly InduloAdat _induloAdat;
+        private VersenyAdatok versenyAdatok { get; }
+        private InduloAdat induloAdat { get; }
+        private DocX document { get; set; }
         public Beirolap( Eredmeny eredmeny ) {
-            _versenyAdatok = new VersenyAdatok( eredmeny.Verseny );
-            _induloAdat = new InduloAdat( eredmeny );
+            versenyAdatok = new VersenyAdatok( eredmeny.Verseny );
+            induloAdat = new InduloAdat( eredmeny );
         }
 
         private string CreateDoc( ) {
-            var fileName = Seged.Seged.CreateFileName(_versenyAdatok.VersenysorozatAzonosito, _versenyAdatok.Azonosito,
+            var fileName = Seged.Seged.CreateFileName(versenyAdatok.VersenysorozatAzonosito, versenyAdatok.Azonosito,
                 StartlistaTipus.BeiroLap);
 
-            var document = DocX.Create(fileName);
+            document = DocX.Create( fileName );
             document.MarginBottom = 10;
             document.AddHeaders( );
 
@@ -36,10 +37,10 @@ namespace Ijasz2.Nyomtatas.Beirolap {
             titleFormat.Position = 12;
             #endregion
 
-            VersenyTablazat( document, _versenyAdatok );
-            InduloTablazat( document, _induloAdat );
-            EredmenyTablazat( document, _versenyAdatok );
-            AlairasTablazat( document );
+            VersenyTablazat( );
+            InduloTablazat( );
+            EredmenyTablazat( );
+            AlairasTablazat( );
 
             try { document.Save( ); } catch( System.Exception ) { MessageBox.Show( "A dokumentum meg van nyitva!", "Nevezési lista", MessageBoxButton.OK, MessageBoxImage.Error ); }
             return fileName;
@@ -51,7 +52,7 @@ namespace Ijasz2.Nyomtatas.Beirolap {
             Seged.Seged.Open( CreateDoc( ) );
         }
 
-        private static void AlairasTablazat( DocX document ) {
+        private void AlairasTablazat( ) {
             document.AddFooters( );
             var footer = document.Footers.odd;
             var table = footer.InsertTable(3, 2);
@@ -84,7 +85,7 @@ namespace Ijasz2.Nyomtatas.Beirolap {
             table.SetBorder( TableBorderType.Left, b );
             table.SetBorder( TableBorderType.Right, b );
         }
-        private static void InduloTablazat( DocX document, InduloAdat induloAdat ) {
+        private void InduloTablazat( ) {
             var table = document.AddTable(4, 2);
             table.Alignment = Alignment.left;
 
@@ -120,7 +121,7 @@ namespace Ijasz2.Nyomtatas.Beirolap {
             document.InsertTable( table );
             document.InsertParagraph( );
         }
-        private static void VersenyTablazat( DocX document, VersenyAdatok versenyAdatok ) {
+        private void VersenyTablazat( ) {
             var table = document.AddTable(2, 2);
             table.Alignment = Alignment.left;
             table.Rows[0].Cells[0].Paragraphs[0].Append( Feliratok.VersenyMegnevezes );
@@ -149,7 +150,7 @@ namespace Ijasz2.Nyomtatas.Beirolap {
             document.InsertTable( table );
             document.InsertParagraph( );
         }
-        private static void EredmenyTablazat( DocX document, VersenyAdatok versenyAdatok ) {
+        private void EredmenyTablazat( ) {
             var table = document.AddTable(versenyAdatok.AllomasokSzama + 3, 8);
             table.Alignment = Alignment.center;
 

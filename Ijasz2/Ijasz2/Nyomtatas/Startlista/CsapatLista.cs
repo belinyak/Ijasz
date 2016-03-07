@@ -27,8 +27,8 @@ namespace Ijasz2.Nyomtatas.Startlista {
     }
 
     public class CsapatLista {
-        public VersenyAdatok versenyAdatok { get; set; }
-        public Csapatok csapatok { get; set; }
+        private VersenyAdatok versenyAdatok { get; set; }
+        private Csapatok csapatok { get; set; }
 
         public CsapatLista( string versenyAzonosito ) {
             versenyAdatok = new VersenyAdatok( versenyAzonosito );
@@ -60,7 +60,7 @@ namespace Ijasz2.Nyomtatas.Startlista {
             titleFormat.Position = 12;
             #endregion
 
-            Seged.Seged.CsapatlistaHeaderTablazat(document,versenyAdatok);           
+            Seged.Seged.CsapatlistaHeaderTablazat( document, versenyAdatok );
 
             foreach( var csapat in csapatok.csapatok ) {
                 Table table = document.AddTable( csapat.InduloAdatok.Indulok.Count + 1 , 6 );
