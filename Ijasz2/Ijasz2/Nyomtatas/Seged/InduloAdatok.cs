@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Controls;
+using Ijasz2.Model.Eredmeny;
 
 namespace Ijasz2.Nyomtatas.Seged {
 
@@ -11,6 +11,20 @@ namespace Ijasz2.Nyomtatas.Seged {
         public string Egyesulet { get; set; }
         public int Csapat { get; set; }
         public string Ijtipus { get; set; }
+
+        public InduloAdat( ) {
+        }
+
+        public InduloAdat( Eredmeny eredmeny ) {
+            Nev = eredmeny.Indulo;
+            Sorszam = eredmeny.Sorszam;
+            Kor = eredmeny.Kor;
+            Egyesulet = ( from indulo in Model.Data.Data.Indulok._indulok
+                          where indulo.Nev.Equals( eredmeny.Indulo )
+                          select indulo.Egyesulet ).First( );
+            Csapat = eredmeny.Csapat;
+            Ijtipus = eredmeny.Ijtipus;
+        }
     }
 
     public class InduloAdatok {

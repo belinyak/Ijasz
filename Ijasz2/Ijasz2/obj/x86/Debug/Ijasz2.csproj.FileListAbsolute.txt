@@ -113,3 +113,12 @@ C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\M
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Megjelenites\Eredmenylap\Eredmenylap_Nyomtatas.g.cs
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Ijasz2_MarkupCompile.lref
 C:\Users\belin\OneDrive\Dokumentumok\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Megjelenites\Eredmenylap\Eredmenylap_Nyomtatas.baml
+Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Megjelenites\Egyesület\Egyesulet_Tagok.baml
+Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Megjelenites\Seged\WaitWindow.baml
+Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Megjelenites\Egyesület\Egyesulet_Tagok.g.cs
+Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Megjelenites\Eredmenylap\Eredmenylap_Nyomtatas.g.cs
+Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Megjelenites\Seged\WaitWindow.g.cs
+Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Ijasz2_MarkupCompile.lref
+Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Megjelenites\Eredmenylap\Eredmenylap_Nyomtatas.baml
+Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Megjelenites\Beirolap\Beirolap_Nyomtatas.g.cs
+Z:\GitHub\Ijasz2\Ijasz2\Ijasz2\obj\x86\Debug\Megjelenites\Beirolap\Beirolap_Nyomtatas.baml

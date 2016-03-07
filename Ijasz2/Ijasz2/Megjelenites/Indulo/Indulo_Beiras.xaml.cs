@@ -188,7 +188,7 @@ namespace Ijasz2.Megjelenites.Indulo {
                             KorosztalyAzonosito = cbUjKorosztaly.Text,
                             Kor = Data.Korosztalyok.BetoltottKor( datum, _indulo.SzuletesiDatum ),
                             KorosztalyModositott = chKorosztalyFelulir.IsChecked == true,
-                        },_indulo.Nem );
+                        }, _indulo.Nem );
                         Close( );
                         return;
                     }
@@ -213,6 +213,14 @@ namespace Ijasz2.Megjelenites.Indulo {
                     Kor = Data.Korosztalyok.BetoltottKor( datum, _indulo.SzuletesiDatum ),
                     KorosztalyModositott = chKorosztalyFelulir.IsChecked == true,
                 }, _indulo.Nem );
+
+                // muszaly ujra lekerni a sorszam miatt
+                foreach (var versenyeredmeny in Model.Data.Data.Eredmenyek._versenyEredmenyek.Where(eredmeny => eredmeny.VersenyAzonosito.Equals(cbVerseny.Text))) {
+                    foreach (var eredmeny in versenyeredmeny.Eredmenyek._eredmenyek.Where(eredmeny => eredmeny.Indulo.Equals(_indulo.Nev))) {
+                        (new Megjelenites.Beirolap.Beirolap_Nyomtatas(eredmeny)).ShowDialog();
+                    }
+                }
+
                 Close( );
                 return;
             }

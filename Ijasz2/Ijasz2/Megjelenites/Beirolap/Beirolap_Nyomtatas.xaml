@@ -1,0 +1,29 @@
+﻿<Window x:Class="Ijasz2.Megjelenites.Beirolap.Beirolap_Nyomtatas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ijasz2.Megjelenites.Beirolap"
+        mc:Ignorable="d"
+        Title="Beírólap nyomtatás" Height="130" Width="300" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Label Content="Biztosan nyomtatni akar?" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+		       HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <Button x:Name="IgenButton" Content="Igen" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center"
+		        VerticalAlignment="Top" Width="86" Height="28" Click="IgenButton_OnClick" />
+        <Button x:Name="NemButton" Content="Nem" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center"
+		        VerticalAlignment="Top" Width="86" Height="28" Click="NemButton_OnClick" />
+        <Button x:Name="MegnyitasButton"  Content="Megnyitás" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center"
+		        VerticalAlignment="Top" Width="86" Height="28" Click="MegnyitasButton_OnClick" />
+    </Grid>
+</Window>

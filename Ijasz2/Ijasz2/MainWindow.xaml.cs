@@ -369,7 +369,38 @@ namespace Ijasz2 {
                     cheredmenylapEgyesulet.IsChecked == false && cheredmenylapReszletes.IsChecked == false ) {
                 return;
             }
-            MessageBox.Show( "NYOMTATAS" );
+
+            EredmenylapTipus tipus = new EredmenylapTipus();
+            if( cheredmenylapVerseny.IsChecked == true ) {
+                if( cheredmenylapTeljes.IsChecked == true ) {
+                    tipus = EredmenylapTipus.Verseny_Teljes;
+                }
+                if( cheredmenylapMisz.IsChecked == true ) {
+                    tipus = EredmenylapTipus.Verseny_MISZ;
+                }
+                if( cheredmenylapEgyesulet.IsChecked == true ) {
+                    tipus = EredmenylapTipus.Verseny_Egyesulet;
+                }
+                if( cheredmenylapReszletes.IsChecked == true ) {
+                    tipus = EredmenylapTipus.Verseny_Reszletes;
+                }
+            }
+            else if( cheredmenylapVersenysorozat.IsChecked == true ) {
+                if( cheredmenylapTeljes.IsChecked == true ) {
+                    tipus = EredmenylapTipus.Versenysorozat_Teljes;
+                }
+                if( cheredmenylapMisz.IsChecked == true ) {
+                    tipus = EredmenylapTipus.Versenysorozat_MISZ;
+                }
+                if( cheredmenylapEgyesulet.IsChecked == true ) {
+                    tipus = EredmenylapTipus.Versenysorozat_Egyesulet;
+                }
+                if( cheredmenylapReszletes.IsChecked == true ) {
+                    tipus = EredmenylapTipus.Versenysorozat_Reszletes;
+                }
+            }
+
+            (new Megjelenites.Eredmenylap.Eredmenylap_Nyomtatas(tipus, cberedmenylapVersenyAzonosito.Text)).Show();
         }
 
         #endregion

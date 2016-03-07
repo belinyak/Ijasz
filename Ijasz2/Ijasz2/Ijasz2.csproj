@@ -106,6 +106,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Megjelenites\Beirolap\Beirolap_Nyomtatas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Megjelenites\Egyesület\Egyesulet_Hozzaadas_Modositas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -200,6 +204,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Megjelenites\Beirolap\Beirolap_Nyomtatas.xaml.cs">
+      <DependentUpon>Beirolap_Nyomtatas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Megjelenites\Egyesület\Egyesulet_Hozzaadas_Modositas.xaml.cs">
       <DependentUpon>Egyesulet_Hozzaadas_Modositas.xaml</DependentUpon>
     </Compile>
@@ -293,6 +300,7 @@
     <Compile Include="Model\Versenysorozat\Versenysorozatok.cs" />
     <Compile Include="Model\Verseny\Verseny.cs" />
     <Compile Include="Model\Verseny\Versenyek.cs" />
+    <Compile Include="Nyomtatas\Beirolap\Beirolap.cs" />
     <Compile Include="Nyomtatas\Eredmenylap\VersenyEredmenyLap.cs" />
     <Compile Include="Nyomtatas\Eredmenylap\VersenysorozatEredmenyLap.cs" />
     <Compile Include="Nyomtatas\Seged\DokumentumTipus.cs" />
