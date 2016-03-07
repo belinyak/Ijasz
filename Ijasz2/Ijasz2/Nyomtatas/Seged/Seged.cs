@@ -104,6 +104,42 @@ namespace Ijasz2.Nyomtatas.Seged {
             table.AutoFit = AutoFit.ColumnWidth;
         }
 
+        public static void BeirolapAlairasTablazas( DocX document ) {
+            var table = document.AddTable(3, 2);
+            table.Alignment = Alignment.center;
+            table.AutoFit = AutoFit.ColumnWidth;
+            foreach( var row in table.Rows ) {
+                row.Cells[0].Width = 150;
+                row.Cells[1].Width = 150;
+                row.Cells[0].Paragraphs[0].Alignment = Alignment.center;
+                row.Cells[1].Paragraphs[0].Alignment = Alignment.center;
+            }
+            table.Rows[1].Height = 25;
+            table.Rows[1].Cells[0].VerticalAlignment = VerticalAlignment.Bottom;
+            table.Rows[1].Cells[1].VerticalAlignment = VerticalAlignment.Bottom;
+
+            const string pontok = "..............................";
+            const string beiroAlairas = "Beíró aláírása";
+            const string induloAlairas = "Versenyző aláírása";
+
+            table.Rows[0].Cells[0].Paragraphs[0].Append( pontok );
+            table.Rows[0].Cells[1].Paragraphs[0].Append( pontok );
+            table.Rows[1].Cells[0].Paragraphs[0].Append( beiroAlairas );
+            table.Rows[1].Cells[1].Paragraphs[0].Append( induloAlairas );
+
+            Border b = new Border(Novacode.BorderStyle.Tcbs_none, BorderSize.seven, 0, Color.Blue);
+
+
+            table.SetBorder( TableBorderType.InsideH, b );
+            table.SetBorder( TableBorderType.InsideV, b );
+            table.SetBorder( TableBorderType.Bottom, b );
+            table.SetBorder( TableBorderType.Top, b );
+            table.SetBorder( TableBorderType.Left, b );
+            table.SetBorder( TableBorderType.Right, b );
+            document.InsertTable( table );
+
+        }
+
         public static void Print( string fileName ) {
             var info = new ProcessStartInfo(fileName.Trim()) {
                 Verb = "Print",

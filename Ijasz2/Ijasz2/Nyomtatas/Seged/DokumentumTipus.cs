@@ -8,7 +8,8 @@ namespace Ijasz2.Nyomtatas.Seged {
     public enum StartlistaTipus {
         NevezesiLista,
         HianyzokLista,
-        CsapatLista
+        CsapatLista,
+        BeiroLap
     }
 
     public enum EredmenylapTipus {

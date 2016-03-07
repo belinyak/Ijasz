@@ -16,7 +16,7 @@ namespace Ijasz2.Megjelenites.Beirolap {
     /// <summary>
     /// Interaction logic for Beirolap_Nyomtatas.xaml
     /// </summary>
-    public partial class Beirolap_Nyomtatas : Window {
+    public partial class Beirolap_Nyomtatas {
         private Model.Eredmeny.Eredmeny _eredmeny;
         public Beirolap_Nyomtatas( Model.Eredmeny.Eredmeny eredmeny ) {
             InitializeComponent( );

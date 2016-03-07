@@ -189,6 +189,13 @@ namespace Ijasz2.Megjelenites.Indulo {
                             Kor = Data.Korosztalyok.BetoltottKor( datum, _indulo.SzuletesiDatum ),
                             KorosztalyModositott = chKorosztalyFelulir.IsChecked == true,
                         }, _indulo.Nem );
+
+                        // muszaly ujra lekerni a sorszam miatt
+                        foreach( var versenyeredmeny in Model.Data.Data.Eredmenyek._versenyEredmenyek.Where( eredmeny2 => eredmeny2.VersenyAzonosito.Equals( cbVerseny.Text ) ) ) {
+                            foreach( var eredmeny2 in versenyeredmeny.Eredmenyek._eredmenyek.Where( eredmeny2 => eredmeny2.Indulo.Equals( _indulo.Nev ) ) ) {
+                                ( new Megjelenites.Beirolap.Beirolap_Nyomtatas( eredmeny2 ) ).ShowDialog( );
+                            }
+                        }
                         Close( );
                         return;
                     }
@@ -215,12 +222,11 @@ namespace Ijasz2.Megjelenites.Indulo {
                 }, _indulo.Nem );
 
                 // muszaly ujra lekerni a sorszam miatt
-                foreach (var versenyeredmeny in Model.Data.Data.Eredmenyek._versenyEredmenyek.Where(eredmeny => eredmeny.VersenyAzonosito.Equals(cbVerseny.Text))) {
-                    foreach (var eredmeny in versenyeredmeny.Eredmenyek._eredmenyek.Where(eredmeny => eredmeny.Indulo.Equals(_indulo.Nev))) {
-                        (new Megjelenites.Beirolap.Beirolap_Nyomtatas(eredmeny)).ShowDialog();
+                foreach( var versenyeredmeny in Model.Data.Data.Eredmenyek._versenyEredmenyek.Where( eredmeny => eredmeny.VersenyAzonosito.Equals( cbVerseny.Text ) ) ) {
+                    foreach( var eredmeny in versenyeredmeny.Eredmenyek._eredmenyek.Where( eredmeny => eredmeny.Indulo.Equals( _indulo.Nev ) ) ) {
+                        ( new Megjelenites.Beirolap.Beirolap_Nyomtatas( eredmeny ) ).ShowDialog( );
                     }
                 }
-
                 Close( );
                 return;
             }
