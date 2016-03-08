@@ -6,34 +6,35 @@ using Novacode;
 namespace Ijasz2.Nyomtatas.Seged {
     public class Seged {
 
-        /// <summary>
-        /// TODO ha kész a mappa
+        /// <summary> | 
+        /// mappazas kesz van |
         /// </summary>
         /// <param name="versenysorozat"></param>
         /// <param name="verseny"></param>
-        /// <param name="dokumentumTipus"></param>
+        /// <param name="file"></param>
         /// <returns></returns>
-        public static string CreateFileName( string versenysorozat, string verseny, StartlistaTipus dokumentumTipus ) {
-            string FileName;
-
-            FileName = dokumentumTipus + ".docx";
-            return FileName;
+        public static string CreateFileName( string versenysorozat, string verseny, string file ) {
+            var path = "";
+            var dokumentumTipus = file.Contains("Verseny") ? "Eredménylapok" : "Startlisták";
+            const string dokumentumok = "Dokumentumok";
 
             if( string.IsNullOrEmpty( versenysorozat ) ) {
-                FileName = verseny + "\\" + dokumentumTipus + ".docx";
-                return FileName;
+                path = dokumentumok + "\\" + verseny + "\\" + dokumentumTipus;
+                System.IO.Directory.CreateDirectory( dokumentumok );
+                System.IO.Directory.CreateDirectory( dokumentumok + "\\" + verseny );
+                System.IO.Directory.CreateDirectory( dokumentumok + "\\" + verseny + "\\" + dokumentumTipus );
             }
             else {
-                FileName = versenysorozat + "\\" + verseny + "\\" + dokumentumTipus + ".docx";
-                return FileName;
+                path = dokumentumok + "\\" + versenysorozat + "\\" + verseny + "\\" + dokumentumTipus;
+                System.IO.Directory.CreateDirectory( dokumentumok );
+                System.IO.Directory.CreateDirectory( dokumentumok + "\\" + versenysorozat );
+                System.IO.Directory.CreateDirectory( dokumentumok + "\\" + versenysorozat + "\\" + verseny );
+                System.IO.Directory.CreateDirectory( dokumentumok + "\\" + versenysorozat + "\\" + verseny + "\\" + dokumentumTipus );
             }
-
+            var fileName =  path + "\\" +  file + ".docx";
+            return fileName;
         }
 
-        /// <summary>
-        /// nem mukodik az alignment ezért a string
-        /// </summary>
-        /// <param name="document"></param>
         public static void OldalSzamozas( DocX document ) {
             document.AddFooters( );
             var footer = document.Footers.odd;
@@ -42,7 +43,7 @@ namespace Ijasz2.Nyomtatas.Seged {
             footerTable.Rows[0].Cells[1].Paragraphs[0].InsertPageNumber( PageNumberFormat.normal, 0 );
             footerTable.Rows[0].Cells[1].Paragraphs[0].Append( ". oldal" );
             footerTable.AutoFit = AutoFit.ColumnWidth;
-            footerTable.Rows[0].Cells[0].Width = document.PageWidth - 100;
+            footerTable.Rows[0].Cells[0].Width = document.PageWidth;
             footerTable.Rows[0].Cells[1].Width = 70;
 
             Border c = new Border(Novacode.BorderStyle.Tcbs_none, BorderSize.seven, 0, Color.Black );

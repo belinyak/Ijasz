@@ -14,9 +14,7 @@ namespace Ijasz2.Nyomtatas.Seged {
         public string Ijtipus { get; set; }
         public string Nem { get; set; }
         public string Engedely { get; set; }
-
         public string KorosztalyMegnevezes { get; set; }
-
 
         public InduloAdat( ) {
         }
@@ -79,6 +77,7 @@ namespace Ijasz2.Nyomtatas.Seged {
 
         public InduloAdatok( string versenyAzonosito, int csapat ) {
             Indulok = new List<InduloAdat>( );
+
 
             // cache-eljuk az indulokat
             var indulok = Model.Data.Data.Indulok._indulok.ToList();

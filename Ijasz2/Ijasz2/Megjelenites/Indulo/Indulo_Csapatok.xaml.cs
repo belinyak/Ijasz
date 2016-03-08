@@ -30,8 +30,8 @@ namespace Ijasz2.Megjelenites.Indulo {
             //var indulok = Model.Data.Data.Indulok._indulok.Where()
             foreach( var versenyeredmenyek in Model.Data.Data.Eredmenyek._versenyEredmenyek.Where( eredmeny => eredmeny.VersenyAzonosito.Equals( versenyAzonosito ) ) ) {
                 foreach( var eredmeny in versenyeredmenyek.Eredmenyek._eredmenyek ) {
-                    _csapatok[eredmeny.Csapat].IndulokSzama += 1;
-                    _csapatok[eredmeny.Csapat].CsapatIndulok.Add( new CsapatIndulo {
+                    _csapatok[eredmeny.Csapat-1].IndulokSzama += 1;
+                    _csapatok[eredmeny.Csapat-1].CsapatIndulok.Add( new CsapatIndulo {
                         Indulo = eredmeny.Indulo,
                         Ijtipus = eredmeny.Ijtipus,
                         Kor = eredmeny.Kor,
@@ -41,6 +41,8 @@ namespace Ijasz2.Megjelenites.Indulo {
                     } );
                 }
             }
+
+            //_csapatok = _csapatok.OrderBy(csapat => csapat.Azonosito.ToString()).ToList();
             CsapatGrid.ItemsSource = _csapatok;
             CsapatGrid.Items.SortDescriptions.Add( new SortDescription( CsapatGrid.Columns.First( ).SortMemberPath, ListSortDirection.Ascending ) );
 

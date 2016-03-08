@@ -15,7 +15,7 @@ namespace Ijasz2.Nyomtatas.Startlista {
         }
 
         private string CreateDoc( ) {
-            var fileName = Seged.Seged.CreateFileName(versenyAdatok.VersenysorozatAzonosito, versenyAdatok.Azonosito, StartlistaTipus.HianyzokLista);
+            var fileName = Seged.Seged.CreateFileName(versenyAdatok.VersenysorozatAzonosito, versenyAdatok.Azonosito, StartlistaTipus.HianyzokLista.ToString());
             document = DocX.Create( fileName );
             Seged.Seged.OldalSzamozas( document );
             document.DifferentFirstPage = true;
@@ -42,8 +42,8 @@ namespace Ijasz2.Nyomtatas.Startlista {
             var footerTable = footer.InsertTable( 1, 2 );
             footerTable.Rows[0].Cells[1].Paragraphs[0].Append( "1. oldal" );
             footerTable.AutoFit = AutoFit.ColumnWidth;
-            footerTable.Rows[0].Cells[0].Width = document.PageWidth - 200;
-            footerTable.Rows[0].Cells[1].Width = 60;
+            footerTable.Rows[0].Cells[0].Width = document.PageWidth;
+            footerTable.Rows[0].Cells[1].Width = 70;
 
             Border c = new Border( Novacode.BorderStyle.Tcbs_none, BorderSize.seven, 0, Color.Black);
             footerTable.SetBorder( TableBorderType.InsideH, c );

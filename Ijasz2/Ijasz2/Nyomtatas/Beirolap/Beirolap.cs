@@ -17,7 +17,7 @@ namespace Ijasz2.Nyomtatas.Beirolap {
 
         private string CreateDoc( ) {
             var fileName = Seged.Seged.CreateFileName(versenyAdatok.VersenysorozatAzonosito, versenyAdatok.Azonosito,
-                StartlistaTipus.BeiroLap);
+                StartlistaTipus.BeiroLap.ToString());
 
             document = DocX.Create( fileName );
             document.MarginBottom = 10;

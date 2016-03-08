@@ -17,7 +17,7 @@ namespace Ijasz2.Nyomtatas.Startlista {
         public Csapatok( string versenyAzonosito ) {
             csapatok = new List<Csapat>( );
             foreach( var versenyeredmenyek in Model.Data.Data.Eredmenyek._versenyEredmenyek.Where( eredmeny => eredmeny.VersenyAzonosito.Equals( versenyAzonosito ) ) ) {
-                foreach( var csapatazonosito in versenyeredmenyek.Eredmenyek._eredmenyek.GroupBy( eredmeny => eredmeny.Csapat ).Select( grouping => grouping.Key ) ) {
+                foreach( var csapatazonosito in versenyeredmenyek.Eredmenyek._eredmenyek.OrderBy(eredmeny => eredmeny.Csapat).GroupBy( eredmeny => eredmeny.Csapat ).Select( grouping => grouping.Key ) ) {
                     csapatok.Add( new Csapat {
                         Azonosito = csapatazonosito,
                         InduloAdatok = new InduloAdatok( versenyAzonosito, csapatazonosito )
@@ -38,7 +38,7 @@ namespace Ijasz2.Nyomtatas.Startlista {
         }
 
         private string CreateDoc( ) {
-            var fileName = Seged.Seged.CreateFileName(versenyAdatok.VersenysorozatAzonosito, versenyAdatok.Azonosito, StartlistaTipus.CsapatLista);
+            var fileName = Seged.Seged.CreateFileName(versenyAdatok.VersenysorozatAzonosito, versenyAdatok.Azonosito, StartlistaTipus.CsapatLista.ToString());
             document = DocX.Create( fileName );
             document.AddHeaders( );
             Seged.Seged.OldalSzamozas( document );
@@ -90,12 +90,20 @@ namespace Ijasz2.Nyomtatas.Startlista {
 
                 var rowIndex = 1;
                 foreach( var indulo in csapat.InduloAdatok.Indulok ) {
+                    table.Rows[rowIndex - 1].Cells[0].Paragraphs[0].KeepWithNext( );
+                    table.Rows[rowIndex - 1].Cells[1].Paragraphs[0].KeepWithNext( );
+                    table.Rows[rowIndex - 1].Cells[2].Paragraphs[0].KeepWithNext( );
+                    table.Rows[rowIndex - 1].Cells[3].Paragraphs[0].KeepWithNext( );
+                    table.Rows[rowIndex - 1].Cells[4].Paragraphs[0].KeepWithNext( );
+                    table.Rows[rowIndex - 1].Cells[5].Paragraphs[0].KeepWithNext( );
+
                     table.Rows[rowIndex].Cells[0].Paragraphs[0].Append( indulo.Csapat.ToString( ) );
                     table.Rows[rowIndex].Cells[1].Paragraphs[0].Append( indulo.Sorszam.ToString( ) );
                     table.Rows[rowIndex].Cells[2].Paragraphs[0].Append( indulo.Nev );
                     table.Rows[rowIndex].Cells[3].Paragraphs[0].Append( indulo.Ijtipus );
                     table.Rows[rowIndex].Cells[4].Paragraphs[0].Append( indulo.Kor.ToString( ) );
                     table.Rows[rowIndex].Cells[5].Paragraphs[0].Append( indulo.Egyesulet );
+
                     rowIndex++;
                 }
 
@@ -127,7 +135,7 @@ namespace Ijasz2.Nyomtatas.Startlista {
 
                 document.InsertTable( table );
                 if( csapat != csapatok.csapatok.Last( ) ) {
-                    document.InsertSectionPageBreak( );
+                    //document.InsertSectionPageBreak( );
                 }
             }
         }
