@@ -6,13 +6,22 @@ namespace Ijasz2.Megjelenites.Beirolap {
     /// </summary>
     public partial class Beirolap_Nyomtatas {
         private Model.Eredmeny.Eredmeny _eredmeny;
-        public Beirolap_Nyomtatas( Model.Eredmeny.Eredmeny eredmeny ) {
+        private bool _duplaBeirolap;
+        public Beirolap_Nyomtatas( Model.Eredmeny.Eredmeny eredmeny, bool duplaBeirolap ) {
             InitializeComponent( );
             _eredmeny = eredmeny;
+            _duplaBeirolap = duplaBeirolap;
         }
 
         private void IgenButton_OnClick( object sender, RoutedEventArgs e ) {
-            ( new Nyomtatas.Beirolap.Beirolap( _eredmeny ) ).Print( );
+            var beiroLap = new Nyomtatas.Beirolap.Beirolap(_eredmeny);
+            if( _duplaBeirolap ) {
+                beiroLap.Print( );
+                beiroLap.Print( );
+            }
+            else {
+                beiroLap.Print( );
+            }
             Close( );
         }
 

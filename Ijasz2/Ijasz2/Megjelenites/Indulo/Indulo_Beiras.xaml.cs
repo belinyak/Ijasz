@@ -142,6 +142,8 @@ namespace Ijasz2.Megjelenites.Indulo {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void BtnRendben_OnClick( object sender, RoutedEventArgs e ) {
+            bool duplaBeirolap = false;
+
             if( IsValid( ) == false ) {
                 return;
             }
@@ -160,6 +162,7 @@ namespace Ijasz2.Megjelenites.Indulo {
                 else {
                     datum = verseny1.Datum;
                 }
+                duplaBeirolap = verseny1.DuplaBeirolap;
             }
 
             utolseSelectedVersenyIndex = cbVerseny.SelectedIndex;
@@ -191,7 +194,7 @@ namespace Ijasz2.Megjelenites.Indulo {
                         // muszaly ujra lekerni a sorszam miatt
                         foreach( var versenyeredmeny in Model.Data.Data.Eredmenyek._versenyEredmenyek.Where( eredmeny2 => eredmeny2.VersenyAzonosito.Equals( cbVerseny.Text ) ) ) {
                             foreach( var eredmeny2 in versenyeredmeny.Eredmenyek._eredmenyek.Where( eredmeny2 => eredmeny2.Indulo.Equals( _indulo.Nev ) ) ) {
-                                ( new Megjelenites.Beirolap.Beirolap_Nyomtatas( eredmeny2 ) ).ShowDialog( );
+                                ( new Megjelenites.Beirolap.Beirolap_Nyomtatas( eredmeny2, duplaBeirolap ) ).ShowDialog( );
                             }
                         }
                         Close( );
@@ -222,7 +225,7 @@ namespace Ijasz2.Megjelenites.Indulo {
                 // muszaly ujra lekerni a sorszam miatt
                 foreach( var versenyeredmeny in Model.Data.Data.Eredmenyek._versenyEredmenyek.Where( eredmeny => eredmeny.VersenyAzonosito.Equals( cbVerseny.Text ) ) ) {
                     foreach( var eredmeny in versenyeredmeny.Eredmenyek._eredmenyek.Where( eredmeny => eredmeny.Indulo.Equals( _indulo.Nev ) ) ) {
-                        ( new Megjelenites.Beirolap.Beirolap_Nyomtatas( eredmeny ) ).ShowDialog( );
+                        ( new Megjelenites.Beirolap.Beirolap_Nyomtatas( eredmeny, duplaBeirolap ) ).ShowDialog( );
                     }
                 }
                 Close( );
