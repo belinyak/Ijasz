@@ -335,13 +335,13 @@ namespace Ijasz2 {
 
         private void btnstartListaNyomtat_Click( object sender, RoutedEventArgs e ) {
             if( chStartlistaNevezesi.IsChecked.Equals( true ) ) {
-                ( new Startlista_Nyomtatas( StartlistaTipus.NevezesiLista, versenyAzonosito: cbstartListaVersenyAzonosito.Text ) ).ShowDialog( );
+                ( new Startlista_Nyomtatas( DokumentumTipus.Startlista.NevezesiLista, versenyAzonosito: cbstartListaVersenyAzonosito.Text ) ).ShowDialog( );
             }
             if( chStartlistaCsapat.IsChecked.Equals( true ) ) {
-                ( new Startlista_Nyomtatas( StartlistaTipus.CsapatLista, cbstartListaVersenyAzonosito.Text ) ).ShowDialog( );
+                ( new Startlista_Nyomtatas( DokumentumTipus.Startlista.CsapatLista, cbstartListaVersenyAzonosito.Text ) ).ShowDialog( );
             }
             if( chStartlistaMegjelent.IsChecked.Equals( true ) ) {
-                ( new Startlista_Nyomtatas( StartlistaTipus.HianyzokLista, cbstartListaVersenyAzonosito.Text ) ).ShowDialog( );
+                ( new Startlista_Nyomtatas( DokumentumTipus.Startlista.HianyzokLista, cbstartListaVersenyAzonosito.Text ) ).ShowDialog( );
             }
         }
         #endregion
@@ -370,37 +370,37 @@ namespace Ijasz2 {
                 return;
             }
 
-            EredmenylapTipus tipus = new EredmenylapTipus();
+            var tipus = "";
             if( cheredmenylapVerseny.IsChecked == true ) {
                 if( cheredmenylapTeljes.IsChecked == true ) {
-                    tipus = EredmenylapTipus.Verseny_Teljes;
+                    tipus = DokumentumTipus.Eredmenylap.Verseny.Teljes;
                 }
                 if( cheredmenylapMisz.IsChecked == true ) {
-                    tipus = EredmenylapTipus.Verseny_MISZ;
+                    tipus = DokumentumTipus.Eredmenylap.Verseny.MISZ;
                 }
                 if( cheredmenylapEgyesulet.IsChecked == true ) {
-                    tipus = EredmenylapTipus.Verseny_Egyesulet;
+                    tipus = DokumentumTipus.Eredmenylap.Verseny.Egyesulet;
                 }
                 if( cheredmenylapReszletes.IsChecked == true ) {
-                    tipus = EredmenylapTipus.Verseny_Reszletes;
+                    tipus = DokumentumTipus.Eredmenylap.Verseny.Reszletes;
                 }
             }
             else if( cheredmenylapVersenysorozat.IsChecked == true ) {
                 if( cheredmenylapTeljes.IsChecked == true ) {
-                    tipus = EredmenylapTipus.Versenysorozat_Teljes;
+                    tipus = DokumentumTipus.Eredmenylap.VersenySorozat.Teljes;
                 }
                 if( cheredmenylapMisz.IsChecked == true ) {
-                    tipus = EredmenylapTipus.Versenysorozat_MISZ;
+                    tipus = DokumentumTipus.Eredmenylap.VersenySorozat.MISZ;
                 }
                 if( cheredmenylapEgyesulet.IsChecked == true ) {
-                    tipus = EredmenylapTipus.Versenysorozat_Egyesulet;
+                    tipus = DokumentumTipus.Eredmenylap.VersenySorozat.Egyesulet;
                 }
                 if( cheredmenylapReszletes.IsChecked == true ) {
-                    tipus = EredmenylapTipus.Versenysorozat_Reszletes;
+                    tipus = DokumentumTipus.Eredmenylap.VersenySorozat.Reszletes;
                 }
             }
 
-            (new Megjelenites.Eredmenylap.Eredmenylap_Nyomtatas(tipus, cberedmenylapVersenyAzonosito.Text)).Show();
+            ( new Megjelenites.Eredmenylap.Eredmenylap_Nyomtatas( tipus, cberedmenylapVersenyAzonosito.Text ) ).Show( );
         }
 
         #endregion

@@ -16,6 +16,10 @@ namespace Ijasz2.Nyomtatas.Seged {
         public static string CreateFileName( string versenysorozat, string verseny, string file ) {
             var path = "";
             var dokumentumTipus = file.Contains("Verseny") ? "Eredménylapok" : "Startlisták";
+            if( file.Equals( "Oklevel" ) ) {
+                dokumentumTipus = "Oklevelek";
+            }
+
             const string dokumentumok = "Dokumentumok";
 
             if( string.IsNullOrEmpty( versenysorozat ) ) {

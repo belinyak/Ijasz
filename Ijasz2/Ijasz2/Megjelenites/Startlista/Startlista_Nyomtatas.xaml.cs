@@ -9,8 +9,8 @@ namespace Ijasz2.Megjelenites.Startlista {
     /// </summary>
     public partial class Startlista_Nyomtatas {
         private readonly string _versenyAzonosito;
-        private readonly StartlistaTipus _dokumentumTipus;
-        public Startlista_Nyomtatas( StartlistaTipus tipus, string versenyAzonosito ) {
+        private readonly string _dokumentumTipus;
+        public Startlista_Nyomtatas( string tipus, string versenyAzonosito ) {
             InitializeComponent( );
             _versenyAzonosito = versenyAzonosito;
             _dokumentumTipus = tipus;
@@ -18,28 +18,28 @@ namespace Ijasz2.Megjelenites.Startlista {
 
         private void BtnMegnyitas_OnClick( object sender, RoutedEventArgs e ) {
             switch( _dokumentumTipus ) {
-                case StartlistaTipus.CsapatLista:
-                    new Nyomtatas.Startlista.CsapatLista( _versenyAzonosito ).Open( );
+                case DokumentumTipus.Startlista.CsapatLista:
+                    new CsapatLista( _versenyAzonosito ).Open( );
                     break;
-                case StartlistaTipus.HianyzokLista:
-                    new Nyomtatas.Startlista.HianyzokLista( _versenyAzonosito ).Open();
+                case DokumentumTipus.Startlista.HianyzokLista:
+                    new HianyzokLista( _versenyAzonosito ).Open();
                     break;
-                case StartlistaTipus.NevezesiLista:
-                    new Nyomtatas.Startlista.NevezesiLista( _versenyAzonosito ).Open();
+                case DokumentumTipus.Startlista.NevezesiLista:
+                    new NevezesiLista( _versenyAzonosito ).Open();
                     break;
             }
         }
 
         private void BtnIgen_OnClick( object sender, RoutedEventArgs e ) {
             switch( _dokumentumTipus ) {
-                case StartlistaTipus.CsapatLista:
-                    new Nyomtatas.Startlista.CsapatLista( _versenyAzonosito ).Print();
+                case DokumentumTipus.Startlista.CsapatLista:
+                    new CsapatLista( _versenyAzonosito ).Print();
                     break;
-                case StartlistaTipus.HianyzokLista:
-                    new Nyomtatas.Startlista.HianyzokLista( _versenyAzonosito ).Print();
+                case DokumentumTipus.Startlista.HianyzokLista:
+                    new HianyzokLista( _versenyAzonosito ).Print();
                     break;
-                case StartlistaTipus.NevezesiLista:
-                    new Nyomtatas.Startlista.NevezesiLista( _versenyAzonosito ).Print();
+                case DokumentumTipus.Startlista.NevezesiLista:
+                    new NevezesiLista( _versenyAzonosito ).Print();
                     break;
             }
             Close( );

@@ -19,8 +19,8 @@ namespace Ijasz2.Megjelenites.Eredmenylap {
     /// </summary>
     public partial class Eredmenylap_Nyomtatas {
         private readonly string _azonosito;
-        private readonly EredmenylapTipus _dokumentumTipus;
-        public Eredmenylap_Nyomtatas( EredmenylapTipus tipus, string azonosito ) {
+        private readonly string _dokumentumTipus;
+        public Eredmenylap_Nyomtatas( string tipus, string azonosito ) {
             InitializeComponent( );
             _azonosito = azonosito;
             _dokumentumTipus = tipus;
@@ -28,22 +28,7 @@ namespace Ijasz2.Megjelenites.Eredmenylap {
 
         private void MegnyitasButton_OnClick( object sender, RoutedEventArgs e ) {
             switch (_dokumentumTipus) {
-                case EredmenylapTipus.Verseny_Teljes:
-                    break;
-                case EredmenylapTipus.Verseny_MISZ:
-                    break;
-                case EredmenylapTipus.Verseny_Egyesulet:
-                    break;
-                case EredmenylapTipus.Verseny_Reszletes:
-                    break;
-                case EredmenylapTipus.Versenysorozat_Teljes:
-                    break;
-                case EredmenylapTipus.Versenysorozat_MISZ:
-                    break;
-                case EredmenylapTipus.Versenysorozat_Egyesulet:
-                    break;
-                case EredmenylapTipus.Versenysorozat_Reszletes:
-                    break;
+                // TODO
                 default:
                     throw new ArgumentOutOfRangeException();
             }
