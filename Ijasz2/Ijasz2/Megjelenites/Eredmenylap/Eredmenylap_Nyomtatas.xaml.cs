@@ -27,19 +27,33 @@ namespace Ijasz2.Megjelenites.Eredmenylap {
         }
 
         private void MegnyitasButton_OnClick( object sender, RoutedEventArgs e ) {
-            switch (_dokumentumTipus) {
-                // TODO
+            switch( _dokumentumTipus ) {
+                case DokumentumTipus.Eredmenylap.Verseny.Teljes:
+                    break;
+                case DokumentumTipus.Eredmenylap.Verseny.Reszletes:
+                    break;
+                case DokumentumTipus.Eredmenylap.Verseny.MISZ:
+                    break;
+                case DokumentumTipus.Eredmenylap.Verseny.Egyesulet:
+                    break;
+                case DokumentumTipus.Eredmenylap.VersenySorozat.Teljes:
+                    break;
+                case DokumentumTipus.Eredmenylap.VersenySorozat.Reszletes:
+                    break;
+                case DokumentumTipus.Eredmenylap.VersenySorozat.MISZ:
+                    break;
+                case DokumentumTipus.Eredmenylap.VersenySorozat.Egyesulet:
+                    break;
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException( );
             }
-            Close();
         }
         private void IgenButton_OnClick( object sender, RoutedEventArgs e ) {
             throw new NotImplementedException( );
         }
 
         private void NemButton_OnClick( object sender, RoutedEventArgs e ) {
-            Close();
+            Close( );
         }
     }
 }

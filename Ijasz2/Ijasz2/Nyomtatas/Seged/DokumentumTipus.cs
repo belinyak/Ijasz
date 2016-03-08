@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Ijasz2.Nyomtatas.Seged {
+﻿namespace Ijasz2.Nyomtatas.Seged {
     public static class DokumentumTipus {
         public static class Eredmenylap {
             public static class Verseny {
-                public const string Teljes = "Teljes";
-                public const string MISZ = "MISZ";
-                public const string Egyesulet = "Egyesulet";
-                public const string Reszletes = "Reszletes";
+                public const string Teljes = "VersenyTeljes";
+                public const string MISZ = "VersenyMISZ";
+                public const string Egyesulet = "VersenyEgyesulet";
+                public const string Reszletes = "VersenyReszletes";
             }
             public static class VersenySorozat {
-                public const string Teljes = "Teljes";
-                public const string MISZ = "MISZ";
-                public const string Egyesulet = "Egyesulet";
-                public const string Reszletes = "Reszletes";
+                public const string Teljes = "VersenySorozatTeljes";
+                public const string MISZ = "VersenySorozatMISZ";
+                public const string Egyesulet = "VersenySorozatEgyesulet";
+                public const string Reszletes = "VersenySorozatReszletes";
             }
         }
         public static class Startlista {
@@ -26,7 +20,6 @@ namespace Ijasz2.Nyomtatas.Seged {
             public const string CsapatLista = "CsapatLista";
             public const string BeiroLap = "BeiroLap";
         }
-
         public static class Oklevel {
             public static class Verseny {
                 public const string Oklevel = "Oklevel";
