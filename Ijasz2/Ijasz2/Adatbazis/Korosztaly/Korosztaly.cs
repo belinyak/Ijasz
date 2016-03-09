@@ -234,19 +234,28 @@ namespace Ijasz2.Adatbazis.Korosztaly {
         public static void KorosztalySzamolas_IndulokSzamaUpdate( ObservableCollection<Model.Korosztaly.Korosztaly> versenyKorosztaly ) {
             Database.Connection.Open( );
             var command = Database.Connection.CreateCommand();
+            var q = "";
             command.CommandText = "";
             foreach( var korosztaly in versenyKorosztaly ) {
+                var i = 0;
                 command.CommandText += "UPDATE Korosztályok SET " +
-                                "KOINSF=@KOINSF," +
-                                "KOINSN=@KOINSN" +
-                                " WHERE VEAZON=@VEAZON AND KOAZON=@KOAZON; ";
+                                "KOINSF=@KOINSF" + i + ", " +
+                                "KOINSN=@KOINSN" + i +
+                                " WHERE VEAZON=@VEAZON" + i + " AND KOAZON=@KOAZON" + i + "; ";
 
-                command.Parameters.AddWithValue( "@VEAZON", korosztaly.Verseny );
-                command.Parameters.AddWithValue( "@KOAZON", korosztaly.Azonosito );
-                command.Parameters.AddWithValue( "@KOINSF", korosztaly.InduloFerfiak );
-                command.Parameters.AddWithValue( "@KOINSN", korosztaly.InduloNok );
+                q += "UPDATE Korosztályok SET " +
+                                "KOINSF=" + korosztaly.InduloFerfiak + ", " +
+                                "KOINSN=" + korosztaly.InduloNok + " " +
+                                " WHERE VEAZON='" + korosztaly.Verseny + "' AND KOAZON='" + korosztaly.Azonosito + "'; ";
+
+                command.Parameters.AddWithValue( "@VEAZON" + i, korosztaly.Verseny );
+                command.Parameters.AddWithValue( "@KOAZON" + i, korosztaly.Azonosito );
+                command.Parameters.AddWithValue( "@KOINSF" + i, korosztaly.InduloFerfiak );
+                command.Parameters.AddWithValue( "@KOINSN" + i, korosztaly.InduloNok );
+                i++;
             }
             try {
+                command.CommandText = q;
                 command.ExecuteNonQuery( );
             } catch( SQLiteException exception ) {
                 MessageBox.Show( exception.Message );

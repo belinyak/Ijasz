@@ -3,8 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="" Height="50" Width="210" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="" Height="60" Width="160" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" 
+        Topmost="True">
     <Grid>
     </Grid>
 </Window>
