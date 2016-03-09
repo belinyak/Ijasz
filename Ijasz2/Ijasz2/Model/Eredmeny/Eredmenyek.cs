@@ -13,6 +13,7 @@ namespace Ijasz2.Model.Eredmeny {
         ///     indulok novelese |
         /// </summary>
         /// <param name="eredmeny"></param>
+        /// <param name="induloNeme"></param>
         public void Add( Eredmeny eredmeny, string induloNeme ) {
             Adatbazis.Eredmeny.Eredmeny.Add( eredmeny );
             eredmeny.Sorszam = Adatbazis.Eredmeny.Eredmeny.InduloSorszam( eredmeny );

@@ -122,7 +122,7 @@ namespace Ijasz2.Adatbazis.Korosztaly {
             command.CommandText = "DELETE FROM Korosztályok WHERE VEAZON=@VEAZON AND KOAZON=@KOAZON;";
 
             command.Parameters.AddWithValue( "@VEAZON", korosztaly.Verseny );
-            command.Parameters.AddWithValue( "@KOAZON", korosztaly.Verseny );
+            command.Parameters.AddWithValue( "@KOAZON", korosztaly.Azonosito );
 
             try {
                 command.ExecuteNonQuery( );
@@ -141,7 +141,7 @@ namespace Ijasz2.Adatbazis.Korosztaly {
             command.CommandText = "UPDATE Korosztályok SET KOINSF = KOINSF + 1 WHERE VEAZON=@VEAZON AND KOAZON=@KOAZON;";
 
             command.Parameters.AddWithValue( "@VEAZON", korosztaly.Verseny );
-            command.Parameters.AddWithValue( "@KOAZON", korosztaly.Verseny );
+            command.Parameters.AddWithValue( "@KOAZON", korosztaly.Azonosito );
 
             command.ExecuteNonQuery( );
 
@@ -156,7 +156,7 @@ namespace Ijasz2.Adatbazis.Korosztaly {
             command.CommandText = "UPDATE Korosztályok SET KOINSN = KOINSN + 1 WHERE VEAZON=@VEAZON AND KOAZON=@KOAZON;";
 
             command.Parameters.AddWithValue( "@VEAZON", korosztaly.Verseny );
-            command.Parameters.AddWithValue( "@KOAZON", korosztaly.Verseny );
+            command.Parameters.AddWithValue( "@KOAZON", korosztaly.Azonosito );
 
             command.ExecuteNonQuery( );
 
@@ -171,7 +171,7 @@ namespace Ijasz2.Adatbazis.Korosztaly {
             command.CommandText = "UPDATE Korosztályok SET KOINSF = KOINSF - 1 WHERE VEAZON=@VEAZON AND KOAZON=@KOAZON;";
 
             command.Parameters.AddWithValue( "@VEAZON", korosztaly.Verseny );
-            command.Parameters.AddWithValue( "@KOAZON", korosztaly.Verseny );
+            command.Parameters.AddWithValue( "@KOAZON", korosztaly.Azonosito );
 
             command.ExecuteNonQuery( );
 
@@ -186,7 +186,7 @@ namespace Ijasz2.Adatbazis.Korosztaly {
             command.CommandText = "UPDATE Korosztályok SET KOINSN = KOINSN - 1 WHERE VEAZON=@VEAZON AND KOAZON=@KOAZON;";
 
             command.Parameters.AddWithValue( "@VEAZON", korosztaly.Verseny );
-            command.Parameters.AddWithValue( "@KOAZON", korosztaly.Verseny );
+            command.Parameters.AddWithValue( "@KOAZON", korosztaly.Azonosito );
 
             command.ExecuteNonQuery( );
 
@@ -205,16 +205,17 @@ namespace Ijasz2.Adatbazis.Korosztaly {
             Database.Connection.Open( );
             var command = Database.Connection.CreateCommand();
             command.CommandText = "";
-
+            var i = 0;
             foreach( var eredmeny in versenyEredmeny.Eredmenyek._eredmenyek ) {
                 command.CommandText +=
                 "UPDATE Eredmények SET " +
-                "KOAZON=@KOAZON " +
-                "WHERE VEAZON=@VEAZON AND INNEVE=@INNEVE; ";
+                "KOAZON=@KOAZON" + i +
+                " WHERE VEAZON=@VEAZON" + i + " AND INNEVE=@INNEVE" + i + "; ";
 
-                command.Parameters.AddWithValue( "@VEAZON", eredmeny.Verseny );
-                command.Parameters.AddWithValue( "@INNEVE", eredmeny.Indulo );
-                command.Parameters.AddWithValue( "@KOAZON", eredmeny.KorosztalyAzonosito );
+                command.Parameters.AddWithValue( "@VEAZON" + i, eredmeny.Verseny );
+                command.Parameters.AddWithValue( "@INNEVE" + i, eredmeny.Indulo );
+                command.Parameters.AddWithValue( "@KOAZON" + i, eredmeny.KorosztalyAzonosito );
+                ++i;
             }
             try {
                 command.ExecuteNonQuery( );
@@ -226,7 +227,8 @@ namespace Ijasz2.Adatbazis.Korosztaly {
             }
         }
 
-        /// <summary> | 
+        /// <summary> |
+        /// FONTOS: parameter egyedi kell hogy legyen 
         /// korosztaly szamolaskor updateli a koinsf, koinsn mezoket | 
         /// egyben updatel -> csak 1x fut le
         /// </summary>
@@ -234,19 +236,13 @@ namespace Ijasz2.Adatbazis.Korosztaly {
         public static void KorosztalySzamolas_IndulokSzamaUpdate( ObservableCollection<Model.Korosztaly.Korosztaly> versenyKorosztaly ) {
             Database.Connection.Open( );
             var command = Database.Connection.CreateCommand();
-            var q = "";
             command.CommandText = "";
+            var i = 0;
             foreach( var korosztaly in versenyKorosztaly ) {
-                var i = 0;
                 command.CommandText += "UPDATE Korosztályok SET " +
                                 "KOINSF=@KOINSF" + i + ", " +
                                 "KOINSN=@KOINSN" + i +
                                 " WHERE VEAZON=@VEAZON" + i + " AND KOAZON=@KOAZON" + i + "; ";
-
-                q += "UPDATE Korosztályok SET " +
-                                "KOINSF=" + korosztaly.InduloFerfiak + ", " +
-                                "KOINSN=" + korosztaly.InduloNok + " " +
-                                " WHERE VEAZON='" + korosztaly.Verseny + "' AND KOAZON='" + korosztaly.Azonosito + "'; ";
 
                 command.Parameters.AddWithValue( "@VEAZON" + i, korosztaly.Verseny );
                 command.Parameters.AddWithValue( "@KOAZON" + i, korosztaly.Azonosito );
@@ -255,7 +251,6 @@ namespace Ijasz2.Adatbazis.Korosztaly {
                 i++;
             }
             try {
-                command.CommandText = q;
                 command.ExecuteNonQuery( );
             } catch( SQLiteException exception ) {
                 MessageBox.Show( exception.Message );
@@ -265,7 +260,5 @@ namespace Ijasz2.Adatbazis.Korosztaly {
             }
         }
         #endregion
-
-
     }
 }
