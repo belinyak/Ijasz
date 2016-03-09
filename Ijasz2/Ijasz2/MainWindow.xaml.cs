@@ -12,6 +12,7 @@ using Ijasz2.Megjelenites.Ijtipus;
 using Ijasz2.Megjelenites.Indulo;
 using Ijasz2.Megjelenites.Korosztaly;
 using Ijasz2.Megjelenites.Oklevel;
+using Ijasz2.Megjelenites.Seged;
 using Ijasz2.Megjelenites.Startlista;
 using Ijasz2.Megjelenites.Verseny;
 using Ijasz2.Megjelenites.Versenysorozat;
@@ -198,14 +199,11 @@ namespace Ijasz2 {
             if( string.IsNullOrEmpty( cboVerseny.Text ) ) {
                 return;
             }
-
-            var korosztalySzamolasWindow = new Megjelenites.Seged.WaitWindow("Számolás folyamatban...");
-            korosztalySzamolasWindow.Show( );
             foreach( var korosztalyok in Data.Korosztalyok._versenyKorosztalyok.Where( korosztaly => korosztaly.VersenyAzonosito.Equals( cboVerseny.Text ) ) ) {
                 korosztalyok.KorosztalySzamolas( cboVerseny.Text );
             }
-            korosztalySzamolasWindow.Close( );
         }
+
 
         #endregion
 

@@ -10,18 +10,18 @@ namespace Ijasz2.Megjelenites.Versenysorozat {
     public partial class Versenysorozat_Hozzaadas_Modositas {
         private Model.Versenysorozat.Versenysorozat _versenysorozat;
 
-        private bool IsValid() {
+        private bool IsValid( ) {
             var valid = true;
-            txtAzonosito.ClearValue(Border.BorderBrushProperty);
-            if (txtAzonosito.Text.Length == 0) {
-                txtAzonosito.BorderBrush = new SolidColorBrush(Colors.Red);
+            txtAzonosito.ClearValue( Border.BorderBrushProperty );
+            if( txtAzonosito.Text.Length == 0 ) {
+                txtAzonosito.BorderBrush = new SolidColorBrush( Colors.Red );
                 valid = false;
             }
             return valid;
         }
 
-        private void BtnRendben_OnClick(object sender, RoutedEventArgs e) {
-            if (IsValid() == false) {
+        private void BtnRendben_OnClick( object sender, RoutedEventArgs e ) {
+            if( IsValid( ) == false ) {
                 return;
             }
 
@@ -32,24 +32,24 @@ namespace Ijasz2.Megjelenites.Versenysorozat {
             };
 
             // hozzaadas
-            if (_versenysorozat == null) {
-                Data.Versenysorozatok.Add(versenysorozat);
+            if( _versenysorozat == null ) {
+                Data.Versenysorozatok.Add( versenysorozat );
             }
             // modositas
             else {
-                Data.Versenysorozatok.Update(versenysorozat);
+                Data.Versenysorozatok.Update( versenysorozat );
             }
-            Close();
+            Close( );
         }
 
         #region Hozzaadas
 
-        public Versenysorozat_Hozzaadas_Modositas() {
-            InitializeComponent();
-            InitializeContent();
+        public Versenysorozat_Hozzaadas_Modositas( ) {
+            InitializeComponent( );
+            InitializeContent( );
         }
 
-        private void InitializeContent() {
+        private void InitializeContent( ) {
             Title += " hozzáadás";
         }
 
@@ -57,13 +57,13 @@ namespace Ijasz2.Megjelenites.Versenysorozat {
 
         #region Modositas
 
-        public Versenysorozat_Hozzaadas_Modositas(Model.Versenysorozat.Versenysorozat versenysorozat) {
+        public Versenysorozat_Hozzaadas_Modositas( Model.Versenysorozat.Versenysorozat versenysorozat ) {
             _versenysorozat = versenysorozat;
-            InitializeComponent();
-            InitializeContent(_versenysorozat);
+            InitializeComponent( );
+            InitializeContent( _versenysorozat );
         }
 
-        private void InitializeContent(Model.Versenysorozat.Versenysorozat versenysorozat) {
+        private void InitializeContent( Model.Versenysorozat.Versenysorozat versenysorozat ) {
             Title += " módosítás";
             _versenysorozat = versenysorozat;
             txtAzonosito.Text = _versenysorozat.Azonosito;
