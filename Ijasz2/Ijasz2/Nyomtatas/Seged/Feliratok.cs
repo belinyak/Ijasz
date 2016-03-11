@@ -7,6 +7,7 @@
 
         internal const string HeadLineEredmenylap = "EREDMÉNYLAP";
         internal const string EredmenyLapTeljes = "***TELJES***";
+        internal const string EredmenyLapMISZ = "***MISZ***";
 
         internal const string VersenyMegnevezes = "Verseny: ";
         internal const string VersenySorozat    = "Versenysorozat: ";

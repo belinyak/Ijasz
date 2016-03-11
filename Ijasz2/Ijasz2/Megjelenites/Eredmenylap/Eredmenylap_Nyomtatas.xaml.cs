@@ -23,6 +23,7 @@ namespace Ijasz2.Megjelenites.Eredmenylap {
                 case DokumentumTipus.Eredmenylap.Verseny.Reszletes:
                     break;
                 case DokumentumTipus.Eredmenylap.Verseny.MISZ:
+                    new Nyomtatas.Eredmenylap.VersenyEredmenyLap( _dokumentumTipus, _azonosito ).Open( );
                     break;
                 case DokumentumTipus.Eredmenylap.Verseny.Egyesulet:
                     break;
