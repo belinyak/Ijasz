@@ -16,6 +16,9 @@ namespace Ijasz2.Nyomtatas.Seged {
         public string Engedely { get; set; }
         public string KorosztalyMegnevezes { get; set; }
 
+        public int Szazalek { get; set; }
+        public int OsszPont { get; set; }
+
         public InduloAdat( ) {
         }
 
@@ -30,6 +33,9 @@ namespace Ijasz2.Nyomtatas.Seged {
             Engedely = indulo.Engedely;
             Nem = indulo.Nem;
             Csapat = eredmeny.Csapat;
+            Szazalek = eredmeny.Szazalek;
+            OsszPont = eredmeny.OsszPont;
+
             Ijtipus = ( from ijtipus in Model.Data.Data.Ijtipusok._ijtipusok
                         where ijtipus.Azonosito.Equals( eredmeny.Ijtipus )
                         select ijtipus.Megnevezes ).First( );

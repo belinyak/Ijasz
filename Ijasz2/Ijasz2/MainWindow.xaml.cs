@@ -203,8 +203,6 @@ namespace Ijasz2 {
                 korosztalyok.KorosztalySzamolas( cboVerseny.Text );
             }
         }
-
-
         #endregion
 
         #region Ijtipus

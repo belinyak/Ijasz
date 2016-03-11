@@ -197,6 +197,7 @@ namespace Ijasz2.Adatbazis.Korosztaly {
         #region Korosztaly Szamolashoz helperek
 
         /// <summary> |
+        /// FONTOS: parameter egyedi kell hogy legyen 
         /// korosztaly szamolaskor az eredmenyek tabla koazon mezőjét updateli |
         /// egy verseny-re egyben lefut | 
         /// </summary>

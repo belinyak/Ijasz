@@ -1,16 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Ijasz2.Nyomtatas.Seged;
 
 namespace Ijasz2.Megjelenites.Eredmenylap {
@@ -29,6 +18,7 @@ namespace Ijasz2.Megjelenites.Eredmenylap {
         private void MegnyitasButton_OnClick( object sender, RoutedEventArgs e ) {
             switch( _dokumentumTipus ) {
                 case DokumentumTipus.Eredmenylap.Verseny.Teljes:
+                    new Nyomtatas.Eredmenylap.VersenyEredmenyLap( _dokumentumTipus, _azonosito ).Open( );
                     break;
                 case DokumentumTipus.Eredmenylap.Verseny.Reszletes:
                     break;
@@ -49,6 +39,8 @@ namespace Ijasz2.Megjelenites.Eredmenylap {
             }
         }
         private void IgenButton_OnClick( object sender, RoutedEventArgs e ) {
+            new Nyomtatas.Eredmenylap.VersenyEredmenyLap( _dokumentumTipus, _azonosito ).Print( );
+
             throw new NotImplementedException( );
         }
 
