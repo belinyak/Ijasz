@@ -28,7 +28,7 @@ namespace Ijasz2.Nyomtatas.Beirolap {
             var header = document.Headers.odd;
             var title = header.InsertParagraph();
 
-            title.Append( Feliratok.HeadLineBeirolap );
+            title.Append( Feliratok.HeadLine.Beirolap);
             title.Alignment = Alignment.center;
             titleFormat.Size = 10D;
             title.AppendLine( Feliratok.Tulajdonos );
@@ -89,23 +89,23 @@ namespace Ijasz2.Nyomtatas.Beirolap {
             var table = document.AddTable(4, 2);
             table.Alignment = Alignment.left;
 
-            table.Rows[0].Cells[0].Paragraphs[0].Append( Feliratok.Sorszam );
+            table.Rows[0].Cells[0].Paragraphs[0].Append( Feliratok.Indulo.Sorszam );
             table.Rows[0].Cells[0].Paragraphs[0].Append( induloAdat.Sorszam.ToString( ) ).FontSize( 14 ).Bold( );
-            table.Rows[1].Cells[0].Paragraphs[0].Append( Feliratok.Nev );
+            table.Rows[1].Cells[0].Paragraphs[0].Append( Feliratok.Indulo.Nev );
             table.Rows[1].Cells[0].Paragraphs[0].Append( induloAdat.Nev ).FontSize( 14 ).Bold( );
-            table.Rows[2].Cells[0].Paragraphs[0].Append( Feliratok.Egyesulet );
+            table.Rows[2].Cells[0].Paragraphs[0].Append( Feliratok.Indulo.Egyesulet );
             table.Rows[2].Cells[0].Paragraphs[0].Append( induloAdat.Egyesulet ).Bold( );
-            table.Rows[3].Cells[0].Paragraphs[0].Append( Feliratok.Ijtipus );
+            table.Rows[3].Cells[0].Paragraphs[0].Append( Feliratok.Indulo.Ijtipus );
             table.Rows[3].Cells[0].Paragraphs[0].Append( induloAdat.Ijtipus ).Bold( );
 
-            table.Rows[0].Cells[1].Paragraphs[0].Append( Feliratok.Csapat );
+            table.Rows[0].Cells[1].Paragraphs[0].Append( Feliratok.Indulo.Csapat );
             table.Rows[0].Cells[1].Paragraphs[0].Append( induloAdat.Csapat.ToString( ) ).Bold( );
-            table.Rows[1].Cells[1].Paragraphs[0].Append( Feliratok.Kor );
+            table.Rows[1].Cells[1].Paragraphs[0].Append( Feliratok.Indulo.Kor );
             table.Rows[1].Cells[1].Paragraphs[0].Append( induloAdat.Kor.ToString( ) ).Bold( );
-            table.Rows[2].Cells[1].Paragraphs[0].Append( Feliratok.Korosztaly );
+            table.Rows[2].Cells[1].Paragraphs[0].Append( Feliratok.Indulo.Korosztaly );
             table.Rows[2].Cells[1].Paragraphs[0].Append( induloAdat.KorosztalyMegnevezes ).Bold( );
             if( !string.IsNullOrEmpty( induloAdat.Engedely ) ) {
-                table.Rows[3].Cells[1].Paragraphs[0].Append( Feliratok.Engedely );
+                table.Rows[3].Cells[1].Paragraphs[0].Append( Feliratok.Indulo.Engedely );
                 table.Rows[4].Cells[1].Paragraphs[0].Append( induloAdat.Engedely ).Bold( );
             }
             table.AutoFit = AutoFit.Contents;

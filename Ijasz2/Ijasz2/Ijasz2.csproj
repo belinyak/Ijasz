@@ -302,6 +302,7 @@
     <Compile Include="Model\Verseny\Versenyek.cs" />
     <Compile Include="Nyomtatas\Beirolap\Beirolap.cs" />
     <Compile Include="Nyomtatas\Eredmenylap\VersenyEredmenyLap.cs" />
+    <Compile Include="Nyomtatas\Eredmenylap\VersenyEredmenyLapEgyesulet.cs" />
     <Compile Include="Nyomtatas\Eredmenylap\VersenysorozatEredmenyLap.cs" />
     <Compile Include="Nyomtatas\Seged\DokumentumTipus.cs" />
     <Compile Include="Nyomtatas\Seged\Feliratok.cs" />

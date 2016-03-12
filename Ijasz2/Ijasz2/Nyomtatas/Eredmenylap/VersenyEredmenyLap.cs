@@ -296,12 +296,12 @@ namespace Ijasz2.Nyomtatas.Eredmenylap {
             var title = header.InsertParagraph();
 
             if( MISZ ) {
-                title.Append( Feliratok.HeadLineEredmenylap );
-                title.AppendLine( Feliratok.EredmenyLapMISZ );
+                title.Append( Feliratok.HeadLine.Eredmenylap );
+                title.AppendLine( Feliratok.HeadLine.EredmenyLapMISZ );
             }
             else {
-                title.Append( Feliratok.HeadLineEredmenylap );
-                title.AppendLine( Feliratok.EredmenyLapTeljes );
+                title.Append( Feliratok.HeadLine.Eredmenylap );
+                title.AppendLine( Feliratok.HeadLine.EredmenyLapTeljes );
             }
 
             title.Alignment = Alignment.center;

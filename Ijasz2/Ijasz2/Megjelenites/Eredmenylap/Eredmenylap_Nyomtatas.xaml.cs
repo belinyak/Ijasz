@@ -26,6 +26,7 @@ namespace Ijasz2.Megjelenites.Eredmenylap {
                     new Nyomtatas.Eredmenylap.VersenyEredmenyLap( _dokumentumTipus, _azonosito ).Open( );
                     break;
                 case DokumentumTipus.Eredmenylap.Verseny.Egyesulet:
+                    new Nyomtatas.Eredmenylap.VersenyEredmenyLapEgyesulet(_azonosito);
                     break;
                 case DokumentumTipus.Eredmenylap.VersenySorozat.Teljes:
                     break;

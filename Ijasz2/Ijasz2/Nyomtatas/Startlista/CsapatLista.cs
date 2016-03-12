@@ -68,7 +68,7 @@ namespace Ijasz2.Nyomtatas.Startlista {
             var header = document.Headers.odd;
 
             var title = header.InsertParagraph();
-            title.Append( Seged.Feliratok.HeadLineCsapatlista );
+            title.Append( Feliratok.HeadLine.Csapatlista );
             title.Alignment = Alignment.center;
             titleFormat.Size = 10D;
             title.AppendLine( Seged.Feliratok.Tulajdonos );
