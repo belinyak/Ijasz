@@ -75,21 +75,21 @@ namespace Ijasz2.Nyomtatas.Startlista {
         private void HianyzoklistaHeaderTablazat( ) {
             var table = document.AddTable(3, 2);
             table.Alignment = Alignment.left;
-            table.Rows[0].Cells[0].Paragraphs[0].Append( Feliratok.VersenyMegnevezes );
+            table.Rows[0].Cells[0].Paragraphs[0].Append( Feliratok.Verseny.Megnevezes );
             table.Rows[0].Cells[0].Paragraphs[0].Append( string.IsNullOrEmpty( versenyAdatok.Megnevezes ) ? versenyAdatok.Azonosito : versenyAdatok.Megnevezes ).Bold( );
 
-            table.Rows[1].Cells[0].Paragraphs[0].Append( Feliratok.VersenyDatum );
+            table.Rows[1].Cells[0].Paragraphs[0].Append( Feliratok.Verseny.Datum );
             table.Rows[1].Cells[0].Paragraphs[0].Append( versenyAdatok.Datum ).Bold( );
 
             if( !string.IsNullOrEmpty( versenyAdatok.VersenysorozatAzonosito ) ) {
-                table.Rows[2].Cells[0].Paragraphs[0].Append( Feliratok.VersenySorozat );
+                table.Rows[2].Cells[0].Paragraphs[0].Append( Feliratok.Versenysorozat.Megnevezes);
                 table.Rows[2].Cells[0].Paragraphs[0].Append( string.IsNullOrEmpty( versenyAdatok.VersenysorozatMegnevezes ) ? versenyAdatok.VersenysorozatAzonosito : versenyAdatok.VersenysorozatMegnevezes ).Bold( );
             }
 
-            table.Rows[0].Cells[1].Paragraphs[0].Append( Feliratok.OsszesPont );
+            table.Rows[0].Cells[1].Paragraphs[0].Append( Feliratok.Verseny.OsszesPont );
             table.Rows[0].Cells[1].Paragraphs[0].Append( ( versenyAdatok.OsszesPont * 10 ).ToString( ) ).Bold( );
 
-            table.Rows[1].Cells[1].Paragraphs[0].Append( Feliratok.VersenyHianyzokSzama );
+            table.Rows[1].Cells[1].Paragraphs[0].Append( Feliratok.Verseny.HianyzokSzama );
             table.Rows[1].Cells[1].Paragraphs[0].Append( versenyAdatok.HianyzokSzama.ToString( ) ).Bold( );
 
             table.AutoFit = AutoFit.Contents;
