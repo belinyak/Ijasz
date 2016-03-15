@@ -17,7 +17,7 @@ namespace Ijasz2.Nyomtatas.Startlista {
         public Csapatok( string versenyAzonosito ) {
             csapatok = new List<Csapat>( );
             foreach( var versenyeredmenyek in Model.Data.Data.Eredmenyek._versenyEredmenyek.Where( eredmeny => eredmeny.VersenyAzonosito.Equals( versenyAzonosito ) ) ) {
-                foreach( var csapatazonosito in versenyeredmenyek.Eredmenyek._eredmenyek.OrderBy(eredmeny => eredmeny.Csapat).GroupBy( eredmeny => eredmeny.Csapat ).Select( grouping => grouping.Key ) ) {
+                foreach( var csapatazonosito in versenyeredmenyek.Eredmenyek._eredmenyek.OrderBy( eredmeny => eredmeny.Csapat ).GroupBy( eredmeny => eredmeny.Csapat ).Select( grouping => grouping.Key ) ) {
                     csapatok.Add( new Csapat {
                         Azonosito = csapatazonosito,
                         InduloAdatok = new InduloAdatok( versenyAzonosito, csapatazonosito )
@@ -33,7 +33,7 @@ namespace Ijasz2.Nyomtatas.Startlista {
         private DocX document { get; set; }
 
         public CsapatLista( string versenyAzonosito ) {
-            versenyAdatok = new VersenyAdatok( versenyAzonosito );
+            versenyAdatok = new VersenyAdatok( versenyAzonosito, DokumentumTipus.Startlista.CsapatLista );
             csapatok = new Csapatok( versenyAzonosito );
         }
 
@@ -149,7 +149,7 @@ namespace Ijasz2.Nyomtatas.Startlista {
             table.Rows[1].Cells[0].Paragraphs[0].Append( versenyAdatok.Datum ).Bold( );
 
             if( !string.IsNullOrEmpty( versenyAdatok.VersenysorozatAzonosito ) ) {
-                table.Rows[2].Cells[0].Paragraphs[0].Append( Feliratok.Versenysorozat.Megnevezes);
+                table.Rows[2].Cells[0].Paragraphs[0].Append( Feliratok.Versenysorozat.Megnevezes );
                 table.Rows[2].Cells[0].Paragraphs[0].Append( string.IsNullOrEmpty( versenyAdatok.VersenysorozatMegnevezes ) ? versenyAdatok.VersenysorozatAzonosito : versenyAdatok.VersenysorozatMegnevezes ).Bold( );
             }
 

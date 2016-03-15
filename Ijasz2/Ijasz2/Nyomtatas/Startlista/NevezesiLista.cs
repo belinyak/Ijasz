@@ -7,26 +7,26 @@ namespace Ijasz2.Nyomtatas.Startlista {
     class NevezesiLista {
         private VersenyAdatok versenyAdatok { get; set; }
         private InduloAdatok induloAdatok { get; set; }
-        private DocX document { get; set; }
+        private DocX Document { get; set; }
 
         public NevezesiLista( string versenyAzonosito ) {
-            versenyAdatok = new VersenyAdatok( versenyAzonosito );
+            versenyAdatok = new VersenyAdatok( versenyAzonosito, DokumentumTipus.Startlista.NevezesiLista );
             induloAdatok = new InduloAdatok( versenyAzonosito );
         }
 
         private string CreateDoc( ) {
             var fileName = Seged.Seged.CreateFileName(versenyAdatok.VersenysorozatAzonosito, versenyAdatok.Azonosito, DokumentumTipus.Startlista.NevezesiLista);
-            document = DocX.Create( fileName );
-            document.DifferentFirstPage = true;
+            Document = DocX.Create( fileName );
+            Document.DifferentFirstPage = true;
 
-            Seged.Seged.OldalSzamozas( document );
+            Seged.Seged.OldalSzamozas( Document );
             FirstPageFooter( );
             AddHeader( );
-            HeaderTablazat();
+            HeaderTablazat( );
             VersenyAdatokTablazat( );
             IndulokTablazat( );
 
-            try { document.Save( ); } catch( System.Exception ) { MessageBox.Show( "A dokumentum meg van nyitva!", "Nevezési lista", MessageBoxButton.OK, MessageBoxImage.Error ); }
+            try { Document.Save( ); } catch( System.Exception ) { MessageBox.Show( "A dokumentum meg van nyitva!", "Nevezési lista", MessageBoxButton.OK, MessageBoxImage.Error ); }
             return fileName;
         }
 
@@ -40,8 +40,8 @@ namespace Ijasz2.Nyomtatas.Startlista {
         private void AddHeader( ) {
             var titleFormat = new Formatting {Size = 14D, Position = 1, Spacing = 5, Bold = true};
 
-            document.AddHeaders( );
-            var firstPageHeader = document.Headers.first;
+            Document.AddHeaders( );
+            var firstPageHeader = Document.Headers.first;
 
             var title = firstPageHeader.InsertParagraph();
             title.Append( Feliratok.HeadLine.NevezesiLista );
@@ -53,12 +53,12 @@ namespace Ijasz2.Nyomtatas.Startlista {
             titleFormat.Position = 12;
         }
         private void FirstPageFooter( ) {
-            var footer = document.Footers.first;
+            var footer = Document.Footers.first;
 
             var footerTable = footer.InsertTable( 1, 2 );
             footerTable.Rows[0].Cells[1].Paragraphs[0].Append( "1. oldal" );
             footerTable.AutoFit = AutoFit.ColumnWidth;
-            footerTable.Rows[0].Cells[0].Width = document.PageWidth;
+            footerTable.Rows[0].Cells[0].Width = Document.PageWidth;
             footerTable.Rows[0].Cells[1].Width = 70;
 
             var c = new Border( Novacode.BorderStyle.Tcbs_none, BorderSize.seven, 0, Color.Black);
@@ -70,7 +70,7 @@ namespace Ijasz2.Nyomtatas.Startlista {
             footerTable.SetBorder( TableBorderType.Right, c );
         }
         private void IndulokTablazat( ) {
-            var table = document.AddTable( versenyAdatok.IndulokSzama + 1, 6 );
+            var table = Document.AddTable( versenyAdatok.IndulokSzama + 1, 6 );
 
             table.Rows[0].Cells[0].Paragraphs[0].Append( "Sorszám" );
             table.Rows[0].Cells[1].Paragraphs[0].Append( "Név" );
@@ -118,10 +118,10 @@ namespace Ijasz2.Nyomtatas.Startlista {
             table.AutoFit = AutoFit.ColumnWidth;
             #endregion
 
-            document.InsertTable( table );
+            Document.InsertTable( table );
         }
         private void VersenyAdatokTablazat( ) {
-            var table = document.AddTable(3, 2);
+            var table = Document.AddTable(3, 2);
             table.Alignment = Alignment.left;
             table.Rows[0].Cells[0].Paragraphs[0].Append( Feliratok.Verseny.Megnevezes );
             table.Rows[0].Cells[0].Paragraphs[0].Append( string.IsNullOrEmpty( versenyAdatok.Megnevezes ) ? versenyAdatok.Azonosito : versenyAdatok.Megnevezes ).Bold( );
@@ -130,7 +130,7 @@ namespace Ijasz2.Nyomtatas.Startlista {
             table.Rows[1].Cells[0].Paragraphs[0].Append( versenyAdatok.Datum ).Bold( );
 
             if( !string.IsNullOrEmpty( versenyAdatok.VersenysorozatAzonosito ) ) {
-                table.Rows[2].Cells[0].Paragraphs[0].Append( Feliratok.Versenysorozat.Megnevezes);
+                table.Rows[2].Cells[0].Paragraphs[0].Append( Feliratok.Versenysorozat.Megnevezes );
                 table.Rows[2].Cells[0].Paragraphs[0].Append( string.IsNullOrEmpty( versenyAdatok.VersenysorozatMegnevezes ) ? versenyAdatok.VersenysorozatAzonosito : versenyAdatok.VersenysorozatMegnevezes ).Bold( );
             }
 
@@ -149,14 +149,13 @@ namespace Ijasz2.Nyomtatas.Startlista {
             table.SetBorder( TableBorderType.Top, b );
             table.SetBorder( TableBorderType.Left, b );
             table.SetBorder( TableBorderType.Right, b );
-            document.InsertTable( table );
-            document.InsertParagraph( );
+            Document.InsertTable( table );
+            Document.InsertParagraph( );
         }
-
         private void HeaderTablazat( ) {
-            var tablazatFejlec = document.Headers.odd;
+            var tablazatFejlec = Document.Headers.odd;
 
-            var table = document.AddTable( 1, 6 );
+            var table = Document.AddTable( 1, 6 );
             table.AutoFit = AutoFit.ColumnWidth;
 
             table.Rows[0].Cells[0].Paragraphs[0].Append( "Sorszám" );

@@ -2,13 +2,13 @@
     internal static class Feliratok {
         internal const string Tulajdonos= "Turul Koppány Íjászai HE, Hunvér Kft.";
         public static class HeadLine {
-            internal const string Csapatlista         = "C S A P A T L I S T A";
-            internal const string Hianyzoklista       = "H I Á N Y Z Ó K  L I S T A";
-            internal const string NevezesiLista       = "N E V E Z É S I  L I S T A";
-            internal const string Beirolap            = "B E Í R Ó L A P";
-            internal const string Eredmenylap         = "E R E D M É N Y L A P";
-            internal const string EredmenyLapTeljes   = "***TELJES***";
-            internal const string EredmenyLapMISZ     = "***MISZ***";
+            internal const string Csapatlista                = "C S A P A T L I S T A";
+            internal const string Hianyzoklista              = "H I Á N Y Z Ó K  L I S T A";
+            internal const string NevezesiLista              = "N E V E Z É S I  L I S T A";
+            internal const string Beirolap                   = "B E Í R Ó L A P";
+            internal const string Eredmenylap                = "E R E D M É N Y L A P";
+            internal const string EredmenyLapTeljes          = "***TELJES***";
+            internal const string EredmenyLapMISZ            = "***MISZ***";
             internal const  string EredmenyLapEgyesulet      = "***EGYESÜLET***";
         
         }

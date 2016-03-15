@@ -11,7 +11,7 @@ namespace Ijasz2.Nyomtatas.Beirolap {
         private InduloAdat induloAdat { get; }
         private DocX document { get; set; }
         public Beirolap( Eredmeny eredmeny ) {
-            versenyAdatok = new VersenyAdatok( eredmeny.Verseny );
+            versenyAdatok = new VersenyAdatok( eredmeny.Verseny, DokumentumTipus.Startlista.BeiroLap );
             induloAdat = new InduloAdat( eredmeny );
         }
 

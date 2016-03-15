@@ -7,6 +7,8 @@ using Novacode;
 
 namespace Ijasz2.Nyomtatas.Eredmenylap {
 
+    #region Structs
+
     public struct Egyesulet {
         public string Nev { get; set; }
         public string Cim { get; set; }
@@ -25,19 +27,19 @@ namespace Ijasz2.Nyomtatas.Eredmenylap {
         }
     }
 
+    #endregion
+
     public class VersenyEredmenyLapEgyesulet {
         private VersenyAdatok versenyAdatok;
         private Egyesuletek egyesuletek;
         private DocX document;
 
         public VersenyEredmenyLapEgyesulet( string versenyAzonosito ) {
-            versenyAdatok = new VersenyAdatok( versenyAzonosito );
+            versenyAdatok = new VersenyAdatok( versenyAzonosito, DokumentumTipus.Eredmenylap.Verseny.Egyesulet );
             egyesuletek = new Egyesuletek( versenyAzonosito );
         }
         private string CreateDoc( ) {
-            var fileName = "";
-
-            fileName = Seged.Seged.CreateFileName( versenyAdatok.VersenysorozatAzonosito, versenyAdatok.Azonosito,
+            var fileName = Seged.Seged.CreateFileName( versenyAdatok.VersenysorozatAzonosito, versenyAdatok.Azonosito,
                 DokumentumTipus.Eredmenylap.Verseny.Egyesulet );
 
             document = DocX.Create( fileName );
@@ -46,8 +48,15 @@ namespace Ijasz2.Nyomtatas.Eredmenylap {
 
             var header = document.Headers.odd;
             AddHeader( header );
-            HeaderTablazat( header );
+            VersenyAdatokTablazat( header );
+            AdatTablazat( );
 
+            try { document.Save( ); } catch( Exception ) {
+                MessageBox.Show( "A dokumentum meg van nyitva!", "Verseny Egyesület Eredménylap", MessageBoxButton.OK, MessageBoxImage.Error );
+            }
+            return fileName;
+        }
+        private void AdatTablazat( ) {
             Table table = document.AddTable(1, 4);
             table.Alignment = Alignment.center;
 
@@ -66,18 +75,11 @@ namespace Ijasz2.Nyomtatas.Eredmenylap {
                 index++;
             }
 
-            EgyesuletTablazatFormazas( table );
+            AdatTablazatFormazas( table );
 
             document.InsertTable( table );
-
-
-            try { document.Save( ); } catch( Exception ) {
-                MessageBox.Show( "A dokumentum meg van nyitva!", "Verseny Egyesület Eredménylap", MessageBoxButton.OK, MessageBoxImage.Error );
-            }
-            return fileName;
         }
-
-        private void HeaderTablazat( Header header ) {
+        private void VersenyAdatokTablazat( Header header ) {
             var table = document.AddTable(3, 2);
             table.Alignment = Alignment.left;
             table.Rows[0].Cells[0].Paragraphs[0].Append( Feliratok.Verseny.Megnevezes );
@@ -108,7 +110,6 @@ namespace Ijasz2.Nyomtatas.Eredmenylap {
             table.SetBorder( TableBorderType.Right, b );
             header.InsertTable( table );
         }
-
         private void AddHeader( Header header ) {
             var titleFormat = new Formatting();
             titleFormat.Size = 14D;
@@ -130,7 +131,7 @@ namespace Ijasz2.Nyomtatas.Eredmenylap {
             title.AppendLine( );
         }
 
-         private void EgyesuletTablazatFormazas( Table table ) {
+        private void AdatTablazatFormazas( Table table ) {
             Border b = new Border(Novacode.BorderStyle.Tcbs_none, BorderSize.seven, 0, Color.Blue);
             Border c = new Border(Novacode.BorderStyle.Tcbs_single, BorderSize.seven, 0, Color.Black);
 
@@ -146,17 +147,17 @@ namespace Ijasz2.Nyomtatas.Eredmenylap {
             }
 
             table.AutoFit = AutoFit.ColumnWidth;
-            foreach (Row row in table.Rows) {
+            foreach( Row row in table.Rows ) {
                 row.Cells[0].Width = 100;
                 row.Cells[1].Width = 250;
                 row.Cells[2].Width = 250;
                 row.Cells[3].Width = 100;
             }
 
-            foreach (Row row in table.Rows) {
+            foreach( Row row in table.Rows ) {
                 row.Height = 20;
             }
-         }
+        }
 
         public void Print( ) {
             Seged.Seged.Print( CreateDoc( ) );

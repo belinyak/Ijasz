@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Induló beírás" Height="310" Width="260" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Induló beírás" Height="310" Width="590" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="32" />
@@ -17,7 +17,9 @@
             <RowDefinition Height="32" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="120" />
+            <ColumnDefinition Width="120" />
+            <ColumnDefinition Width="20" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <Label Content="Név:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch"
@@ -52,5 +54,9 @@
         <Button Content="Csapatok" Grid.Row="7" Grid.Column="0" HorizontalAlignment="Right"
 		        VerticalAlignment="Bottom" Width="86" Height="28" Click="btnCsapatok_Click" />
         <Button x:Name="TagokButton" Content="Tagok" Grid.Column="1" HorizontalAlignment="Right" Grid.Row="6" VerticalAlignment="Top" Width="40" RenderTransformOrigin="2.383,1.8" Margin="0,5,1,0" Height="22" Click="TagokButton_OnClick"/>
+        <DockPanel x:Name="MessagesDockPanel" Grid.Column="3" HorizontalAlignment="Stretch" Grid.Row="0" Grid.RowSpan="8" VerticalAlignment="Top" Width="300" Height="280" Background="#FFE5E5E5">
+            <TextBlock x:Name="MessagesTextBlock" Grid.Column="0" HorizontalAlignment="Stretch"  Grid.Row="0"  Width="300" Height="280"/>
+
+        </DockPanel>
     </Grid>
 </Window>

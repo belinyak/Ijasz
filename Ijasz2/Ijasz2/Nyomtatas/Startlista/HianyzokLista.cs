@@ -10,7 +10,7 @@ namespace Ijasz2.Nyomtatas.Startlista {
         private DocX document { get; set; }
 
         public HianyzokLista( string versenyAzonosito ) {
-            versenyAdatok = new VersenyAdatok( versenyAzonosito );
+            versenyAdatok = new VersenyAdatok( versenyAzonosito , DokumentumTipus.Startlista.HianyzokLista);
             induloAdatok = new InduloAdatok( versenyAzonosito, true );
         }
 

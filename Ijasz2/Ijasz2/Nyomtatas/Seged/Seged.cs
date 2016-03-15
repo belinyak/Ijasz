@@ -29,11 +29,20 @@ namespace Ijasz2.Nyomtatas.Seged {
                 System.IO.Directory.CreateDirectory( dokumentumok + "\\" + verseny + "\\" + dokumentumTipus );
             }
             else {
-                path = dokumentumok + "\\" + versenysorozat + "\\" + verseny + "\\" + dokumentumTipus;
-                System.IO.Directory.CreateDirectory( dokumentumok );
-                System.IO.Directory.CreateDirectory( dokumentumok + "\\" + versenysorozat );
-                System.IO.Directory.CreateDirectory( dokumentumok + "\\" + versenysorozat + "\\" + verseny );
-                System.IO.Directory.CreateDirectory( dokumentumok + "\\" + versenysorozat + "\\" + verseny + "\\" + dokumentumTipus );
+                if( !string.IsNullOrEmpty( verseny ) ) {
+                    path = dokumentumok + "\\" + versenysorozat + "\\" + verseny + "\\" + dokumentumTipus;
+                    System.IO.Directory.CreateDirectory( dokumentumok );
+                    System.IO.Directory.CreateDirectory( dokumentumok + "\\" + versenysorozat );
+                    System.IO.Directory.CreateDirectory( dokumentumok + "\\" + versenysorozat + "\\" + verseny );
+                    System.IO.Directory.CreateDirectory( dokumentumok + "\\" + versenysorozat + "\\" + verseny + "\\" + dokumentumTipus );
+                }
+                else {
+                    path = dokumentumok + "\\" + versenysorozat + "\\" + dokumentumTipus;
+                    System.IO.Directory.CreateDirectory( dokumentumok );
+                    System.IO.Directory.CreateDirectory( dokumentumok + "\\" + versenysorozat );
+                    System.IO.Directory.CreateDirectory( dokumentumok + "\\" + versenysorozat + "\\" + dokumentumTipus );
+                }
+
             }
             var fileName =  path + "\\" +  file + ".docx";
             return fileName;

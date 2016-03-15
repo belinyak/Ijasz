@@ -150,7 +150,7 @@ namespace Ijasz2 {
             if( KorosztalyGrid.SelectedItem == null || cboVerseny.Text == "" ) {
                 return;
             }
-            var korosztaly = KorosztalyGrid.SelectedItem as Korosztaly;
+            var korosztaly = KorosztalyGrid.SelectedItem as Model.Korosztaly.Korosztaly;
             ( new Korosztaly_Hozzaadas_Modositas( korosztaly ) ).ShowDialog( );
         }
 
@@ -159,7 +159,7 @@ namespace Ijasz2 {
                 return;
             }
 
-            var korosztaly = new Korosztaly {
+            var korosztaly = new Model.Korosztaly.Korosztaly() {
                 Verseny = cboVerseny.Text
             };
 
@@ -171,7 +171,7 @@ namespace Ijasz2 {
                 return;
             }
 
-            var korosztaly = KorosztalyGrid.SelectedItem as Korosztaly;
+            var korosztaly = KorosztalyGrid.SelectedItem as Model.Korosztaly.Korosztaly;
             if( korosztaly != null ) {
                 var korosztalyAzonosito = korosztaly.Azonosito;
 
@@ -183,7 +183,7 @@ namespace Ijasz2 {
             if( KorosztalyGrid.SelectedItem == null || cboVerseny.Text == "" ) {
                 return;
             }
-            var korosztaly = KorosztalyGrid.SelectedItem as Korosztaly;
+            var korosztaly = KorosztalyGrid.SelectedItem as Model.Korosztaly.Korosztaly;
 
             ( new Korosztaly_Torles( korosztaly ) ).ShowDialog( );
         }
@@ -216,12 +216,12 @@ namespace Ijasz2 {
                 return;
             }
 
-            var ijtipus = IjtipusGrid.SelectedItem as Ijtipus;
+            var ijtipus = IjtipusGrid.SelectedItem as Model.Ijtipus.Ijtipus;
             ( new Ijtipus_Torles( ijtipus ) ).ShowDialog( );
         }
 
         private void Ijtipus_Modositas( object sender, MouseButtonEventArgs e ) {
-            var ijtipus = IjtipusGrid.SelectedItem as Ijtipus;
+            var ijtipus = IjtipusGrid.SelectedItem as Model.Ijtipus.Ijtipus;
             ( new Ijtipus_Hozzaadas_Modositas( ijtipus ) ).ShowDialog( );
         }
 
@@ -380,6 +380,8 @@ namespace Ijasz2 {
                 if( cheredmenylapReszletes.IsChecked == true ) {
                     tipus = DokumentumTipus.Eredmenylap.Verseny.Reszletes;
                 }
+            ( new Megjelenites.Eredmenylap.Eredmenylap_Nyomtatas( tipus, cberedmenylapVersenyAzonosito.Text ) ).Show( );
+
             }
             else if( cheredmenylapVersenysorozat.IsChecked == true ) {
                 if( cheredmenylapTeljes.IsChecked == true ) {
@@ -394,9 +396,10 @@ namespace Ijasz2 {
                 if( cheredmenylapReszletes.IsChecked == true ) {
                     tipus = DokumentumTipus.Eredmenylap.VersenySorozat.Reszletes;
                 }
+            ( new Megjelenites.Eredmenylap.Eredmenylap_Nyomtatas( tipus, cberedmenylapVersenysorozatAzonosito.Text ) ).Show( );
+
             }
 
-            ( new Megjelenites.Eredmenylap.Eredmenylap_Nyomtatas( tipus, cberedmenylapVersenyAzonosito.Text ) ).Show( );
         }
 
         #endregion
@@ -583,6 +586,7 @@ namespace Ijasz2 {
                 cberedmenylapVersenysorozatAzonosito.IsEnabled = false;
                 cberedmenylapVersenysorozatAzonosito.SelectedIndex = -1;
                 txteredmenylapVersenysorozatMegnevezes.Text = "";
+                cheredmenylapReszletes.Visibility = Visibility.Hidden;
             }
             else if( aktiv.Equals( cheredmenylapVersenysorozat ) ) {
                 cheredmenylapVersenysorozat.IsChecked = true;
@@ -592,6 +596,7 @@ namespace Ijasz2 {
                 cberedmenylapVersenyAzonosito.IsEnabled = false;
                 cberedmenylapVersenyAzonosito.SelectedIndex = -1;
                 txteredmenylapVersenyMegnevezes.Text = "";
+                cheredmenylapReszletes.Visibility = Visibility.Visible;
             }
         }
 

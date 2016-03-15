@@ -249,6 +249,7 @@
     <Compile Include="Megjelenites\Korosztaly\Korosztaly_Indulok.xaml.cs">
       <DependentUpon>Korosztaly_Indulok.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Megjelenites\Korosztaly\Korosztaly_Info.cs" />
     <Compile Include="Megjelenites\Korosztaly\Korosztaly_Torles.xaml.cs">
       <DependentUpon>Korosztaly_Torles.xaml</DependentUpon>
     </Compile>
@@ -305,6 +306,7 @@
     <Compile Include="Nyomtatas\Eredmenylap\VersenyEredmenyLapEgyesulet.cs" />
     <Compile Include="Nyomtatas\Eredmenylap\VersenysorozatEredmenyLap.cs" />
     <Compile Include="Nyomtatas\Seged\DokumentumTipus.cs" />
+    <Compile Include="Nyomtatas\Seged\EredmenyLap.cs" />
     <Compile Include="Nyomtatas\Seged\Feliratok.cs" />
     <Compile Include="Nyomtatas\Seged\InduloAdatok.cs" />
     <Compile Include="Nyomtatas\Seged\Seged.cs" />

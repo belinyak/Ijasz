@@ -3,7 +3,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Media;
+using Ijasz2.Megjelenites.Korosztaly;
 using Ijasz2.Model.Data;
 
 namespace Ijasz2.Megjelenites.Indulo {
@@ -13,7 +15,7 @@ namespace Ijasz2.Megjelenites.Indulo {
     /// </summary>
     public partial class Indulo_Beiras {
         private readonly Model.Indulo.Indulo _indulo;
-        private static int utolseSelectedVersenyIndex = -1;
+        private static int utolsoSelectedVersenyIndex = -1;
 
         public Indulo_Beiras( Model.Indulo.Indulo indulo ) {
             _indulo = indulo;
@@ -22,38 +24,58 @@ namespace Ijasz2.Megjelenites.Indulo {
         }
 
         private void InitializeContent( Model.Indulo.Indulo indulo ) {
-            var Csapatok = new ObservableCollection<int>();
+            var csapatok = new ObservableCollection<int>();
             for( var i = 1; i < 46; i++ ) {
-                Csapatok.Add( i );
+                csapatok.Add( i );
             }
-            cbCsapat.ItemsSource = Csapatok;
+            cbCsapat.ItemsSource = csapatok;
 
             cbIjtipus.ItemsSource = Data.Ijtipusok._ijtipusok;
             cbVerseny.ItemsSource = Data.Versenyek._versenyek;
-            if( utolseSelectedVersenyIndex.Equals( -1 ) ) {
+
+            if( utolsoSelectedVersenyIndex.Equals( -1 ) ) {
                 cbVerseny.SelectedIndex = 0;
-                utolseSelectedVersenyIndex = 0;
-                EloTolt( );
+                utolsoSelectedVersenyIndex = 0;
             }
             else {
-                cbVerseny.SelectedIndex = utolseSelectedVersenyIndex;
+                cbVerseny.SelectedIndex = utolsoSelectedVersenyIndex;
             }
 
             cbUjKorosztaly.IsEnabled = false;
 
             var verseny = cbVerseny.SelectedItem as Model.Verseny.Verseny;
             if( verseny != null ) {
-                cbUjKorosztaly.Text = Model.Korosztaly.VersenyKorosztaly.InduloBeirasKorosztaly( _indulo, verseny );
+                var value = Model.Korosztaly.VersenyKorosztaly.InduloBeirasKorosztaly( _indulo, verseny );
+                if( value.KorosztalyMessages != null ) {
+                    InitializeMessages( value );
+                }
+                // ha nincs message, akkor kisebb window width
+                else {
+                    Width = 260;
+                }
+                // ezt mindig visszaadja, message lehet null
+                cbUjKorosztaly.Text = value.KorosztalyAzonosito;
             }
 
             txtNev.Text = indulo.Nev;
             txtNev.IsEnabled = false;
+        }
 
+        private void InitializeMessages( KorosztalyInfo korosztalyInfo ) {
+            MessagesTextBlock.Text = "";
+            foreach( var korosztalyMessage in korosztalyInfo.KorosztalyMessages ) {
+                MessagesTextBlock.Inlines.Add( "Az induló a " );
+                MessagesTextBlock.Inlines.Add( new Bold( new Run( korosztalyMessage.VersenysorozatAzonosito ) ) );
+                MessagesTextBlock.Inlines.Add( " versenysorozat " );
+                MessagesTextBlock.Inlines.Add( new Bold( new Run( korosztalyMessage.VersenyAzonosito ) ) );
+                MessagesTextBlock.Inlines.Add( " versenyén" + Environment.NewLine );
+                MessagesTextBlock.Inlines.Add( " korosztály felülírással a " );
+                MessagesTextBlock.Inlines.Add( new Bold( new Run( korosztalyMessage.KorosztalyAzonosito ) ) );
+                MessagesTextBlock.Inlines.Add( " korosztályban szerepelt." + Environment.NewLine + Environment.NewLine );
+            }
         }
 
         private void btnCsapatok_Click( object sender, RoutedEventArgs e ) {
-
-
             ( new Indulo_Csapatok( cbVerseny.Text ) ).ShowDialog( );
         }
 
@@ -66,6 +88,7 @@ namespace Ijasz2.Megjelenites.Indulo {
 
         /// <summary>
         /// meg kell nezni, hogy ezen a versenyen volt-e beirva, ha igen elotolteni 
+        /// mindig lefut, itt kell elotolteni
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -76,16 +99,34 @@ namespace Ijasz2.Megjelenites.Indulo {
                 foreach( var versenyKorosztaly in Data.Korosztalyok._versenyKorosztalyok.Where( versenyKorosztaly => currentVerseny != null && versenyKorosztaly.VersenyAzonosito.Equals( currentVerseny.Azonosito ) ) ) {
                     cbUjKorosztaly.ItemsSource = versenyKorosztaly.Korosztalyok;
                     EloTolt( );
-                    return;
+                    //return;
                 }
+                var value = Model.Korosztaly.VersenyKorosztaly.InduloBeirasKorosztaly( _indulo, currentVerseny );
+                if( value.KorosztalyMessages != null ) {
+                    InitializeMessages( value );
+                    this.Width = 590;
+                }
+                else {
+                    this.Width = 260;
+                }
+
+                cbUjKorosztaly.Text = value.KorosztalyAzonosito;
+
             }
         }
 
         /// <summary>
-        /// TODO korosztalyt elore kiszamolni
+        /// | ha mar be volt irva akkor mindent elotoltunk |
+        /// ha nincs mit elotolteni, akkor clear-elunk |
         /// </summary>
         private void EloTolt( ) {
-            // ha mar be volt irva akkor mindent elotoltunk
+            cbIjtipus.SelectedIndex = -1;
+            cbCsapat.SelectedIndex = -1;
+            chKorosztalyFelulir.IsChecked = false;
+            cbUjKorosztaly.SelectedIndex = -1;
+            cbUjKorosztaly.IsEnabled = false;
+            chMegjelent.IsChecked = false;
+
             foreach( var versenyEredmeny in Data.Eredmenyek._versenyEredmenyek.Where( eredmeny => eredmeny.VersenyAzonosito.Equals( ( (Model.Verseny.Verseny)cbVerseny.SelectedItem ).Azonosito ) ) ) {
                 foreach( var eredmeny in versenyEredmeny.Eredmenyek._eredmenyek.Where( eredmeny => eredmeny.Indulo.Equals( _indulo.Nev ) ) ) {
                     cbIjtipus.Text = eredmeny.Ijtipus;
@@ -127,7 +168,6 @@ namespace Ijasz2.Megjelenites.Indulo {
                 chKorosztalyFelulir.Background = new SolidColorBrush( Colors.Red );
                 valid = false;
             }
-
             return valid;
         }
 
@@ -165,7 +205,7 @@ namespace Ijasz2.Megjelenites.Indulo {
                 duplaBeirolap = verseny1.DuplaBeirolap;
             }
 
-            utolseSelectedVersenyIndex = cbVerseny.SelectedIndex;
+            utolsoSelectedVersenyIndex = cbVerseny.SelectedIndex;
 
             // modositas
             foreach( var versenyEredmeny in Data.Eredmenyek._versenyEredmenyek ) {
@@ -237,9 +277,7 @@ namespace Ijasz2.Megjelenites.Indulo {
             if( string.IsNullOrEmpty( cbUjKorosztaly.Text ) ) {
                 return;
             }
-
             ( new Megjelenites.Korosztaly.Korosztaly_Indulok( cbVerseny.Text, cbUjKorosztaly.Text ) ).Show( );
-
         }
     }
 }

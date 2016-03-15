@@ -7,28 +7,31 @@ namespace Ijasz2.Megjelenites.Eredmenylap {
     /// Interaction logic for Eredmenylap_Nyomtatas.xaml
     /// </summary>
     public partial class Eredmenylap_Nyomtatas {
-        private readonly string _azonosito;
-        private readonly string _dokumentumTipus;
+        private string Azonosito { get; set; }
+        private string _dokumentumTipus { get; set; }
         public Eredmenylap_Nyomtatas( string tipus, string azonosito ) {
             InitializeComponent( );
-            _azonosito = azonosito;
+            Azonosito = azonosito;
             _dokumentumTipus = tipus;
         }
 
         private void MegnyitasButton_OnClick( object sender, RoutedEventArgs e ) {
             switch( _dokumentumTipus ) {
+                //verseny
                 case DokumentumTipus.Eredmenylap.Verseny.Teljes:
-                    new Nyomtatas.Eredmenylap.VersenyEredmenyLap( _dokumentumTipus, _azonosito ).Open( );
+                    new Nyomtatas.Eredmenylap.VersenyEredmenyLap( _dokumentumTipus, Azonosito ).Open( );
                     break;
                 case DokumentumTipus.Eredmenylap.Verseny.Reszletes:
                     break;
                 case DokumentumTipus.Eredmenylap.Verseny.MISZ:
-                    new Nyomtatas.Eredmenylap.VersenyEredmenyLap( _dokumentumTipus, _azonosito ).Open( );
+                    new Nyomtatas.Eredmenylap.VersenyEredmenyLap( _dokumentumTipus, Azonosito ).Open( );
                     break;
                 case DokumentumTipus.Eredmenylap.Verseny.Egyesulet:
-                    new Nyomtatas.Eredmenylap.VersenyEredmenyLapEgyesulet(_azonosito).Open();
+                    new Nyomtatas.Eredmenylap.VersenyEredmenyLapEgyesulet( Azonosito ).Open( );
                     break;
+                //versenysorozat
                 case DokumentumTipus.Eredmenylap.VersenySorozat.Teljes:
+                    new Nyomtatas.Eredmenylap.VersenysorozatEredmenyLap( Azonosito ).Open( );
                     break;
                 case DokumentumTipus.Eredmenylap.VersenySorozat.Reszletes:
                     break;
@@ -41,7 +44,7 @@ namespace Ijasz2.Megjelenites.Eredmenylap {
             }
         }
         private void IgenButton_OnClick( object sender, RoutedEventArgs e ) {
-            new Nyomtatas.Eredmenylap.VersenyEredmenyLap( _dokumentumTipus, _azonosito ).Print( );
+            new Nyomtatas.Eredmenylap.VersenyEredmenyLap( _dokumentumTipus, Azonosito ).Print( );
 
             throw new NotImplementedException( );
         }

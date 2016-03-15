@@ -16,11 +16,11 @@ namespace Ijasz2.Megjelenites.Egyesület {
         public Egyesulet_Tagok( Egyesulet egyesulet ) {
             _egyesulet = egyesulet;
             InitializeComponent( );
-            InitializeContent( egyesulet );
+            InitializeContent( );
             cboEgyesuletTagokVerseny.SelectedIndex = -1;
         }
 
-        private void InitializeContent( Egyesulet egyesulet ) {
+        private void InitializeContent( ) {
             var egyesuletIndulok = new List<Model.Egyesulet.Egyesulet_Tagok>();
 
             cboEgyesuletTagokVerseny.ItemsSource = Model.Data.Data.Versenyek._versenyek;
@@ -35,12 +35,11 @@ namespace Ijasz2.Megjelenites.Egyesület {
             }
             EgyesuletTagokGrid.ItemsSource = egyesuletIndulok;
             EgyesuletTagokGrid.Items.SortDescriptions.Add( new SortDescription( EgyesuletTagokGrid.Columns[2].SortMemberPath, ListSortDirection.Ascending ) );
-
         }
-
 
         /// <summary>
         /// TODO ha nincs kiválasztva, akkor maz összeset mutassa
+        /// TODO ha nincs kiválasztva, akkor ne mutassa a megjelent oszlopot
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
