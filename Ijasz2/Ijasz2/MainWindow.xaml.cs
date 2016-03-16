@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -27,6 +28,7 @@ using Ijasz2.Model.Verseny;
 using Ijasz2.Model.Versenysorozat;
 using Ijasz2.Nyomtatas.Seged;
 using Ijasz2.Nyomtatas.Startlista;
+using Korosztaly = Ijasz2.Model.Korosztaly.Korosztaly;
 
 namespace Ijasz2 {
     /// <summary>
@@ -199,6 +201,12 @@ namespace Ijasz2 {
             if( string.IsNullOrEmpty( cboVerseny.Text ) ) {
                 return;
             }
+            var verseny = cboVerseny.SelectedItem as Model.Verseny.Verseny;
+            if( !string.IsNullOrEmpty( verseny.Versenysorozat ) ) {
+                var c =  Model.Korosztaly.VersenyKorosztalyok.KorosztalyVersenysorozatEllenorzes( verseny.Versenysorozat );
+                MessagesTextBlock.Text = c;
+            }
+
             foreach( var korosztalyok in Data.Korosztalyok._versenyKorosztalyok.Where( korosztaly => korosztaly.VersenyAzonosito.Equals( cboVerseny.Text ) ) ) {
                 korosztalyok.KorosztalySzamolas( cboVerseny.Text );
             }
@@ -448,6 +456,7 @@ namespace Ijasz2 {
 
         private void cboVerseny_SelectionChanged( object sender, SelectionChangedEventArgs e ) {
             KorosztalyGrid.ItemsSource = null;
+            MessagesTextBlock.Text = "";
             var verseny = cboVerseny.SelectedItem as Verseny;
             if( verseny != null ) {
                 foreach( var versenykorosztalyok in Data.Korosztalyok._versenyKorosztalyok.Where( versenykorosztalyok => versenykorosztalyok.VersenyAzonosito.Equals( verseny.Azonosito ) ) ) {

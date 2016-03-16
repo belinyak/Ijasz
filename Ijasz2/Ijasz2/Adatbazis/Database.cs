@@ -3,6 +3,9 @@ using System.IO;
 
 namespace Ijasz2.Adatbazis {
     public sealed class Database {
+        /// <summary>
+        /// | TODO version |
+        /// </summary>
         public Database( ) {
             Connection = new SQLiteConnection( "Data Source=adat.db; Version=3; New=False; Compress=True;" );
 
