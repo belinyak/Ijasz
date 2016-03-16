@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Media;
 using Ijasz2.Model.Data;
+using Ijasz2.Model.Eredmeny;
 
 namespace Ijasz2.Nyomtatas.Seged {
     internal struct Eredmenyek {
@@ -26,10 +28,10 @@ namespace Ijasz2.Nyomtatas.Seged {
                     LoadVersenyMisz( azonosito, ijtipusAzonosito, korosztalyAzonosito, korosztalyEgyben );
                     break;
                 case DokumentumTipus.Eredmenylap.VersenySorozat.Teljes:
-                    LoadVersenysorozatTeljes( );
+                    LoadVersenysorozatTeljes( azonosito, ijtipusAzonosito, korosztalyAzonosito, korosztalyEgyben );
                     break;
                 case DokumentumTipus.Eredmenylap.VersenySorozat.MISZ:
-                    LoadVersenysorozatMisz( );
+                    //LoadVersenysorozatMisz( );
                     break;
             }
 
@@ -40,16 +42,14 @@ namespace Ijasz2.Nyomtatas.Seged {
 
         private void LoadVersenyTeljes( string versenyAzonosito, string ijtipusAzonosito, string korosztalyAzonosito,
             bool korosztalyEgyben ) {
-            foreach(
-                    var versenyeredmenyek in
-                        Data.Eredmenyek._versenyEredmenyek.Where(
+            foreach( var versenyeredmenyek in Data.Eredmenyek._versenyEredmenyek.Where(
                             eredmeny => eredmeny.VersenyAzonosito.Equals( versenyAzonosito ) ) ) {
                 var osszesInduloAdat = (from indulo1 in Data.Indulok._indulok
                                         join eredmeny in versenyeredmenyek.Eredmenyek._eredmenyek on indulo1.Nev equals
                             eredmeny.Indulo
                                         where eredmeny.Ijtipus.Equals(ijtipusAzonosito)
-                              && eredmeny.KorosztalyAzonosito.Equals(korosztalyAzonosito)
-                              && eredmeny.Megjelent.Equals(true)
+                                                  && eredmeny.KorosztalyAzonosito.Equals(korosztalyAzonosito)
+                                                  && eredmeny.Megjelent.Equals(true)
                                         select new InduloAdat {
                                             Nev = eredmeny.Indulo,
                                             Ijtipus = "nem használt",
@@ -122,8 +122,76 @@ namespace Ijasz2.Nyomtatas.Seged {
                 }
             }
         }
-        private void LoadVersenysorozatTeljes( ) {
+        private void LoadVersenysorozatTeljes( string versenysorozatAzonosito, string ijtipusAzonosito, string korosztalyAzonosito,
+            bool korosztalyEgyben ) {
+            // lekerem az osszes eredmeny-t
+            List<InduloAdat> osszesInduloAdat = new List<InduloAdat>();
 
+            // TODO erdekel-e hogy megjelent vagy nem ????
+            var versenyekSzama =
+                (from q in Model.Data.Data.Versenyek._versenyek
+                 where q.Versenysorozat.Equals(versenysorozatAzonosito)
+                 select q.Azonosito).Count();
+
+            foreach( var verseny in Model.Data.Data.Versenyek._versenyek.Where( verseny => verseny.Versenysorozat.Equals( versenysorozatAzonosito ) ) ) {
+                foreach( var versenyeredmenyek in Data.Eredmenyek._versenyEredmenyek.Where(
+                                eredmeny => eredmeny.VersenyAzonosito.Equals( verseny.Azonosito ) ) ) {
+                    var q = (from indulo1 in Data.Indulok._indulok
+                             join eredmeny in versenyeredmenyek.Eredmenyek._eredmenyek
+                                            on indulo1.Nev equals eredmeny.Indulo
+                             where eredmeny.Ijtipus.Equals(ijtipusAzonosito)
+                                                  && eredmeny.KorosztalyAzonosito.Equals(korosztalyAzonosito)
+                                                  && eredmeny.Megjelent.Equals(true)
+                             select new InduloAdat {
+                                 Nev = eredmeny.Indulo,
+                                 Ijtipus = "nem használt",
+                                 KorosztalyMegnevezes = "nem használt",
+                                 Nem = indulo1.Nem,
+                                 Engedely = indulo1.Engedely,
+                                 OsszPont = eredmeny.OsszPont,
+                                 Szazalek = eredmeny.Szazalek,
+                                 Csapat = eredmeny.Csapat,
+                                 Egyesulet = indulo1.Egyesulet,
+                                 Kor = eredmeny.Kor,
+                                 Sorszam = eredmeny.Sorszam,
+                             }).ToList();
+                    osszesInduloAdat.AddRange( q );
+                }
+            }
+
+            // most kell egy group by sum magic
+            var test = (from indulo in osszesInduloAdat
+                        group indulo by indulo.Nev
+                into indulo2
+                        select new InduloAdat {
+                            Nev = indulo2.First().Nev,
+                            Ijtipus = "nem használt",
+                            KorosztalyMegnevezes = "nem használt",
+                            Nem = indulo2.First().Nem,
+                            Engedely = indulo2.First().Engedely,
+                            OsszPont = indulo2.Sum(adat => adat.OsszPont),
+                            Szazalek = indulo2.Sum(adat => adat.Szazalek)/versenyekSzama,
+                            Csapat = indulo2.First().Csapat,
+                            Egyesulet = indulo2.First().Egyesulet,
+                            Kor = indulo2.First().Kor,
+                            Sorszam = -666 // nem hasznalt
+                        }).ToList();
+
+            osszesInduloAdat = test;
+
+            if( korosztalyEgyben.Equals( true ) ) {
+                Egyben = osszesInduloAdat;
+            }
+            else {
+                foreach( var induloAdat in osszesInduloAdat ) {
+                    if( induloAdat.Nem.ToLower( ).Equals( "n" ) ) {
+                        Nok.Add( induloAdat );
+                    }
+                    else {
+                        Ferfiak.Add( induloAdat );
+                    }
+                }
+            }
         }
         private void LoadVersenysorozatMisz( ) {
 
@@ -143,6 +211,7 @@ namespace Ijasz2.Nyomtatas.Seged {
 
         /// <summary>
         /// | TODO itt nincs külömbség a misz-nél |
+        /// azonosito lehet ve vagy vs |
         /// </summary>
         /// <param name="azonosito"></param>
         /// <param name="ijtipusAzonosito"></param>
@@ -158,18 +227,16 @@ namespace Ijasz2.Nyomtatas.Seged {
                     LoadVersenyMisz( azonosito, ijtipusAzonosito );
                     break;
                 case DokumentumTipus.Eredmenylap.VersenySorozat.Teljes:
-                    LoadVersenySorozatTeljes( azonosito );
+                    LoadVersenySorozatTeljes( azonosito, ijtipusAzonosito );
                     break;
                 case DokumentumTipus.Eredmenylap.VersenySorozat.MISZ:
-                    LoadVersenySorozatMisz( azonosito );
+                    LoadVersenySorozatMisz( azonosito, ijtipusAzonosito );
                     break;
             }
         }
 
         private void LoadVersenyTeljes( string versenyAzonosito, string ijtipusAzonosito ) {
-            foreach(
-               var versenyKorosztaly in
-                   Data.Korosztalyok._versenyKorosztalyok.Where(
+            foreach( var versenyKorosztaly in Data.Korosztalyok._versenyKorosztalyok.Where(
                        korosztaly => korosztaly.VersenyAzonosito.Equals( versenyAzonosito ) ) ) {
                 foreach( var korosztaly in versenyKorosztaly.Korosztalyok ) {
                     korosztalyok.Add( new Korosztaly {
@@ -200,10 +267,42 @@ namespace Ijasz2.Nyomtatas.Seged {
                 }
             }
         }
-        private void LoadVersenySorozatTeljes( string versenysorozatAzonosito ) {
+        private void LoadVersenySorozatTeljes( string versenysorozatAzonosito, string ijtipusAzonosito ) {
+            // eloszor kiszedem az osszeset
 
+            List<Model.Korosztaly.Korosztaly> korosztalyList = new List<Model.Korosztaly.Korosztaly>();
+
+            // minden a versenysorozathoz tartozo verseny minden korosztalya benne van
+            foreach( var verseny in Model.Data.Data.Versenyek._versenyek.Where( verseny => verseny.Versenysorozat.Equals( versenysorozatAzonosito ) ) ) {
+                foreach( var versenyKorosztaly in Model.Data.Data.Korosztalyok._versenyKorosztalyok.Where( korosztaly => korosztaly.VersenyAzonosito.Equals( verseny.Azonosito ) ) ) {
+                    var z = (from q in versenyKorosztaly.Korosztalyok
+                             select q).ToList();
+                    korosztalyList.AddRange( z );
+                }
+            }
+
+
+            var test = (from q in korosztalyList
+                        group q by new {
+                            q.AlsoHatar,
+                            q.FelsoHatar,
+                            q.Ferfiakra,
+                            q.Nokre,
+                            q.Egyben
+                        }
+                into q2
+                        select new Korosztaly {
+                            azonosito = q2.First().Azonosito,
+                            megnevezes = q2.First().Megnevezes,
+                            egyben = q2.First().Egyben,
+                            eredmenyek =
+                        new Eredmenyek(versenysorozatAzonosito, ijtipusAzonosito, q2.First().Azonosito,
+                            q2.First().Egyben, DokumentumTipus.Eredmenylap.VersenySorozat.Teljes)
+                        }).ToList();
+
+            korosztalyok = test;
         }
-        private void LoadVersenySorozatMisz( string versenysorozatAzonosito ) {
+        private void LoadVersenySorozatMisz( string versenysorozatAzonosito, string ijtipusAzonosito ) {
 
         }
     }
@@ -276,8 +375,37 @@ namespace Ijasz2.Nyomtatas.Seged {
             }
         }
 
+        /// <summary>
+        /// le kell kerni, az osszes ijtipust, kiszedni amelyikhez nincs eredmeny
+        /// </summary>
+        /// <param name="versenysorozatAzonosito"></param>
         private void LoadVersenysorozatTeljes( string versenysorozatAzonosito ) {
+            // kell a versenysorozat összes versenye, azokhoz 
+            // joinolni az eredmenyeket,
+            // joinolni az ijtipusokat
 
+            List<string> ijtipusokList = new List<string>();
+
+            // vegigmegy a versenysorozat, z-be beteszi a verseny ijtipusait versenyen belül distinctbe, z-t hozzaadja ijtipusokList-hez
+            foreach( var verseny in Model.Data.Data.Versenyek._versenyek.Where( verseny => verseny.Versenysorozat.Equals( versenysorozatAzonosito ) ) ) {
+                foreach( var versenyeredmeny in Model.Data.Data.Eredmenyek._versenyEredmenyek.Where( eredmeny => eredmeny.VersenyAzonosito.Equals( verseny.Azonosito ) ) ) {
+                    var z = (from asd in versenyeredmeny.Eredmenyek._eredmenyek
+                             select asd.Ijtipus).Distinct().ToList();
+                    ijtipusokList.AddRange( z );
+                }
+            }
+
+            // ijtipusoklist distinctkent, tartalmazza az osszes ijtipust, ami kellhet
+            _ijtipusok = ( from asd in ijtipusokList.Distinct( )
+                           join ijtipus in Data.Ijtipusok._ijtipusok
+                               on asd equals ijtipus.Azonosito
+                           select new Ijtipus {
+                               azonosito = ijtipus.Azonosito,
+                               megnevezes = ijtipus.Megnevezes,
+                               korosztalyok =
+                                   new Korosztalyok( versenysorozatAzonosito, ijtipus.Azonosito,
+                                       DokumentumTipus.Eredmenylap.VersenySorozat.Teljes )
+                           } ).ToList( );
         }
 
         private void LoadVersenysorozatMisz( string versenysorozatAzonosito ) {
